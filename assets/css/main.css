@@ -2208,3 +2208,7 @@ input, select, textarea {
 	margin-top: 0.3em;
 }
 		
+		
+.hov:hover{
+  opacity: .8
+}
