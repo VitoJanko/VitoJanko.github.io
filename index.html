@@ -165,8 +165,8 @@
 								<!--
 								<iframe src="images/Vito_Janko_CV.pdf" style="width:100%;height:700px;"></iframe>
 								-->
-								
 								<!--
+								
 								<object data="images/Vito_Janko_CV.pdf" type="application/pdf" width="500" height="1000">
 										alt : <a href="Vito_Janko_CV">Vito_Janko_CV</a>
 									</object>
@@ -176,7 +176,10 @@
 								<header>
 									<h2>Contact Me</h2>
 								</header>
-								<form action="#" method="post">
+								
+								
+								<!--
+								<form onsubmit="return false">
 									
 									
 									
@@ -184,24 +187,38 @@
 									<div>
 										<div class="row">
 											<div class="col-6 col-12-medium">
-												<input type="text" name="name" placeholder="Name" />
+												<input type="text" id="name" placeholder="Name" />
 											</div>
 											<div class="col-6 col-12-medium">
-												<input type="text" name="email" placeholder="Email" />
+												<input type="text" id="email" placeholder="Email" />
 											</div>
 											<div class="col-12">
-												<input type="text" name="subject" placeholder="Subject" />
+												<input type="text" id="subject" placeholder="Subject" />
 											</div>
 											<div class="col-12">
-												<textarea name="message" placeholder="Message" rows="6"></textarea>
+												<textarea id="message" placeholder="Message" rows="6"></textarea>
 											</div>
 											<div class="col-12">
-												<input type="submit" value="Send Message" />
+												<input type="submit" value="Send Message" onclick="send_message()" />
 											</div>
 										</div>
 									</div>
 									
 								</form>
+								
+								<hr>
+								-->	
+								
+								<p style="margin-bottom:0px;margin-top:0px;" > Email: vito.janko@ijs.si </p>
+								<p style="margin-bottom:0px;margin-top:0px;"> Phone: +386 40 877 787 </p>
+								<p> Gerbičeva cesta 43a, Ljubljana, 1000, Slovenia </p>
+								
+								<hr>
+								
+								<p style="margin-bottom:0px;margin-top:0px;"><a href="https://www.researchgate.net/profile/Vito-Janko/">Research gate</a></p>
+								<p style="margin-bottom:0px;margin-top:0px;"><a href="https://repo.ijs.si/vitojanko">Gitlab</a></p>
+								<p><a href="https://github.com/VitoJanko/">Github</a></p>
+								
 								
 							</article>
 
@@ -218,6 +235,7 @@
 			</div>
 
 		<!-- Scripts -->
+			<script src="assets/js/contact.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
