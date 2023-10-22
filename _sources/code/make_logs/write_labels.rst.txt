@@ -1,0 +1,162 @@
+============
+write_labels
+============
+
+.. py:function:: generate_cell_labels(destination: LogDestination, match_results: MatchAllResults, tables: list[TableParser])
+
+       Generate labels for cells in the table.
+
+       :param destination: The destination for the logs.
+       :type destination: LogDestination
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param tables: The list of tables to be parsed.
+       :type tables: list[TableParser]
+
+   .. py:function:: labels_from_values_new(table_i, table, labels, labels5, labels10)
+
+       Generate labels from new values in the table.
+       :param table_i: The index of the table.
+       :type table_i: int
+       :param table: The table to be parsed.
+       :type table: TableParser
+       :param labels: The list of labels.
+       :type labels: list
+       :param labels5: The list of labels for 5 values.
+       :type labels5: list
+       :param labels10: The list of labels for 10 values.
+       :type labels10: list
+
+   .. py:function:: labels_from_values(table_i, table, match_results, labels, labels5, labels10)
+
+       Generate labels from values in the table.
+       :param table_i: The index of the table.
+       :type table_i: int
+       :param table: The table to be parsed.
+       :type table: TableParser
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param labels: The list of labels.
+       :type labels: list
+       :param labels5: The list of labels for 5 values.
+       :type labels5: list
+       :param labels10: The list of labels for 10 values.
+       :type labels10: list
+
+   .. py:function:: labels_from_values_extended(table_index, table, labels)
+
+       Generate labels from extended values in the table.
+       :param table_index: The index of the table.
+       :type table_index: int
+       :param table: The table to be parsed.
+       :type table: TableParser
+       :param labels: The list of labels.
+       :type labels: list
+
+   .. py:function:: contains_keyword(value, keywords)
+
+       Check if the value contains any of the keywords.
+       :param value: The value to be checked.
+       :type value: str
+       :param keywords: The list of keywords.
+       :type keywords: list
+       :return: True if the value contains any of the keywords, False otherwise.
+       :rtype: bool
+
+   .. py:function:: generate_confidence_labels(destination: LogDestination, match_results: MatchAllResults, tables: list[TableParser])
+
+       Generate labels for confidence in the table.
+       :param destination: The destination for the logs.
+       :type destination: LogDestination
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param tables: The list of tables to be parsed.
+       :type tables: list[TableParser]
+
+   .. py:function:: generate_confidence_logs_labels(destination: LogDestination, match_results: MatchAllResults, tables: list[TableParser])
+
+       Generate labels for confidence logs in the table.
+       :param destination: The destination for the logs.
+       :type destination: LogDestination
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param tables: The list of tables to be parsed.
+       :type tables: list[TableParser]
+
+   .. py:function:: generate_mapping_labels(destination: LogDestination, match_results: MatchAllResults, tables: list[TableParser])
+
+       Generate labels for mapping in the table.
+       :param destination: The destination for the logs.
+       :type destination: LogDestination
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param tables: The list of tables to be parsed.
+       :type tables: list[TableParser]
+
+   .. py:function:: generate_id_mapping_labels(destination: LogDestination, match_results: MatchAllResults, tables: list)
+
+       Generate labels for id mapping in the table.
+       :param destination: The destination for the logs.
+       :type destination: LogDestination
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param tables: The list of tables to be parsed.
+       :type tables: list
+
+.. py:function:: generate_handwritten_labels(tables: list[TableParser])
+
+   Generate handwritten labels for given tables and save them in a specific directory.
+
+   :param tables: List of tables to generate labels for.
+   :type tables: list[TableParser]
+   :return: None
+
+
+.. py:function:: find_largest_index(path_to_directory: str) -> int
+
+   Find the largest index in the given directory.
+
+   :param path_to_directory: Path to the directory to search in.
+   :type path_to_directory: str
+   :return: The largest index found.
+   :rtype: int
+
+
+.. py:function:: extract_value(table: TableParser, col_name: str, row: int)
+
+   Extract a value from a table at a specific row and column.
+
+   :param table: The table to extract value from.
+   :type table: TableParser
+   :param col_name: The column name.
+   :type col_name: str
+   :param row: The row index.
+   :type row: int
+   :return: The extracted value.
+   :rtype: str
+
+
+.. py:function:: make_csvs(label_type, df, destination)
+
+   Create CSV files for a given label type and dataframe, and save them in a specific destination.
+
+   :param label_type: The type of label.
+   :type label_type: str
+   :param df: The dataframe to save.
+   :type df: pandas.DataFrame
+   :param destination: The destination to save the CSV file.
+   :type destination: str
+   :return: None
+
+
+.. py:function:: csv_to_s3(df, s3_path, handler=None)
+
+   Save a dataframe as a CSV file to an S3 path.
+
+   :param df: The dataframe to save.
+   :type df: pandas.DataFrame
+   :param s3_path: The S3 path to save the CSV file.
+   :type s3_path: str
+   :param handler: The handler for the S3 service. If None, a default handler is used.
+   :type handler: S3Handler or None
+   :return: None

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>transmission &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="utils" href="utils.html" />
+    <link rel="prev" title="td_parser" href="td_parser.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">table_parser_v2</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="abstract_parser.html">abstract_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="column_extraction.html">column_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html">helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parse_tables.html">parse_tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_summary.html">pl_summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_textract_blocks.html">search_textract_blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table_surrounding.html">table_surrounding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="td_parser.html">td_parser</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">transmission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">table_parser_v2</a></li>
+      <li class="breadcrumb-item active">transmission</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/table_parser_v2/transmission.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="transmission">
+<h1>transmission<a class="headerlink" href="#transmission" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="get_transmission_type">
+<span class="sig-name descname"><span class="pre">get_transmission_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manual_transmission_keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_transmission_type" title="Link to this definition"></a></dt>
+<dd><p>Determine the type of transmission based on the provided text and keywords.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – The text to analyze.</p></li>
+<li><p><strong>manual_transmission_keywords</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of keywords that indicate manual transmission.</p></li>
+<li><p><strong>settings</strong> – Additional settings for the function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The type of transmission (“manual” or “automatic”).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_gears">
+<span class="sig-name descname"><span class="pre">get_gears</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_gears" title="Link to this definition"></a></dt>
+<dd><p>Extract the number of gears from the provided text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – The text to analyze.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The number of gears.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apply_transmission_processing">
+<span class="sig-name descname"><span class="pre">apply_transmission_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apply_transmission_processing" title="Link to this definition"></a></dt>
+<dd><p>Apply transmission processing to the provided data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The data to process.</p></li>
+<li><p><strong>settings</strong> – Additional settings for the function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A map of categories to values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="merge_transmission_columns">
+<span class="sig-name descname"><span class="pre">merge_transmission_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_to_col_indices_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictor_necessities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#merge_transmission_columns" title="Link to this definition"></a></dt>
+<dd><p>Merge transmission columns into one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> – The values to merge.</p></li>
+<li><p><strong>labels</strong> – The labels for the values.</p></li>
+<li><p><strong>category_to_col_indices_map</strong> – A map of categories to column indices.</p></li>
+<li><p><strong>predictor_necessities</strong> – The necessities for the predictor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extend_transmissions_data">
+<span class="sig-name descname"><span class="pre">extend_transmissions_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_to_col_indices_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictor_necessities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extend_transmissions_data" title="Link to this definition"></a></dt>
+<dd><p>Extend transmission data by merging all transmission columns into one and extracting gears and type from full transmissions data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>category_to_col_indices_map</strong> – A map of categories to column indices.</p></li>
+<li><p><strong>values</strong> – The values to extend.</p></li>
+<li><p><strong>labels</strong> – The labels for the values.</p></li>
+<li><p><strong>mapper</strong> – The mapper for the values.</p></li>
+<li><p><strong>predictor_necessities</strong> – The necessities for the predictor.</p></li>
+<li><p><strong>settings</strong> – Additional settings for the function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="td_parser.html" class="btn btn-neutral float-left" title="td_parser" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

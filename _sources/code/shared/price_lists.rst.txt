@@ -1,0 +1,59 @@
+===========
+price_lists
+===========
+
+.. py:function:: get_price_lists_local(path: str) -> List[PriceListTuple]
+
+   Returns a list of price lists from a local directory, excluding certain files.
+
+   :param path: The path to the directory containing the price lists.
+   :type path: str
+   :return: A list of price lists.
+   :rtype: List[PriceListTuple]
+
+.. py:function:: get_price_lists_by_filename(filename, price_list_metadata)
+
+   Returns a price list that matches the given filename.
+
+   :param filename: The filename to match.
+   :param price_list_metadata: The metadata of the price lists.
+   :return: The matching price list.
+
+.. py:function:: flatten_json(nested_json)
+
+   Flattens a nested json object into a single level.
+
+   :param nested_json: A nested json object.
+   :return: The flattened json object if successful, None otherwise.
+
+.. py:function:: get_all_processed_price_lists(query_values: list, query_columns: list, max_created_at: datetime.date = datetime.date.today(), price_list_id=None) -> dict
+
+   Returns all processed price lists that match the given query values and columns.
+
+   :param query_values: The values to query.
+   :type query_values: list
+   :param query_columns: The columns to query.
+   :type query_columns: list
+   :param max_created_at: The maximum creation date of the price lists. Defaults to today"""s date.
+   :type max_created_at: datetime.date
+   :param price_list_id: The id of a specific price list. If given, only this price list is returned.
+   :return: A dictionary of processed price lists.
+   :rtype: dict
+
+.. py:function:: get_all_matching_local_price_lists(local_price_lists: list, filename_to_price_list_details: dict)
+
+   Returns all local price lists that match the given details.
+
+   :param local_price_lists: The local price lists to match.
+   :type local_price_lists: list
+   :param filename_to_price_list_details: The details to match the price lists against.
+   :type filename_to_price_list_details: dict
+   :return: A list of matching price lists.
+
+.. py:function:: flatten(x, name="")
+
+   Flattens a nested structure into a single level.
+
+   :param x: The structure to flatten.
+   :param name: The name to use for the flattened structure. Defaults to an empty string.
+   :return: The flattened structure.

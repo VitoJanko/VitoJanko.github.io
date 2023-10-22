@@ -1,0 +1,44 @@
+=====
+utils
+=====
+
+.. py:function:: compare_and_add_engine(engines, line)
+
+   Compare the first engine in the list with the given line and add it to the list if it is similar. The comparison is done by using Levenshtein distance and only checking the first n characters, where n is the minimum of 10 and the length of the first engine in the list.
+
+   :param engines: list of engines
+   :type engines: list
+   :param line: a dictionary with a key """Text""" whose value is the string to be compared and added to the list
+   :type line: dict
+   :return: None
+   :rtype: None
+
+.. py:function:: process_price_line(line, lines, max_number, max_number_string, remove_price_noise)
+
+   Process the given line and update the maximum number and its corresponding string. The processing depends on the value of remove_price_noise.
+
+   :param line: The line to be processed
+   :type line: dict
+   :param lines: The list of lines
+   :type lines: list
+   :param max_number: The current maximum number
+   :type max_number: int
+   :param max_number_string: The string corresponding to the current maximum number
+   :type max_number_string: str
+   :param remove_price_noise: The level of price noise removal
+   :type remove_price_noise: int
+   :return: The updated values of prices_lines, max_number, and max_number_string
+   :rtype: tuple
+
+.. py:function:: largest_number_textract(table, threshold=6000, conversion=1)
+
+   Find the largest number in the given table that is less than 100000 and not in the specified list. Also, return all numbers greater than the threshold.
+
+   :param table: The table to be processed
+   :type table: list
+   :param threshold: The threshold for determining big numbers
+   :type threshold: int, optional
+   :param conversion: The conversion factor for the numbers
+   :type conversion: int, optional
+   :return: The largest number and the list of all big numbers
+   :rtype: tuple

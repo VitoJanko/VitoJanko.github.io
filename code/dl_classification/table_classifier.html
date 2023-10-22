@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>table_classifier &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="equipment_parser" href="../equipment_parser/index.html" />
+    <link rel="prev" title="dl_tools" href="dl_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">dl_classification</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dl_tools.html">dl_tools</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">table_classifier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">dl_classification</a></li>
+      <li class="breadcrumb-item active">table_classifier</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/dl_classification/table_classifier.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-classifier">
+<h1>table_classifier<a class="headerlink" href="#table-classifier" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="label_table">
+<span class="sig-name descname"><span class="pre">label_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformation_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'area'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PreloadedAssets</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_proba</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="headerlink" href="#label_table" title="Link to this definition"></a></dt>
+<dd><p>Apply a model to a dataframe to generate predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_values</strong> (<em>pd.DataFrame</em>) – The dataframe to be labeled.</p></li>
+<li><p><strong>transformation_type</strong> (<em>str</em>) – The type of transformation to apply to the data. Default is “default”.</p></li>
+<li><p><strong>model_type</strong> (<em>str</em>) – The type of model to use for prediction. Default is “area”.</p></li>
+<li><p><strong>storage</strong> (<em>PreloadedAssets</em>) – The storage object containing preloaded assets.</p></li>
+<li><p><strong>ignore_code</strong> (<em>bool</em>) – Whether to ignore code cells. Default is True.</p></li>
+<li><p><strong>ignore_model</strong> (<em>bool</em>) – Whether to ignore model cells. Default is False.</p></li>
+<li><p><strong>return_proba</strong> (<em>bool</em>) – Whether to return probabilities. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The labeled dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dl_cleanup">
+<span class="sig-name descname"><span class="pre">dl_cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dl_cleanup" title="Link to this definition"></a></dt>
+<dd><p>Clear the current Keras session.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PreloadedAssets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the object with a model from the provided storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>storage</strong> (<em>PreloadedAssets</em>) – The storage object containing preloaded assets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict" title="Link to this definition"></a></dt>
+<dd><p>Predict the label for a given cell text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cell_text</strong> (<em>str</em>) – The text of the cell to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict_proba" title="Link to this definition"></a></dt>
+<dd><p>Predict the label probabilities for a given cell text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cell_text</strong> (<em>str</em>) – The text of the cell to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label probabilities.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict_lst">
+<span class="sig-name descname"><span class="pre">predict_lst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict_lst" title="Link to this definition"></a></dt>
+<dd><p>Predict the labels for a list of cell texts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lst</strong> (<em>list</em>) – The list of cell texts to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PreloadedAssets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Initialize the object with multiple models from the provided storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>storage</strong> (<em>PreloadedAssets</em>) – The storage object containing preloaded assets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Predict the label for a given dataframe using a specified model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_labels</strong> (<em>pd.DataFrame</em>) – The dataframe to predict.</p></li>
+<li><p><strong>model</strong> (<em>keras.Model</em>) – The model to use for prediction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict_wide">
+<span class="sig-name descname"><span class="pre">predict_wide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict_wide" title="Link to this definition"></a></dt>
+<dd><p>Predict the label for a given dataframe using the wide model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_labels</strong> (<em>pd.DataFrame</em>) – The dataframe to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict_transposed">
+<span class="sig-name descname"><span class="pre">predict_transposed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict_transposed" title="Link to this definition"></a></dt>
+<dd><p>Predict the label for a given dataframe using the transposed model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_labels</strong> (<em>pd.DataFrame</em>) – The dataframe to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict_merge">
+<span class="sig-name descname"><span class="pre">predict_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict_merge" title="Link to this definition"></a></dt>
+<dd><p>Predict the label for a given dataframe using the merged model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_labels</strong> (<em>pd.DataFrame</em>) – The dataframe to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predict_splitted">
+<span class="sig-name descname"><span class="pre">predict_splitted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predict_splitted" title="Link to this definition"></a></dt>
+<dd><p>Predict the label for a given dataframe using the splitted model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_labels</strong> (<em>pd.DataFrame</em>) – The dataframe to predict.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted label.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dl_tools.html" class="btn btn-neutral float-left" title="dl_tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../equipment_parser/index.html" class="btn btn-neutral float-right" title="equipment_parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

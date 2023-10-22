@@ -1,0 +1,134 @@
+====
+main
+====
+
+.. py:function:: get_best_combination_from_duplicates(word: str, word_combinations: list[str], word_combinations_original_indices: list[list[int]]) -> (int, list[int])
+
+       From all duplicates of word (combination) keep only one. Select the one which has source words closest to each other.
+
+       :param word: The word to find the best combination for.
+       :type word: str
+       :param word_combinations: The list of word combinations.
+       :type word_combinations: list[str]
+       :param word_combinations_original_indices: The original indices of the word combinations.
+       :type word_combinations_original_indices: list[list[int]]
+       :return: The index of the best combination and the list of duplicate indices.
+       :rtype: (int, list[int])
+
+.. py:function:: deduplicate_word_combinations(word_combinations, word_combinations_original_indices) -> (list[str], list[list[int]])
+
+       Deduplicate word combinations which occur more than one time.
+       :param word_combinations: The list of word combinations.
+       :type word_combinations: list[str]
+       :param word_combinations_original_indices: The original indices of the word combinations.
+       :type word_combinations_original_indices: list[list[int]]
+       :return: The deduplicated word combinations and their original indices.
+       :rtype: (list[str], list[list[int]])
+
+.. py:function:: generate_word_combinations(word_group, max_n_words=5)
+
+       Generate word combinations from a group of words.
+       :param word_group: The group of words to generate combinations from.
+       :type word_group: str
+       :param max_n_words: The maximum number of words in a combination. Default is 5.
+       :type max_n_words: int
+       :return: The deduplicated word combinations and their original indices.
+       :rtype: (list[str], list[list[int]])
+
+.. py:function:: predict_category(word: str, predictor_necessities: PredictorNecessities, n_top_values=5)
+
+       Predict the category of a word.
+       :param word: The word to predict the category for.
+       :type word: str
+       :param predictor_necessities: The necessary predictors for the prediction.
+       :type predictor_necessities: PredictorNecessities
+       :param n_top_values: The number of top values to consider for the prediction. Default is 5.
+       :type n_top_values: int
+       :return: The most probable category, its probability, the scores triple, and the category score list.
+       :rtype: (str, float, (float, float, float), dict)
+
+.. py:function:: ignore_model_classification(token: str, category: str, probability: int)
+
+       Determine whether to ignore a model classification.
+       :param token: The token to consider.
+       :type token: str
+       :param category: The category of the token.
+       :type category: str
+       :param probability: The probability of the classification.
+       :type probability: int
+       :return: Whether to ignore the model classification.
+       :rtype: bool
+
+.. py:function:: predict_categories(word_group, predictor_necessities: PredictorNecessities, max_n_words=2)
+
+       Predict the categories of a group of words.
+       :param word_group: The group of words to predict the categories for.
+       :type word_group: str
+       :param predictor_necessities: The necessary predictors for the prediction.
+       :type predictor_necessities: PredictorNecessities
+       :param max_n_words: The maximum number of words in a combination. Default is 2.
+       :type max_n_words: int
+       :return: The most probable category, the one per category classification results, the classification results, and the word combinations.
+       :rtype: (str, dict, dict, list[str])
+
+.. py:function:: n_classified_tokens_on_page(page, predictor_necessities: PredictorNecessities)
+
+       Count the number of classified tokens on a page.
+       :param page: The page to count the tokens on.
+       :type page: Page
+       :param predictor_necessities: The necessary predictors for the prediction.
+       :type predictor_necessities: PredictorNecessities
+       :return: The total number of classified tokens.
+       :rtype: int
+
+.. py:function:: categorise_textract_words(blocks, predictor_necessities)
+
+       Categorise textract words.
+       :param blocks: The blocks of words to categorise.
+       :type blocks: list[dict]
+       :param predictor_necessities: The necessary predictors for the prediction.
+       :type predictor_necessities: PredictorNecessities
+       :return: The map of categories to textract blocks.
+       :rtype: dict
+
+.. py:function:: is_valid(text, category, predictor_necessities)
+
+       Check if a text is valid for a category.
+       :param text: The text to check.
+       :type text: str
+       :param category: The category to check the text against.
+       :type category: str
+       :param predictor_necessities: The necessary predictors for the prediction.
+       :type predictor_necessities: PredictorNecessities
+       :return: Whether the text is valid for the category.
+       :rtype: bool
+
+.. py:function:: delete_non_relevant_pages(relevant_page_numbers: list[int], file_like=None)
+
+       Delete non-relevant pages from a PDF file.
+       :param relevant_page_numbers: List of relevant page numbers to keep in the PDF - ZERO INDEXED.
+       :type relevant_page_numbers: list[int]
+       :param file_like: A file-like object (has to implement read, seek, and tell methods) representing the PDF file. Default is None.
+       :type file_like: file-like object, optional
+       :return: A file-like object representing the modified PDF file with only relevant pages.
+       :rtype: file-like object
+
+.. py:function:: process_price_list(predictor_necessities: PredictorNecessities, file_like=None, min_chars_per_page=20)
+
+       Process price list in a pdf format. For now we assume that the main price list is located on the first page of a pdf.
+       :param predictor_necessities: The necessary predictors for the prediction.
+       :type predictor_necessities: PredictorNecessities
+       :param file_like: A file-like object (has to implement read, seek, and tell methods) representing the PDF file. Default is None.
+       :type file_like: file-like object, optional
+       :param min_chars_per_page: The minimum number of characters per page. Default is 20.
+       :type min_chars_per_page: int
+       :return: A file-like object representing the modified PDF file with only relevant pages.
+       :rtype: file-like object
+
+.. py:function:: _get_source_words_indices(words)
+
+       Get the source words indices.
+       :param words: The words to get the indices for.
+       :type words: list[str]
+       :return: The original indices of the words.
+       :rtype: list[list[int]]

@@ -1,0 +1,29 @@
+======
+models
+======
+
+.. py:function:: dict_to_equipment(json_like)
+
+   Converts a dictionary to an Equipment object.
+
+   :param json_like: The dictionary to be converted.
+   :type json_like: dict
+   :return: A list of Equipment objects.
+   :rtype: list[Equipment]
+
+
+.. py:function:: dict_to_color(json_like)
+
+   Converts a dictionary to a Color object.
+
+   :param json_like: The dictionary to be converted.
+   :type json_like: dict
+   :return: A list of Color objects.
+   :rtype: list[Color]
+
+
+.. py:function:: is_textract_valid()
+
+   Checks if the textract is valid.
+   :return: True if the textract is valid, False otherwise.
+   :rtype: bool

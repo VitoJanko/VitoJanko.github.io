@@ -1,0 +1,306 @@
+============
+table_makers
+============
+
+.. py:function:: draw_table(values, labels, margin_row, margin_column, sheet, background=None, title="", splitters=None, border=True, fill_background=None, wrap_around=False)
+
+   Draw a table in a given sheet with specified values, labels, margins, and other parameters.
+
+   :param values: The values to be included in the table.
+   :type values: pandas.DataFrame
+   :param labels: The labels for the values in the table.
+   :type labels: pandas.DataFrame
+   :param margin_row: The margin for the rows.
+   :type margin_row: int
+   :param margin_column: The margin for the columns.
+   :type margin_column: int
+   :param sheet: The sheet where the table will be drawn.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param background: The background color for the cells in the table.
+   :type background: str or None
+   :param title: The title of the table.
+   :type title: str
+   :param splitters: The indices of the columns that should be split.
+   :type splitters: list[int] or None
+   :param border: Whether to add a border to the cells in the table.
+   :type border: bool
+   :param fill_background: The background color for the cells in the table.
+   :type fill_background: str or None
+   :param wrap_around: Whether to wrap the text in the cells around.
+   :type wrap_around: bool
+   :return: None
+
+
+.. py:function:: make_legend(sheet, margins)
+
+   Create a legend in a given sheet with specified margins.
+
+   :param sheet: The sheet where the legend will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param margins: The margins for the legend.
+   :type margins: object
+   :return: None
+
+
+.. py:function:: make_base_table(pl_table, margins, sheet)
+
+   Create a base table in a given sheet with specified margins and table.
+
+   :param pl_table: The table to be used to create the base table.
+   :type pl_table: object
+   :param margins: The margins for the base table.
+   :type margins: object
+   :param sheet: The sheet where the base table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_standard_table(pl_table, margins, sheet, confidence)
+
+   Create a standard table in a given sheet with specified margins, table, and confidence.
+
+   :param pl_table: The table to be used to create the standard table.
+   :type pl_table: object
+   :param margins: The margins for the standard table.
+   :type margins: object
+   :param sheet: The sheet where the standard table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param confidence: The confidence level for the standard table.
+   :type confidence: pandas.DataFrame
+   :return: None
+
+
+.. py:function:: make_extended_table(pl_table, margins, sheet)
+
+   Create an extended table in a given sheet with specified margins and table.
+
+   :param pl_table: The table to be used to create the extended table.
+   :type pl_table: object
+   :param margins: The margins for the extended table.
+   :type margins: object
+   :param sheet: The sheet where the extended table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_match_table(pl_table, margins, sheet, table_index, match_results)
+
+   Create a match table in a given sheet with specified margins, table, table index, and match results.
+
+   :param pl_table: The table to be used to create the match table.
+   :type pl_table: object
+   :param margins: The margins for the match table.
+   :type margins: object
+   :param sheet: The sheet where the match table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param table_index: The index of the table.
+   :type table_index: int
+   :param match_results: The results of the match.
+   :type match_results: object
+   :return: None
+
+
+.. py:function:: make_is_copy_table(pl_table, margins, sheet, current_table_index, match_results)
+
+   Create a table in a given sheet that indicates whether each row in the table is a copy of another row.
+
+   :param pl_table: The table to be used to create the is copy table.
+   :type pl_table: object
+   :param margins: The margins for the is copy table.
+   :type margins: object
+   :param sheet: The sheet where the is copy table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param current_table_index: The index of the current table.
+   :type current_table_index: int
+   :param match_results: The results of the match.
+   :type match_results: object
+   :return: None
+
+
+.. py:function:: make_original_table(pl_table, margins, sheet)
+
+   Create an original table in a given sheet with specified margins and table.
+
+   :param pl_table: The table to be used to create the original table.
+   :type pl_table: object
+   :param margins: The margins for the original table.
+   :type margins: object
+   :param sheet: The sheet where the original table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_not_matched_tables(match_results, margins, sheet)
+
+   Create tables in a given sheet that show the entries that were not matched.
+
+   :param match_results: The results of the match.
+   :type match_results: object
+   :param margins: The margins for the not matched tables.
+   :type margins: object
+   :param sheet: The sheet where the not matched tables will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: write_missing(counter, len_diff, sheet)
+
+   Write the missing entries in a given sheet.
+
+   :param counter: The counter for the missing entries.
+   :type counter: int
+   :param len_diff: The difference in length between the predicted and true entries.
+   :type len_diff: int
+   :param sheet: The sheet where the missing entries will be written.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_standard_td_table(pl_table, margins, sheet)
+
+   Create a standard technical details table in a given sheet with specified margins and table.
+
+   :param pl_table: The table to be used to create the standard technical details table.
+   :type pl_table: object
+   :param margins: The margins for the standard technical details table.
+   :type margins: object
+   :param sheet: The sheet where the standard technical details table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_extended_td_table(pl_table, margins, sheet)
+
+   Create an extended technical details table in a given sheet with specified margins and table.
+
+   :param pl_table: The table to be used to create the extended technical details table.
+   :type pl_table: object
+   :param margins: The margins for the extended technical details table.
+   :type margins: object
+   :param sheet: The sheet where the extended technical details table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: write_eq_statistics(sheet, eq_results)
+
+   Write the equipment statistics in a given sheet.
+
+   :param sheet: The sheet where the equipment statistics will be written.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param eq_results: The results of the equipment.
+   :type eq_results: object
+   :return: None
+
+
+.. py:function:: make_serial_table(margins, sheet, version, block)
+
+   Create a serial table in a given sheet with specified margins, version, and block.
+
+   :param margins: The margins for the serial table.
+   :type margins: object
+   :param sheet: The sheet where the serial table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param version: The version of the serial table.
+   :type version: str
+   :param block: The block of the serial table.
+   :type block: object
+   :return: None
+
+
+.. py:function:: make_serial_table_wide(eq_results: EquipmentResults, sheet, fuzzy_match=True)
+
+   Create a wide serial table in a given sheet with specified equipment results and fuzzy match.
+
+   :param eq_results: The results of the equipment.
+   :type eq_results: EquipmentResults
+   :param sheet: The sheet where the wide serial table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param fuzzy_match: Whether to use fuzzy matching.
+   :type fuzzy_match: bool
+   :return: The wide serial table.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: make_legend_eq_diff(sheet)
+
+   Create a legend for equipment differences in a given sheet.
+
+   :param sheet: The sheet where the legend for equipment differences will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_generic_table(values, margins, sheet, title="", labels=None)
+
+   Create a generic table in a given sheet with specified values, margins, title, and labels.
+
+   :param values: The values to be included in the table.
+   :type values: pandas.DataFrame
+   :param margins: The margins for the table.
+   :type margins: object
+   :param sheet: The sheet where the table will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param title: The title of the table.
+   :type title: str
+   :param labels: The labels for the values in the table.
+   :type labels: pandas.DataFrame or None
+   :return: None
+
+
+.. py:function:: write_td_stats(td_table: TechnicalParser, sheet)
+
+   Write the technical details statistics in a given sheet.
+
+   :param td_table: The technical details table.
+   :type td_table: TechnicalParser
+   :param sheet: The sheet where the technical details statistics will be written.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :return: None
+
+
+.. py:function:: make_all_equipment_dataframe(negative_equipment, positive_equipment, sheet, positive_labels=None, negative_labels=None, packet_equipment=None, color_equipment=None, packet_labels=None, color_labels=None)
+
+   Create a dataframe for all equipment in a given sheet with specified negative and positive equipment, labels, packet equipment, and color equipment.
+
+   :param negative_equipment: The negative equipment.
+   :type negative_equipment: list[str]
+   :param positive_equipment: The positive equipment.
+   :type positive_equipment: list[str]
+   :param sheet: The sheet where the dataframe will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param positive_labels: The labels for the positive equipment.
+   :type positive_labels: list[str] or None
+   :param negative_labels: The labels for the negative equipment.
+   :type negative_labels: list[str] or None
+   :param packet_equipment: The packet equipment.
+   :type packet_equipment: list[str] or None
+   :param color_equipment: The color equipment.
+   :type color_equipment: list[str] or None
+   :param packet_labels: The labels for the packet equipment.
+   :type packet_labels: list[str] or None
+   :param color_labels: The labels for the color equipment.
+   :type color_labels: list[str] or None
+   :return: None
+
+
+.. py:function:: make_eq_legend(sheet, length)
+
+   Create a legend for equipment in a given sheet with specified length.
+
+   :param sheet: The sheet where the legend for equipment will be created.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param length: The length of the legend.
+   :type length: int
+   :return: None
+
+
+.. py:class:: __init__(self, row, column)
+
+   Initialize the class with specified row and column.
+
+   :param row: The row.
+   :type row: int
+   :param column: The column.
+   :type column: int
+   :return: None

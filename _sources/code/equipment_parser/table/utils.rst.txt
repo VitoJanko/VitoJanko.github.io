@@ -1,0 +1,112 @@
+=====
+utils
+=====
+
+.. py:function:: extract_price_simplified(x, default_return_value=None)
+
+   Extracts the price from a string. If the string does not contain a price, it returns the default return value.
+
+   :param x: The string to extract the price from.
+   :type x: str
+   :param default_return_value: The value to return if the price cannot be extracted.
+   :type default_return_value: Any
+   :return: The extracted price or the default return value.
+   :rtype: float or Any
+
+.. py:function:: find_price_column(values, category_to_col_indices_map, version_cols)
+
+   Finds the column in a DataFrame that contains the price information.
+
+   :param values: The DataFrame to search.
+   :type values: pd.DataFrame
+   :param category_to_col_indices_map: A map of categories to column indices.
+   :type category_to_col_indices_map: dict
+   :param version_cols: A list of version columns.
+   :type version_cols: list[int]
+   :return: The index of the price column.
+   :rtype: int
+
+.. py:function:: parse_prices(values: pd.DataFrame, version_cols: list[int])
+
+   Extracts price for each row in version columns.
+
+   :param values: The DataFrame to parse.
+   :type values: pd.DataFrame
+   :param version_cols: A list of version columns.
+   :type version_cols: list[int]
+   :return: The DataFrame with parsed prices.
+   :rtype: pd.DataFrame
+
+.. py:function:: is_main_pl(labels: pd.DataFrame, pg_num: int, pages: list[int])
+
+   Checks if a DataFrame represents a main price list.
+
+   :param labels: The DataFrame to check.
+   :type labels: pd.DataFrame
+   :param pg_num: The page number.
+   :type pg_num: int
+   :param pages: A list of page numbers.
+   :type pages: list[int]
+   :return: A tuple containing a boolean indicating if the DataFrame is a main price list and a map of categories to column indices.
+   :rtype: tuple[bool, dict]
+
+.. py:function:: is_tabular_equipment(values)
+
+   Determines if the equipment represented by the DataFrame is tabular by analyzing the mean number of words in each cell.
+
+   :param values: The DataFrame to check.
+   :type values: pd.DataFrame
+   :return: True if the equipment is tabular, False otherwise.
+   :rtype: bool
+
+.. py:function:: is_table_content_reasonable(table: pd.DataFrame, version_cols: list[int])
+
+   Checks if the content of a table is reasonable by calculating the ratio of unknown elements.
+
+   :param table: The DataFrame to check.
+   :type table: pd.DataFrame
+   :param version_cols: A list of version columns.
+   :type version_cols: list[int]
+   :return: True if the content is reasonable, False otherwise.
+   :rtype: bool
+
+.. py:function:: df_wide_to_long(values, title_row, eq_col, code_col, version_cols, matched_versions)
+
+   Transforms a wide DataFrame to a long DataFrame.
+
+   :param values: The DataFrame to transform.
+   :type values: pd.DataFrame
+   :param title_row: The index of the title row.
+   :type title_row: int
+   :param eq_col: The equipment column.
+   :type eq_col: int
+   :param code_col: The code column.
+   :type code_col: int
+   :param version_cols: A list of version columns.
+   :type version_cols: list[int]
+   :param matched_versions: A list of matched versions.
+   :type matched_versions: list
+   :return: A tuple containing the transformed DataFrame and the long DataFrame.
+   :rtype: tuple[pd.DataFrame, pd.DataFrame]
+
+.. py:function:: remove_empty_rows(df, df_blocks)
+
+   Remove rows containing only empty strings from the input DataFrames.
+
+   :param df: The main DataFrame.
+   :type df: pd.DataFrame
+   :param df_blocks: The DataFrame to update simultaneously with `df`.
+   :type df_blocks: pd.DataFrame
+   :return: A tuple of two DataFrames without empty rows.
+   :rtype: tuple[pd.DataFrame, pd.DataFrame]
+
+.. py:function:: merge_columns_with_empty_header(df, df_blocks)
+
+   Merges columns that have empty header to previous non empty column.
+
+   :param df: The DataFrame to merge columns in.
+   :type df: pd.DataFrame
+   :param df_blocks: The DataFrame to update simultaneously with `df`.
+   :type df_blocks: pd.DataFrame
+   :return: A tuple of two DataFrames with merged columns.
+   :rtype: tuple[pd.DataFrame, pd.DataFrame]

@@ -1,0 +1,52 @@
+=================
+technical_mappers
+=================
+
+.. py:function:: merge_header_mapper(values, labels)
+
+   Merge header mapper based on the labels and values provided.
+
+   :param values: The values to be mapped.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be mapped.
+   :type labels: pandas.DataFrame
+   :return: The cell mapper after merging.
+   :rtype: pandas.DataFrame
+
+.. py:function:: find_gears_mapper(values, labels)
+
+   Find gears mapper based on the labels and values provided.
+
+   :param values: The values to be mapped.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be mapped.
+   :type labels: pandas.DataFrame
+   :return: The cell mapper after finding gears.
+   :rtype: pandas.DataFrame
+
+.. py:function:: remove_superscript(x)
+
+   Remove superscript from the given string.
+
+   :param x: The string from which superscript is to be removed.
+   :type x: str
+   :return: The string after removing superscript.
+   :rtype: str
+
+.. py:function:: select_best_columns_mapper(labels)
+
+   Select the best columns mapper based on the labels provided.
+
+   :param labels: The labels based on which best columns are to be selected.
+   :type labels: pandas.DataFrame
+   :return: The cell mapper after selecting best columns.
+   :rtype: pandas.DataFrame
+
+.. py:function:: delete_no_engine_mapper(labels)
+
+   Delete no engine mapper based on the labels provided.
+
+   :param labels: The labels based on which no engine mapper is to be deleted.
+   :type labels: pandas.DataFrame
+   :return: The cell mapper after deleting no engine mapper.
+   :rtype: pandas.DataFrame

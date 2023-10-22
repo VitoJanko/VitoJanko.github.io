@@ -1,0 +1,67 @@
+=========================
+adobe_to_textract_utility
+=========================
+
+.. py:function:: get_mean_bboxes(df: pd.DataFrame, row: int, col: int) -> List[Dict[str, float]]
+
+   This function takes a pandas DataFrame, a row index, and a column index, and returns a list containing the mean values of the all bounding boxes located in the specified row and column.
+
+   :param df: The pandas DataFrame.
+   :type df: pd.DataFrame
+   :param row: The row index.
+   :type row: int
+   :param col: The column index.
+   :type col: int
+   :return: A dictionary with the mean values of the bounding boxes.
+   :rtype: List[Dict[str, float]]
+
+.. py:function:: fill_dummy_blocks(cells: pd.DataFrame)
+
+   This function takes a pandas DataFrame and replaces the dummy bounding boxes with the mean values of the bounding boxes in the same row and column.
+
+   :param cells: The pandas DataFrame.
+   :type cells: pd.DataFrame
+   :return: The DataFrame with replaced dummy bounding boxes.
+   :rtype: pd.DataFrame
+
+.. py:function:: max_bbox(bboxes: list[dict])
+
+   Takes a list of bounding boxes and returns a dictionary with the max width and height, and min left and top values.
+
+   :param bboxes: list of bounding boxes
+   :type bboxes: list[dict]
+   :return: dictionary with max width and height, and min left and top values.
+   :rtype: dict
+
+.. py:function:: get_bounding_box(elements, pdf_width, pdf_height, pdf_rotation)
+
+   This function takes a list of elements, the width and height of a PDF, and the rotation of the PDF, and returns the bounding box of the elements.
+
+   :param elements: The list of elements.
+   :type elements: list
+   :param pdf_width: The width of the PDF.
+   :type pdf_width: float
+   :param pdf_height: The height of the PDF.
+   :type pdf_height: float
+   :param pdf_rotation: The rotation of the PDF.
+   :type pdf_rotation: int
+   :return: The bounding box of the elements.
+   :rtype: tuple
+
+.. py:function:: mean_horizontal_bbox(col)
+
+   This function takes a column of a DataFrame and returns the mean left and width values of the bounding boxes in the column.
+
+   :param col: The column of the DataFrame.
+   :type col: pd.Series
+   :return: The mean left and width values of the bounding boxes.
+   :rtype: tuple
+
+.. py:function:: mean_vertical_bbox(row)
+
+   This function takes a row of a DataFrame and returns the mean top and height values of the bounding boxes in the row.
+
+   :param row: The row of the DataFrame.
+   :type row: pd.Series
+   :return: The mean top and height values of the bounding boxes.
+   :rtype: tuple

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>reduce_possible_ids &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="preprocess_pdf" href="../preprocess_pdf/index.html" />
+    <link rel="prev" title="parser_postprocessing" href="parser_postprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">parser_postprocessing</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="add_confidence.html">add_confidence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_VE_id.html">add_VE_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="duplicates.html">duplicates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_generation_matching.html">model_generation_matching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_generation_matching_v2.html">model_generation_matching_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser_postprocessing.html">parser_postprocessing</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">reduce_possible_ids</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">parser_postprocessing</a></li>
+      <li class="breadcrumb-item active">reduce_possible_ids</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/parser_postprocessing/reduce_possible_ids.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reduce-possible-ids">
+<h1>reduce_possible_ids<a class="headerlink" href="#reduce-possible-ids" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="get_data_from_table">
+<span class="sig-name descname"><span class="pre">get_data_from_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_cast</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_data_from_table" title="Link to this definition"></a></dt>
+<dd><p>Extracts data from a table using a regular expression and casts it to a specific type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>Table</em>) – The table from which to extract data.</p></li>
+<li><p><strong>regex_expression</strong> (<em>str</em>) – The regular expression used to find matches in the table.</p></li>
+<li><p><strong>type_cast</strong> (<em>function</em>) – The function used to cast the matched data to a specific type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of data extracted from the table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_tehnical_data">
+<span class="sig-name descname"><span class="pre">get_tehnical_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_tehnical_data" title="Link to this definition"></a></dt>
+<dd><p>Extracts technical data from a document using regular expressions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textract_results</strong> (<em>Document</em>) – The results of the textract operation on the document.</p></li>
+<li><p><strong>pages</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – The pages of the document to extract data from.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two lists of data, one for kilowatt data and one for cubic centimeter data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[int]], list[list[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tehnical_data_content_for_id_reduction">
+<span class="sig-name descname"><span class="pre">tehnical_data_content_for_id_reduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">td_pages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textract_results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tehnical_data_content_for_id_reduction" title="Link to this definition"></a></dt>
+<dd><p>Reduces the technical data content for identification purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>td_pages</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – The pages of the document containing technical data.</p></li>
+<li><p><strong>textract_results</strong> (<em>Document</em>) – The results of the textract operation on the document.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the reduced technical data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="parser_postprocessing.html" class="btn btn-neutral float-left" title="parser_postprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../preprocess_pdf/index.html" class="btn btn-neutral float-right" title="preprocess_pdf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

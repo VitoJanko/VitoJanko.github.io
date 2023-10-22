@@ -1,0 +1,47 @@
+==================
+textract_generator
+==================
+
+.. py:function:: __init__(self, pdf_parser: PdfParser)
+
+   Initializes the class with a PdfParser object and sets up the extractor.
+
+   :param pdf_parser: The PdfParser object to be used.
+   :type pdf_parser: PdfParser
+   :raises Exception: If the extractor cannot be set up.
+
+
+.. py:function:: textract_pl_pages(self)
+
+   Extracts text from the Polish pages of the PDF.
+   :return: The extracted text.
+   :rtype: str
+
+
+.. py:function:: textract_td_pages(self)
+
+   Extracts text from the TD pages of the PDF.
+   :return: The extracted text.
+   :rtype: str
+
+
+.. py:function:: textract_eq_pages(self)
+
+   Extracts text from the EQ pages of the PDF.
+   :return: The extracted text.
+   :rtype: str
+
+
+.. py:function:: textract_pages(self, pages)
+
+   Extracts text from the given pages of the PDF.
+
+   :param pages: The pages from which to extract text.
+   :type pages: list[int]
+   :raises NotImplementedError: This method should be overridden in a subclass.
+
+
+.. py:function:: set_up_extractor(self)
+
+   Sets up the extractor for the PDF.
+   :raises NotImplementedError: This method should be overridden in a subclass.

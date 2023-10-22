@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>post_labeling_transform &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="post_table_parser" href="post_table_parser.html" />
+    <link rel="prev" title="post_cell_split_transform" href="post_cell_split_transform.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">expert_rules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="after_matching.html">after_matching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="before_matching.html">before_matching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post_cell_split_transform.html">post_cell_split_transform</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">post_labeling_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post_table_parser.html">post_table_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pre_labeling_td_transform.html">pre_labeling_td_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pre_labeling_transform.html">pre_labeling_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="select_settings.html">select_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unite_combinations.html">unite_combinations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">expert_rules</a></li>
+      <li class="breadcrumb-item active">post_labeling_transform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/expert_rules/post_labeling_transform.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="post-labeling-transform">
+<h1>post_labeling_transform<a class="headerlink" href="#post-labeling-transform" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="transform_values_labels">
+<span class="sig-name descname"><span class="pre">transform_values_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_merged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CellLabeler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transform_values_labels" title="Link to this definition"></a></dt>
+<dd><p>Apply transformations to the values and labels based on the settings and summary. The transformations include label transformation, neo patentati exception, repair prices, versions to one cell, repair versions, join rows, fill dacia drivetrain, parse kw for electric cars, join rows on merged cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>values_merged</strong> (<em>pd.DataFrame</em>) – The dataframe of merged values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>status</strong> (<em>pd.DataFrame</em>) – The dataframe of status.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings for transformation.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+<li><p><strong>labeler</strong> (<em>CellLabeler</em>) – The labeler for cells.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="label_transformation">
+<span class="sig-name descname"><span class="pre">label_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Brand</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#label_transformation" title="Link to this definition"></a></dt>
+<dd><p>Apply label transformation to the values and labels based on the brand.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>brand</strong> (<em>Brand</em>) – The brand of the car.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parse_kw_for_electric_cars">
+<span class="sig-name descname"><span class="pre">parse_kw_for_electric_cars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parse_kw_for_electric_cars" title="Link to this definition"></a></dt>
+<dd><p>Parse the kw for electric cars from the values and labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_rows_on_merged_cells">
+<span class="sig-name descname"><span class="pre">join_rows_on_merged_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_merged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_rows_on_merged_cells" title="Link to this definition"></a></dt>
+<dd><p>Join rows on merged cells based on the values, merged values, labels and settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>values_merged</strong> (<em>pd.DataFrame</em>) – The dataframe of merged values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings for joining.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="versions_to_one_cell">
+<span class="sig-name descname"><span class="pre">versions_to_one_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#versions_to_one_cell" title="Link to this definition"></a></dt>
+<dd><p>Convert versions to one cell based on the values, labels and summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="repair_prices">
+<span class="sig-name descname"><span class="pre">repair_prices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_numbers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#repair_prices" title="Link to this definition"></a></dt>
+<dd><p>Repair the prices in the values and labels based on the raw numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>raw_numbers</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of raw numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="repair_price">
+<span class="sig-name descname"><span class="pre">repair_price</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_numbers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#repair_price" title="Link to this definition"></a></dt>
+<dd><p>Repair the price based on the value and raw numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – The value of the price.</p></li>
+<li><p><strong>raw_numbers</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of raw numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The tuple of found flag and new price.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_numeric">
+<span class="sig-name descname"><span class="pre">make_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_numeric" title="Link to this definition"></a></dt>
+<dd><p>Convert the value to numeric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The value to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The numeric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="repair_versions">
+<span class="sig-name descname"><span class="pre">repair_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#repair_versions" title="Link to this definition"></a></dt>
+<dd><p>Repair the versions in the values and labels based on the models and settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>models</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of models.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings for repairing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The keys of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract_versions">
+<span class="sig-name descname"><span class="pre">extract_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brand_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extract_versions" title="Link to this definition"></a></dt>
+<dd><p>Extract the versions based on the brand id and country id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>brand_id</strong> (<em>int</em>) – The id of the brand.</p></li>
+<li><p><strong>country_id</strong> (<em>int</em>) – The id of the country.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of possible models.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="neo_patentati_exception">
+<span class="sig-name descname"><span class="pre">neo_patentati_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_merged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#neo_patentati_exception" title="Link to this definition"></a></dt>
+<dd><p>Apply neo patentati exception to the values, merged values, labels and summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>values_merged</strong> (<em>pd.DataFrame</em>) – The dataframe of merged values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_rows">
+<span class="sig-name descname"><span class="pre">join_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CellLabeler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_rows" title="Link to this definition"></a></dt>
+<dd><p>Join rows based on the values, labels, summary, settings and labeler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings for joining.</p></li>
+<li><p><strong>labeler</strong> (<em>CellLabeler</em>) – The labeler for cells.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract_keyword_items">
+<span class="sig-name descname"><span class="pre">extract_keyword_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extract_keyword_items" title="Link to this definition"></a></dt>
+<dd><p>Extract the keyword items from the list based on the keywords.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of items.</p></li>
+<li><p><strong>keywords</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of keywords.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The tuple of filled list and items.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fill_dacia_drivetrain">
+<span class="sig-name descname"><span class="pre">fill_dacia_drivetrain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fill_dacia_drivetrain" title="Link to this definition"></a></dt>
+<dd><p>Fill the drivetrain for Dacia based on the values, labels and summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The dataframe of values.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The dataframe of labels.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of changes made.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="post_cell_split_transform.html" class="btn btn-neutral float-left" title="post_cell_split_transform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="post_table_parser.html" class="btn btn-neutral float-right" title="post_table_parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

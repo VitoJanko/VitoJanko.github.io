@@ -1,0 +1,60 @@
+===========
+table_split
+===========
+
+.. py:function:: detect_possible_splitted_table(values: pd.DataFrame, versions: list[str], versions_additional: list[str], settings: Settings)
+
+   Detects if a table is possibly split into multiple parts.
+
+   :param values: The DataFrame containing the table values.
+   :type values: pd.DataFrame
+   :param versions: List of versions.
+   :type versions: list[str]
+   :param versions_additional: Additional list of versions.
+   :type versions_additional: list[str]
+   :param settings: Settings for the detection.
+   :type settings: Settings
+   :return: A tuple containing a boolean indicating if the table is split, the split indices, and the DataFrame of versions.
+   :rtype: tuple
+
+
+.. py:function:: split_table(values, values_blocks, split_indices, df_versions)
+
+   Splits a table into multiple parts based on the split indices.
+
+   :param values: The DataFrame containing the table values.
+   :type values: pd.DataFrame
+   :param values_blocks: The DataFrame containing the table blocks.
+   :type values_blocks: pd.DataFrame
+   :param split_indices: Indices where the table should be split.
+   :type split_indices: list[tuple]
+   :param df_versions: DataFrame of versions.
+   :type df_versions: pd.DataFrame
+   :return: A tuple containing the new values and new values blocks.
+   :rtype: tuple
+
+
+.. py:function:: preprocess_splitted_tables(tables: list[TableData], versions: list[str], versions_additional: list[str], settings: Settings)
+
+   Preprocesses a list of tables that may be split into multiple parts.
+
+   :param tables: List of tables to preprocess.
+   :type tables: list[TableData]
+   :param versions: List of versions.
+   :type versions: list[str]
+   :param versions_additional: Additional list of versions.
+   :type versions_additional: list[str]
+   :param settings: Settings for the preprocessing.
+   :type settings: Settings
+   :return: The preprocessed tables.
+   :rtype: list[TableData]
+
+
+.. py:function:: extract_versions(token: str)
+
+   Extracts versions from a token.
+
+   :param token: The token to extract versions from.
+   :type token: str
+   :return: The extracted version or an empty string if no version is found.
+   :rtype: str

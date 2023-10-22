@@ -1,0 +1,65 @@
+===================
+cell_classification
+===================
+
+.. py:function:: get_cell_image(block, image)
+
+   Cuts out the part of image that represents the textract cell.
+
+   :param block: cell metadata returned by textract
+   :type block: dict
+   :param image: current page image
+   :type image: PIL.Image
+   :return: cell image
+   :rtype: PIL.Image
+
+.. py:function:: get_cell_as_image(page_image, row_idx: int, column_idx: int, df_cell: pd.DataFrame)
+
+   Returns the image of a specific cell in a dataframe.
+
+   :param page_image: The image of the page
+   :type page_image: PIL.Image
+   :param row_idx: The row index of the cell
+   :type row_idx: int
+   :param column_idx: The column index of the cell
+   :type column_idx: int
+   :param df_cell: The dataframe containing the cell
+   :type df_cell: pd.DataFrame
+   :return: The image of the cell
+   :rtype: PIL.Image
+
+.. py:function:: generate_cell_images(pdf_parser, original_page_idx, df_trp_cell, version_columns)
+
+   Generates images for each cell in a dataframe.
+
+   :param pdf_parser: The PDF parser
+   :param original_page_idx: The original page index
+   :param df_trp_cell: The dataframe containing the cells
+   :param version_columns: The version columns
+   :return: A tuple containing the cell images, cell indices, and faulty cell indices
+   :rtype: tuple[list[np.array], list[tuple[int, int]], list[tuple[int, int]]]
+
+.. py:function:: predict_batch(cell_images, classificator, feature_extractor)
+
+   Predicts the labels for a batch of cell images.
+
+   :param cell_images: The cell images
+   :type cell_images: list[np.array]
+   :param classificator: The classifier
+   :param feature_extractor: The feature extractor
+   :return: The predicted labels
+   :rtype: list[str]
+
+.. py:function:: label_cells(pdf_parser, pg_num, df_trp_cell, version_columns, classificator, feature_extractor, label_to_state_override)
+
+   Labels the cells in a dataframe.
+
+   :param pdf_parser: The PDF parser
+   :param pg_num: The page number
+   :param df_trp_cell: The dataframe containing the cells
+   :param version_columns: The version columns
+   :param classificator: The classifier
+   :param feature_extractor: The feature extractor
+   :param label_to_state_override: The label to state override
+   :return: The dataframe with labeled cells
+   :rtype: pd.DataFrame

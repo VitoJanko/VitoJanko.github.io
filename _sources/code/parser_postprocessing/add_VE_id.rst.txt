@@ -1,0 +1,276 @@
+=========
+add_VE_id
+=========
+
+.. py:function:: object_to_string(pl_object: dict, categories: list[str]) -> str
+
+   Converts the given object to a string by joining the values of the specified categories.
+
+   :param pl_object: The object to convert.
+   :type pl_object: dict
+   :param categories: The categories to include in the string.
+   :type categories: list[str]
+   :return: The object as a string.
+   :rtype: str
+
+.. py:function:: list_to_string(lst: list[str]) -> str
+
+   Converts the given list to a string by joining its elements.
+
+   :param lst: The list to convert.
+   :type lst: list[str]
+   :return: The list as a string.
+   :rtype: str
+
+.. py:function:: string_scorer(pred_obj: list, true_obj: list) -> float
+
+   Calculates a score based on the similarity between the predicted and true objects.
+
+   :param pred_obj: The predicted object.
+   :type pred_obj: list
+   :param true_obj: The true object.
+   :type true_obj: list
+   :return: The similarity score.
+   :rtype: float
+
+.. py:function:: numeric_scorer(prediction, truth) -> float
+
+   Calculates a score based on the difference between the predicted and true values.
+
+   :param prediction: The predicted value.
+   :type prediction: float
+   :param truth: The true value.
+   :type truth: float
+   :return: The difference score.
+   :rtype: float
+
+.. py:function:: scorer(comb, prefix: str, ve_objects: list[dict], string_categories: list[str], numeric_categories: list[str])
+
+   Calculates a score for each object in the given list based on the similarity between the object and the combination.
+
+   :param comb: The combination to compare with.
+   :type comb: dict
+   :param prefix: The prefix to use for the keys in the combination.
+   :type prefix: str
+   :param ve_objects: The list of objects to score.
+   :type ve_objects: list[dict]
+   :param string_categories: The string categories to consider in the scoring.
+   :type string_categories: list[str]
+   :param numeric_categories: The numeric categories to consider in the scoring.
+   :type numeric_categories: list[str]
+
+.. py:function:: log_matching(pl_string, string_categories, numeric_categories, ve_objects_sorted)
+
+   Logs the matching process.
+
+   :param pl_string: The string representation of the object.
+   :type pl_string: str
+   :param string_categories: The string categories to consider in the matching.
+   :type string_categories: list[str]
+   :param numeric_categories: The numeric categories to consider in the matching.
+   :type numeric_categories: list[str]
+   :param ve_objects_sorted: The sorted list of objects.
+   :type ve_objects_sorted: list[dict]
+
+.. py:function:: update_object_id(combination: dict, key: str, ve_objects: list[dict], string_categories: list[str] = None, numeric_categories: list[str] = None)
+
+   Updates the id of the object in the combination based on the best match from the given list of objects.
+
+   :param combination: The combination to update.
+   :type combination: dict
+   :param key: The key to update in the combination.
+   :type key: str
+   :param ve_objects: The list of objects to match with.
+   :type ve_objects: list[dict]
+   :param string_categories: The string categories to consider in the matching.
+   :type string_categories: list[str]
+   :param numeric_categories: The numeric categories to consider in the matching.
+   :type numeric_categories: list[str]
+
+.. py:function:: load_from_preskok(brand: Brand)
+
+   Loads data from Preskok for the given brand.
+
+   :param brand: The brand to load data for.
+   :type brand: Brand
+   :return: The loaded data.
+   :rtype: tuple
+
+.. py:function:: choose_categories(comb: dict)
+
+   Chooses the categories to consider based on the given combination.
+
+   :param comb: The combination to base the choice on.
+   :type comb: dict
+   :return: The chosen categories.
+   :rtype: tuple
+
+.. py:function:: find_drivetrain_id(comb, drivetrains, categories_drivetrain, drivetrain_to_count)
+
+   Finds the id of the drivetrain that best matches the given combination.
+
+   :param comb: The combination to match with.
+   :type comb: dict
+   :param drivetrains: The list of drivetrains to consider.
+   :type drivetrains: list[dict]
+   :param categories_drivetrain: The categories to consider in the matching.
+   :type categories_drivetrain: dict
+   :param drivetrain_to_count: The count of each drivetrain.
+   :type drivetrain_to_count: dict
+
+.. py:function:: find_transmission_id(comb, transmissions, categories_transmission, transmission_to_count)
+
+   Finds the id of the transmission that best matches the given combination.
+
+   :param comb: The combination to match with.
+   :type comb: dict
+   :param transmissions: The list of transmissions to consider.
+   :type transmissions: list[dict]
+   :param categories_transmission: The categories to consider in the matching.
+   :type categories_transmission: dict
+   :param transmission_to_count: The count of each transmission.
+   :type transmission_to_count: dict
+
+.. py:function:: limit_engines_by_battery(comb, engines, engines_ids, model_ids, battery_ids, batteries, pl_date)
+
+   Limits the list of engines based on the battery data in the given combination.
+
+   :param comb: The combination to base the limitation on.
+   :type comb: dict
+   :param engines: The list of engines to limit.
+   :type engines: list[dict]
+   :param engines_ids: The ids of the engines.
+   :type engines_ids: list[int]
+   :param model_ids: The ids of the models.
+   :type model_ids: list[int]
+   :param battery_ids: The ids of the batteries.
+   :type battery_ids: list[int]
+   :param batteries: The list of batteries.
+   :type batteries: list[dict]
+   :param pl_date: The date to consider.
+   :type pl_date: str
+   :return: The limited list of engines.
+   :rtype: list[dict]
+
+.. py:function:: add_ve_ids(combinations: list[dict], brand: Brand, model_ids=None, pl_date: str = None)
+
+   Adds VE ids to the given combinations based on the best match from the data loaded from Preskok.
+
+   :param combinations: The combinations to add VE ids to.
+   :type combinations: list[dict]
+   :param brand: The brand to load data for.
+   :type brand: Brand
+   :param model_ids: The ids of the models to consider.
+   :type model_ids: list[int]
+   :param pl_date: The date to consider.
+   :type pl_date: str
+
+.. py:function:: get_possible_engines(model_ids, pl_date, battery_id=None)
+
+   Gets the possible engines for the given model ids and date.
+
+   :param model_ids: The ids of the models to consider.
+   :type model_ids: list[int]
+   :param pl_date: The date to consider.
+   :type pl_date: str
+   :param battery_id: The id of the battery to consider.
+   :type battery_id: int
+   :return: The possible engines.
+   :rtype: tuple
+
+.. py:function:: get_id_to_count_map(key: str, engine_id, model_id_to_engine_ids_map, pl_date)
+
+   Gets a map of ids to counts for the given key and engine id.
+
+   :param key: The key to consider.
+   :type key: str
+   :param engine_id: The id of the engine to consider.
+   :type engine_id: int
+   :param model_id_to_engine_ids_map: The map of model ids to engine ids.
+   :type model_id_to_engine_ids_map: dict
+   :param pl_date: The date to consider.
+   :type pl_date: str
+   :return: The map of ids to counts.
+   :rtype: dict
+
+.. py:function:: generate_and_sort_possible_objects(all_objects, id_to_count_map, sorting_order, sorting_key)
+
+   Generates and sorts possible objects based on the given id to count map and sorting order.
+
+   :param all_objects: The list of all objects.
+   :type all_objects: list[dict]
+   :param id_to_count_map: The map of ids to counts.
+   :type id_to_count_map: dict
+   :param sorting_order: The order to sort the objects in.
+   :type sorting_order: dict
+   :param sorting_key: The key to sort the objects by.
+   :type sorting_key: str
+   :return: The sorted list of possible objects.
+   :rtype: list[dict]
+
+.. py:function:: get_possible_transmission_and_drivetrains(engine_id, model_id_to_engine_ids_map, pl_date)
+
+   Gets the possible transmissions and drivetrains for the given engine id.
+
+   :param engine_id: The id of the engine to consider.
+   :type engine_id: int
+   :param model_id_to_engine_ids_map: The map of model ids to engine ids.
+   :type model_id_to_engine_ids_map: dict
+   :param pl_date: The date to consider.
+   :type pl_date: str
+   :return: The possible transmissions and drivetrains.
+   :rtype: tuple
+
+.. py:function:: match_drivetrain(combination: dict, prefix: str, possible_objects_sorted: list, all_objects, match_categories)
+
+   Matches the drivetrain in the given combination with the best match from the given list of possible objects.
+
+   :param combination: The combination to match with.
+   :type combination: dict
+   :param prefix: The prefix to use for the keys in the combination.
+   :type prefix: str
+   :param possible_objects_sorted: The sorted list of possible objects.
+   :type possible_objects_sorted: list[dict]
+   :param all_objects: The list of all objects.
+   :type all_objects: list[dict]
+   :param match_categories: The categories to consider in the matching.
+   :type match_categories: dict
+
+.. py:function:: match_transmission(combination: dict, prefix: str, possible_objects_sorted: list, all_objects, match_categories)
+
+   Matches the transmission in the given combination with the best match from the given list of possible objects.
+
+   :param combination: The combination to match with.
+   :type combination: dict
+   :param prefix: The prefix to use for the keys in the combination.
+   :type prefix: str
+   :param possible_objects_sorted: The sorted list of possible objects.
+   :type possible_objects_sorted: list[dict]
+   :param all_objects: The list of all objects.
+   :type all_objects: list[dict]
+   :param match_categories: The categories to consider in the matching.
+   :type match_categories: dict
+
+.. py:function:: get_matching_battery_id(combination, battery_ids, batteries)
+
+   Gets the id of the battery that best matches the given combination.
+
+   :param combination: The combination to match with.
+   :type combination: dict
+   :param battery_ids: The ids of the batteries to consider.
+   :type battery_ids: list[int]
+   :param batteries: The list of batteries.
+   :type batteries: list[dict]
+   :return: The id of the matching battery.
+   :rtype: int
+
+.. py:function:: _assemble_string(pl_object, obj_id=True)
+
+   Assembles a string representation of the given object.
+
+   :param pl_object: The object to represent.
+   :type pl_object: dict
+   :param obj_id: Whether to include the id of the object in the string.
+   :type obj_id: bool
+   :return: The string representation of the object.
+   :rtype: str

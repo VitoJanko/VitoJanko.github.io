@@ -1,0 +1,152 @@
+===========
+preskok_api
+===========
+
+.. py:function:: get_preskok_auth_token(url)
+
+   Get the authentication token from the Preskok API and store it in the environment variable.
+
+   :param url: The URL of the Preskok API.
+   :type url: str
+   :return: None
+
+
+.. py:function:: get_preskok(path, json_body={}, stage=False)
+
+   Send a GET request to the Preskok API and return the response.
+
+   :param path: The path of the API endpoint.
+   :type path: str
+   :param json_body: The JSON body of the request.
+   :type json_body: dict
+   :param stage: Whether to use the stage URL or the base URL.
+   :type stage: bool
+   :return: The response from the API.
+   :rtype: dict
+
+
+.. py:function:: get_engines(brand_id=None)
+
+   Get the engines from the Preskok API.
+
+   :param brand_id: The ID of the brand.
+   :type brand_id: int or None
+   :return: The engines.
+   :rtype: dict
+
+
+.. py:function:: get_transmissions()
+
+   Get the transmissions from the Preskok API.
+   :return: The transmissions.
+   :rtype: dict
+
+
+.. py:function:: get_drivetrains()
+
+   Get the drivetrains from the Preskok API.
+   :return: The drivetrains.
+   :rtype: dict
+
+
+.. py:function:: get_batteries()
+
+   Get the batteries from the Preskok API.
+   :return: The batteries.
+   :rtype: dict
+
+
+.. py:function:: get_versions(brand_id, country_id)
+
+   Get the versions from the Preskok API.
+
+   :param brand_id: The ID of the brand.
+   :type brand_id: int
+   :param country_id: The ID of the country.
+   :type country_id: int
+   :return: The versions.
+   :rtype: dict
+
+
+.. py:function:: get_engine_combinations(engine_id=None, brand_id=None, country_id=None, model_id=None, battery_id=None, date_to: str = None, years_back: int = 2)
+
+   Get the engine combinations from the Preskok API.
+
+   :param engine_id: The ID of the engine.
+   :type engine_id: int or None
+   :param brand_id: The ID of the brand.
+   :type brand_id: int or None
+   :param country_id: The ID of the country.
+   :type country_id: int or None
+   :param model_id: The ID of the model.
+   :type model_id: int or None
+   :param battery_id: The ID of the battery.
+   :type battery_id: int or None
+   :param date_to: The end date.
+   :type date_to: str or None
+   :param years_back: The number of years back.
+   :type years_back: int
+   :return: The engine combinations.
+   :rtype: dict
+
+
+.. py:function:: get_price_lists(query: str, query_columns: list, max_created_at: datetime.date, return_data: bool = False) -> List[int]
+
+   Get the price lists from the Preskok API.
+
+   :param query: The query string.
+   :type query: str
+   :param query_columns: The columns to query.
+   :type query_columns: list
+   :param max_created_at: The maximum creation date.
+   :type max_created_at: datetime.date
+   :param return_data: Whether to return the data or the IDs.
+   :type return_data: bool
+   :return: The price lists or their IDs.
+   :rtype: list[int]
+
+
+.. py:function:: get_price_list_details(idx)
+
+   Get the details of a price list from the Preskok API.
+
+   :param idx: The ID of the price list.
+   :type idx: int
+   :return: The details of the price list.
+   :rtype: dict
+
+
+.. py:function:: get_colors(brand_id=None)
+
+   Get the colors from the Preskok API.
+
+   :param brand_id: The ID of the brand.
+   :type brand_id: int or None
+   :return: The colors.
+   :rtype: dict
+
+
+.. py:function:: get_model_generations(brand_id=None, super_model_name=None, generation=None)
+
+   Get the model generations from the Preskok API.
+
+   :param brand_id: The ID of the brand.
+   :type brand_id: int or None
+   :param super_model_name: The name of the super model.
+   :type super_model_name: str or None
+   :param generation: The generation.
+   :type generation: int or None
+   :return: The model generations.
+   :rtype: list[dict]
+
+
+.. py:function:: transform_generations(x, super_model_name)
+
+   Transform the generations data.
+
+   :param x: The data to transform.
+   :type x: dict
+   :param super_model_name: The name of the super model.
+   :type super_model_name: str
+   :return: The transformed data.
+   :rtype: dict

@@ -1,0 +1,54 @@
+=====
+utils
+=====
+
+.. py:function:: predict_categories_dl(word_group, labeler_base, word_combinations, dl_label_to_VE_label_map)
+
+   Predicts categories for a group of words using a deep learning model.
+
+   :param word_group: The group of words to be classified.
+   :type word_group: str
+   :param labeler_base: The base labeler used for prediction.
+   :type labeler_base: object
+   :param word_combinations: Combinations of words to be classified.
+   :type word_combinations: list[str]
+   :param dl_label_to_VE_label_map: Mapping from deep learning labels to VE labels.
+   :type dl_label_to_VE_label_map: dict
+   :return: The predicted categories for each word combination.
+   :rtype: dict
+
+
+.. py:function:: get_brand_from_file(filepath)
+
+   Extracts the brand name from a file.
+
+   :param filepath: The path to the file.
+   :type filepath: str
+   :return: The brand name.
+   :rtype: str
+
+
+.. py:function:: get_brand_from_json(model_generations)
+
+   Extracts the brand name from a JSON object.
+
+   :param model_generations: The JSON object containing model generations.
+   :type model_generations: dict
+   :return: The brand name.
+   :rtype: str
+
+
+.. py:function:: get_predictor_necessities(storage, brand, prob=0.3, labeler_base=None)
+
+   Prepares the necessities for the predictor.
+
+   :param storage: The storage object containing old classifier mappings.
+   :type storage: object
+   :param brand: The brand for which the prediction is made.
+   :type brand: Brand
+   :param prob: The minimum probability for a prediction to be considered valid, defaults to 0.3.
+   :type prob: float, optional
+   :param labeler_base: The base labeler used for prediction, defaults to None.
+   :type labeler_base: object, optional
+   :return: The predictor necessities.
+   :rtype: PredictorNecessities

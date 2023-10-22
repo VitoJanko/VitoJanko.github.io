@@ -1,0 +1,59 @@
+============
+transmission
+============
+
+.. py:function:: get_transmission_type(text: str, manual_transmission_keywords: list[str], settings)
+
+   Determine the type of transmission based on the provided text and keywords.
+
+   :param text: The text to analyze.
+   :type text: str
+   :param manual_transmission_keywords: List of keywords that indicate manual transmission.
+   :type manual_transmission_keywords: list[str]
+   :param settings: Additional settings for the function.
+   :return: The type of transmission ("manual" or "automatic").
+   :rtype: str or None
+
+
+.. py:function:: get_gears(text: str)
+
+   Extract the number of gears from the provided text.
+
+   :param text: The text to analyze.
+   :type text: str
+   :return: The number of gears.
+   :rtype: str or None
+
+
+.. py:function:: apply_transmission_processing(data, settings)
+
+   Apply transmission processing to the provided data.
+
+   :param data: The data to process.
+   :param settings: Additional settings for the function.
+   :return: A map of categories to values.
+   :rtype: dict
+
+
+.. py:function:: merge_transmission_columns(values, labels, category_to_col_indices_map, predictor_necessities)
+
+   Merge transmission columns into one.
+
+   :param values: The values to merge.
+   :param labels: The labels for the values.
+   :param category_to_col_indices_map: A map of categories to column indices.
+   :param predictor_necessities: The necessities for the predictor.
+   :return: None
+
+
+.. py:function:: extend_transmissions_data(category_to_col_indices_map, values, labels, mapper, predictor_necessities, settings)
+
+   Extend transmission data by merging all transmission columns into one and extracting gears and type from full transmissions data.
+
+   :param category_to_col_indices_map: A map of categories to column indices.
+   :param values: The values to extend.
+   :param labels: The labels for the values.
+   :param mapper: The mapper for the values.
+   :param predictor_necessities: The necessities for the predictor.
+   :param settings: Additional settings for the function.
+   :return: None

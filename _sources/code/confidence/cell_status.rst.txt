@@ -1,0 +1,105 @@
+===========
+cell_status
+===========
+
+.. py:function:: average_transformation_confidence(lst)
+
+   Calculate the average transformation confidence for a list of cells.
+
+   :param lst: List of cells.
+   :type lst: list
+   :return: The average transformation confidence.
+   :rtype: float
+
+
+.. py:function:: confidence_table(table)
+
+   Generate a confidence table for a given table.
+
+   :param table: Input table.
+   :type table: DataFrame
+   :return: Confidence table.
+   :rtype: DataFrame
+
+
+.. py:function:: remap_status(table, mapper)
+
+   Remap the status of a table using a mapper.
+
+   :param table: Input table.
+   :type table: DataFrame
+   :param mapper: Mapper used for remapping.
+   :type mapper: Mapper
+   :return: Remapped table.
+   :rtype: DataFrame
+
+
+.. py:function:: make_status(shape)
+
+   Create a status table with a given shape.
+
+   :param shape: Shape of the status table.
+   :type shape: tuple
+   :return: Status table.
+   :rtype: DataFrame
+
+
+.. py:function:: set_in_row(table, row_index, variable, value)
+
+   Set a variable to a value in a specific row of a table.
+
+   :param table: Input table.
+   :type table: DataFrame
+   :param row_index: Index of the row.
+   :type row_index: int
+   :param variable: Variable to be set.
+   :type variable: str
+   :param value: Value to be set.
+   :type value: any
+
+
+.. py:function:: set_in_column(table, column_index, variable, value)
+
+   Set a variable to a value in a specific column of a table.
+
+   :param table: Input table.
+   :type table: DataFrame
+   :param column_index: Index of the column.
+   :type column_index: int
+   :param variable: Variable to be set.
+   :type variable: str
+   :param value: Value to be set.
+   :type value: any
+
+
+.. py:function:: set_in_table(table, variable, value)
+
+   Set a variable to a value in a table.
+
+   :param table: Input table.
+   :type table: DataFrame
+   :param variable: Variable to be set.
+   :type variable: str
+   :param value: Value to be set.
+   :type value: any
+
+
+.. py:function:: any_in_row(table, row_index, variable)
+
+   Check if any cell in a specific row of a table has a certain variable set.
+
+   :param table: Input table.
+   :type table: DataFrame
+   :param row_index: Index of the row.
+   :type row_index: int
+   :param variable: Variable to be checked.
+   :type variable: str
+   :return: Whether any cell in the row has the variable set.
+   :rtype: bool
+
+
+.. py:function:: transformation_confidence(self)
+
+   Calculate the transformation confidence score for a cell.
+   :return: Transformation confidence score.
+   :rtype: int

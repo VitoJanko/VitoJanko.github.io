@@ -1,0 +1,16 @@
+=================
+assemble_extracts
+=================
+
+.. py:function:: create_extracts(pdf_parser, settings, summary: Summary) -> Tuple[Optional[PDFExtracts], Tables]
+
+       This function creates extracts from a PDF using different parsers and settings. It also merges tables and finds tables in the PDF.
+
+       :param pdf_parser: The parser used to parse the PDF.
+       :type pdf_parser: object
+       :param settings: The settings used for parsing and extracting data.
+       :type settings: object
+       :param summary: The summary of the PDF.
+       :type summary: Summary
+       :return: The extracts from the PDF and the tables found in the PDF.
+       :rtype: Tuple[Optional[PDFExtracts], Tables]

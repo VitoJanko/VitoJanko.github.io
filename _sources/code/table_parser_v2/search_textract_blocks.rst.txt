@@ -1,0 +1,138 @@
+======================
+search_textract_blocks
+======================
+
+.. py:function:: count_nans(row: pd.Series)
+
+   Count the number of NaN values in a pandas Series.
+
+   :param row: A pandas Series.
+   :type row: pd.Series
+   :return: The count of NaN values.
+   :rtype: int
+
+
+.. py:function:: get_bbox_center_point(points)
+
+   Calculate the center point of a bounding box.
+
+   :param points: A dictionary containing the coordinates of the bounding box.
+   :type points: dict
+   :return: The coordinates of the center point.
+   :rtype: tuple
+
+
+.. py:function:: euclidean_distance(x1, y1, x2, y2)
+
+   Calculate the Euclidean distance between two points.
+
+   :param x1: The x-coordinate of the first point.
+   :type x1: float
+   :param y1: The y-coordinate of the first point.
+   :type y1: float
+   :param x2: The x-coordinate of the second point.
+   :type x2: float
+   :param y2: The y-coordinate of the second point.
+   :type y2: float
+   :return: The Euclidean distance.
+   :rtype: float
+
+
+.. py:function:: vertical_distance(y1, y2)
+
+   Calculate the vertical distance between two points.
+
+   :param y1: The y-coordinate of the first point.
+   :type y1: float
+   :param y2: The y-coordinate of the second point.
+   :type y2: float
+   :return: The vertical distance.
+   :rtype: float
+
+
+.. py:function:: is_bbox_within_range(bbox, x_range, y_range, tolerance)
+
+   Check if a bounding box is within a given range.
+
+   :param bbox: The bounding box to check.
+   :type bbox: dict
+   :param x_range: The x-coordinate range.
+   :type x_range: tuple
+   :param y_range: The y-coordinate range.
+   :type y_range: tuple
+   :param tolerance: The tolerance for the range check.
+   :type tolerance: float
+   :return: True if the bounding box is within the range, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: find_block_by_range(category_blocks, x_range, y_range, page, tolerance)
+
+   Find a block within a given range.
+
+   :param category_blocks: The blocks to search in.
+   :type category_blocks: list
+   :param x_range: The x-coordinate range.
+   :type x_range: tuple
+   :param y_range: The y-coordinate range.
+   :type y_range: tuple
+   :param page: The page number.
+   :type page: int
+   :param tolerance: The tolerance for the range check.
+   :type tolerance: float
+   :return: The found block or None if no block was found.
+   :rtype: dict or None
+
+
+.. py:function:: find_closest_block_by_euclid(bbox, category_blocks, page, tolerance, top_limit=0)
+
+   Find the closest block to a given bounding box using Euclidean distance.
+
+   :param bbox: The bounding box to find the closest block to.
+   :type bbox: dict
+   :param category_blocks: The blocks to search in.
+   :type category_blocks: list
+   :param page: The page number.
+   :type page: int
+   :param tolerance: The tolerance for the distance check.
+   :type tolerance: float
+   :param top_limit: The top limit for the search.
+   :type top_limit: float
+   :return: The closest block or None if no block was found.
+   :rtype: dict or None
+
+
+.. py:function:: get_closest_textract_block(category, category_to_textract_block, bbox: dict = None, page=1, x_range=(0, 1), y_range=(0, 1), search_type="", tolerance=0.02)
+
+   Get the closest block from Textract data based on a given category and search type.
+
+   :param category: The category to search in.
+   :type category: str
+   :param category_to_textract_block: The Textract data to search in.
+   :type category_to_textract_block: dict
+   :param bbox: The bounding box to find the closest block to.
+   :type bbox: dict
+   :param page: The page number.
+   :type page: int
+   :param x_range: The x-coordinate range.
+   :type x_range: tuple
+   :param y_range: The y-coordinate range.
+   :type y_range: tuple
+   :param search_type: The type of search to perform.
+   :type search_type: str
+   :param tolerance: The tolerance for the search.
+   :type tolerance: float
+   :return: The closest block or None if no block was found.
+   :rtype: dict or None
+
+
+.. py:function:: find_block_by_text(value: str, blocks: dict)
+
+   Find all blocks with a given text value.
+
+   :param value: The text value to search for.
+   :type value: str
+   :param blocks: The blocks to search in.
+   :type blocks: dict
+   :return: The blocks with the given text value.
+   :rtype: list

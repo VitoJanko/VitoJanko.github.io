@@ -1,0 +1,31 @@
+=========================
+pre_labeling_td_transform
+=========================
+
+.. py:function:: transform_values(values: pd.DataFrame, status: pd.DataFrame, settings: Settings, summary: Summary)
+
+   Apply transformation rules to the values in a DataFrame based on the provided settings and summary.
+
+   :param values: DataFrame containing the values to be transformed.
+   :type values: pd.DataFrame
+   :param status: DataFrame containing the status of each value in the values DataFrame.
+   :type status: pd.DataFrame
+   :param settings: Settings object containing transformation rules.
+   :type settings: Settings
+   :param summary: Summary object used in the transformation process.
+   :type summary: Summary
+   :return: None
+
+
+.. py:function:: value_transformation(value: str, summary: Summary, settings: Settings) -> (str, bool)
+
+   Apply transformation rules to a single value based on the provided settings and summary.
+
+   :param value: The value to be transformed.
+   :type value: str
+   :param summary: Summary object used in the transformation process.
+   :type summary: Summary
+   :param settings: Settings object containing transformation rules.
+   :type settings: Settings
+   :return: The transformed value and a boolean indicating whether the value was changed.
+   :rtype: (str, bool)

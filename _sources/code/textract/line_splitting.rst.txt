@@ -1,0 +1,54 @@
+==============
+line_splitting
+==============
+
+.. py:function:: get_textract_blocks_map(blocks)
+
+   Create a map of blocks and a list of table blocks from the input blocks.
+
+   :param blocks: The input blocks.
+   :type blocks: list[dict]
+   :return: A tuple containing the blocks map and the table blocks list.
+   :rtype: tuple[dict, list[dict]]
+
+.. py:function:: get_rows_to_blocks_map(table_block, blocks_map)
+
+   Create a map of row indices to blocks from the input table block and blocks map.
+
+   :param table_block: The input table block.
+   :type table_block: dict
+   :param blocks_map: The input blocks map.
+   :type blocks_map: dict
+   :return: The map of row indices to blocks.
+   :rtype: defaultdict[dict]
+
+.. py:function:: all_lines(cell, blocks)
+
+   Get all lines in a cell from the input cell and blocks.
+
+   :param cell: The input cell.
+   :type cell: dict
+   :param blocks: The input blocks.
+   :type blocks: list[dict]
+   :return: The lines in the cell.
+   :rtype: list[dict]
+
+.. py:function:: match_words_to_lines(word_ids, blocks)
+
+   Match words to lines from the input word IDs and blocks.
+
+   :param word_ids: The input word IDs.
+   :type word_ids: list[str]
+   :param blocks: The input blocks.
+   :type blocks: list[dict]
+   :return: The lines that match the words.
+   :rtype: list[dict]
+
+.. py:function:: get_child_ids(block)
+
+   Get child IDs from the input block.
+
+   :param block: The input block.
+   :type block: dict
+   :return: The child IDs.
+   :rtype: list[str]

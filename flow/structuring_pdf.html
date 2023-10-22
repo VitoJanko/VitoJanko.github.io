@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structuring the PDF &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating Pandas Dataframes" href="pandas_dataframes.html" />
+    <link rel="prev" title="Classifying pages" href="classifying_pages.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setting_up.html">Setting up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classifying_pages.html">Classifying pages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Structuring the PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_dataframes.html">Creating Pandas Dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labeling.html">Labeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_form.html">Transforming to the standard table form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expert_rules1.html">Applying expert rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collect_combinations.html">Collect combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vehicle_editor.html">Add Vehicle Editor IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expert_rules2.html">Applying expert rules, round #2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json_format.html">Transforming to the correct format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validating.html">Validating the results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cleanup.html">Clean-up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Function documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
+      <li class="breadcrumb-item active">Structuring the PDF</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/flow/structuring_pdf.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="structuring-the-pdf">
+<h1>Structuring the PDF<a class="headerlink" href="#structuring-the-pdf" title="Link to this heading"></a></h1>
+<p>While we could open the PDF and extract all its text, parsing complex tabular data from from text can be challenging.
+A better approach is to use a library that directly extracts tables from the PDF.
+We experimented with open-source options but ultimately opted for Amazon Textract in conjunction with Adobe Extract.</p>
+<p>To continue the example: in the previous step we found a page classified as “price-list” containing only one table.</p>
+<a class="reference internal image-reference" href="../_images/sample_pricelist.png"><img alt="../_images/sample_pricelist.png" src="../_images/sample_pricelist.png" style="width: 800px;" /></a>
+<section id="textract">
+<h2>Textract<a class="headerlink" href="#textract" title="Link to this heading"></a></h2>
+<p>Textract is using OCR to read the page and then has some internal logic to group words into lines, cells into rows
+and rows into tables. Its output is relatively complex and might look something like:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">    ...</span>
+<span class="go">    {</span>
+<span class="go">  &#39;BlockType&#39;: &#39;LINE&#39;,</span>
+<span class="go">  &#39;Confidence&#39;: 98.21517944335938,</span>
+<span class="go">  &#39;Text&#39;: &#39;PDEB5D21M67BZ1&#39;,</span>
+<span class="go">  &#39;Geometry&#39;: {</span>
+<span class="go">    &#39;BoundingBox&#39;: {</span>
+<span class="go">      &#39;Width&#39;: 0.05293244868516922,</span>
+<span class="go">      &#39;Height&#39;: 0.007043752353638411,</span>
+<span class="go">      &#39;Left&#39;: 0.3939276337623596,</span>
+<span class="go">      &#39;Top&#39;: 0.30503466725349426</span>
+<span class="go">    },</span>
+<span class="go">    &#39;Polygon&#39;: [</span>
+<span class="go">      {</span>
+<span class="go">        &#39;X&#39;: 0.3939276337623596,</span>
+<span class="go">        &#39;Y&#39;: 0.30503466725349426</span>
+<span class="go">      },</span>
+<span class="go">      {</span>
+<span class="go">        &#39;X&#39;: 0.44686007499694824,</span>
+<span class="go">        &#39;Y&#39;: 0.30503466725349426</span>
+<span class="go">      },</span>
+<span class="go">      {</span>
+<span class="go">        &#39;X&#39;: 0.44686007499694824,</span>
+<span class="go">        &#39;Y&#39;: 0.31207841634750366</span>
+<span class="go">      },</span>
+<span class="go">      {</span>
+<span class="go">        &#39;X&#39;: 0.3939276337623596,</span>
+<span class="go">        &#39;Y&#39;: 0.31207841634750366</span>
+<span class="go">      }</span>
+<span class="go">    ]</span>
+<span class="go">  },</span>
+<span class="go">  &#39;Id&#39;: &#39;434b6051-ed59-46a5-b69f-a28e6d6d860a&#39;,</span>
+<span class="go">  &#39;Relationships&#39;: [</span>
+<span class="go">    {</span>
+<span class="go">      &#39;Type&#39;: &#39;CHILD&#39;,</span>
+<span class="go">      &#39;Ids&#39;: [</span>
+<span class="go">        &#39;af1d52fd-0893-48e8-85a0-064eb1317e68&#39;</span>
+<span class="go">      ]</span>
+<span class="go">    }</span>
+<span class="go">  ],</span>
+<span class="go">  &#39;Page&#39;: 26</span>
+<span class="go">},</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+<p>To better visualize what is going on, we have drawn the table in excel.</p>
+<a class="reference internal image-reference" href="../_images/textract_output.png"><img alt="../_images/textract_output.png" src="../_images/textract_output.png" style="width: 800px;" /></a>
+<section id="hashing-results">
+<h3>Hashing results<a class="headerlink" href="#hashing-results" title="Link to this heading"></a></h3>
+</section>
+<section id="code-flow">
+<h3>Code flow<a class="headerlink" href="#code-flow" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/get_textract.png"><img alt="../_images/get_textract.png" src="../_images/get_textract.png" style="width: 800px;" /></a>
+</section>
+</section>
+<section id="adobe">
+<h2>Adobe<a class="headerlink" href="#adobe" title="Link to this heading"></a></h2>
+<p>But hey! The Textract image is wrong!? Where are model names? Where is fuel?</p>
+<p>It turns out, that Textract comes with a few limitations. One of them is its inability to parse
+upside-down text. In such cases we can activate Adobe Extract and then combine the results.</p>
+<p>Adobe Extract works in a foundamentally different way. It does not have an OCR, but reads the PDF
+structure directly from the PDF file. This comes with its own set of strengths and weaknesses –
+hence why we combine the results!</p>
+<p>In our example, the combined results would look like the table below. You might note that cells are still
+not correctly merged, and some entries duplicate. But all the information is there and there will be ample
+opportunity for error corrections before the pipeline is over.</p>
+<a class="reference internal image-reference" href="../_images/adobe_output.png"><img alt="../_images/adobe_output.png" src="../_images/adobe_output.png" style="width: 800px;" /></a>
+<section id="id1">
+<h3>Code flow<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/get_adobe.png"><img alt="../_images/get_adobe.png" src="../_images/get_adobe.png" style="width: 800px;" /></a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classifying_pages.html" class="btn btn-neutral float-left" title="Classifying pages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pandas_dataframes.html" class="btn btn-neutral float-right" title="Creating Pandas Dataframes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

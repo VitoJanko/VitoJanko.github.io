@@ -1,0 +1,71 @@
+===============
+table_semantics
+===============
+
+.. py:function:: get_eq_col(values: pd.DataFrame, settings: Settings) -> str
+
+   Find the column in the input DataFrame with the longest strings.
+
+   :param values: The input DataFrame.
+   :type values: pd.DataFrame
+   :param settings: The settings for the function.
+   :type settings: Settings
+   :return: The name of the column with the longest strings.
+   :rtype: str
+
+.. py:function:: get_title_row(labels: pd.DataFrame) -> int
+
+   Find the row in the DataFrame that contains the title.
+
+   :param labels: The input DataFrame.
+   :type labels: pd.DataFrame
+   :return: The index of the row that contains the title.
+   :rtype: int
+
+.. py:function:: get_code_col(values: pd.DataFrame, eq_col: int) -> int
+
+   Finds the column with equipment codes in the given DataFrame based on two conditions.
+
+   :param values: A pandas DataFrame that may contain one or more columns with equipment codes.
+   :type values: pd.DataFrame
+   :param eq_col: The index of the equipment column.
+   :type eq_col: int
+   :return: The index of the column containing equipment codes, or None if no such column is found.
+   :rtype: int
+
+.. py:function:: table_semantics(values: pd.DataFrame, labels: pd.DataFrame, versions_to_id_map: dict, additional_versions_to_id_map: dict, settings: Settings, pl_summary)
+
+   Analyze the table semantics based on the given parameters.
+
+   :param values: The input DataFrame.
+   :type values: pd.DataFrame
+   :param labels: The labels for the DataFrame.
+   :type labels: pd.DataFrame
+   :param versions_to_id_map: A map from versions to IDs.
+   :type versions_to_id_map: dict
+   :param additional_versions_to_id_map: An additional map from versions to IDs.
+   :type additional_versions_to_id_map: dict
+   :param settings: The settings for the function.
+   :type settings: Settings
+   :param pl_summary: The summary of the product line.
+   :type pl_summary: unknown
+   :return: A tuple containing a boolean indicating the success of the operation, a boolean indicating whether to use textract, and the table semantics.
+   :rtype: tuple
+
+.. py:function:: search_for_code_header(df: pd.DataFrame) -> int
+
+   Search for the header of the column that contains the code.
+
+   :param df: The input DataFrame.
+   :type df: pd.DataFrame
+   :return: The index of the column that contains the code, or None if no such column is found.
+   :rtype: int
+
+.. py:function:: detect_code(token: str) -> bool
+
+   Detect whether the given token is a code.
+
+   :param token: The token to check.
+   :type token: str
+   :return: True if the token is a code, False otherwise.
+   :rtype: bool

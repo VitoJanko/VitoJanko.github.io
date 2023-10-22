@@ -1,0 +1,27 @@
+========
+Labeling
+========
+
+The first step to understanding table contents is to analyze what data is contained in each cell. Is it fuel type? Horse-power, price? 
+We use a Deep-learning approach here, taking the string in the cell -- as well as the strings in the surrounding cells -- as input
+and spitting up the cell-type as the output. 
+
+In the ongoing example, the labeled table would look like this: 
+
+.. image:: ../images/labels.png
+  :width: 800
+
+The deep-learning model
+=======================
+
+Dataset
+=======
+
+Training example representation
+================================
+
+Code Flow
+==========
+
+.. image:: ../images/get_labels.png
+  :width: 800

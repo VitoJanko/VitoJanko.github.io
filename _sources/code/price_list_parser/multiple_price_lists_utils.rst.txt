@@ -1,0 +1,67 @@
+==========================
+multiple_price_lists_utils
+==========================
+
+.. py:function:: check_for_two_price_lists(pl_pages, eq_pages)
+
+   Check if there are two price lists in the pages.
+
+   :param pl_pages: List of page numbers where price list is found.
+   :type pl_pages: list[int]
+   :param eq_pages: List of page numbers where equipment list is found.
+   :type eq_pages: list[int]
+   :return: True if there are two price lists, False otherwise.
+   :rtype: bool
+
+.. py:function:: sort_pages(pl_pages, td_pages, eq_pages)
+
+   Sort and combine the pages, giving priority to pl and eq over td. Avoids duplicate pages.
+
+   :param pl_pages: List of page numbers where price list is found.
+   :type pl_pages: list[int]
+   :param td_pages: List of page numbers where table of contents is found.
+   :type td_pages: list[int]
+   :param eq_pages: List of page numbers where equipment list is found.
+   :type eq_pages: list[int]
+   :return: Sorted list of pages with their types.
+   :rtype: list[tuple[str, int]]
+
+.. py:function:: split_list(data)
+
+   Splits the sorted list of pages into sublists whenever an """eq""" page is followed by a """pl""" page.
+
+   :param data: Sorted list of pages with their types.
+   :type data: list[tuple[str, int]]
+   :return: List of sublists split based on the condition.
+   :rtype: list[list[tuple[str, int]]]
+
+.. py:function:: group_page_numbers(data)
+
+   Groups the page numbers by their types from the sublists.
+
+   :param data: List of sublists split based on the condition.
+   :type data: list[list[tuple[str, int]]]
+   :return: List of tuples containing grouped page numbers for price list and equipment list.
+   :rtype: list[tuple[list[int], list[int]]]
+
+.. py:function:: detect_and_split_multi_price_lists(pl_pages, td_pages, eq_pages)
+
+   Detects if there are multiple price lists and splits them if found.
+
+   :param pl_pages: List of page numbers where price list is found.
+   :type pl_pages: list[int]
+   :param td_pages: List of page numbers where table of contents is found.
+   :type td_pages: list[int]
+   :param eq_pages: List of page numbers where equipment list is found.
+   :type eq_pages: list[int]
+   :return: Tuple containing a boolean indicating if multiple price lists were found and a list of tuples containing grouped page numbers for each price list and equipment list.
+   :rtype: tuple[bool, list[tuple[list[int], list[int]]]]
+
+.. py:function:: custom_sort_key(item)
+
+   Custom sort function for sorting the pages based on the page number and type.
+
+   :param item: Tuple containing the type and page number.
+   :type item: tuple[str, int]
+   :return: Tuple containing the page number and order based on type.
+   :rtype: tuple[int, int]

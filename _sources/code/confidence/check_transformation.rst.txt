@@ -1,0 +1,15 @@
+====================
+check_transformation
+====================
+
+.. py:function:: validate_transformation(standard_labels, standard_values, standard_status)
+
+   Validate the transformation of standard labels, values and status. It checks for classification consistency, uniqueness of column types, presence of essential columns and price range.
+
+   :param standard_labels: The standard labels to be validated.
+   :type standard_labels: DataFrame
+   :param standard_values: The standard values to be validated.
+   :type standard_values: DataFrame
+   :param standard_status: The standard status to be validated.
+   :type standard_status: DataFrame
+   :return: None

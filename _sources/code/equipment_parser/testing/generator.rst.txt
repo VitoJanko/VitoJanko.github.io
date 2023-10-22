@@ -1,0 +1,42 @@
+=========
+generator
+=========
+
+.. py:function:: log_to_pickle(func)
+
+   This function logs the input and output of a function to a pickle file. If the function name is in the specify_format dictionary, the input and output are cleaned according to the function specified in the dictionary.
+
+   :param func: The function to be logged.
+   :type func: function
+   :return: The result of the function call.
+   :rtype: varies depending on the function
+
+
+.. py:function:: validate(function_name, update=False)
+
+   This function validates the output of a function by comparing it with the output stored in a pickle file. If the update parameter is set to True, the function will update the pickle file with the new output.
+
+   :param function_name: The name of the function to be validated.
+   :type function_name: str
+   :param update: Whether to update the pickle file with the new output.
+   :type update: bool
+
+
+.. py:function:: test_pickle_content(filename)
+
+   This function prints the content of a pickle file.
+
+   :param filename: The name of the pickle file.
+   :type filename: str
+
+
+.. py:function:: wrapper(*args, **kwargs)
+
+   This function is a wrapper that logs the input and output of a function to a pickle file. If the function name is in the specify_format dictionary, the input and output are cleaned according to the function specified in the dictionary.
+
+   :param *args: Variable length argument list.
+   :type *args: tuple
+   :param **kwargs: Arbitrary keyword arguments.
+   :type **kwargs: dict
+   :return: The result of the function call.
+   :rtype: varies depending on the function

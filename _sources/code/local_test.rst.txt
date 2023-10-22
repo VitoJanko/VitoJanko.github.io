@@ -1,0 +1,16 @@
+==========
+local_test
+==========
+
+.. py:function:: compare_distance(tables, samples, filenames)
+
+   Compare the Levenshtein distance between the string representation of each table in "tables" and each sample in "samples". If the ratio of the distance to the length of the table string is less than or equal to 0.1, the corresponding filename is added to the return list.
+
+   :param tables: List of tables to compare.
+   :type tables: list
+   :param samples: List of samples to compare against.
+   :type samples: list
+   :param filenames: List of filenames corresponding to each sample.
+   :type filenames: list
+   :return: List of filenames for which the Levenshtein distance ratio is less than or equal to 0.1.
+   :rtype: list

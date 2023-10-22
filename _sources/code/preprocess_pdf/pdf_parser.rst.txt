@@ -1,0 +1,73 @@
+==========
+pdf_parser
+==========
+
+.. py:function:: get_lang_detector(nlp, name)
+
+   Returns a LanguageDetector object.
+
+   :param nlp: The natural language processing model.
+   :type nlp: object
+   :param name: The name of the language detector.
+   :type name: str
+   :return: A LanguageDetector object.
+   :rtype: object
+
+.. py:function:: get_file_like_pdf(s3_url: str)
+
+   Returns a file-like object of a PDF from a given S3 URL.
+
+   :param s3_url: The S3 URL of the PDF.
+   :type s3_url: str
+   :return: A file-like object of the PDF and the parsed filename.
+   :rtype: tuple
+
+.. py:function:: __init__(s3_bucket: str = None, s3_url: str = None, country_id: id = None, settings: Settings = None)
+
+   Initializes the object with the given parameters.
+
+   :param s3_bucket: The S3 bucket name.
+   :type s3_bucket: str or None
+   :param s3_url: The S3 URL of the PDF.
+   :type s3_url: str or None
+   :param country_id: The country ID.
+   :type country_id: id or None
+   :param settings: The settings for the object.
+   :type settings: Settings or None
+
+.. py:function:: extract_text()
+
+   Extracts text from the PDF.
+   :return: None
+
+.. py:function:: detect_language()
+
+   Detects the language of the text in the PDF.
+   :return: The detected language.
+   :rtype: str
+
+.. py:function:: classify_pages()
+
+   Classifies the pages of the PDF.
+   :return: None
+
+.. py:function:: extract_image(page: int)
+
+   Extracts an image of the specified page from the PDF.
+
+   :param page: The zero-indexed page number of the page to extract.
+   :type page: int
+   :return: An image of the specified page.
+   :rtype: object
+
+.. py:function:: display_bounding_boxes(page, bb_lst_lst, background=False)
+
+   Displays bounding boxes on the specified page of the PDF.
+
+   :param page: The page number.
+   :type page: int
+   :param bb_lst_lst: A list of bounding box lists.
+   :type bb_lst_lst: list[list]
+   :param background: Whether to display the bounding boxes in the background.
+   :type background: bool
+   :return: None

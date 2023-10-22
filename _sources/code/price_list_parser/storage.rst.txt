@@ -1,0 +1,120 @@
+=======
+storage
+=======
+
+.. py:function:: load_huggingface_model(handler: _S3, model_paths: dict, load_local: bool, save_local: bool)
+
+   Load a pre-trained Hugging Face model from the specified S3 path.
+
+   :param handler: S3 handler object.
+   :type handler: _S3
+   :param model_paths: Dictionary containing the paths for the model.
+   :type model_paths: dict
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: The loaded model.
+   :rtype: object
+
+.. py:function:: load_old_classifier(handler: _S3, model_paths: dict, brand_name: str, load_local: bool, save_local: bool)
+
+   Load an old classifier model.
+
+   :param handler: S3 handler object.
+   :type handler: _S3
+   :param model_paths: Dictionary containing the paths for the model.
+   :type model_paths: dict
+   :param brand_name: Name of the brand.
+   :type brand_name: str
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: The loaded model mappings.
+   :rtype: dict
+
+.. py:function:: load_dl_model(handler: _S3, model_paths: dict, model_name: str, load_local: bool, save_local: bool)
+
+   Load a deep learning model.
+
+   :param handler: S3 handler object.
+   :type handler: _S3
+   :param model_paths: Dictionary containing the paths for the model.
+   :type model_paths: dict
+   :param model_name: Name of the model.
+   :type model_name: str
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: The loaded model.
+   :rtype: object
+
+.. py:function:: load_page_classifiers(handler: _S3, model_paths: dict, language: str, load_local: bool, save_local: bool)
+
+   Load page classifiers.
+
+   :param handler: S3 handler object.
+   :type handler: _S3
+   :param model_paths: Dictionary containing the paths for the model.
+   :type model_paths: dict
+   :param language: Language for the classifiers.
+   :type language: str
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: The loaded page classifiers.
+   :rtype: dict
+
+.. py:function:: load_line_resources(handler: _S3, model_paths: dict, language: str, load_local: bool, save_local: bool)
+
+   Load line resources.
+
+   :param handler: S3 handler object.
+   :type handler: _S3
+   :param model_paths: Dictionary containing the paths for the model.
+   :type model_paths: dict
+   :param language: Language for the resources.
+   :type language: str
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: The loaded line resources.
+   :rtype: dict
+
+.. py:function:: load_yolo_fiat_model(handler: _S3, model_paths: dict, load_local: bool, save_local: bool)
+
+   Load YOLO model for Fiat.
+
+   :param handler: S3 handler object.
+   :type handler: _S3
+   :param model_paths: Dictionary containing the paths for the model.
+   :type model_paths: dict
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: The loaded model.
+   :rtype: object
+
+.. py:function:: load_brand_country_specific(self, brand, language, load_local, save_local)
+
+   Load brand and country specific models.
+
+   :param brand: Name of the brand.
+   :type brand: str
+   :param language: Language for the models.
+   :type language: str
+   :param load_local: Flag to determine if the model should be loaded locally.
+   :type load_local: bool
+   :param save_local: Flag to determine if the model should be saved locally.
+   :type save_local: bool
+   :return: None
+
+.. py:function:: cleanup(self)
+
+   Cleanup the loaded models.
+   :return: None

@@ -1,0 +1,110 @@
+================
+transform_tables
+================
+
+.. py:function:: find_blocks_for_text(text: str, line_blocks: list[dict])
+
+       Find the blocks of text that match the given text.
+
+       :param text: The text to find.
+       :type text: str
+       :param line_blocks: The list of blocks to search in.
+       :type line_blocks: list[dict]
+       :return: The matching blocks and the remaining blocks.
+       :rtype: tuple[list[dict], list[dict]]
+
+
+
+.. py:function:: fill_partial_table(csv, table_block, line_blocks, blocks, cell_counter, word_counter, start_row: int = 0, single_table=True)
+
+       Fill a partial table with the given data.
+
+       :param csv: The data to fill the table with.
+       :type csv: pandas.DataFrame
+       :param table_block: The block representing the table.
+       :type table_block: dict
+       :param line_blocks: The list of blocks representing lines.
+       :type line_blocks: list[dict]
+       :param blocks: The list of all blocks.
+       :type blocks: list
+       :param cell_counter: The current cell counter.
+       :type cell_counter: int
+       :param word_counter: The current word counter.
+       :type word_counter: int
+       :param start_row: The row to start filling from.
+       :type start_row: int
+       :param single_table: Whether the table is a single table or not.
+       :type single_table: bool
+       :return: The updated cell counter, word counter and start row.
+       :rtype: tuple[int, int, int]
+
+
+
+.. py:function:: fill_table(csv: pd.DataFrame, table_blocks: list[dict], table_line_blocks: list[list], blocks: list, cell_counter: int, word_counter: int)
+
+       Fill a table with the given data.
+
+       :param csv: The data to fill the table with.
+       :type csv: pandas.DataFrame
+       :param table_blocks: The list of blocks representing the table.
+       :type table_blocks: list[dict]
+       :param table_line_blocks: The list of blocks representing lines in the table.
+       :type table_line_blocks: list[list]
+       :param blocks: The list of all blocks.
+       :type blocks: list
+       :param cell_counter: The current cell counter.
+       :type cell_counter: int
+       :param word_counter: The current word counter.
+       :type word_counter: int
+       :return: The updated cell counter and word counter.
+       :rtype: tuple[int, int]
+
+
+
+.. py:function:: fill_tables(csvs: list, table_tracker: TableTracker, blocks: list, word_counter: int)
+
+       Fill multiple tables with the given data.
+
+       :param csvs: The list of data to fill the tables with.
+       :type csvs: list
+       :param table_tracker: The tracker for the tables.
+       :type table_tracker: TableTracker
+       :param blocks: The list of all blocks.
+       :type blocks: list
+       :param word_counter: The current word counter.
+       :type word_counter: int
+
+
+
+.. py:function:: is_line_with_text(block: dict) -> bool
+
+       Check if a block is a line with text.
+
+       :param block: The block to check.
+       :type block: dict
+       :return: Whether the block is a line with text or not.
+       :rtype: bool
+
+
+
+.. py:function:: is_start_block(alignment_score) -> bool
+
+       Check if a block is a start block based on its alignment score.
+
+       :param alignment_score: The alignment score of the block.
+       :type alignment_score: AlignmentScore
+       :return: Whether the block is a start block or not.
+       :rtype: bool
+
+
+
+.. py:function:: is_end_block(text: str, alignment_score) -> bool
+
+       Check if a block is an end block based on its alignment score.
+
+       :param text: The text of the block.
+       :type text: str
+       :param alignment_score: The alignment score of the block.
+       :type alignment_score: AlignmentScore
+       :return: Whether the block is an end block or not.
+       :rtype: bool

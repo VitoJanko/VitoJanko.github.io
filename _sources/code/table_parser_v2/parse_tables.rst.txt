@@ -1,0 +1,44 @@
+============
+parse_tables
+============
+
+.. py:function:: parse_td_tables(tables: Tables, general_attr: CommonAttrs)
+
+   Parse the technical data tables and append the parsed tables to the tables object.
+
+   :param tables: The tables object containing the technical data tables.
+   :type tables: Tables
+   :param general_attr: The common attributes for the tables.
+   :type general_attr: CommonAttrs
+
+
+.. py:function:: parse_pl_tables(tables: Tables, general_attr: CommonAttrs, segment_maker: TextractDivider = None, surcharge: dict = None, input_data: dict = None, gpt_querier: GptQuerier = None)
+
+   Parse the price list tables and append the parsed tables to the tables object. Also updates the number of combinations.
+
+   :param tables: The tables object containing the price list tables.
+   :type tables: Tables
+   :param general_attr: The common attributes for the tables.
+   :type general_attr: CommonAttrs
+   :param segment_maker: The segment maker for the tables, defaults to None.
+   :type segment_maker: TextractDivider, optional
+   :param surcharge: The surcharge for the tables, defaults to None.
+   :type surcharge: dict, optional
+   :param input_data: The input data for the tables, defaults to None.
+   :type input_data: dict, optional
+   :param gpt_querier: The GPT querier for the tables, defaults to None.
+   :type gpt_querier: GptQuerier, optional
+
+
+.. py:function:: add_surcharge(tables: Tables, general_attr: CommonAttrs, extracts: PDFExtracts, input_data: dict)
+
+   Add surcharge to the price list tables and parse them.
+
+   :param tables: The tables object containing the price list tables.
+   :type tables: Tables
+   :param general_attr: The common attributes for the tables.
+   :type general_attr: CommonAttrs
+   :param extracts: The PDF extracts for the tables.
+   :type extracts: PDFExtracts
+   :param input_data: The input data for the tables.
+   :type input_data: dict

@@ -1,0 +1,70 @@
+===============
+before_matching
+===============
+
+.. py:function:: apply_to_engine_combinations(combinations: list[dict], brand: Brand)
+
+   Apply default values to the engine combinations based on the brand.
+
+   :param combinations: List of engine combinations.
+   :type combinations: list[dict]
+   :param brand: The brand of the engine.
+   :type brand: Brand
+
+
+.. py:function:: apply_default(combination, key, brand: Brand, mapping)
+
+   Apply default values to the combination based on the brand and mapping.
+
+   :param combination: The combination to apply default values to.
+   :type combination: dict
+   :param key: The key to apply the default value to.
+   :type key: str
+   :param brand: The brand of the engine.
+   :type brand: Brand
+   :param mapping: The mapping to use for applying default values.
+   :type mapping: dict
+
+
+.. py:function:: get_surcharge_for_text(text, textract_results)
+
+   Get the surcharge for a given text from the textract results.
+
+   :param text: The text to search for in the textract results.
+   :type text: str
+   :param textract_results: The results from textract.
+   :type textract_results: dict
+   :return: The surcharge for the given text.
+   :rtype: float or None
+
+
+.. py:function:: add_grand_tour_surcharge(textract_results, all_combinations, super_model: str)
+
+   Add the grand tour surcharge to the combinations.
+
+   :param textract_results: The results from textract.
+   :type textract_results: dict
+   :param all_combinations: All the combinations to add the surcharge to.
+   :type all_combinations: list[dict]
+   :param super_model: The super model to add the surcharge to.
+   :type super_model: str
+
+
+.. py:function:: get_engine_surcharge(category, textract_results)
+
+   Get the engine surcharge for a given category from the textract results.
+
+   :param category: The category to get the surcharge for.
+   :type category: str
+   :param textract_results: The results from textract.
+   :type textract_results: dict
+   :return: The surcharge for the given category.
+   :rtype: tuple
+
+
+.. py:function:: convert_ks_to_kw(all_combinations)
+
+   Convert the power from ks to kw for all combinations.
+
+   :param all_combinations: All the combinations to convert the power for.
+   :type all_combinations: list[dict]

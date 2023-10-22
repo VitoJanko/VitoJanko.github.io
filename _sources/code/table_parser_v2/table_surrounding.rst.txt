@@ -1,0 +1,92 @@
+=================
+table_surrounding
+=================
+
+.. py:function:: get_data_from_table_surrounding(categories: list, table_metadata_block: dict, category_to_textract_blocks_map: dict, tolerance: float, top_limit: float = 0)
+
+   Returns a map of categories to their corresponding values extracted from the table.
+
+   :param categories: List of categories to extract values for.
+   :type categories: list
+   :param table_metadata_block: Metadata of the table to extract data from.
+   :type table_metadata_block: dict
+   :param category_to_textract_blocks_map: Map of categories to their corresponding textract blocks.
+   :type category_to_textract_blocks_map: dict
+   :param tolerance: Tolerance for the extraction process.
+   :type tolerance: float
+   :param top_limit: Top limit for the extraction process, defaults to 0.
+   :type top_limit: float, optional
+   :return: Map of categories to their corresponding values.
+   :rtype: dict
+
+.. py:function:: get_versions_data(table_metadata_block, category_to_textract_blocks_map)
+
+   Returns the versions data extracted from the table.
+
+   :param table_metadata_block: Metadata of the table to extract data from.
+   :type table_metadata_block: dict
+   :param category_to_textract_blocks_map: Map of categories to their corresponding textract blocks.
+   :type category_to_textract_blocks_map: dict
+   :return: Versions data.
+   :rtype: dict
+
+.. py:function:: get_fuel_data(table_metadata_block, category_to_textract_blocks_map)
+
+   Returns the fuel data extracted from the table.
+
+   :param table_metadata_block: Metadata of the table to extract data from.
+   :type table_metadata_block: dict
+   :param category_to_textract_blocks_map: Map of categories to their corresponding textract blocks.
+   :type category_to_textract_blocks_map: dict
+   :return: Fuel data.
+   :rtype: dict
+
+.. py:function:: get_top_limit(previous_table_metadata_block)
+
+   Returns the top limit from the previous table metadata block.
+
+   :param previous_table_metadata_block: Previous table metadata block.
+   :type previous_table_metadata_block: dict
+   :return: Top limit.
+   :rtype: float
+
+.. py:function:: update_model_generations_data(tmp_model_generations_data, model_generations_data, model_categories)
+
+   Updates the model generations data with the temporary model generations data.
+
+   :param tmp_model_generations_data: Temporary model generations data.
+   :type tmp_model_generations_data: dict
+   :param model_generations_data: Model generations data to be updated.
+   :type model_generations_data: dict
+   :param model_categories: Categories of the models.
+   :type model_categories: list
+   :return: Updated model generations data.
+   :rtype: dict
+
+.. py:function:: get_model_generations_data(top_limit, height_tolerance, table_metadata_block, category_to_textract_blocks_map)
+
+   Returns the model generations data extracted from the table.
+
+   :param top_limit: Top limit for the extraction process.
+   :type top_limit: float
+   :param height_tolerance: Height tolerance for the extraction process.
+   :type height_tolerance: float
+   :param table_metadata_block: Metadata of the table to extract data from.
+   :type table_metadata_block: dict
+   :param category_to_textract_blocks_map: Map of categories to their corresponding textract blocks.
+   :type category_to_textract_blocks_map: dict
+   :return: Model generations data.
+   :rtype: dict
+
+.. py:function:: get_additional_data(table_metadata_block, previous_table_metadata_block, category_to_textract_blocks_map)
+
+   Returns additional data extracted from the table.
+
+   :param table_metadata_block: Metadata of the table to extract data from.
+   :type table_metadata_block: dict
+   :param previous_table_metadata_block: Previous table metadata block.
+   :type previous_table_metadata_block: dict
+   :param category_to_textract_blocks_map: Map of categories to their corresponding textract blocks.
+   :type category_to_textract_blocks_map: dict
+   :return: Additional data including model generations data, versions data, and fuel data.
+   :rtype: dict

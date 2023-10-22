@@ -1,0 +1,60 @@
+=======
+helpers
+=======
+
+.. py:function:: get_textract_blocks_map(blocks)
+
+   Create a map of blocks and a list of table blocks from the input blocks.
+
+   :param blocks: The blocks to map.
+   :type blocks: list
+   :return: A tuple containing the blocks map and the table blocks list.
+   :rtype: tuple
+
+
+.. py:function:: get_rows_columns_map(table_result, blocks_map)
+
+   Create a map of rows and columns from the table result and blocks map.
+
+   :param table_result: The table result to map.
+   :param blocks_map: The blocks map to use.
+   :type table_result: dict
+   :type blocks_map: dict
+   :return: The rows map.
+   :rtype: dict
+
+
+.. py:function:: get_text(result, blocks_map)
+
+   Get the text from the result and blocks map.
+
+   :param result: The result to get text from.
+   :param blocks_map: The blocks map to use.
+   :type result: dict
+   :type blocks_map: dict
+   :return: The text.
+   :rtype: str
+
+
+.. py:function:: get_table_csv_results(blocks)
+
+   Get the CSV results of the tables from the blocks.
+
+   :param blocks: The blocks to get results from.
+   :type blocks: list
+   :return: A list of tuples containing the table block and its CSV string.
+   :rtype: list[tuple]
+
+
+.. py:function:: generate_table_csv(table_result, blocks_map, table_index)
+
+   Generate a CSV string from the table result, blocks map, and table index.
+
+   :param table_result: The table result to generate CSV from.
+   :param blocks_map: The blocks map to use.
+   :param table_index: The index of the table.
+   :type table_result: dict
+   :type blocks_map: dict
+   :type table_index: int
+   :return: The CSV string.
+   :rtype: str

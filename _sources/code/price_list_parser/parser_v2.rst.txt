@@ -1,0 +1,166 @@
+=========
+parser_v2
+=========
+
+.. py:function:: __init__(self, input_data: dict, s3_bucket_pareto: str, filename: str = "", settings: Settings = None, ground_truth: dict = Optional[None])
+
+       Initialize the class with the given parameters.
+
+       :param input_data: The input data.
+       :type input_data: dict
+       :param s3_bucket_pareto: The S3 bucket pareto.
+       :type s3_bucket_pareto: str
+       :param filename: The filename, defaults to "".
+       :type filename: str, optional
+       :param settings: The settings, defaults to None.
+       :type settings: Settings, optional
+       :param ground_truth: The ground truth, defaults to None.
+       :type ground_truth: dict, optional
+       :return: None
+       :rtype: None
+
+.. py:function:: parse_with_call_back(self)
+
+       Parse the data with a callback.
+       :return: None
+       :rtype: None
+
+.. py:function:: parse(self)
+
+       Parse the data.
+       :return: None
+       :rtype: None
+
+.. py:function:: initialize(self)
+
+       Initialize the class.
+       :return: None
+       :rtype: None
+
+.. py:function:: cleanup(self, error_message=None)
+
+       Cleanup the class.
+
+       :param error_message: The error message, defaults to None.
+       :type error_message: str, optional
+       :return: None
+       :rtype: None
+
+.. py:function:: preprocess_pdf(self) -> PdfParser
+
+       Preprocess the PDF.
+       :return: The PDF parser.
+       :rtype: PdfParser
+
+.. py:function:: classify_pages(self, pdf_parser)
+
+       Classify the pages of the PDF.
+
+       :param pdf_parser: The PDF parser.
+       :type pdf_parser: PdfParser
+       :return: None
+       :rtype: None
+
+.. py:function:: generate_extracts(self, pdf_parser) -> (Optional[PDFExtracts], Tables)
+
+       Generate extracts from the PDF.
+
+       :param pdf_parser: The PDF parser.
+       :type pdf_parser: PdfParser
+       :return: The PDF extracts and tables.
+       :rtype: (Optional[PDFExtracts], Tables)
+
+.. py:function:: generate_general_attr(self, pl_textract) -> CommonAttrs
+
+       Generate general attributes.
+
+       :param pl_textract: The textract.
+       :type pl_textract: dict
+       :return: The common attributes.
+       :rtype: CommonAttrs
+
+.. py:function:: extract_tables(self, extracts: PDFExtracts) -> Tables
+
+       Extract tables from the PDF extracts.
+
+       :param extracts: The PDF extracts.
+       :type extracts: PDFExtracts
+       :return: The tables.
+       :rtype: Tables
+
+.. py:function:: limit_combinations(self)
+
+       Limit the combinations.
+       :return: None
+       :rtype: None
+
+.. py:function:: combination_corrections(self, page_text)
+
+       Correct the combinations.
+
+       :param page_text: The page text.
+       :type page_text: str
+       :return: None
+       :rtype: None
+
+.. py:function:: ve_id_matching(self)
+
+       Match the ve_id.
+       :return: None
+       :rtype: None
+
+.. py:function:: combination_postprocessing(self)
+
+       Postprocess the combinations.
+       :return: None
+       :rtype: None
+
+.. py:function:: json_postprocessing(self, pdf_parser)
+
+       Postprocess the JSON.
+
+       :param pdf_parser: The PDF parser.
+       :type pdf_parser: PdfParser
+       :return: None
+       :rtype: None
+
+.. py:function:: handle_multiple_price_lists(self, pdf_parser, extracts, tables)
+
+       Handle multiple price lists.
+
+       :param pdf_parser: The PDF parser.
+       :type pdf_parser: PdfParser
+       :param extracts: The extracts.
+       :type extracts: dict
+       :param tables: The tables.
+       :type tables: Tables
+       :return: None
+       :rtype: None
+
+.. py:function:: add_metadata(self, pdf_parser)
+
+       Add metadata.
+
+       :param pdf_parser: The PDF parser.
+       :type pdf_parser: PdfParser
+       :return: None
+       :rtype: None
+
+.. py:function:: write_logs(self, match_results: MatchAllResults, equipment_results: EquipmentResults, tables: Tables)
+
+       Write logs.
+
+       :param match_results: The match results.
+       :type match_results: MatchAllResults
+       :param equipment_results: The equipment results.
+       :type equipment_results: EquipmentResults
+       :param tables: The tables.
+       :type tables: Tables
+       :return: None
+       :rtype: None
+
+.. py:function:: limit_model_data(self)
+
+       Limit the model data.
+       :return: None
+       :rtype: None

@@ -1,0 +1,57 @@
+============
+mapping_dict
+============
+
+.. py:function:: get_mapping_dict(price_list_id, categories_of_interest=[])
+
+   Generate a dictionary mapping values to categories based on a given price list.
+
+   :param price_list_id: The ID of the price list to use for the mapping.
+   :type price_list_id: int
+   :param categories_of_interest: Optional list of categories to include in the mapping. If not provided, all categories are included.
+   :type categories_of_interest: list[str], optional
+   :return: The mapping dictionary.
+   :rtype: dict
+
+.. py:function:: get_full_mapping_dict(price_list_id_list, categories_of_interest=[])
+
+   Generate a full mapping dictionary for a list of price lists and categories of interest.
+
+   :param price_list_id_list: The list of price list IDs to use for the mapping.
+   :type price_list_id_list: list[int]
+   :param categories_of_interest: Optional list of categories to include in the mapping. If not provided, all categories are included.
+   :type categories_of_interest: list[str], optional
+   :return: The full mapping dictionary.
+   :rtype: dict
+
+.. py:function:: get_category_values_dict(mapping_dict)
+
+   Generate a dictionary mapping categories to their corresponding values based on a given mapping dictionary.
+
+   :param mapping_dict: The mapping dictionary to use for the reverse mapping.
+   :type mapping_dict: dict
+   :return: The reverse mapping dictionary.
+   :rtype: dict
+
+.. py:function:: extend_mapping_dict(mapping_dict, category, values)
+
+   Extend a given mapping dictionary with additional values for a specific category.
+
+   :param mapping_dict: The mapping dictionary to extend.
+   :type mapping_dict: dict
+   :param category: The category to which the new values should be mapped.
+   :type category: str
+   :param values: The new values to add to the mapping dictionary.
+   :type values: list[str]
+   :return: None
+
+.. py:function:: get_mappings(brand: str, path_prefix=".")
+
+   Load a mapping from a JSON file for a specific brand.
+
+   :param brand: The brand for which to load the mapping.
+   :type brand: str
+   :param path_prefix: Optional path prefix for the location of the JSON file. Defaults to the current directory.
+   :type path_prefix: str, optional
+   :return: The loaded mapping.
+   :rtype: dict

@@ -1,0 +1,16 @@
+======
+shared
+======
+
+.. py:function:: get_serial_eq_pages(eq_pages: list[int], page_to_eq_count: dict, page_to_eq_count_textract: dict)
+
+   This function returns a list of page numbers that have less than 3 equations, based on the counts from Adobe and Textract.
+
+   :param eq_pages: List of page numbers to check.
+   :type eq_pages: list[int]
+   :param page_to_eq_count: Dictionary mapping page numbers to equation counts from Adobe.
+   :type page_to_eq_count: dict
+   :param page_to_eq_count_textract: Dictionary mapping page numbers to equation counts from Textract.
+   :type page_to_eq_count_textract: dict
+   :return: List of page numbers with less than 3 equations.
+   :rtype: list[int]

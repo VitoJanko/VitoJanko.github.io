@@ -1,0 +1,65 @@
+=========
+td_parser
+=========
+
+.. py:function:: __init__(self, general_attr: CommonAttrs, table_data: TableData, table_loop_index: int = -1)
+
+       Initialize the class with general attributes, table data and table loop index.
+
+       :param general_attr: General attributes for the class.
+       :type general_attr: CommonAttrs
+       :param table_data: Data of the table.
+       :type table_data: TableData
+       :param table_loop_index: Index of the table loop, default is -1.
+       :type table_loop_index: int
+       :return: None
+
+
+
+.. py:function:: label_and_transform_table(self) -> None
+
+       Label and transform the table using various methods.
+       :return: None
+
+
+
+.. py:function:: extend_tables_and_extract_combinations(self)
+
+       Extend the tables and extract combinations from them.
+       :return: None
+
+
+
+.. py:function:: add_columns(self, pl, columns_already_added)
+
+       Add new columns to the table.
+
+       :param pl: The table to add columns to.
+       :type pl: DataFrame
+       :param columns_already_added: List of columns that have already been added.
+       :type columns_already_added: list
+       :return: None
+
+
+
+.. py:function:: is_valid(self)
+
+       Check if the table is valid.
+       :return: Boolean indicating if the table is valid.
+       :rtype: bool
+
+
+
+.. py:function:: contains_transmission(self)
+
+       Check if the table contains a transmission column.
+       :return: Boolean indicating if the table contains a transmission column.
+       :rtype: bool
+
+
+
+.. py:function:: contains_gears(self)
+
+       Check if the table contains a gears column.
+       :return: Boolean indicating if the table contains a gears column.
+       :rtype: bool

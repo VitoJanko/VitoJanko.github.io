@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>excel_extractor &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="excel_utility" href="excel_utility.html" />
+    <link rel="prev" title="create_excels" href="create_excels.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">make_logs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="create_excels.html">create_excels</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">excel_extractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excel_utility.html">excel_utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="read_excel.html">read_excel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table_makers.html">table_makers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_labels.html">write_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_logs.html">write_logs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">make_logs</a></li>
+      <li class="breadcrumb-item active">excel_extractor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/make_logs/excel_extractor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="excel-extractor">
+<h1>excel_extractor<a class="headerlink" href="#excel-extractor" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="make_legend">
+<span class="sig-name descname"><span class="pre">make_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_legend" title="Link to this definition"></a></dt>
+<dd><p>This function creates a legend for a given Excel file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – The folder where the Excel file is located.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The name of the Excel file without the extension.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="xls_for_annotation">
+<span class="sig-name descname"><span class="pre">xls_for_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layouts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xls_for_annotation" title="Link to this definition"></a></dt>
+<dd><p>This function creates an Excel file for annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory_path</strong> (<em>str</em>) – The path of the directory where the Excel file will be saved.</p></li>
+<li><p><strong>save_name</strong> (<em>str</em>) – The name of the Excel file to be saved.</p></li>
+<li><p><strong>values</strong> (<em>list</em>) – The values to be annotated.</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – The labels for the values.</p></li>
+<li><p><strong>layouts</strong> (<em>list</em>) – The layouts of the tables.</p></li>
+<li><p><strong>filenames</strong> (<em>list</em>) – The names of the files.</p></li>
+<li><p><strong>pages</strong> (<em>list</em>) – The pages where the tables are located.</p></li>
+<li><p><strong>table_indices</strong> (<em>list</em>) – The indices of the tables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract_labels">
+<span class="sig-name descname"><span class="pre">extract_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'excels'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cell_labels'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_layout_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'layout'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_generic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'annotated'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extract_labels" title="Link to this definition"></a></dt>
+<dd><p>This function extracts labels from an Excel file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_index</strong> (<em>int</em>) – The index of the file.</p></li>
+<li><p><strong>input_folder</strong> (<em>str</em>) – The folder where the input file is located. Default is “excels”.</p></li>
+<li><p><strong>output_name</strong> (<em>str</em>) – The name of the output file. Default is “cell_labels”.</p></li>
+<li><p><strong>output_layout_name</strong> (<em>str</em>) – The name of the output layout file. Default is “layout”.</p></li>
+<li><p><strong>generate_extra</strong> (<em>bool</em>) – Whether to generate extra labels. Default is False.</p></li>
+<li><p><strong>generate_generic</strong> (<em>None</em><em> or </em><em>list</em>) – Whether to generate generic labels. Default is None.</p></li>
+<li><p><strong>input_name</strong> (<em>str</em>) – The name of the input file. Default is “annotated”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extracted labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shuffle_table">
+<span class="sig-name descname"><span class="pre">shuffle_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shuffle_table" title="Link to this definition"></a></dt>
+<dd><p>This function shuffles the values in a table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>DataFrame</em>) – The values in the table.</p></li>
+<li><p><strong>labels</strong> (<em>DataFrame</em>) – The labels for the values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The shuffled table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="find_table_boundaries">
+<span class="sig-name descname"><span class="pre">find_table_boundaries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find_table_boundaries" title="Link to this definition"></a></dt>
+<dd><p>This function finds the boundaries of a table in an Excel sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sheet</strong> (<em>Worksheet</em>) – The Excel sheet.</p></li>
+<li><p><strong>margin_row</strong> (<em>int</em>) – The row margin.</p></li>
+<li><p><strong>margin_column</strong> (<em>int</em>) – The column margin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The width and height of the table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parse_table">
+<span class="sig-name descname"><span class="pre">parse_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_height</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parse_table" title="Link to this definition"></a></dt>
+<dd><p>This function parses a table in an Excel sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sheet</strong> (<em>Worksheet</em>) – The Excel sheet.</p></li>
+<li><p><strong>margin_row</strong> (<em>int</em>) – The row margin.</p></li>
+<li><p><strong>margin_column</strong> (<em>int</em>) – The column margin.</p></li>
+<li><p><strong>table_width</strong> (<em>int</em>) – The width of the table.</p></li>
+<li><p><strong>table_height</strong> (<em>int</em>) – The height of the table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The values and labels in the table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="create_cell_annotations">
+<span class="sig-name descname"><span class="pre">create_cell_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_cell_annotations" title="Link to this definition"></a></dt>
+<dd><p>This function creates cell annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>list</em>) – The values in the cells.</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – The labels for the values.</p></li>
+<li><p><strong>params</strong> (<em>list</em>) – The parameters for the annotations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The cell annotations.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="create_layout_annotations">
+<span class="sig-name descname"><span class="pre">create_layout_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_layout_annotations" title="Link to this definition"></a></dt>
+<dd><p>This function creates layout annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>list</em>) – The values in the layout.</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – The labels for the values.</p></li>
+<li><p><strong>params</strong> (<em>list</em>) – The parameters for the annotations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The layout annotations.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="create_excels.html" class="btn btn-neutral float-left" title="create_excels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="excel_utility.html" class="btn btn-neutral float-right" title="excel_utility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

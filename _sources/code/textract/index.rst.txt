@@ -1,0 +1,10 @@
+========
+textract
+========
+
+.. toctree::
+   helpers
+   line_splitting
+   main
+   textract_divider
+   utils

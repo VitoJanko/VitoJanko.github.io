@@ -1,0 +1,241 @@
+===============
+process_version
+===============
+
+.. py:function:: strip_non_letters(input_string)
+
+       Remove all non-letter characters from the input string and convert it to uppercase.
+
+       :param input_string: The string to be processed.
+       :type input_string: str
+       :return: The processed string.
+       :rtype: str
+
+.. py:function:: find_versions(line_text: str, price_list_versions: list, additional_versions: list, match_threshold: int, match_handicap: int, max_return: int, brand_id: int, length_penalty: float)
+
+       Find the best matching versions in the given line of text.
+
+       :param line_text: The line of text to search for versions.
+       :type line_text: str
+       :param price_list_versions: The list of versions to match against.
+       :type price_list_versions: list
+       :param additional_versions: Additional versions to match against.
+       :type additional_versions: list
+       :param match_threshold: The minimum match score to consider a version a match.
+       :type match_threshold: int
+       :param match_handicap: The handicap to apply to the match score.
+       :type match_handicap: int
+       :param max_return: The maximum number of versions to return.
+       :type max_return: int
+       :param brand_id: The brand id to consider during matching.
+       :type brand_id: int
+       :param length_penalty: The penalty to apply based on the length of the version.
+       :type length_penalty: float
+       :return: The list of best matching versions.
+       :rtype: list
+
+.. py:function:: replace_hyphen(version, version_line)
+
+       Replace hyphens in the version and version line with spaces.
+
+       :param version: The version string.
+       :type version: str
+       :param version_line: The version line string.
+       :type version_line: str
+       :return: The processed version and version line.
+       :rtype: tuple
+
+.. py:function:: move_match(line: str, version: str, original_span)
+
+       Move the match span if the version does not contain a "+" character.
+
+       :param line: The line of text to search for versions.
+       :type line: str
+       :param version: The version string.
+       :type version: str
+       :param original_span: The original span of the match.
+       :type original_span: tuple
+       :return: The updated span of the match.
+       :rtype: tuple
+
+.. py:function:: insert_versions(line, prev_line, version_lines, version_list, additional_version_list, serial_attributes, version_found, previous_version, settings, debug=False)
+
+       Insert versions into the given line of text.
+
+       :param line: The line of text to insert versions into.
+       :type line: EquipmentLine
+       :param prev_line: The previous line of text.
+       :type prev_line: EquipmentLine
+       :param version_lines: The list of lines with versions.
+       :type version_lines: list
+       :param version_list: The list of versions to insert.
+       :type version_list: list
+       :param additional_version_list: Additional versions to insert.
+       :type additional_version_list: list
+       :param serial_attributes: The serial attributes to consider during insertion.
+       :type serial_attributes: SerialAttributes
+       :param version_found: Whether a version has been found in the line.
+       :type version_found: bool
+       :param previous_version: The previous version found.
+       :type previous_version: str
+       :param settings: The settings to consider during insertion.
+       :type settings: Settings
+       :param debug: Whether to print debug information.
+       :type debug: bool
+       :return: Whether a version was found in the line.
+       :rtype: bool
+
+.. py:function:: assemble_version_lines(line: EquipmentLine, version_lines: list[EquipmentLine])
+
+       Assemble version lines based on the given line and list of version lines.
+
+       :param line: The line of text to assemble version lines from.
+       :type line: EquipmentLine
+       :param version_lines: The list of version lines to assemble from.
+       :type version_lines: list
+       :return: The assembled version line.
+       :rtype: EquipmentLine
+
+.. py:function:: find_version_indices(lines: list[EquipmentLine])
+
+       Find the indices of lines that contain versions.
+
+       :param lines: The list of lines to search for versions.
+       :type lines: list
+       :return: The list of indices of lines that contain versions.
+       :rtype: list
+
+.. py:function:: remove_recursive_versions(lines: list[EquipmentLine], version_indices)
+
+       Remove recursive versions from the given lines.
+
+       :param lines: The list of lines to remove recursive versions from.
+       :type lines: list
+       :param version_indices: The indices of lines that contain versions.
+       :type version_indices: list
+
+.. py:function:: remove_too_big_versions(lines: list[EquipmentLine], version_indices, debug: bool)
+
+       Remove versions from lines that are too big.
+
+       :param lines: The list of lines to remove versions from.
+       :type lines: list
+       :param version_indices: The indices of lines that contain versions.
+       :type version_indices: list
+       :param debug: Whether to print debug information.
+       :type debug: bool
+
+.. py:function:: remove_lone_model(lines: list[EquipmentLine], version_indices, model: str, debug: bool)
+
+       Remove the lone model from the given lines.
+
+       :param lines: The list of lines to remove the lone model from.
+       :type lines: list
+       :param version_indices: The indices of lines that contain versions.
+       :type version_indices: list
+       :param model: The model to remove.
+       :type model: str
+       :param debug: Whether to print debug information.
+       :type debug: bool
+
+.. py:function:: remove_displaced_model(lines: list[EquipmentLine], version_indices, model: str, debug: bool)
+
+       Remove the displaced model from the given lines.
+
+       :param lines: The list of lines to remove the displaced model from.
+       :type lines: list
+       :param version_indices: The indices of lines that contain versions.
+       :type version_indices: list
+       :param model: The model to remove.
+       :type model: str
+       :param debug: Whether to print debug information.
+       :type debug: bool
+
+.. py:function:: remove_small_bottom_margin_versions(lines: list[EquipmentLine], version_indices, debug: bool)
+
+       Remove versions from lines that have a small bottom margin.
+
+       :param lines: The list of lines to remove versions from.
+       :type lines: list
+       :param version_indices: The indices of lines that contain versions.
+       :type version_indices: list
+       :param debug: Whether to print debug information.
+       :type debug: bool
+
+.. py:function:: remove_different_versions(lines: list[EquipmentLine], version_indices, debug: bool)
+
+       Remove versions from lines that are different from the majority.
+
+       :param lines: The list of lines to remove versions from.
+       :type lines: list
+       :param version_indices: The indices of lines that contain versions.
+       :type version_indices: list
+       :param debug: Whether to print debug information.
+       :type debug: bool
+
+.. py:function:: is_upgrade(previous_version, versions) -> bool
+
+       Check if the given versions are an upgrade of the previous version.
+
+       :param previous_version: The previous version.
+       :type previous_version: str
+       :param versions: The versions to check.
+       :type versions: list
+       :return: Whether the versions are an upgrade of the previous version.
+       :rtype: bool
+
+.. py:function:: add_versions(lines: list[EquipmentLine], versions: list[str], pareto_versions: list[str], serial_attributes: SerialAttributes, settings: Settings, model: str, debug: bool)
+
+       Add versions to the given lines.
+
+       :param lines: The list of lines to add versions to.
+       :type lines: list
+       :param versions: The versions to add.
+       :type versions: list
+       :param pareto_versions: The pareto versions to add.
+       :type pareto_versions: list
+       :param serial_attributes: The serial attributes to consider during addition.
+       :type serial_attributes: SerialAttributes
+       :param settings: The settings to consider during addition.
+       :type settings: Settings
+       :param model: The model to consider during addition.
+       :type model: str
+       :param debug: Whether to print debug information.
+       :type debug: bool
+       :return: The lines with added versions.
+       :rtype: list
+
+.. py:function:: is_version_part_of_word(version_line: str, found_version: str, start: int, end: int) -> bool
+
+       Check if the found version is part of a word in the version line.
+
+       :param version_line: The version line to check.
+       :type version_line: str
+       :param found_version: The found version to check.
+       :type found_version: str
+       :param start: The start index of the found version in the version line.
+       :type start: int
+       :param end: The end index of the found version in the version line.
+       :type end: int
+       :return: Whether the found version is part of a word in the version line.
+       :rtype: bool
+
+.. py:function:: get_word_at_index(line, index_searched)
+
+       Get the word at the given index in the line.
+
+       :param line: The line to get the word from.
+       :type line: str
+       :param index_searched: The index to get the word at.
+       :type index_searched: int
+       :return: The word at the given index.
+       :rtype: str
+
+.. py:function:: _replace(text)
+
+       Replace hyphens in words with two or more characters in the text with spaces.
+
+       :param text: The text to replace hyphens in.
+       :type text: str
+       :return: The text with replaced hyphens.
+       :rtype: str

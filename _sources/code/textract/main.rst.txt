@@ -1,0 +1,51 @@
+====
+main
+====
+
+.. py:function:: __init__(self, s3_bucket: str, pdf_file, pdf_hash: str, pdf_folder: str, textract_folder: str)
+
+       Initialize the class with the given parameters.
+
+       :param s3_bucket: The name of the S3 bucket.
+       :type s3_bucket: str
+       :param pdf_file: The PDF file to be processed.
+       :param pdf_hash: The hash of the PDF file.
+       :type pdf_hash: str
+       :param pdf_folder: The folder where the PDF file is located.
+       :type pdf_folder: str
+       :param textract_folder: The folder where the textract results will be stored.
+       :type textract_folder: str
+
+.. py:function:: get_textract_result(self, page, override=False)
+
+       Get the textract result for a specific page. If the result does not exist, it will be created.
+
+       :param page: The page number to get the textract result for.
+       :param override: Whether to override the existing result or not. Default is False.
+       :type override: bool
+       :return: The textract result.
+       :rtype: dict
+
+.. py:function:: run_textract(self, s3_key)
+
+       Run textract on a specific S3 key.
+
+       :param s3_key: The S3 key to run textract on.
+       :return: The job ID of the textract process.
+       :rtype: str
+
+.. py:function:: get_and_store_blocks(self, job_id: str, textract_s3_key: _S3Key)
+
+       Get and store the blocks of a textract job.
+
+       :param job_id: The ID of the textract job.
+       :type job_id: str
+       :param textract_s3_key: The S3 key where the textract results will be stored.
+       :return: The response of the textract job.
+       :rtype: dict or None
+
+.. py:function:: empty_textract(self)
+
+       Return an empty textract result.
+       :return: An empty textract result.
+       :rtype: str

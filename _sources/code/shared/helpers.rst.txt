@@ -1,0 +1,49 @@
+=======
+helpers
+=======
+
+.. py:function:: get_secret(secret_name, region_name="eu-central-1")
+
+       Create a Secrets Manager client and get the secret value.
+
+       :param secret_name: The name of the secret.
+       :type secret_name: str
+       :param region_name: The name of the region. Defaults to "eu-central-1".
+       :type region_name: str
+       :return: The secret value.
+       :rtype: str
+
+.. py:function:: retry(max_tries: Optional[int] = None, delay: float = 0, backoff=1, logger: logging.Logger = logger)
+
+       Returns a retry decorator for functions retry upon exception.
+
+       :param max_tries: Maximum number of tries. Defaults to None.
+       :type max_tries: Optional[int]
+       :param delay: Initial delay between first and second try. Defaults to 0.
+       :type delay: float
+       :param backoff: Delay multiplier between tries. Defaults to 1.
+       :type backoff: int
+       :param logger: Logger to use. Defaults to `helpers` logger.
+       :type logger: logging.Logger
+       :return: A decorator that retries the function upon exception.
+       :rtype: function
+
+.. py:function:: decorator(func)
+
+       Returns a decorator that retries the function upon exception.
+
+       :param func: The function to be retried.
+       :type func: function
+       :return: A decorator that retries the function upon exception.
+       :rtype: function
+
+.. py:function:: inner(*args, **kwargs)
+
+       Executes the function and retries upon exception.
+
+       :param args: Arguments to be passed to the function.
+       :type args: tuple
+       :param kwargs: Keyword arguments to be passed to the function.
+       :type kwargs: dict
+       :return: The result of the function execution.
+       :rtype: varies

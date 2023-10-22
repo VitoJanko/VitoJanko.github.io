@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>join_adobe_textract_utility &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="main" href="main.html" />
+    <link rel="prev" title="join_adobe_textract_structure" href="join_adobe_textract_structure.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">adobe_extract</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="adobe_to_textract.html">adobe_to_textract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adobe_to_textract_utility.html">adobe_to_textract_utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create_blocks.html">create_blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="join_adobe_textract.html">join_adobe_textract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="join_adobe_textract_structure.html">join_adobe_textract_structure</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">join_adobe_textract_utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table_tracking.html">table_tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform_tables.html">transform_tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">adobe_extract</a></li>
+      <li class="breadcrumb-item active">join_adobe_textract_utility</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/adobe_extract/join_adobe_textract_utility.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="join-adobe-textract-utility">
+<h1>join_adobe_textract_utility<a class="headerlink" href="#join-adobe-textract-utility" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_duplicate_lines">
+<span class="sig-name descname"><span class="pre">remove_duplicate_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_duplicate_lines" title="Link to this definition"></a></dt>
+<dd><p>Remove duplicate lines from a list based on the “Id” key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lst</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – List of dictionaries from which duplicates are to be removed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of dictionaries without duplicates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_block_map">
+<span class="sig-name descname"><span class="pre">get_block_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_block_map" title="Link to this definition"></a></dt>
+<dd><p>Create a dictionary mapping each block”””s “Id” to the block itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract</strong> (<em>dict</em>) – List of blocks.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary mapping “Id” to block.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_word_to_line">
+<span class="sig-name descname"><span class="pre">get_word_to_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_word_to_line" title="Link to this definition"></a></dt>
+<dd><p>Create a dictionary mapping each word to its corresponding line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract</strong> (<em>dict</em>) – List of blocks.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary mapping word to line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_word_to_cell">
+<span class="sig-name descname"><span class="pre">get_word_to_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_word_to_cell" title="Link to this definition"></a></dt>
+<dd><p>Create a dictionary mapping each word to its corresponding cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract</strong> (<em>dict</em>) – List of blocks.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary mapping word to cell.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_childs">
+<span class="sig-name descname"><span class="pre">get_childs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_childs" title="Link to this definition"></a></dt>
+<dd><p>Get the children of a block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block_map</strong> (<em>dict</em>) – Dictionary mapping “Id” to block.</p></li>
+<li><p><strong>block</strong> (<em>dict</em>) – The parent block.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of child blocks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="block_position">
+<span class="sig-name descname"><span class="pre">block_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#block_position" title="Link to this definition"></a></dt>
+<dd><p>Get the position of a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>dict</em>) – The line block.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The position of the line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lines_by_page">
+<span class="sig-name descname"><span class="pre">lines_by_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lines_by_page" title="Link to this definition"></a></dt>
+<dd><p>Group lines by page and sort them by position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract</strong> (<em>dict</em>) – List of blocks.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary mapping page to sorted lines.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tables_by_page">
+<span class="sig-name descname"><span class="pre">tables_by_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tables_by_page" title="Link to this definition"></a></dt>
+<dd><p>Group tables by page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract</strong> (<em>dict</em>) – List of blocks.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary mapping page to tables.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="interval_overlap_length">
+<span class="sig-name descname"><span class="pre">interval_overlap_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interval_overlap_length" title="Link to this definition"></a></dt>
+<dd><p>Calculate the length of the overlap between two intervals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interval1</strong> (<em>tuple</em>) – The first interval.</p></li>
+<li><p><strong>interval2</strong> (<em>tuple</em>) – The second interval.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The length of the overlap.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="overlap_percentage">
+<span class="sig-name descname"><span class="pre">overlap_percentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#overlap_percentage" title="Link to this definition"></a></dt>
+<dd><p>Calculate the percentage of overlap between two intervals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interval1</strong> (<em>tuple</em>) – The first interval.</p></li>
+<li><p><strong>interval2</strong> (<em>tuple</em>) – The second interval.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The percentage of overlap.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="find_pairs">
+<span class="sig-name descname"><span class="pre">find_pairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">squares1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">BlockPositions</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">squares2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">BlockPositions</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find_pairs" title="Link to this definition"></a></dt>
+<dd><p>Find pairs of squares that overlap based on a threshold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>squares1</strong> (<em>list</em><em>[</em><em>BlockPositions</em><em>]</em>) – The first list of squares.</p></li>
+<li><p><strong>squares2</strong> (<em>list</em><em>[</em><em>BlockPositions</em><em>]</em>) – The second list of squares.</p></li>
+<li><p><strong>threshold_dist</strong> (<em>float</em>) – The distance threshold for overlap.</p></li>
+<li><p><strong>threshold_size</strong> (<em>float</em>) – The size threshold for overlap.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of pairs of overlapping squares.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[tuple]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="add_bounding_size">
+<span class="sig-name descname"><span class="pre">add_bounding_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textract_block</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#add_bounding_size" title="Link to this definition"></a></dt>
+<dd><p>Add bounding size to a block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract_block</strong> (<em>dict</em>) – The block to which bounding size is to be added.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Block with added bounding size.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BlockPositions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="add_sizes">
+<span class="sig-name descname"><span class="pre">add_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">BlockPositions</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#add_sizes" title="Link to this definition"></a></dt>
+<dd><p>Add bounding sizes to a list of blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>blocks</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – The list of blocks to which bounding sizes are to be added.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of blocks with added bounding sizes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[BlockPositions]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="replace_words_in_line">
+<span class="sig-name descname"><span class="pre">replace_words_in_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textract_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#TextractUtils" title="TextractUtils"><span class="pre">TextractUtils</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replace_words_in_line" title="Link to this definition"></a></dt>
+<dd><p>Replace words in a line with new text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>dict</em>) – The line in which words are to be replaced.</p></li>
+<li><p><strong>new_text</strong> (<em>str</em>) – The new text to replace the words with.</p></li>
+<li><p><strong>textract_data</strong> (<a class="reference internal" href="#TextractUtils" title="TextractUtils"><em>TextractUtils</em></a>) – The TextractUtils object.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print verbose output.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="is_vertical">
+<span class="sig-name descname"><span class="pre">is_vertical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cell_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_pricelist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#is_vertical" title="Link to this definition"></a></dt>
+<dd><p>Check if a cell block is vertical.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cell_block</strong> (<em>dict</em>) – The cell block to check.</p></li>
+<li><p><strong>is_pricelist</strong> (<em>bool</em>) – Whether the cell block is a pricelist.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the cell block is vertical.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TextractUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TextractUtils</span></span><a class="headerlink" href="#TextractUtils" title="Link to this definition"></a></dt>
+<dd><p>A class for handling Textract data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TextractUtils.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textract</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TextractUtils.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the TextractUtils object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>textract</strong> (<em>dict</em>) – The Textract data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="join_adobe_textract_structure.html" class="btn btn-neutral float-left" title="join_adobe_textract_structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="main.html" class="btn btn-neutral float-right" title="main" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

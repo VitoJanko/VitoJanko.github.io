@@ -1,0 +1,78 @@
+=====================
+parser_postprocessing
+=====================
+
+.. py:function:: cleanup_map(map: dict) -> dict
+
+   Cleans up the keys in the given map.
+
+   :param map: The map to be cleaned.
+   :type map: dict
+   :return: The cleaned map.
+   :rtype: dict
+
+.. py:function:: fuzzy_match(token: str, possible_matches: list[str], treshold: int)
+
+   Finds the best match for a given token from a list of possible matches.
+
+   :param token: The token to be matched.
+   :type token: str
+   :param possible_matches: The list of possible matches.
+   :type possible_matches: list[str]
+   :param treshold: The minimum score for a match to be considered.
+   :type treshold: int
+   :return: The best match.
+   :rtype: str
+
+.. py:function:: map_to_default(combination: dict, key: str, mapping: dict)
+
+   Maps a key in a combination to a default value if it exists in the mapping.
+
+   :param combination: The combination to be mapped.
+   :type combination: dict
+   :param key: The key to be mapped.
+   :type key: str
+   :param mapping: The mapping of keys to default values.
+   :type mapping: dict
+
+.. py:function:: postprocess_version(combination, category_to_tokens_map)
+
+   Postprocesses the version name in a combination.
+
+   :param combination: The combination to be postprocessed.
+   :param category_to_tokens_map: The map of categories to tokens.
+
+.. py:function:: apply_tehnical_data(combination: dict, engine_name: str, tehnical_data: dict)
+
+   Applies technical data to a combination based on the engine name.
+
+   :param combination: The combination to be updated.
+   :type combination: dict
+   :param engine_name: The name of the engine.
+   :type engine_name: str
+   :param tehnical_data: The technical data to be applied.
+   :type tehnical_data: dict
+
+.. py:function:: apply_mappings(combination)
+
+   Applies mappings to a combination.
+
+   :param combination: The combination to be updated.
+
+.. py:function:: post_process_combination(combination, technical_data: dict, category_to_tokens_map)
+
+   Postprocesses a combination by applying mappings and technical data.
+
+   :param combination: The combination to be postprocessed.
+   :param technical_data: The technical data to be applied.
+   :type technical_data: dict
+   :param category_to_tokens_map: The map of categories to tokens.
+
+.. py:function:: _apply_tehnical_data_for_category(combination, combination_td, category, default_td=None)
+
+   Applies technical data for a specific category to a combination.
+
+   :param combination: The combination to be updated.
+   :param combination_td: The technical data for the combination.
+   :param category: The category to be updated.
+   :param default_td: The default technical data to be applied if the combination does not have technical data for the category.

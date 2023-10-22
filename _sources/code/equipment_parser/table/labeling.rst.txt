@@ -1,0 +1,35 @@
+========
+labeling
+========
+
+.. py:function:: label_price_cells(values: pd.DataFrame, labels: pd.DataFrame)
+
+       Label cells in a DataFrame that contain price values.
+
+       This function applies the `extract_price_simplified` function to each cell in the
+       input `values` DataFrame, and then checks if the extracted price is within a
+       certain range. If the price is within the range, the corresponding cell in the
+       `labels` DataFrame is set to "price".
+
+
+       :param values: Input DataFrame containing the cell values to be labeled.
+       :type values: pd.DataFrame
+       :param labels: DataFrame with the same shape as `values` containing the initial labels.
+       :type labels: pd.DataFrame
+       :return: The modified `labels` DataFrame with "price" labels added.
+       :rtype: pd.DataFrame
+
+.. py:function:: full_labeling(values: pd.DataFrame, settings)
+
+       Apply full labeling to the input DataFrame.
+
+       This function applies the `label_table` function to the input `values` DataFrame, 
+       and then applies the `label_price_cells` function to the result.
+
+
+       :param values: Input DataFrame containing the cell values to be labeled.
+       :type values: pd.DataFrame
+       :param settings: An object containing the settings (including storage)
+       :type settings: object
+       :return: A DataFrame with the same shape as `values` containing the labels for each cell.
+       :rtype: pd.DataFrame

@@ -1,0 +1,88 @@
+============
+string_utils
+============
+
+.. py:function:: normalize(token: str, lower: bool = True) -> str
+
+   Normalize a token by removing non-alphanumeric characters and optionally lowercasing.
+
+   :param token: The token to normalize.
+   :type token: str
+   :param lower: Whether to lowercase the token. Defaults to True.
+   :type lower: bool, optional
+   :return: The normalized token.
+   :rtype: str
+
+.. py:function:: normalize_version(text, brand_id: int = None)
+
+   Normalize a version of a brand by removing non-alphanumeric characters and optionally lowercasing.
+
+   :param text: The text to normalize.
+   :type text: str
+   :param brand_id: The id of the brand. Defaults to None.
+   :type brand_id: int, optional
+   :return: The normalized version.
+   :rtype: str
+
+.. py:function:: is_it_price(token: str)
+
+   Check if a token is a price.
+
+   :param token: The token to check.
+   :type token: str
+   :return: A tuple where the first element is a boolean indicating if the token is a price and the second element is the parsed price if the token is a price.
+   :rtype: tuple
+
+.. py:function:: extract_price(text)
+
+   Extract the price from a text.
+
+   :param text: The text to extract the price from.
+   :type text: str
+   :return: A tuple where the first element is a list of prices, the second element is a list of indices where the prices were found, and the third element is a list of matches.
+   :rtype: tuple
+
+.. py:function:: extract_other_numbers(text)
+
+   Extract other numbers from a text.
+
+   :param text: The text to extract the numbers from.
+   :type text: str
+   :return: A tuple where the first element is a list of numbers, the second element is a list of indices where the numbers were found, and the third element is a list of matches.
+   :rtype: tuple
+
+.. py:function:: extract_all_numbers(text)
+
+   Extract all numbers from a text.
+
+   :param text: The text to extract the numbers from.
+   :type text: str
+   :return: A tuple where the first element is a list of numbers, the second element is a list of indices where the numbers were found, and the third element is a list of matches.
+   :rtype: tuple
+
+.. py:function:: extract_kw(token: str)
+
+   Extract the kilowatt value from a token.
+
+   :param token: The token to extract the kilowatt value from.
+   :type token: str
+   :return: The kilowatt value.
+   :rtype: str
+
+.. py:function:: extract_number(token: str)
+
+   Extract a number from a token.
+
+   :param token: The token to extract the number from.
+   :type token: str
+   :return: A tuple where the first element is the extracted number and the second element is a boolean indicating if the number is between 25 and 500.
+   :rtype: tuple
+
+.. py:function:: clean(token: str) -> str
+
+   Clean a token by removing spaces and lowercasing.
+
+   :param token: The token to clean.
+   :type token: str
+   :return: The cleaned token.
+   :rtype: str

@@ -1,0 +1,19 @@
+=====================
+Applying expert rules
+=====================
+
+Every combination of car brand and the country for which the PDF was written contains its own set of perks. And while we should usually celebrate 
+diversity, this can represent additonal challenges for our parser. So throughout the entire parser we have sprinkled some additional rules and 
+transformations that only apply to a specific brand-country combination. 
+
+And some parts of the parser are meant to handly *only* such exceptions. They appear in three different 
+parts of the table processing: before labeling, after labeling, and after splitting -- each case considered in its own subsection.  
+
+Before labeling
+================
+
+After labeling
+===============
+
+After splitting
+================

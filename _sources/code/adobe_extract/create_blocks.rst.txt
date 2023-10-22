@@ -1,0 +1,82 @@
+=============
+create_blocks
+=============
+
+.. py:function:: create_word(line_block, word_id_cnt, word)
+
+   Create a word block with the given parameters.
+
+   :param line_block: The line block to be used as a base for the word block.
+   :type line_block: dict
+   :param word_id_cnt: The id count for the word.
+   :type word_id_cnt: int
+   :param word: The word to be added to the block.
+   :type word: str
+   :return: The created word block.
+   :rtype: dict
+
+
+.. py:function:: create_line(element, page, pg_num_to_page_metadata, line_id_cnt, word_id_cnt)
+
+   Create a line block with the given parameters.
+
+   :param element: The element to be added to the line block.
+   :type element: dict
+   :param page: The page number.
+   :type page: int
+   :param pg_num_to_page_metadata: The metadata for the page.
+   :type pg_num_to_page_metadata: dict
+   :param line_id_cnt: The id count for the line.
+   :type line_id_cnt: int
+   :param word_id_cnt: The id count for the word.
+   :type word_id_cnt: int
+   :return: The created line block and words.
+   :rtype: tuple[dict, list[dict]]
+
+
+.. py:function:: create_cell(text: str, reference_blocks: list[dict], i: int, j: int, idd: int, blocks: list, word_id_cnt: int) -> tuple[dict, list[dict]]
+
+   Create a cell block with the given parameters.
+
+   :param text: The text to be added to the cell block.
+   :type text: str
+   :param reference_blocks: The reference blocks for the cell block.
+   :type reference_blocks: list[dict]
+   :param i: The row index.
+   :type i: int
+   :param j: The column index.
+   :type j: int
+   :param idd: The id for the cell block.
+   :type idd: int
+   :param blocks: The list of blocks.
+   :type blocks: list
+   :param word_id_cnt: The id count for the word.
+   :type word_id_cnt: int
+   :return: The created cell block and words.
+   :rtype: tuple[dict, list[dict]]
+
+
+.. py:function:: create_table(bbox, table_id_cnt, page)
+
+   Create a table block with the given parameters.
+
+   :param bbox: The bounding box for the table block.
+   :type bbox: tuple
+   :param table_id_cnt: The id count for the table.
+   :type table_id_cnt: int
+   :param page: The page number.
+   :type page: int
+   :return: The created table block.
+   :rtype: dict
+
+
+.. py:function:: create_page(page, page_relations)
+
+   Create a page block with the given parameters.
+
+   :param page: The page number.
+   :type page: int
+   :param page_relations: The relations for the page.
+   :type page_relations: dict
+   :return: The created page block.
+   :rtype: dict

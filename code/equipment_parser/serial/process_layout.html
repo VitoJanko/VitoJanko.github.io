@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>process_layout &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="process_line" href="process_line.html" />
+    <link rel="prev" title="process_color" href="process_color.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">equipment_parser</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../data_models.html">data_models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shared.html">shared</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">serial</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="process_color.html">process_color</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">process_layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="process_line.html">process_line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="process_version.html">process_version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="serial_data_models.html">serial_data_models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../table/index.html">table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/index.html">testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">equipment_parser</a></li>
+          <li class="breadcrumb-item"><a href="index.html">serial</a></li>
+      <li class="breadcrumb-item active">process_layout</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/code/equipment_parser/serial/process_layout.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="process-layout">
+<h1>process_layout<a class="headerlink" href="#process-layout" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="make_columns">
+<span class="sig-name descname"><span class="pre">make_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment_maker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextractDivider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdf_parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PdfParser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_columns" title="Link to this definition"></a></dt>
+<dd><p>This function generates columns from the given pages using the provided segment maker and PDF parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pages</strong> (<em>list</em>) – The pages to generate columns from.</p></li>
+<li><p><strong>segment_maker</strong> (<em>TextractDivider</em>) – The segment maker to use for generating columns.</p></li>
+<li><p><strong>pdf_parser</strong> (<em>PdfParser</em>) – The PDF parser to use for generating columns.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – A boolean indicating whether to print debug information.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the generated columns, a dictionary mapping pages to columns, and a list of equipment.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(list[list[EquipmentLine]], dict[int, int], list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_empty_columns">
+<span class="sig-name descname"><span class="pre">join_empty_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_to_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_empty_columns" title="Link to this definition"></a></dt>
+<dd><p>This function joins empty columns in the given columns dictionary.
+:param columns_dict: The columns dictionary to join empty columns in.
+:param page_to_cols: A dictionary mapping pages to columns.
+:type columns_dict: dict[int, list]
+:type page_to_cols: dict[int, int]
+:return: The updated columns dictionary with empty columns joined.
+:rtype: dict[int, list]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sort_column">
+<span class="sig-name descname"><span class="pre">sort_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#sort_column" title="Link to this definition"></a></dt>
+<dd><p>This function sorts the given column based on the top bounding box.
+:param column: The column to sort.
+:type column: list
+:return: The sorted column.
+:rtype: list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_version_type_one">
+<span class="sig-name descname"><span class="pre">join_version_type_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_version_type_one" title="Link to this definition"></a></dt>
+<dd><p>This function joins versions of type one from the given lines.
+:param lines: The lines to join versions from.
+:param debug: A boolean indicating whether to print debug information.
+:type lines: list[EquipmentLine]
+:type debug: bool
+:return: A tuple containing a dictionary mapping versions to blocks and a list of ordered versions.
+:rtype: (dict[str, VersionBlock], list[str])</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_version_type_two">
+<span class="sig-name descname"><span class="pre">join_version_type_two</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_to_mean_margin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_to_column_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_version_type_two" title="Link to this definition"></a></dt>
+<dd><p>This function joins versions of type two from the given lines.
+:param lines: The lines to join versions from.
+:param page_to_mean_margin: A dictionary mapping pages to mean margins.
+:param page_to_column_change: A dictionary mapping pages to column changes.
+:param debug: A boolean indicating whether to print debug information.
+:type lines: list[EquipmentLine]
+:type page_to_mean_margin: dict
+:type page_to_column_change: dict
+:type debug: bool
+:return: A tuple containing a dictionary mapping versions to blocks, a list of ordered versions, and a boolean indicating whether the join is of type two.
+:rtype: (dict[str, VersionBlock], list[str], bool)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_lone_versions">
+<span class="sig-name descname"><span class="pre">remove_lone_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocks_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">VersionBlock</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ordered_versions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_lone_versions" title="Link to this definition"></a></dt>
+<dd><p>This function removes lone versions from the given blocks dictionary and ordered versions list.
+:param blocks_dict: The blocks dictionary to remove lone versions from.
+:param ordered_versions: The list of ordered versions to remove lone versions from.
+:param debug: A boolean indicating whether to print debug information.
+:type blocks_dict: dict[str, VersionBlock]
+:type ordered_versions: list[str]
+:type debug: bool
+:return: The updated blocks dictionary and ordered versions list with lone versions removed.
+:rtype: (dict[str, VersionBlock], list[str])</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="check_margins">
+<span class="sig-name descname"><span class="pre">check_margins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_to_mean_margin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_to_column_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#check_margins" title="Link to this definition"></a></dt>
+<dd><p>This function checks whether the margins in the given lines are respected.
+:param lines: The lines to check margins in.
+:param page_to_mean_margin: A dictionary mapping pages to mean margins.
+:param page_to_column_change: A dictionary mapping pages to column changes.
+:param debug: A boolean indicating whether to print debug information.
+:type lines: list[EquipmentLine]
+:type page_to_mean_margin: dict
+:type page_to_column_change: dict
+:type debug: bool
+:return: A boolean indicating whether the margins are respected.
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="all_lines">
+<span class="sig-name descname"><span class="pre">all_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#all_lines" title="Link to this definition"></a></dt>
+<dd><p>This function returns all lines from the given columns that meet the line threshold.
+:param columns: The columns to get lines from.
+:param line_threshold: The threshold for lines to meet.
+:type columns: list[list[EquipmentLine]]
+:type line_threshold: int
+:return: The lines that meet the line threshold.
+:rtype: list[list[EquipmentLine]]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_version_blocks">
+<span class="sig-name descname"><span class="pre">join_version_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VersionBlock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VersionBlock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_version_blocks" title="Link to this definition"></a></dt>
+<dd><p>This function joins two version blocks into one.
+:param block1: The first version block to join.
+:param block2: The second version block to join.
+:type block1: VersionBlock
+:type block2: VersionBlock
+:return: The joined version block.
+:rtype: VersionBlock</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="process_color.html" class="btn btn-neutral float-left" title="process_color" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="process_line.html" class="btn btn-neutral float-right" title="process_line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

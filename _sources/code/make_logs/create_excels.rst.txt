@@ -1,0 +1,62 @@
+=============
+create_excels
+=============
+
+.. py:function:: create_excel(destination: LogDestination, match_results: MatchAllResults, eq_results: EquipmentResults, pl_tables: list[TableParser], td_tables: list[TechnicalParser])
+
+       Create an Excel workbook with different sheets for different types of tables.
+
+       :param destination: The destination where the Excel file will be saved.
+       :type destination: LogDestination
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :param eq_results: The results of the equipment.
+       :type eq_results: EquipmentResults
+       :param pl_tables: The list of PL tables.
+       :type pl_tables: list[TableParser]
+       :param td_tables: The list of TD tables.
+       :type td_tables: list[TechnicalParser]
+       :return: None
+
+.. py:function:: write_excel(wb: Workbook, destination: LogDestination)
+
+       Write the Excel workbook to the specified destination.
+
+       :param wb: The workbook to be written.
+       :type wb: Workbook
+       :param destination: The destination where the Excel file will be saved.
+       :type destination: LogDestination
+       :return: None
+
+.. py:function:: create_pl_tables(wb: Workbook, pl_tables: list, match_results: MatchAllResults)
+
+       Create PL tables in the workbook.
+
+       :param wb: The workbook where the tables will be created.
+       :type wb: Workbook
+       :param pl_tables: The list of PL tables.
+       :type pl_tables: list
+       :param match_results: The results of the match.
+       :type match_results: MatchAllResults
+       :return: The number of non-empty tables.
+       :rtype: int
+
+.. py:function:: create_td_tables(wb: Workbook, td_tables: list)
+
+       Create TD tables in the workbook.
+
+       :param wb: The workbook where the tables will be created.
+       :type wb: Workbook
+       :param td_tables: The list of TD tables.
+       :type td_tables: list
+       :return: None
+
+.. py:function:: create_eq_tables(wb: Workbook, eq_results: EquipmentResults)
+
+       Create equipment tables in the workbook.
+
+       :param wb: The workbook where the tables will be created.
+       :type wb: Workbook
+       :param eq_results: The results of the equipment.
+       :type eq_results: EquipmentResults
+       :return: None

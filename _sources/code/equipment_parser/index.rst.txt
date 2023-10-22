@@ -1,0 +1,11 @@
+================
+equipment_parser
+================
+
+.. toctree::
+   data_models
+   main
+   shared
+   serial/index
+   table/index
+   testing/index

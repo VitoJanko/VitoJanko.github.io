@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="shared" href="shared.html" />
+    <link rel="prev" title="data_models" href="data_models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">equipment_parser</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_models.html">data_models</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shared.html">shared</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial/index.html">serial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table/index.html">table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/index.html">testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">equipment_parser</a></li>
+      <li class="breadcrumb-item active">main</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/equipment_parser/main.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="main">
+<h1>main<a class="headerlink" href="#main" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="check_if_table_already_parsed">
+<span class="sig-name descname"><span class="pre">check_if_table_already_parsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extracts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#check_if_table_already_parsed" title="Link to this definition"></a></dt>
+<dd><p>Check if the table has already been parsed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_data</strong> (<em>TableData</em>) – The data of the table.</p></li>
+<li><p><strong>extracts</strong> (<em>PDFExtracts</em>) – The extracted data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the table has already been parsed, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract_equipment">
+<span class="sig-name descname"><span class="pre">extract_equipment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extracts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables_adobe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">general_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price_list_json</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extract_equipment" title="Link to this definition"></a></dt>
+<dd><p>Extract equipment data from the given tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extracts</strong> (<em>PDFExtracts</em>) – The extracted data.</p></li>
+<li><p><strong>tables</strong> (<em>Tables</em>) – The tables to extract data from.</p></li>
+<li><p><strong>tables_adobe</strong> (<em>Tables</em>) – The Adobe tables to extract data from.</p></li>
+<li><p><strong>general_attr</strong> (<em>CommonAttrs</em>) – The general attributes.</p></li>
+<li><p><strong>price_list_json</strong> (<em>dict</em>) – The price list in JSON format.</p></li>
+<li><p><strong>ground_truth</strong> (<em>dict</em>) – The ground truth data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extracted equipment results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EquipmentResults</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="create_versions_map">
+<span class="sig-name descname"><span class="pre">create_versions_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">price_list_json</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brand_specific_versions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_versions_map" title="Link to this definition"></a></dt>
+<dd><p>Create a map of versions to their IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>price_list_json</strong> (<em>dict</em>) – The price list in JSON format.</p></li>
+<li><p><strong>brand_specific_versions</strong> (<em>list</em>) – The brand-specific versions.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em><em>, </em><em>optional</em>) – The summary of the data, defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The map of versions to their IDs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="create_extra_brand_versions">
+<span class="sig-name descname"><span class="pre">create_extra_brand_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_extra_brand_versions" title="Link to this definition"></a></dt>
+<dd><p>Create extra brand versions based on the summary and versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+<li><p><strong>versions</strong> (<em>list</em>) – The versions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extra brand versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="create_extra_versions">
+<span class="sig-name descname"><span class="pre">create_extra_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions_to_id_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_extra_versions" title="Link to this definition"></a></dt>
+<dd><p>Create extra versions based on the summary and the map of versions to their IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the data.</p></li>
+<li><p><strong>versions_to_id_map</strong> (<em>dict</em>) – The map of versions to their IDs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extra versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parse_equipment_tables">
+<span class="sig-name descname"><span class="pre">parse_equipment_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extracts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parse_equipment_tables" title="Link to this definition"></a></dt>
+<dd><p>Parse equipment tables and return the parsed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tables</strong> (<em>list</em><em>[</em><em>TableData</em><em>]</em>) – The tables to parse.</p></li>
+<li><p><strong>extracts</strong> (<em>PDFExtracts</em>) – The extracted data.</p></li>
+<li><p><strong>versions_to_id_map</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – The map of versions to their IDs.</p></li>
+<li><p><strong>additional_versions_to_id_map</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – The map of additional versions to their IDs.</p></li>
+<li><p><strong>common_attrs</strong> (<em>CommonAttrs</em>) – The common attributes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The parsed equipment data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list, list[dict[str, int]], dict, list[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parse_optional">
+<span class="sig-name descname"><span class="pre">parse_optional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extracts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables_adobe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parse_optional" title="Link to this definition"></a></dt>
+<dd><p>Parse optional equipment data from the given tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>versions_to_id_map</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – The map of versions to their IDs.</p></li>
+<li><p><strong>additional_versions_to_id_map</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – The map of additional versions to their IDs.</p></li>
+<li><p><strong>extracts</strong> (<em>PDFExtracts</em>) – The extracted data.</p></li>
+<li><p><strong>tables</strong> (<em>Tables</em>) – The tables to extract data from.</p></li>
+<li><p><strong>tables_adobe</strong> (<em>Tables</em>) – The Adobe tables to extract data from.</p></li>
+<li><p><strong>common_attrs</strong> (<em>CommonAttrs</em>) – The common attributes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The parsed optional equipment data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list, list[dict[str, int]], list[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parse_serial">
+<span class="sig-name descname"><span class="pre">parse_serial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extracts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_attrs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">using_adobe_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parse_serial" title="Link to this definition"></a></dt>
+<dd><p>Parse serial equipment data from the given extracts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>versions_to_id_map</strong> (<em>dict</em>) – The map of versions to their IDs.</p></li>
+<li><p><strong>additional_versions_to_id_map</strong> (<em>dict</em>) – The map of additional versions to their IDs.</p></li>
+<li><p><strong>extracts</strong> (<em>PDFExtracts</em>) – The extracted data.</p></li>
+<li><p><strong>common_attrs</strong> (<em>CommonAttrs</em>) – The common attributes.</p></li>
+<li><p><strong>using_adobe_output</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use Adobe output, defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The parsed serial equipment data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[dict, list, list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="combine">
+<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">se_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oe_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oe_tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remaining_pages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eq_pages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_versions_to_id_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative_examples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price_list_json</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#combine" title="Link to this definition"></a></dt>
+<dd><p>Combine the given lists and maps into a single EquipmentResults object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>se_list</strong> (<em>list</em><em>[</em><em>CommonEntry</em><em>]</em>) – The list of serial equipment.</p></li>
+<li><p><strong>oe_list</strong> (<em>list</em><em>[</em><em>CommonEntry</em><em>]</em>) – The list of optional equipment.</p></li>
+<li><p><strong>oe_tables</strong> (<em>list</em>) – The optional equipment tables.</p></li>
+<li><p><strong>remaining_pages</strong> (<em>list</em>) – The remaining pages.</p></li>
+<li><p><strong>eq_pages</strong> (<em>list</em>) – The equipment pages.</p></li>
+<li><p><strong>versions_to_id_map</strong> (<em>dict</em>) – The map of versions to their IDs.</p></li>
+<li><p><strong>additional_versions_to_id_map</strong> (<em>dict</em>) – The map of additional versions to their IDs.</p></li>
+<li><p><strong>negative_examples</strong> (<em>list</em>) – The negative examples.</p></li>
+<li><p><strong>price_list_json</strong> (<em>dict</em>) – The price list in JSON format.</p></li>
+<li><p><strong>ground_truth</strong> (<em>dict</em>) – The ground truth data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The combined equipment results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EquipmentResults</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="add_ids">
+<span class="sig-name descname"><span class="pre">add_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equipments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#add_ids" title="Link to this definition"></a></dt>
+<dd><p>Add IDs to the given equipments and colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>equipments</strong> (<em>list</em><em>[</em><em>Equipment</em><em>]</em>) – The equipments to add IDs to.</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em>[</em><em>Color</em><em>]</em>) – The colors to add IDs to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="merge_versions">
+<span class="sig-name descname"><span class="pre">merge_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equipments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">combined_versions_to_id_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions_to_id_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#merge_versions" title="Link to this definition"></a></dt>
+<dd><p>Merges and delete versions in a list of equipment.</p>
+<p>Conditions:
+- Merge/delete will only occur if the number of versions in the equipment is
+greater than the number of versions in the main price list.
+- Versions selected for merge/delete are only those with fewer instances of
+equipment than the base version on the price list.</p>
+<p>Heuristics for merging and deleting versions after the above condition is met:
+- A merge will occur if the version name is contained in another version”””s name.
+Example: “””(MY22)””” will merge into “””Initiale paris (MY22)”””.
+- A version will be deleted under two conditions:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The version name is not contained in any other version.</p></li>
+</ol>
+<p>2. The version has less than half the number of equipment instances of
+the base version.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>equipments</strong> (<em>list</em>) – A list of Equipment instances.</p></li>
+<li><p><strong>combined_versions_to_id_map</strong> (<em>dict</em>) – A dictionary of version name to version ID for all versions.</p></li>
+<li><p><strong>versions_to_id_map</strong> (<em>dict</em>) – A dictionary of version name to version ID for main versions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A modified list of Equipment instances.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="add_availability">
+<span class="sig-name descname"><span class="pre">add_availability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Equipment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">availabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentAvailability</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#add_availability" title="Link to this definition"></a></dt>
+<dd><p>Adds availability to an item based on a priority system. If two availabilities are present, the one with higher priority is chosen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>Equipment</em>) – An instance of Equipment.</p></li>
+<li><p><strong>availabilities</strong> (<em>list</em><em>[</em><em>EquipmentAvailability</em><em>]</em>) – A list of EquipmentAvailability instances.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_models.html" class="btn btn-neutral float-left" title="data_models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shared.html" class="btn btn-neutral float-right" title="shared" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

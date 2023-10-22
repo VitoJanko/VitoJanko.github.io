@@ -1,0 +1,164 @@
+===============
+segment_divider
+===============
+
+.. py:function:: text_list(self) -> list[str]
+
+   Returns a list of text from the lines.
+   :return: List of text from the lines.
+   :rtype: list[str]
+
+.. py:function:: contains(self, y) -> bool
+
+   Checks if the given value is within the start and end range.
+
+   :param y: Value to check.
+   :type y: float
+   :return: True if the value is within the range, False otherwise.
+   :rtype: bool
+
+.. py:function:: is_contained_in(self, y_start, y_end) -> bool
+
+   Checks if the segment is contained within the given start and end range.
+
+   :param y_start: Start of the range.
+   :type y_start: float
+   :param y_end: End of the range.
+   :type y_end: float
+   :return: True if the segment is within the range, False otherwise.
+   :rtype: bool
+
+.. py:function:: __repr__(self)
+
+   Returns a string representation of the object.
+   :return: String representation of the object.
+   :rtype: str
+
+.. py:function:: __init__(self, textract: dict, eq_model: EQModel)
+
+   Initializes the object with the given textract and eq_model.
+
+   :param textract: Textract data.
+   :type textract: dict
+   :param eq_model: EQModel object.
+   :type eq_model: EQModel
+
+.. py:function:: find_tables(self, doc_page: Page) -> list[(Table, float, float)]
+
+   Finds tables in the given document page.
+
+   :param doc_page: Document page to find tables in.
+   :type doc_page: Page
+   :return: List of tables and their start and end positions.
+   :rtype: list[(Table, float, float)]
+
+.. py:function:: find_page_gaps(self, doc_page: Page) -> list[(Table, float, float)]
+
+   Finds gaps in the given document page.
+
+   :param doc_page: Document page to find gaps in.
+   :type doc_page: Page
+   :return: List of gaps and their start and end positions.
+   :rtype: list[(Table, float, float)]
+
+.. py:function:: create_all_segments(self, page: int, tables: list[(Table, float, float)]) -> list[Segment]
+
+   Creates segments for the given page and tables.
+
+   :param page: Page number.
+   :type page: int
+   :param tables: List of tables and their start and end positions.
+   :type tables: list[(Table, float, float)]
+   :return: List of created segments.
+   :rtype: list[Segment]
+
+.. py:function:: create_segment(self, table: Table, start: float, end: float, page: int) -> Optional[Segment]
+
+   Creates a segment for the given table, start, end, and page.
+
+   :param table: Table to create a segment for.
+   :type table: Table
+   :param start: Start position of the segment.
+   :type start: float
+   :param end: End position of the segment.
+   :type end: float
+   :param page: Page number.
+   :type page: int
+   :return: Created segment or None if no segment was created.
+   :rtype: Optional[Segment]
+
+.. py:function:: find_lines(self, seg_start: float, seg_end: float, page: int)
+
+   Finds lines in the given start, end, and page.
+
+   :param seg_start: Start position of the segment.
+   :type seg_start: float
+   :param seg_end: End position of the segment.
+   :type seg_end: float
+   :param page: Page number.
+   :type page: int
+   :return: List of found lines.
+   :rtype: list
+
+.. py:function:: find_segment(self, page: int, position: float) -> Optional[Segment]
+
+   Searches for the segment with the specified page and position.
+
+   :param page: Page number.
+   :type page: int
+   :param position: Position to search for.
+   :type position: float
+   :return: Found segment or None if no segment was found.
+   :rtype: Optional[Segment]
+
+.. py:function:: find_segments(self, page: int, y_start: float, y_end: float, loose: bool = False, threshold: float = 0.02) -> list[Segment]
+
+   Searches for the segment that is contained within y_start, y_end.
+
+   :param page: Page number.
+   :type page: int
+   :param y_start: Start position of the segment.
+   :type y_start: float
+   :param y_end: End position of the segment.
+   :type y_end: float
+   :param loose: If True, returns all segments that have at least some part in between y_start and y_end.
+   :type loose: bool
+   :param threshold: Margin of mismatch error allowed.
+   :type threshold: float
+   :return: List of found segments.
+   :rtype: list[Segment]
+
+.. py:function:: set_used(self, page: int, y_start: float, y_end: float, loose: bool = False)
+
+   Sets the used attribute of the found segments to True.
+
+   :param page: Page number.
+   :type page: int
+   :param y_start: Start position of the segment.
+   :type y_start: float
+   :param y_end: End position of the segment.
+   :type y_end: float
+   :param loose: If True, sets the used attribute of all segments that have at least some part in between y_start and y_end to True.
+   :type loose: bool
+
+.. py:function:: get_used(self, page: int, y_start: float, y_end: float, loose: bool = False)
+
+   Returns the used attribute of the found segments.
+
+   :param page: Page number.
+   :type page: int
+   :param y_start: Start position of the segment.
+   :type y_start: float
+   :param y_end: End position of the segment.
+   :type y_end: float
+   :param loose: If True, returns the used attribute of all segments that have at least some part in between y_start and y_end.
+   :type loose: bool
+   :return: List of used attributes of the found segments.
+   :rtype: list
+
+.. py:function:: color_used_segments(self, pdf_parser)
+
+   Colors the used segments in the given pdf_parser.
+
+   :param pdf_parser: PDF parser to color used segments in.
+   :type pdf_parser: PDFParser

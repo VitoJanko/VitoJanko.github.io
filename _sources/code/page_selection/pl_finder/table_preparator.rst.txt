@@ -1,0 +1,75 @@
+================
+table_preparator
+================
+
+.. py:function:: __init__(self, table: trp.Table, blocks_map, page, content_type: ContentType, line_to_labels, correct_textract: bool, remove_price_noise: int = 2) -> None
+
+       Initializes the class with the given parameters.
+
+       :param table: The table to be processed.
+       :type table: trp.Table
+       :param blocks_map: The map of blocks.
+       :type blocks_map: dict
+       :param page: The page to be processed.
+       :type page: object
+       :param content_type: The type of content to be processed.
+       :type content_type: ContentType
+       :param line_to_labels: The labels for each line.
+       :type line_to_labels: dict
+       :param correct_textract: Flag to correct textract.
+       :type correct_textract: bool
+       :param remove_price_noise: The threshold for removing price noise.
+       :type remove_price_noise: int
+       :return: None
+
+
+.. py:function:: process_table(self, post_process=True)
+
+       Processes the table.
+
+       :param post_process: Flag to post process the table.
+       :type post_process: bool
+       :return: The processed table, status dictionary, and mapper.
+       :rtype: tuple
+
+
+.. py:function:: process_row(self, row, row_index, post_process=True)
+
+       Processes a row in the table.
+
+       :param row: The row to be processed.
+       :type row: list
+       :param row_index: The index of the row.
+       :type row_index: int
+       :param post_process: Flag to post process the row.
+       :type post_process: bool
+       :return: The processed row values.
+       :rtype: list
+
+
+.. py:function:: process_multiline_cell(self, lines, cell_index)
+
+       Processes a multiline cell in the table.
+
+       :param lines: The lines in the cell.
+       :type lines: list
+       :param cell_index: The index of the cell.
+       :type cell_index: int
+       :return: Flag indicating if the row is splitted.
+       :rtype: bool
+
+
+.. py:function:: process_row_values(self, row_values, row_index, is_splitted_row, max_lines)
+
+       Processes the values in a row.
+
+       :param row_values: The values in the row.
+       :type row_values: list
+       :param row_index: The index of the row.
+       :type row_index: int
+       :param is_splitted_row: Flag indicating if the row is splitted.
+       :type is_splitted_row: bool
+       :param max_lines: The maximum number of lines in the row.
+       :type max_lines: int
+       :return: The processed row.
+       :rtype: list

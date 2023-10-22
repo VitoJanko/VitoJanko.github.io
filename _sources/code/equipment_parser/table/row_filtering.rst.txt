@@ -1,0 +1,61 @@
+=============
+row_filtering
+=============
+
+.. py:function:: detect_rows_with_repeating_state(state: str, df_image_labels: pd.DataFrame, version_cols: list[int]) -> pd.Series
+
+   Checks if row contains only one state repeated over all version columns.
+
+   :param state: The state to check for repetition.
+   :type state: str
+   :param df_image_labels: The dataframe containing image labels.
+   :type df_image_labels: pd.DataFrame
+   :param version_cols: List of version columns.
+   :type version_cols: list[int]
+   :return: A series indicating if a row contains only one state repeated over all version columns.
+   :rtype: pd.Series
+
+.. py:function:: remove_long_strings(values, cols, max_str_len, title_row)
+
+   Removes rows with strings longer than a specified length.
+
+   :param values: The dataframe to process.
+   :type values: pd.DataFrame
+   :param cols: The columns to check for long strings.
+   :type cols: list
+   :param max_str_len: The maximum allowed string length.
+   :type max_str_len: int
+   :param title_row: The title row.
+   :type title_row: int
+   :return: The processed dataframe.
+   :rtype: pd.DataFrame
+
+.. py:function:: handle_merge_package_item_rows(values: pd.DataFrame, blank_rows_indicator, eq_col: int, eq_model)
+
+   Merges package item rows if required.
+
+   :param values: The dataframe to process.
+   :type values: pd.DataFrame
+   :param blank_rows_indicator: Indicator for blank rows.
+   :type blank_rows_indicator: pd.Series
+   :param eq_col: The equipment column.
+   :type eq_col: int
+   :param eq_model: The equipment model.
+   :type eq_model: object
+
+.. py:function:: remove_blanks(values: pd.DataFrame, df_image_labels: pd.DataFrame, table_semantic: TableSemantic, eq_model, settings)
+
+   Removes blank and not equipment rows, and rows with extremely long strings.
+
+   :param values: The dataframe to process.
+   :type values: pd.DataFrame
+   :param df_image_labels: The dataframe containing image labels.
+   :type df_image_labels: pd.DataFrame
+   :param table_semantic: The table semantic.
+   :type table_semantic: TableSemantic
+   :param eq_model: The equipment model.
+   :type eq_model: object
+   :param settings: The settings.
+   :type settings: object
+   :return: The processed dataframe and image labels dataframe.
+   :rtype: tuple

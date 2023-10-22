@@ -1,0 +1,61 @@
+===============
+recycle_headers
+===============
+
+.. py:function:: generate_header(values: pd.DataFrame, versions: list) -> pd.DataFrame
+
+   Generates a header for a DataFrame by adding versions to the end of the header row.
+
+   :param values: The input DataFrame.
+   :type values: pd.DataFrame
+   :param versions: The list of versions to be added to the header row.
+   :type versions: list
+   :return: A new DataFrame containing the header row with versions. Returns None if the number of columns in values is less than or equal to the length of versions.
+   :rtype: pd.DataFrame
+
+.. py:function:: concat_header(previous_header, values_original, values_blocks)
+
+   Concatenates the header row to the given DataFrames.
+
+   :param previous_header: The header row to be added.
+   :type previous_header: pd.DataFrame
+   :param values_original: The original DataFrame.
+   :type values_original: pd.DataFrame
+   :param values_blocks: The DataFrame containing blocks of values.
+   :type values_blocks: pd.DataFrame
+   :return: A tuple containing the updated DataFrames with the header row added.
+   :rtype: tuple
+
+.. py:function:: try_previous_header(previous_header, values, values_original, values_blocks)
+
+   Attempts to merge the previous header with the given DataFrames.
+
+   :param previous_header: The header row to be added.
+   :type previous_header: pd.DataFrame
+   :param values: The input DataFrame.
+   :type values: pd.DataFrame
+   :param values_original: The original DataFrame.
+   :type values_original: pd.DataFrame
+   :param values_blocks: The DataFrame containing blocks of values.
+   :type values_blocks: pd.DataFrame
+   :return: A tuple containing a boolean indicating the success of the merge, and the updated DataFrames with the header row added if successful.
+   :rtype: tuple
+
+.. py:function:: recycle_header(values, values_original, values_blocks, versions_to_id_map, previous_headers, settings)
+
+   Tries to recycles the previous header rows by trying to merge it with the given DataFrames.
+
+   :param values: The input DataFrame.
+   :type values: pd.DataFrame
+   :param values_original: The original DataFrame.
+   :type values_original: pd.DataFrame
+   :param values_blocks: The DataFrame containing blocks of values.
+   :type values_blocks: pd.DataFrame
+   :param versions_to_id_map: A mapping of versions to their IDs.
+   :type versions_to_id_map: dict
+   :param previous_headers: A list of previous header rows.
+   :type previous_headers: list
+   :param settings: The settings for the recycling process.
+   :type settings: object
+   :return: A tuple containing a boolean indicating the success of the merge, and the updated DataFrames with the header row added if successful.
+   :rtype: tuple

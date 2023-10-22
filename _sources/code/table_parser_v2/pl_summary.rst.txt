@@ -1,0 +1,16 @@
+==========
+pl_summary
+==========
+
+.. py:function:: process_model_brand(self)
+
+   Check if the brand name and model name are present in the possible versions.
+   If present, set the corresponding flag to True.
+   :return: None
+   :rtype: None
+
+.. py:function:: get_year(self)
+
+   Get the year from the date. If date is not present, return 0.
+   :return: The year from the date.
+   :rtype: int

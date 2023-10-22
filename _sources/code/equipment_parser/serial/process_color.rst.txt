@@ -1,0 +1,34 @@
+=============
+process_color
+=============
+
+.. py:function:: line_color_prop(pdf_parser: PdfParser, block: dict)
+
+   Extracts the proportion of black and white colors in a given block of a PDF document.
+
+   :param pdf_parser: The PDF parser to use.
+   :type pdf_parser: PdfParser
+   :param block: The block of the PDF document to analyze.
+   :type block: dict
+   :return: The proportions of black and white colors.
+   :rtype: tuple[float, float]
+
+.. py:function:: get_cropped_image(pdf_parser: PdfParser, block: dict)
+
+   Extracts a cropped image from a given block of a PDF document.
+
+   :param pdf_parser: The PDF parser to use.
+   :type pdf_parser: PdfParser
+   :param block: The block of the PDF document to analyze.
+   :type block: dict
+   :return: The cropped image data.
+   :rtype: list
+
+.. py:function:: extract_color_prop(cropped_image)
+
+   Calculates the proportion of black and white colors in a cropped image.
+
+   :param cropped_image: The cropped image to analyze.
+   :type cropped_image: list
+   :return: The proportions of black and white colors.
+   :rtype: tuple[float, float]

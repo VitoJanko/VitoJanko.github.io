@@ -1,0 +1,89 @@
+====
+main
+====
+
+.. py:function:: prepare_tables_full(page: trp.Page, page_number, labeler, settings, language, return_all, textract_results, summary, is_technical_details=False, is_equipment=False)
+
+   Prepare tables with different content types and append them to a list if they meet certain conditions.
+
+   :param page: The page to process.
+   :type page: trp.Page
+   :param page_number: The number of the page.
+   :type page_number: int
+   :param labeler: The labeler to use.
+   :type labeler: object
+   :param settings: The settings to use.
+   :type settings: object
+   :param language: The language of the page.
+   :type language: str
+   :param return_all: Whether to return all tables or not.
+   :type return_all: bool
+   :param textract_results: The results from Amazon Textract.
+   :type textract_results: dict
+   :param summary: The summary of the document.
+   :type summary: object
+   :param is_technical_details: Whether the page contains technical details or not.
+   :type is_technical_details: bool
+   :param is_equipment: Whether the page contains equipment details or not.
+   :type is_equipment: bool
+   :return: The list of tables.
+   :rtype: list[TableData]
+
+.. py:function:: make_labels(page: trp.Page, labeler, is_technical_details, is_equipment)
+
+   Make labels for each line in the page.
+
+   :param page: The page to process.
+   :type page: trp.Page
+   :param labeler: The labeler to use.
+   :type labeler: object
+   :param is_technical_details: Whether the page contains technical details or not.
+   :type is_technical_details: bool
+   :param is_equipment: Whether the page contains equipment details or not.
+   :type is_equipment: bool
+   :return: The dictionary of labels.
+   :rtype: dict
+
+.. py:function:: make_tables(textract, labeler, settings, language, return_all, summary, is_technical_details, is_equipment) -> list[TableData]
+
+   Make tables from the document.
+
+   :param textract: The results from Amazon Textract.
+   :type textract: dict
+   :param labeler: The labeler to use.
+   :type labeler: object
+   :param settings: The settings to use.
+   :type settings: object
+   :param language: The language of the document.
+   :type language: str
+   :param return_all: Whether to return all tables or not.
+   :type return_all: bool
+   :param summary: The summary of the document.
+   :type summary: object
+   :param is_technical_details: Whether the document contains technical details or not.
+   :type is_technical_details: bool
+   :param is_equipment: Whether the document contains equipment details or not.
+   :type is_equipment: bool
+   :return: The list of tables.
+   :rtype: list[TableData]
+
+.. py:function:: find_tables(pl_textract, td_textract, eq_textract, language: str, settings: Settings, summary, return_all: bool = False) -> Tables
+
+   Find tables in the document.
+
+   :param pl_textract: The results from Amazon Textract for the product list.
+   :type pl_textract: dict
+   :param td_textract: The results from Amazon Textract for the technical details.
+   :type td_textract: dict
+   :param eq_textract: The results from Amazon Textract for the equipment.
+   :type eq_textract: dict
+   :param language: The language of the document.
+   :type language: str
+   :param settings: The settings to use.
+   :type settings: Settings
+   :param summary: The summary of the document.
+   :type summary: object
+   :param return_all: Whether to return all tables or not.
+   :type return_all: bool
+   :return: The tables found in the document.
+   :rtype: Tables

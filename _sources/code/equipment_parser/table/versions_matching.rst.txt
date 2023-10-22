@@ -1,0 +1,18 @@
+=================
+versions_matching
+=================
+
+.. py:function:: match_versions_to_ids_V3(col_id_to_value: dict[int, str], versions_to_id_map: dict[str, int], additional_versions_to_id_map: dict[str, int], brand_id: int)
+
+       Match versions to ids and return a list of matched versions, average score and a boolean indicating if textract should be used.
+
+       :param col_id_to_value: A dictionary mapping column ids to values.
+       :type col_id_to_value: dict[int, str]
+       :param versions_to_id_map: A dictionary mapping versions to ids.
+       :type versions_to_id_map: dict[str, int]
+       :param additional_versions_to_id_map: An additional dictionary mapping versions to ids.
+       :type additional_versions_to_id_map: dict[str, int]
+       :param brand_id: The id of the brand.
+       :type brand_id: int
+       :return: A tuple containing a list of matched versions, the average score and a boolean indicating if textract should be used.
+       :rtype: tuple[list[VersionMatch], float or None, bool]

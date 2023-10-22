@@ -1,0 +1,49 @@
+=======================================
+Transforming to the standard table form
+=======================================
+
+With cell labels in hand we are equipped to tackle the table structure! Are the versions (equipment level) on the top-right side of the table
+and multiple prices in each row? The table is probably in the "wide" format. Are all the headers in the first column? Table is transposed!
+Few rows empty in all but one fuel cell? The table is probably split by fuel type. And so on and on. 
+
+After each such deduction we can transform the table a bit, and eventually end in what we call the "standard form". In this format each row 
+represents one valid combination of car attributes, together with its price and each column represents one attribute (engine, transmission, etc).
+
+Sample input
+============
+
+.. image:: ../images/labels.png
+  :width: 800
+
+
+Sample output
+=============
+
+.. image:: ../images/standard_form.png
+  :width: 500
+
+
+Mapper idea
+============
+
+Mapper encyclopedia
+====================
+
+Merge mapper
+------------
+
+Split mapper
+------------
+
+Wide mapper
+-----------
+
+Code flow
+==========
+
+.. image:: ../images/get_mapper.png
+  :width: 800
+
+
+.. note::
+	Good luck documenting this!

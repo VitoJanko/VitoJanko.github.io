@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>write_labels &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="write_logs" href="write_logs.html" />
+    <link rel="prev" title="table_makers" href="table_makers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">make_logs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="create_excels.html">create_excels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excel_extractor.html">excel_extractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excel_utility.html">excel_utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="read_excel.html">read_excel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table_makers.html">table_makers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">write_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_logs.html">write_logs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">make_logs</a></li>
+      <li class="breadcrumb-item active">write_labels</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/make_logs/write_labels.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="write-labels">
+<h1>write_labels<a class="headerlink" href="#write-labels" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_cell_labels">
+<span class="sig-name descname"><span class="pre">generate_cell_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogDestination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatchAllResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">TableParser</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_cell_labels" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Generate labels for cells in the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param destination<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The destination for the logs.</p>
+</dd>
+<dt class="field-even">type destination<span class="colon">:</span></dt>
+<dd class="field-even"><p>LogDestination</p>
+</dd>
+<dt class="field-odd">param match_results<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The results of the match.</p>
+</dd>
+<dt class="field-even">type match_results<span class="colon">:</span></dt>
+<dd class="field-even"><p>MatchAllResults</p>
+</dd>
+<dt class="field-odd">param tables<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of tables to be parsed.</p>
+</dd>
+<dt class="field-even">type tables<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[TableParser]</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="labels_from_values_new">
+<span class="sig-name descname"><span class="pre">labels_from_values_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#labels_from_values_new" title="Link to this definition"></a></dt>
+<dd><p>Generate labels from new values in the table.
+:param table_i: The index of the table.
+:type table_i: int
+:param table: The table to be parsed.
+:type table: TableParser
+:param labels: The list of labels.
+:type labels: list
+:param labels5: The list of labels for 5 values.
+:type labels5: list
+:param labels10: The list of labels for 10 values.
+:type labels10: list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="labels_from_values">
+<span class="sig-name descname"><span class="pre">labels_from_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#labels_from_values" title="Link to this definition"></a></dt>
+<dd><p>Generate labels from values in the table.
+:param table_i: The index of the table.
+:type table_i: int
+:param table: The table to be parsed.
+:type table: TableParser
+:param match_results: The results of the match.
+:type match_results: MatchAllResults
+:param labels: The list of labels.
+:type labels: list
+:param labels5: The list of labels for 5 values.
+:type labels5: list
+:param labels10: The list of labels for 10 values.
+:type labels10: list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="labels_from_values_extended">
+<span class="sig-name descname"><span class="pre">labels_from_values_extended</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#labels_from_values_extended" title="Link to this definition"></a></dt>
+<dd><p>Generate labels from extended values in the table.
+:param table_index: The index of the table.
+:type table_index: int
+:param table: The table to be parsed.
+:type table: TableParser
+:param labels: The list of labels.
+:type labels: list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="contains_keyword">
+<span class="sig-name descname"><span class="pre">contains_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#contains_keyword" title="Link to this definition"></a></dt>
+<dd><p>Check if the value contains any of the keywords.
+:param value: The value to be checked.
+:type value: str
+:param keywords: The list of keywords.
+:type keywords: list
+:return: True if the value contains any of the keywords, False otherwise.
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_confidence_labels">
+<span class="sig-name descname"><span class="pre">generate_confidence_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogDestination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatchAllResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">TableParser</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_confidence_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for confidence in the table.
+:param destination: The destination for the logs.
+:type destination: LogDestination
+:param match_results: The results of the match.
+:type match_results: MatchAllResults
+:param tables: The list of tables to be parsed.
+:type tables: list[TableParser]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_confidence_logs_labels">
+<span class="sig-name descname"><span class="pre">generate_confidence_logs_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogDestination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatchAllResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">TableParser</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_confidence_logs_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for confidence logs in the table.
+:param destination: The destination for the logs.
+:type destination: LogDestination
+:param match_results: The results of the match.
+:type match_results: MatchAllResults
+:param tables: The list of tables to be parsed.
+:type tables: list[TableParser]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_mapping_labels">
+<span class="sig-name descname"><span class="pre">generate_mapping_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogDestination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatchAllResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">TableParser</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_mapping_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for mapping in the table.
+:param destination: The destination for the logs.
+:type destination: LogDestination
+:param match_results: The results of the match.
+:type match_results: MatchAllResults
+:param tables: The list of tables to be parsed.
+:type tables: list[TableParser]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_id_mapping_labels">
+<span class="sig-name descname"><span class="pre">generate_id_mapping_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogDestination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatchAllResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_id_mapping_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for id mapping in the table.
+:param destination: The destination for the logs.
+:type destination: LogDestination
+:param match_results: The results of the match.
+:type match_results: MatchAllResults
+:param tables: The list of tables to be parsed.
+:type tables: list</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_handwritten_labels">
+<span class="sig-name descname"><span class="pre">generate_handwritten_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">TableParser</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_handwritten_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate handwritten labels for given tables and save them in a specific directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tables</strong> (<em>list</em><em>[</em><em>TableParser</em><em>]</em>) – List of tables to generate labels for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="find_largest_index">
+<span class="sig-name descname"><span class="pre">find_largest_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#find_largest_index" title="Link to this definition"></a></dt>
+<dd><p>Find the largest index in the given directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_to_directory</strong> (<em>str</em>) – Path to the directory to search in.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The largest index found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract_value">
+<span class="sig-name descname"><span class="pre">extract_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TableParser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extract_value" title="Link to this definition"></a></dt>
+<dd><p>Extract a value from a table at a specific row and column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>TableParser</em>) – The table to extract value from.</p></li>
+<li><p><strong>col_name</strong> (<em>str</em>) – The column name.</p></li>
+<li><p><strong>row</strong> (<em>int</em>) – The row index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extracted value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_csvs">
+<span class="sig-name descname"><span class="pre">make_csvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_csvs" title="Link to this definition"></a></dt>
+<dd><p>Create CSV files for a given label type and dataframe, and save them in a specific destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_type</strong> (<em>str</em>) – The type of label.</p></li>
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The dataframe to save.</p></li>
+<li><p><strong>destination</strong> (<em>str</em>) – The destination to save the CSV file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="csv_to_s3">
+<span class="sig-name descname"><span class="pre">csv_to_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#csv_to_s3" title="Link to this definition"></a></dt>
+<dd><p>Save a dataframe as a CSV file to an S3 path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The dataframe to save.</p></li>
+<li><p><strong>s3_path</strong> (<em>str</em>) – The S3 path to save the CSV file.</p></li>
+<li><p><strong>handler</strong> (<em>S3Handler</em><em> or </em><em>None</em>) – The handler for the S3 service. If None, a default handler is used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="table_makers.html" class="btn btn-neutral float-left" title="table_makers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="write_logs.html" class="btn btn-neutral float-right" title="write_logs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>table_surrounding &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="td_parser" href="td_parser.html" />
+    <link rel="prev" title="search_textract_blocks" href="search_textract_blocks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">table_parser_v2</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="abstract_parser.html">abstract_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="column_extraction.html">column_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html">helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parse_tables.html">parse_tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_summary.html">pl_summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_textract_blocks.html">search_textract_blocks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">table_surrounding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="td_parser.html">td_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transmission.html">transmission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">table_parser_v2</a></li>
+      <li class="breadcrumb-item active">table_surrounding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/table_parser_v2/table_surrounding.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-surrounding">
+<h1>table_surrounding<a class="headerlink" href="#table-surrounding" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="get_data_from_table_surrounding">
+<span class="sig-name descname"><span class="pre">get_data_from_table_surrounding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_metadata_block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_to_textract_blocks_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_data_from_table_surrounding" title="Link to this definition"></a></dt>
+<dd><p>Returns a map of categories to their corresponding values extracted from the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categories</strong> (<em>list</em>) – List of categories to extract values for.</p></li>
+<li><p><strong>table_metadata_block</strong> (<em>dict</em>) – Metadata of the table to extract data from.</p></li>
+<li><p><strong>category_to_textract_blocks_map</strong> (<em>dict</em>) – Map of categories to their corresponding textract blocks.</p></li>
+<li><p><strong>tolerance</strong> (<em>float</em>) – Tolerance for the extraction process.</p></li>
+<li><p><strong>top_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Top limit for the extraction process, defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Map of categories to their corresponding values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_versions_data">
+<span class="sig-name descname"><span class="pre">get_versions_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_metadata_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_to_textract_blocks_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_versions_data" title="Link to this definition"></a></dt>
+<dd><p>Returns the versions data extracted from the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_metadata_block</strong> (<em>dict</em>) – Metadata of the table to extract data from.</p></li>
+<li><p><strong>category_to_textract_blocks_map</strong> (<em>dict</em>) – Map of categories to their corresponding textract blocks.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Versions data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_fuel_data">
+<span class="sig-name descname"><span class="pre">get_fuel_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_metadata_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_to_textract_blocks_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_fuel_data" title="Link to this definition"></a></dt>
+<dd><p>Returns the fuel data extracted from the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_metadata_block</strong> (<em>dict</em>) – Metadata of the table to extract data from.</p></li>
+<li><p><strong>category_to_textract_blocks_map</strong> (<em>dict</em>) – Map of categories to their corresponding textract blocks.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fuel data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_top_limit">
+<span class="sig-name descname"><span class="pre">get_top_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">previous_table_metadata_block</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_top_limit" title="Link to this definition"></a></dt>
+<dd><p>Returns the top limit from the previous table metadata block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>previous_table_metadata_block</strong> (<em>dict</em>) – Previous table metadata block.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Top limit.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="update_model_generations_data">
+<span class="sig-name descname"><span class="pre">update_model_generations_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tmp_model_generations_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_generations_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_categories</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_model_generations_data" title="Link to this definition"></a></dt>
+<dd><p>Updates the model generations data with the temporary model generations data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tmp_model_generations_data</strong> (<em>dict</em>) – Temporary model generations data.</p></li>
+<li><p><strong>model_generations_data</strong> (<em>dict</em>) – Model generations data to be updated.</p></li>
+<li><p><strong>model_categories</strong> (<em>list</em>) – Categories of the models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated model generations data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_model_generations_data">
+<span class="sig-name descname"><span class="pre">get_model_generations_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_tolerance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_metadata_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_to_textract_blocks_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_model_generations_data" title="Link to this definition"></a></dt>
+<dd><p>Returns the model generations data extracted from the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top_limit</strong> (<em>float</em>) – Top limit for the extraction process.</p></li>
+<li><p><strong>height_tolerance</strong> (<em>float</em>) – Height tolerance for the extraction process.</p></li>
+<li><p><strong>table_metadata_block</strong> (<em>dict</em>) – Metadata of the table to extract data from.</p></li>
+<li><p><strong>category_to_textract_blocks_map</strong> (<em>dict</em>) – Map of categories to their corresponding textract blocks.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model generations data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_additional_data">
+<span class="sig-name descname"><span class="pre">get_additional_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_metadata_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_table_metadata_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_to_textract_blocks_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_additional_data" title="Link to this definition"></a></dt>
+<dd><p>Returns additional data extracted from the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_metadata_block</strong> (<em>dict</em>) – Metadata of the table to extract data from.</p></li>
+<li><p><strong>previous_table_metadata_block</strong> (<em>dict</em>) – Previous table metadata block.</p></li>
+<li><p><strong>category_to_textract_blocks_map</strong> (<em>dict</em>) – Map of categories to their corresponding textract blocks.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Additional data including model generations data, versions data, and fuel data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="search_textract_blocks.html" class="btn btn-neutral float-left" title="search_textract_blocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="td_parser.html" class="btn btn-neutral float-right" title="td_parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+======================
+Function documentation
+======================
+
+.. toctree::
+   app
+   local_test
+   adobe_extract/index
+   classifier/index
+   confidence/index
+   dl_classification/index
+   equipment_parser/index
+   expert_rules/index
+   gpt_processing/index
+   layout_transforming/index
+   make_logs/index
+   multi_values_split/index
+   page_selection/index
+   parser_postprocessing/index
+   preprocess_pdf/index
+   price_list_parser/index
+   shared/index
+   table_parser_v2/index
+   textract/index

@@ -1,0 +1,31 @@
+====
+main
+====
+
+.. py:function:: classify_equipment_cell(content: Union[str, float]) -> Union[str, float]
+
+   Classifies the content of a cell in an equipment table.
+
+   :param content: The content of the cell.
+   :type content: str or float
+   :return: The classification of the cell content.
+   :rtype: str or float
+
+.. py:function:: get_cell_state(row_id: int, version_col: int, price_col: int, values: pd.DataFrame, image_labels: pd.DataFrame, eq_model) -> tuple[str, float]
+
+   Retrieves the state and price of a cell in an equipment table.
+
+   :param row_id: The row index of the cell.
+   :type row_id: int
+   :param version_col: The column index of the cell.
+   :type version_col: int
+   :param price_col: The column index of the price.
+   :type price_col: int
+   :param values: The dataframe containing the cell values.
+   :type values: pd.DataFrame
+   :param image_labels: The dataframe containing the image labels.
+   :type image_labels: pd.DataFrame
+   :param eq_model: The equipment model.
+   :type eq_model: object
+   :return: The state and price of the cell.
+   :rtype: tuple of (str or None, float or None)

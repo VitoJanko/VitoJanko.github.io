@@ -1,0 +1,168 @@
+===========================
+join_adobe_textract_utility
+===========================
+
+.. py:function:: remove_duplicate_lines(lst)
+
+   Remove duplicate lines from a list based on the "Id" key.
+
+   :param lst: List of dictionaries from which duplicates are to be removed.
+   :type lst: list[dict]
+   :return: List of dictionaries without duplicates.
+   :rtype: list[dict]
+
+.. py:function:: get_block_map(textract)
+
+   Create a dictionary mapping each block"""s "Id" to the block itself.
+
+   :param textract: List of blocks.
+   :type textract: dict
+   :return: Dictionary mapping "Id" to block.
+   :rtype: dict
+
+.. py:function:: get_word_to_line(textract)
+
+   Create a dictionary mapping each word to its corresponding line.
+
+   :param textract: List of blocks.
+   :type textract: dict
+   :return: Dictionary mapping word to line.
+   :rtype: dict
+
+.. py:function:: get_word_to_cell(textract)
+
+   Create a dictionary mapping each word to its corresponding cell.
+
+   :param textract: List of blocks.
+   :type textract: dict
+   :return: Dictionary mapping word to cell.
+   :rtype: dict
+
+.. py:function:: get_childs(block_map, block)
+
+   Get the children of a block.
+
+   :param block_map: Dictionary mapping "Id" to block.
+   :type block_map: dict
+   :param block: The parent block.
+   :type block: dict
+   :return: List of child blocks.
+   :rtype: list[dict]
+
+.. py:function:: block_position(line)
+
+   Get the position of a line.
+
+   :param line: The line block.
+   :type line: dict
+   :return: The position of the line.
+   :rtype: float
+
+.. py:function:: lines_by_page(textract)
+
+   Group lines by page and sort them by position.
+
+   :param textract: List of blocks.
+   :type textract: dict
+   :return: Dictionary mapping page to sorted lines.
+   :rtype: dict
+
+.. py:function:: tables_by_page(textract)
+
+   Group tables by page.
+
+   :param textract: List of blocks.
+   :type textract: dict
+   :return: Dictionary mapping page to tables.
+   :rtype: dict
+
+.. py:function:: interval_overlap_length(interval1, interval2)
+
+   Calculate the length of the overlap between two intervals.
+
+   :param interval1: The first interval.
+   :type interval1: tuple
+   :param interval2: The second interval.
+   :type interval2: tuple
+   :return: The length of the overlap.
+   :rtype: int
+
+.. py:function:: overlap_percentage(interval1, interval2)
+
+   Calculate the percentage of overlap between two intervals.
+
+   :param interval1: The first interval.
+   :type interval1: tuple
+   :param interval2: The second interval.
+   :type interval2: tuple
+   :return: The percentage of overlap.
+   :rtype: float
+
+.. py:function:: find_pairs(squares1: list[BlockPositions], squares2: list[BlockPositions], threshold_dist, threshold_size)
+
+   Find pairs of squares that overlap based on a threshold.
+
+   :param squares1: The first list of squares.
+   :type squares1: list[BlockPositions]
+   :param squares2: The second list of squares.
+   :type squares2: list[BlockPositions]
+   :param threshold_dist: The distance threshold for overlap.
+   :type threshold_dist: float
+   :param threshold_size: The size threshold for overlap.
+   :type threshold_size: float
+   :return: List of pairs of overlapping squares.
+   :rtype: list[tuple]
+
+.. py:function:: add_bounding_size(textract_block)
+
+   Add bounding size to a block.
+
+   :param textract_block: The block to which bounding size is to be added.
+   :type textract_block: dict
+   :return: Block with added bounding size.
+   :rtype: BlockPositions
+
+.. py:function:: add_sizes(blocks) -> list[BlockPositions]
+
+   Add bounding sizes to a list of blocks.
+
+   :param blocks: The list of blocks to which bounding sizes are to be added.
+   :type blocks: list[dict]
+   :return: List of blocks with added bounding sizes.
+   :rtype: list[BlockPositions]
+
+.. py:function:: replace_words_in_line(line, new_text, textract_data: TextractUtils, verbose=False)
+
+   Replace words in a line with new text.
+
+   :param line: The line in which words are to be replaced.
+   :type line: dict
+   :param new_text: The new text to replace the words with.
+   :type new_text: str
+   :param textract_data: The TextractUtils object.
+   :type textract_data: TextractUtils
+   :param verbose: Whether to print verbose output.
+   :type verbose: bool
+   :return: None
+
+.. py:function:: is_vertical(cell_block, is_pricelist=False)
+
+   Check if a cell block is vertical.
+
+   :param cell_block: The cell block to check.
+   :type cell_block: dict
+   :param is_pricelist: Whether the cell block is a pricelist.
+   :type is_pricelist: bool
+   :return: Whether the cell block is vertical.
+   :rtype: bool
+
+.. py:class:: TextractUtils
+
+   A class for handling Textract data.
+
+   .. py:method:: __init__(self, textract)
+
+      Initialize the TextractUtils object.
+
+      :param textract: The Textract data.
+      :type textract: dict

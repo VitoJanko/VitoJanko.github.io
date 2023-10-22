@@ -1,0 +1,36 @@
+==========
+write_logs
+==========
+
+.. py:function:: initialize_logging()
+
+   Initialize the logging system.
+   :return: The logging buffer and the main logger.
+   :rtype: tuple
+
+
+.. py:function:: cleanup_logging(logging_buffer)
+
+   Clean up the logging system by closing the logging buffer.
+
+   :param logging_buffer: The logging buffer to be closed.
+   :type logging_buffer: StringIO
+
+
+.. py:function:: log_results(logging_buffer, destination: LogDestination, match_results: MatchAllResults, eq_results: EquipmentResults, parsed_tables: list[TableParser], td_tables, settings: Settings)
+
+   Log the results of the matching process.
+
+   :param logging_buffer: The logging buffer to use.
+   :type logging_buffer: StringIO
+   :param destination: The destination for the logs.
+   :type destination: LogDestination
+   :param match_results: The results of the matching process.
+   :type match_results: MatchAllResults
+   :param eq_results: The results of the equipment matching process.
+   :type eq_results: EquipmentResults
+   :param parsed_tables: The parsed tables.
+   :type parsed_tables: list[TableParser]
+   :param td_tables: The td tables.
+   :param settings: The settings for the logging process.
+   :type settings: Settings

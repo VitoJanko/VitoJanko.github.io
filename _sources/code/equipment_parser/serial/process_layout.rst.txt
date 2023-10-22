@@ -1,0 +1,106 @@
+==============
+process_layout
+==============
+
+.. py:function:: make_columns(pages, segment_maker: TextractDivider, pdf_parser: PdfParser, debug: bool) -> (list[list[EquipmentLine]], dict[int, int], list)
+
+       This function generates columns from the given pages using the provided segment maker and PDF parser.
+
+       :param pages: The pages to generate columns from.
+       :param segment_maker: The segment maker to use for generating columns.
+       :param pdf_parser: The PDF parser to use for generating columns.
+       :param debug: A boolean indicating whether to print debug information.
+       :type pages: list
+       :type segment_maker: TextractDivider
+       :type pdf_parser: PdfParser
+       :type debug: bool
+       :return: A tuple containing the generated columns, a dictionary mapping pages to columns, and a list of equipment.
+       :rtype: (list[list[EquipmentLine]], dict[int, int], list)
+
+.. py:function:: join_empty_columns(columns_dict: dict[int, list], page_to_cols: dict[int, int])
+
+       This function joins empty columns in the given columns dictionary.
+       :param columns_dict: The columns dictionary to join empty columns in.
+       :param page_to_cols: A dictionary mapping pages to columns.
+       :type columns_dict: dict[int, list]
+       :type page_to_cols: dict[int, int]
+       :return: The updated columns dictionary with empty columns joined.
+       :rtype: dict[int, list]
+
+.. py:function:: sort_column(column: list) -> list
+
+       This function sorts the given column based on the top bounding box.
+       :param column: The column to sort.
+       :type column: list
+       :return: The sorted column.
+       :rtype: list
+
+.. py:function:: join_version_type_one(lines: list[EquipmentLine], debug: bool,) -> (dict[str, VersionBlock], list[str])
+
+       This function joins versions of type one from the given lines.
+       :param lines: The lines to join versions from.
+       :param debug: A boolean indicating whether to print debug information.
+       :type lines: list[EquipmentLine]
+       :type debug: bool
+       :return: A tuple containing a dictionary mapping versions to blocks and a list of ordered versions.
+       :rtype: (dict[str, VersionBlock], list[str])
+
+.. py:function:: join_version_type_two(lines: list[EquipmentLine], page_to_mean_margin: dict, page_to_column_change: dict, debug: bool,) -> (dict[str, VersionBlock], list[str])
+
+       This function joins versions of type two from the given lines.
+       :param lines: The lines to join versions from.
+       :param page_to_mean_margin: A dictionary mapping pages to mean margins.
+       :param page_to_column_change: A dictionary mapping pages to column changes.
+       :param debug: A boolean indicating whether to print debug information.
+       :type lines: list[EquipmentLine]
+       :type page_to_mean_margin: dict
+       :type page_to_column_change: dict
+       :type debug: bool
+       :return: A tuple containing a dictionary mapping versions to blocks, a list of ordered versions, and a boolean indicating whether the join is of type two.
+       :rtype: (dict[str, VersionBlock], list[str], bool)
+
+.. py:function:: remove_lone_versions(blocks_dict: dict[str, VersionBlock], ordered_versions: list[str], debug: bool)
+
+       This function removes lone versions from the given blocks dictionary and ordered versions list.
+       :param blocks_dict: The blocks dictionary to remove lone versions from.
+       :param ordered_versions: The list of ordered versions to remove lone versions from.
+       :param debug: A boolean indicating whether to print debug information.
+       :type blocks_dict: dict[str, VersionBlock]
+       :type ordered_versions: list[str]
+       :type debug: bool
+       :return: The updated blocks dictionary and ordered versions list with lone versions removed.
+       :rtype: (dict[str, VersionBlock], list[str])
+
+.. py:function:: check_margins(lines: list[EquipmentLine], page_to_mean_margin: dict, page_to_column_change: dict, debug: bool,) -> bool
+
+       This function checks whether the margins in the given lines are respected.
+       :param lines: The lines to check margins in.
+       :param page_to_mean_margin: A dictionary mapping pages to mean margins.
+       :param page_to_column_change: A dictionary mapping pages to column changes.
+       :param debug: A boolean indicating whether to print debug information.
+       :type lines: list[EquipmentLine]
+       :type page_to_mean_margin: dict
+       :type page_to_column_change: dict
+       :type debug: bool
+       :return: A boolean indicating whether the margins are respected.
+       :rtype: bool
+
+.. py:function:: all_lines(columns: list[list[EquipmentLine]], line_threshold=2) -> list[list[EquipmentLine]]
+
+       This function returns all lines from the given columns that meet the line threshold.
+       :param columns: The columns to get lines from.
+       :param line_threshold: The threshold for lines to meet.
+       :type columns: list[list[EquipmentLine]]
+       :type line_threshold: int
+       :return: The lines that meet the line threshold.
+       :rtype: list[list[EquipmentLine]]
+
+.. py:function:: join_version_blocks(block1: VersionBlock, block2: VersionBlock)
+
+       This function joins two version blocks into one.
+       :param block1: The first version block to join.
+       :param block2: The second version block to join.
+       :type block1: VersionBlock
+       :type block2: VersionBlock
+       :return: The joined version block.
+       :rtype: VersionBlock
