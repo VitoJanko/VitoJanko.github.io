@@ -1,0 +1,42 @@
+============
+adobe_parser
+============
+
+.. py:function:: unpack_stream(adobe_stream)
+
+   Unpacks a stream of Adobe files, extracts the structured data from the JSON file, and reads the CSV files.
+
+   :param adobe_stream: The stream of Adobe files.
+   :type adobe_stream: zipfile.ZipFile
+   :return: The structured data from the JSON file and the data from the CSV files.
+   :rtype: tuple[dict, list[pandas.DataFrame]]
+
+.. py:method:: __init__(pdf_parser: PdfParser)
+
+   Initializes the object with a PdfParser.
+
+   :param pdf_parser: The PdfParser to use.
+   :type pdf_parser: PdfParser
+
+.. py:method:: set_up_extractor()
+
+   Sets up the AdobeExtractor with the necessary parameters from the PdfParser.
+   :return: None
+
+.. py:method:: textract_pages(pages)
+
+   Extracts the text from the specified pages using Adobe and Textract.
+
+   :param pages: The pages to extract text from.
+   :type pages: list[int]
+   :return: The extracted text.
+   :rtype: dict or None
+
+.. py:method:: adobe_pages(pages)
+
+   Extracts the text from the specified pages using Adobe.
+
+   :param pages: The pages to extract text from.
+   :type pages: list[int]
+   :return: The extracted text and the data from the CSV files.
+   :rtype: tuple[dict, list[pandas.DataFrame]] or None

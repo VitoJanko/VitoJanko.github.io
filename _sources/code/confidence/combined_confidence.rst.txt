@@ -1,0 +1,90 @@
+===================
+combined_confidence
+===================
+
+.. py:function:: confidence_features(combinations: dict, tables: list[TableParser])
+
+   Generate a list of confidence features for each combination.
+
+   :param combinations: A dictionary of combinations.
+   :type combinations: dict
+   :param tables: A list of TableParser objects.
+   :type tables: list[TableParser]
+   :return: A list of confidence features.
+   :rtype: list[dict]
+
+
+.. py:function:: combine_confidence(confidence: dict, intercept: float, coeff: dict[str, float])
+
+   Combine confidence values using the given intercept and coefficients.
+
+   :param confidence: A dictionary of confidence values.
+   :type confidence: dict
+   :param intercept: The intercept for the linear combination.
+   :type intercept: float
+   :param coeff: A dictionary of coefficients for the linear combination.
+   :type coeff: dict[str, float]
+   :return: The combined confidence value.
+   :rtype: float
+
+
+.. py:function:: calculate_overall_confidence(confidences: list[dict])
+
+   Calculate the overall confidence for each item in the list.
+
+   :param confidences: A list of confidence dictionaries.
+   :type confidences: list[dict]
+   :return: A dictionary of overall confidence values.
+   :rtype: dict[str, float]
+
+
+.. py:function:: calculate_no_version_confidence(confidences: list[dict])
+
+   Calculate the confidence for each item in the list, excluding version information.
+
+   :param confidences: A list of confidence dictionaries.
+   :type confidences: list[dict]
+   :return: A dictionary of confidence values without version information.
+   :rtype: dict[tuple, float]
+
+
+.. py:function:: insert_confidence(output_json: dict, confidences: dict[str, float])
+
+   Insert confidence values into the output JSON.
+
+   :param output_json: The output JSON to insert confidence values into.
+   :type output_json: dict
+   :param confidences: A dictionary of confidence values.
+   :type confidences: dict[str, float]
+
+
+.. py:function:: insert_confidence_combinations(combinations: dict, confidences: dict[str, float])
+
+   Insert confidence values into the combinations dictionary.
+
+   :param combinations: The combinations dictionary to insert confidence values into.
+   :type combinations: dict
+   :param confidences: A dictionary of confidence values.
+   :type confidences: dict[str, float]
+
+
+.. py:function:: insert_confidence_no_version(output_json: dict, confidences: dict[tuple, float])
+
+   Insert confidence values into the output JSON, excluding version information.
+
+   :param output_json: The output JSON to insert confidence values into.
+   :type output_json: dict
+   :param confidences: A dictionary of confidence values without version information.
+   :type confidences: dict[tuple, float]
+
+
+.. py:function:: add_confidence_to_output(output_json: dict, combinations: dict, tables: list[TableParser])
+
+   Add confidence values to the output JSON and combinations dictionary.
+
+   :param output_json: The output JSON to add confidence values to.
+   :type output_json: dict
+   :param combinations: The combinations dictionary to add confidence values to.
+   :type combinations: dict
+   :param tables: A list of TableParser objects.
+   :type tables: list[TableParser]

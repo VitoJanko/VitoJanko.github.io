@@ -1,0 +1,92 @@
+=============
+merge_mappers
+=============
+
+.. py:function:: make_unmerge_default_mapper(labels, values, values_merged, wide=False, backwards=False, ignore_merged=False, enforce_unique=True, merge_model_upwards=False, status=None)
+
+   This function creates a default mapper for unmerging cells in a table. It takes into account various parameters such as whether to ignore merged cells, enforce uniqueness, and whether to merge model upwards.
+
+   :param labels: The labels of the table.
+   :type labels: DataFrame
+   :param values: The values of the table.
+   :type values: DataFrame
+   :param values_merged: The merged values of the table.
+   :type values_merged: DataFrame
+   :param wide: Optional parameter to specify if the table is wide.
+   :type wide: bool
+   :param backwards: Optional parameter to specify if the iteration should be backwards.
+   :type backwards: bool
+   :param ignore_merged: Optional parameter to specify if merged cells should be ignored.
+   :type ignore_merged: bool
+   :param enforce_unique: Optional parameter to specify if uniqueness should be enforced.
+   :type enforce_unique: bool
+   :param merge_model_upwards: Optional parameter to specify if model should be merged upwards.
+   :type merge_model_upwards: bool
+   :param status: Optional parameter to specify the status of the table.
+   :type status: DataFrame or None
+   :return: The cell mapper.
+   :rtype: CellMapper
+
+
+.. py:function:: make_unmerge_uniqueness_mapper(labels, values, values_merged, wide=False, backwards=False, ignore_merged=False, enforce_unique=True, status=None)
+
+   This function creates a uniqueness mapper for unmerging cells in a table. It takes into account various parameters such as whether to ignore merged cells, enforce uniqueness, and the direction of iteration.
+
+   :param labels: The labels of the table.
+   :type labels: DataFrame
+   :param values: The values of the table.
+   :type values: DataFrame
+   :param values_merged: The merged values of the table.
+   :type values_merged: DataFrame
+   :param wide: Optional parameter to specify if the table is wide.
+   :type wide: bool
+   :param backwards: Optional parameter to specify if the iteration should be backwards.
+   :type backwards: bool
+   :param ignore_merged: Optional parameter to specify if merged cells should be ignored.
+   :type ignore_merged: bool
+   :param enforce_unique: Optional parameter to specify if uniqueness should be enforced.
+   :type enforce_unique: bool
+   :param status: Optional parameter to specify the status of the table.
+   :type status: DataFrame or None
+   :return: The cell mapper.
+   :rtype: CellMapper
+
+
+.. py:function:: construct_merge_entry(values, row, possible_values, merge_indices)
+
+   This function constructs a merge entry for a given row in a table.
+
+   :param values: The values of the table.
+   :type values: DataFrame
+   :param row: The row index.
+   :type row: int
+   :param possible_values: The possible values for merging.
+   :type possible_values: list
+   :param merge_indices: The indices for merging.
+   :type merge_indices: list
+   :return: The merge entry.
+   :rtype: tuple
+
+
+.. py:function:: make_unmerge_symmetry_mapper(labels, values, values_merged, wide=False, backwards=False, ignore_merged=False, enforce_unique=True, status=None)
+
+   This function creates a symmetry mapper for unmerging cells in a table. It takes into account various parameters such as whether to ignore merged cells, enforce uniqueness, and the direction of iteration.
+
+   :param labels: The labels of the table.
+   :type labels: DataFrame
+   :param values: The values of the table.
+   :type values: DataFrame
+   :param values_merged: The merged values of the table.
+   :type values_merged: DataFrame
+   :param wide: Optional parameter to specify if the table is wide.
+   :type wide: bool
+   :param backwards: Optional parameter to specify if the iteration should be backwards.
+   :type backwards: bool
+   :param ignore_merged: Optional parameter to specify if merged cells should be ignored.
+   :type ignore_merged: bool
+   :param enforce_unique: Optional parameter to specify if uniqueness should be enforced.
+   :type enforce_unique: bool
+   :param status: Optional parameter to specify the status of the table.
+   :type status: DataFrame or None
+   :return: The cell mapper.
+   :rtype: CellMapper

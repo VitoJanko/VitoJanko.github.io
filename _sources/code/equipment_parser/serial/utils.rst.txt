@@ -1,0 +1,25 @@
+=====
+utils
+=====
+
+.. py:function:: make_equipment(column: list, column_index: int) -> list[EquipmentLine]
+
+   Create a list of EquipmentLine objects from a given column of blocks. Each block is processed and converted into an EquipmentLine object. If the text of the new line is the same as the previous one and the margin top of the new line is less than 0, the new line is not added to the list.
+
+   :param column: List of blocks to be processed.
+   :type column: list
+   :param column_index: Index of the column.
+   :type column_index: int
+   :return: List of EquipmentLine objects.
+   :rtype: list[EquipmentLine]
+
+.. py:function:: to_block_format(equipments: list[Equipment], version_to_id: dict) -> dict[str, VersionBlock]
+
+   Convert a list of Equipment objects into a dictionary of VersionBlock objects. Each equipment is processed and its availability is checked. If the price list version id of the availability is in the id_to_version dictionary, a new VersionBlock is created and added to the blocks dictionary.
+
+   :param equipments: List of Equipment objects to be processed.
+   :type equipments: list[Equipment]
+   :param version_to_id: Dictionary mapping version to id.
+   :type version_to_id: dict
+   :return: Dictionary of VersionBlock objects.
+   :rtype: dict[str, VersionBlock]

@@ -1,0 +1,40 @@
+=====
+utils
+=====
+
+.. py:function:: largest_number_new(text, conversion=1, return_all=False)
+
+   Extracts the largest number from the given text, optionally converting it and returning all numbers.
+
+   :param text: The text to extract numbers from.
+   :type text: str
+   :param conversion: The conversion factor to apply to the numbers. Default is 1.
+   :type conversion: int
+   :param return_all: Whether to return all numbers found. Default is False.
+   :type return_all: bool
+   :return: The largest number and its original string representation, and optionally all numbers found.
+   :rtype: tuple
+
+
+.. py:function:: only_short_versions(text)
+
+   Checks if the given text is a short version, excluding certain exceptions.
+
+   :param text: The text to check.
+   :type text: str
+   :return: Whether the text is a short version.
+   :rtype: bool
+
+
+.. py:function:: largest_number(text, conversion=1, return_all=False)
+
+   Extracts the largest number from the given text, optionally converting it and returning all numbers.
+
+   :param text: The text to extract numbers from.
+   :type text: str
+   :param conversion: The conversion factor to apply to the numbers. Default is 1.
+   :type conversion: int
+   :param return_all: Whether to return all numbers found. Default is False.
+   :type return_all: bool
+   :return: The largest number and its original string representation, and optionally all numbers found.
+   :rtype: tuple

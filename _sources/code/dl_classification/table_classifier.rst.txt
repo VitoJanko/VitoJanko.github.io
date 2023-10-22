@@ -1,0 +1,117 @@
+================
+table_classifier
+================
+
+.. py:function:: label_table(df_values: pd.DataFrame, transformation_type: str = "default", model_type: str = "area", storage: PreloadedAssets = None, ignore_code=True, ignore_model=False, return_proba=False) -> pd.DataFrame
+
+   Apply a model to a dataframe to generate predictions.
+
+   :param df_values: The dataframe to be labeled.
+   :type df_values: pd.DataFrame
+   :param transformation_type: The type of transformation to apply to the data. Default is "default".
+   :type transformation_type: str
+   :param model_type: The type of model to use for prediction. Default is "area".
+   :type model_type: str
+   :param storage: The storage object containing preloaded assets.
+   :type storage: PreloadedAssets
+   :param ignore_code: Whether to ignore code cells. Default is True.
+   :type ignore_code: bool
+   :param ignore_model: Whether to ignore model cells. Default is False.
+   :type ignore_model: bool
+   :param return_proba: Whether to return probabilities. Default is False.
+   :type return_proba: bool
+   :return: The labeled dataframe.
+   :rtype: pd.DataFrame
+
+.. py:function:: dl_cleanup()
+
+   Clear the current Keras session.
+
+
+.. py:method:: __init__(self, storage: PreloadedAssets)
+
+   Initialize the object with a model from the provided storage.
+
+   :param storage: The storage object containing preloaded assets.
+   :type storage: PreloadedAssets
+
+.. py:method:: predict(self, cell_text)
+
+   Predict the label for a given cell text.
+
+   :param cell_text: The text of the cell to predict.
+   :type cell_text: str
+   :return: The predicted label.
+   :rtype: str
+
+.. py:method:: predict_proba(self, cell_text)
+
+   Predict the label probabilities for a given cell text.
+
+   :param cell_text: The text of the cell to predict.
+   :type cell_text: str
+   :return: The predicted label probabilities.
+   :rtype: list
+
+.. py:method:: predict_lst(self, lst)
+
+   Predict the labels for a list of cell texts.
+
+   :param lst: The list of cell texts to predict.
+   :type lst: list
+   :return: The predicted labels.
+   :rtype: list
+
+.. py:method:: __init__(self, storage: PreloadedAssets)
+
+   Initialize the object with multiple models from the provided storage.
+
+   :param storage: The storage object containing preloaded assets.
+   :type storage: PreloadedAssets
+
+.. py:method:: predict(self, df_labels, model)
+
+   Predict the label for a given dataframe using a specified model.
+
+   :param df_labels: The dataframe to predict.
+   :type df_labels: pd.DataFrame
+   :param model: The model to use for prediction.
+   :type model: keras.Model
+   :return: The predicted label.
+   :rtype: int
+
+.. py:method:: predict_wide(self, df_labels)
+
+   Predict the label for a given dataframe using the wide model.
+
+   :param df_labels: The dataframe to predict.
+   :type df_labels: pd.DataFrame
+   :return: The predicted label.
+   :rtype: int
+
+.. py:method:: predict_transposed(self, df_labels)
+
+   Predict the label for a given dataframe using the transposed model.
+
+   :param df_labels: The dataframe to predict.
+   :type df_labels: pd.DataFrame
+   :return: The predicted label.
+   :rtype: int
+
+.. py:method:: predict_merge(self, df_labels)
+
+   Predict the label for a given dataframe using the merged model.
+
+   :param df_labels: The dataframe to predict.
+   :type df_labels: pd.DataFrame
+   :return: The predicted label.
+   :rtype: int
+
+.. py:method:: predict_splitted(self, df_labels)
+
+   Predict the label for a given dataframe using the splitted model.
+
+   :param df_labels: The dataframe to predict.
+   :type df_labels: pd.DataFrame
+   :return: The predicted label.
+   :rtype: int

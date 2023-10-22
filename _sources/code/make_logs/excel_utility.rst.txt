@@ -1,0 +1,192 @@
+=============
+excel_utility
+=============
+
+.. py:function:: extend_values(labels, values_extended)
+
+   Extend the labels dataframe with empty columns to match the shape of values_extended dataframe.
+
+   :param labels: The dataframe to be extended.
+   :type labels: pandas.DataFrame
+   :param values_extended: The dataframe whose shape is to be matched.
+   :type values_extended: pandas.DataFrame
+   :return: The extended dataframe.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: ordered_dict_to_dataframe(table_index, table_length, ordered_comb)
+
+   Convert an ordered dictionary of combinations into a dataframe.
+
+   :param table_index: The index of the table.
+   :type table_index: int
+   :param table_length: The length of the table.
+   :type table_length: int
+   :param ordered_comb: The ordered dictionary of combinations.
+   :type ordered_comb: collections.OrderedDict
+   :return: The dataframe representation of the combinations.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: dict_to_dataframe(combinations, title=False)
+
+   Convert a dictionary of combinations into a dataframe.
+
+   :param combinations: The dictionary of combinations.
+   :type combinations: dict
+   :param title: If True, the first row of the dataframe will be the fields of the combinations.
+   :type title: bool, optional
+   :return: The dataframe representation of the combinations.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: missed_entries(combinations)
+
+   Calculate the missed entries in the combinations.
+
+   :param combinations: The dictionary of combinations.
+   :type combinations: dict
+   :return: A dataframe representation of the missed entries and a list of counters for each field.
+   :rtype: tuple(pandas.DataFrame, list[int])
+
+
+.. py:function:: fill_overall_confidence(shape, combinations, table_index)
+
+   Fill a dataframe with the overall confidence values from the combinations.
+
+   :param shape: The shape of the dataframe to be filled.
+   :type shape: tuple(int, int)
+   :param combinations: The dictionary of combinations.
+   :type combinations: dict
+   :param table_index: The index of the table.
+   :type table_index: int
+   :return: The filled dataframe.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: equipment_to_color(x)
+
+   Map equipment types to colors.
+
+   :param x: The equipment type.
+   :type x: str
+   :return: The corresponding color.
+   :rtype: str
+
+
+.. py:function:: equipment_to_symbol(x)
+
+   Map equipment types to symbols.
+
+   :param x: The equipment type.
+   :type x: str
+   :return: The corresponding symbol.
+   :rtype: str
+
+
+.. py:function:: equipment_to_symbol_simple(x)
+
+   Map equipment types to simple symbols.
+
+   :param x: The equipment type.
+   :type x: str
+   :return: The corresponding simple symbol.
+   :rtype: str
+
+
+.. py:function:: entry_to_color(x: CommonEntry)
+
+   Map entry types to colors.
+
+   :param x: The entry.
+   :type x: CommonEntry
+   :return: The corresponding color.
+   :rtype: str
+
+
+.. py:function:: make_equipment_dataframe(block)
+
+   Create a dataframe representation of the equipment in a block.
+
+   :param block: The block containing the equipment.
+   :type block: Block
+   :return: Two dataframes representing the equipment and their labels.
+   :rtype: tuple(pandas.DataFrame, pandas.DataFrame)
+
+
+.. py:function:: make_equipment_table_dataframe(all_equipment: list[CommonEntry], all_colors: list[CommonEntry], version_map: dict, versions: list[str], id_to_match_av: dict, gt_availability_map: dict)
+
+   Create a dataframe representation of an equipment table.
+
+   :param all_equipment: The list of all equipment entries.
+   :type all_equipment: list[CommonEntry]
+   :param all_colors: The list of all color entries.
+   :type all_colors: list[CommonEntry]
+   :param version_map: The mapping of versions.
+   :type version_map: dict
+   :param versions: The list of versions.
+   :type versions: list[str]
+   :param id_to_match_av: The mapping of ids to match availabilities.
+   :type id_to_match_av: dict
+   :param gt_availability_map: The mapping of ground truth availabilities.
+   :type gt_availability_map: dict
+   :return: Three dataframes representing the equipment table, their colors, and their backgrounds.
+   :rtype: tuple(pandas.DataFrame, pandas.DataFrame, pandas.DataFrame)
+
+
+.. py:function:: color_equipment_wide(values)
+
+   Color the equipment in a wide dataframe.
+
+   :param values: The dataframe of equipment.
+   :type values: pandas.DataFrame
+   :return: Two dataframes representing the colored equipment and their labels.
+   :rtype: tuple(pandas.DataFrame, pandas.DataFrame)
+
+
+.. py:function:: color_equipment_long(values)
+
+   Color the equipment in a long dataframe.
+
+   :param values: The dataframe of equipment.
+   :type values: pandas.DataFrame
+   :return: The dataframe of colored equipment.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: match_equipment(equipments: list[CommonEntry], ground_truth: list[CommonEntry], colors: list[Color], ground_truth_colors: list[Color], fuzzy_match: bool) -> (dict, list)
+
+   Match the equipment with the ground truth.
+
+   :param equipments: The list of equipment entries.
+   :type equipments: list[CommonEntry]
+   :param ground_truth: The list of ground truth entries.
+   :type ground_truth: list[CommonEntry]
+   :param colors: The list of color entries.
+   :type colors: list[Color]
+   :param ground_truth_colors: The list of ground truth color entries.
+   :type ground_truth_colors: list[Color]
+   :param fuzzy_match: If True, use fuzzy matching.
+   :type fuzzy_match: bool
+   :return: A mapping of ground truth availabilities and a list of unmatched ground truth entries.
+   :rtype: tuple(dict, list[CommonEntry])
+
+
+.. py:function:: create_missing_equipment_df(missing: list[CommonEntry])
+
+   Create a dataframe representation of the missing equipment.
+
+   :param missing: The list of missing equipment entries.
+   :type missing: list[CommonEntry]
+   :return: Two dataframes representing the missing equipment and their colors.
+   :rtype: tuple(pandas.DataFrame, pandas.DataFrame)
+
+
+.. py:function:: _eq_type(is_serial)
+
+   Determine the type of equipment based on whether it is serial.
+
+   :param is_serial: If True, the equipment is serial.
+   :type is_serial: bool
+   :return: The type of the equipment.
+   :rtype: str

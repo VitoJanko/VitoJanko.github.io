@@ -1,0 +1,53 @@
+====
+main
+====
+
+.. py:function:: __init__(self, general_attr: CommonAttrs, table_data: TableData, pdf_parser, versions_to_id_map: dict, additional_versions_to_id_map: dict, table_loop_index: int = -1, previous_headers_as_df: list[pd.DataFrame] = None, eq_model: EQModel = None)
+
+       Initializes the class with the given parameters.
+
+       :param general_attr: General attributes.
+       :type general_attr: CommonAttrs
+       :param table_data: Table data.
+       :type table_data: TableData
+       :param pdf_parser: PDF parser.
+       :param versions_to_id_map: Map of versions to IDs.
+       :type versions_to_id_map: dict
+       :param additional_versions_to_id_map: Additional map of versions to IDs.
+       :type additional_versions_to_id_map: dict
+       :param table_loop_index: Table loop index, defaults to -1.
+       :type table_loop_index: int, optional
+       :param previous_headers_as_df: Previous headers as DataFrame, defaults to None.
+       :type previous_headers_as_df: list[pd.DataFrame], optional
+       :param eq_model: EQ model, defaults to None.
+       :type eq_model: EQModel, optional
+
+   .. py:function:: preprocess_table(self)
+
+       Preprocesses the table.
+
+   .. py:function:: label_table(self)
+
+       Labels the table.
+
+   .. py:function:: get_price_col_and_extract_prices(self)
+
+       Extracts prices in version columns and searches for column holding prices only.
+
+   .. py:function:: infer_state_and_transform_to_VE(self)
+
+       Infers state from available tables and transforms content to VE format.
+
+   .. py:function:: extract_equipment_pipeline(self, use_previous_header=False)
+
+       Extracts equipment pipeline.
+       :param use_previous_header: Use previous header, defaults to False.
+       :type use_previous_header: bool, optional
+
+   .. py:function:: run(self)
+
+       Runs the parser.
+
+   .. py:function:: cleanup(self)
+
+       Cleans up the labels, title row, equipment column, version columns, matched versions, and image labels.

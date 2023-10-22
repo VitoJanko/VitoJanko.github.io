@@ -1,0 +1,29 @@
+========
+settings
+========
+
+.. py:function:: __post_init__(self)
+
+   This method is automatically called after the instance has been initialized. It checks if the load_assets attribute is True, and if so, it calls the load_models method.
+
+
+.. py:function:: load_models(self)
+
+   This method prepares the paths for different models and loads them into the storage. It uses the _prepare_path function to generate the paths.
+
+   :param self: instance parameter
+   :type self: instance of the class
+
+
+.. py:function:: _prepare_path(base_path, model, local)
+
+   This function prepares the path for a given model. If the local parameter is True, it returns a path that includes the relative path of the instance, otherwise, it returns a path that does not include the relative path.
+
+   :param base_path: The base path for the model.
+   :type base_path: str
+   :param model: The name of the model.
+   :type model: str
+   :param local: A flag indicating whether to include the relative path in the returned path.
+   :type local: bool
+   :return: The prepared path.
+   :rtype: str

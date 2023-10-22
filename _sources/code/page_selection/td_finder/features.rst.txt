@@ -1,0 +1,142 @@
+========
+features
+========
+
+.. py:function:: general_lemmatization(text, language_short_name)
+
+   Perform lemmatization on the input text based on the language.
+
+   :param text: The input text to be lemmatized.
+   :type text: str
+   :param language_short_name: The short name of the language.
+   :type language_short_name: str
+   :return: The lemmatized words.
+   :rtype: list[str]
+
+
+.. py:function:: feature_n_kw(words)
+
+   Count the number of keywords in the words.
+
+   :param words: The list of words.
+   :type words: list[str]
+   :return: The count of keywords.
+   :rtype: int
+
+
+.. py:function:: feature_n_ccm(words)
+
+   Count the number of ccm in the words.
+
+   :param words: The list of words.
+   :type words: list[str]
+   :return: The count of ccm.
+   :rtype: int
+
+
+.. py:function:: feature_rims(words)
+
+   Count the number of rims in the words.
+
+   :param words: The list of words.
+   :type words: list[str]
+   :return: The count of rims.
+   :rtype: int
+
+
+.. py:function:: feature_n_prices(words)
+
+   Count the number of prices in the words.
+
+   :param words: The list of words.
+   :type words: list[str]
+   :return: The count of prices.
+   :rtype: int
+
+
+.. py:function:: is_price_in_text(page_text, language_descriptor)
+
+   Check if there is a price in the text.
+
+   :param page_text: The text of the page.
+   :type page_text: str
+   :param language_descriptor: The descriptor of the language.
+   :type language_descriptor: str
+   :return: True if there is a price, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: feature_n_other_numbers(words)
+
+   Count the number of other numbers in the words.
+
+   :param words: The list of words.
+   :type words: list[str]
+   :return: The count of other numbers.
+   :rtype: int
+
+
+.. py:function:: search_for_strings(words, string_list)
+
+   Search for specific strings in the words.
+
+   :param words: The list of words.
+   :type words: list[str]
+   :param string_list: The list of strings to search for.
+   :type string_list: list[str]
+   :return: A list of boolean values indicating the presence of each string.
+   :rtype: list[bool]
+
+
+.. py:function:: extract_bag(sample_text, bag_words, language_descriptor)
+
+   Extract the bag of words from the sample text.
+
+   :param sample_text: The sample text.
+   :type sample_text: str
+   :param bag_words: The bag of words.
+   :type bag_words: list[str]
+   :param language_descriptor: The descriptor of the language.
+   :type language_descriptor: str
+   :return: The count of each word in the bag.
+   :rtype: list[int]
+
+
+.. py:function:: calculate_features(page, language_descriptor)
+
+   Calculate the features of the page.
+
+   :param page: The page.
+   :type page: object
+   :param language_descriptor: The descriptor of the language.
+   :type language_descriptor: str
+   :return: The calculated features.
+   :rtype: list
+
+
+.. py:function:: split_page_in_half(page)
+
+   Split the page in half.
+
+   :param page: The page.
+   :type page: object
+   :return: The upper half and the lower half of the page.
+   :rtype: tuple
+
+
+.. py:function:: extract_features(filepath_or_buffer, bow, language_descriptor, labels=None, split_page=False)
+
+   Extract the features from the file or buffer.
+
+   :param filepath_or_buffer: The file path or buffer.
+   :type filepath_or_buffer: Union[str, BufferedReader]
+   :param bow: The bag of words.
+   :type bow: list[str]
+   :param language_descriptor: The descriptor of the language.
+   :type language_descriptor: str
+   :param labels: The labels, default is None.
+   :type labels: list[str] or None
+   :param split_page: Whether to split the page, default is False.
+   :type split_page: bool
+   :return: The extracted features, the number of labels, the old predictions, the updated labels, and the page indexes.
+   :rtype: tuple

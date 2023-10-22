@@ -1,0 +1,52 @@
+==============
+table_tracking
+==============
+
+.. py:function:: add_element(self, element, line_block)
+
+   Append an element and a line block to their respective lists.
+
+   :param element: The element to be added.
+   :type element: dict
+   :param line_block: The line block to be added.
+   :type line_block: dict
+   :return: None
+
+
+.. py:function:: create_table_block(self, pg_num_to_page_metadata)
+
+   Create a table block using the page metadata and the elements of the table.
+
+   :param pg_num_to_page_metadata: A dictionary mapping page numbers to their metadata.
+   :type pg_num_to_page_metadata: dict
+   :return: None
+
+
+.. py:function:: insert_table(self, page_relations, blocks)
+
+   Insert the current table into the page relations and blocks if it has elements.
+
+   :param page_relations: A dictionary mapping pages to their relations.
+   :type page_relations: dict
+   :param blocks: A list of blocks.
+   :type blocks: list
+   :return: None
+
+
+.. py:function:: process_table_element(self, page, element, line_block, next_element, page_relations, blocks)
+
+   Process a table element based on its metadata and the next element.
+
+   :param page: The page number of the current element.
+   :type page: int
+   :param element: The current element to be processed.
+   :type element: dict
+   :param line_block: The line block of the current element.
+   :type line_block: dict
+   :param next_element: The next element to be processed.
+   :type next_element: dict or None
+   :param page_relations: A dictionary mapping pages to their relations.
+   :type page_relations: dict
+   :param blocks: A list of blocks.
+   :type blocks: list
+   :return: None

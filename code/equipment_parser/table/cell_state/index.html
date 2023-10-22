@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cell_state &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="cell_classification" href="cell_classification.html" />
+    <link rel="prev" title="versions_matching" href="../versions_matching.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">equipment_parser</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../data_models.html">data_models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shared.html">shared</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../serial/index.html">serial</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">table</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../eq_packages.html">eq_packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../labeling.html">labeling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../main.html">main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recycle_headers.html">recycle_headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../row_filtering.html">row_filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../table_semantics.html">table_semantics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../table_split.html">table_split</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils.html">utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../versions_matching.html">versions_matching</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cell_state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../testing/index.html">testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">equipment_parser</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">table</a></li>
+      <li class="breadcrumb-item active">cell_state</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/code/equipment_parser/table/cell_state/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cell-state">
+<h1>cell_state<a class="headerlink" href="#cell-state" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cell_classification.html">cell_classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cell_classification.html#get_cell_image"><code class="docutils literal notranslate"><span class="pre">get_cell_image()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cell_classification.html#get_cell_as_image"><code class="docutils literal notranslate"><span class="pre">get_cell_as_image()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cell_classification.html#generate_cell_images"><code class="docutils literal notranslate"><span class="pre">generate_cell_images()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cell_classification.html#predict_batch"><code class="docutils literal notranslate"><span class="pre">predict_batch()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cell_classification.html#label_cells"><code class="docutils literal notranslate"><span class="pre">label_cells()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html#classify_equipment_cell"><code class="docutils literal notranslate"><span class="pre">classify_equipment_cell()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#get_cell_state"><code class="docutils literal notranslate"><span class="pre">get_cell_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../versions_matching.html" class="btn btn-neutral float-left" title="versions_matching" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cell_classification.html" class="btn btn-neutral float-right" title="cell_classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

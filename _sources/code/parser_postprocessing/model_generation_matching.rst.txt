@@ -1,0 +1,48 @@
+=========================
+model_generation_matching
+=========================
+
+.. py:function:: get_model_name(model_generations)
+
+   Return the name of the model from the model_generations dictionary.
+
+   :param model_generations: A dictionary containing model generation data.
+   :type model_generations: dict
+   :return: The name of the model.
+   :rtype: str
+
+.. py:function:: calculate_scores(parsed_model_generations, input_model_generations)
+
+   Calculate the similarity scores between parsed and input model generations.
+
+   :param parsed_model_generations: A list of parsed model generations.
+   :type parsed_model_generations: list[dict]
+   :param input_model_generations: A list of input model generations.
+   :type input_model_generations: list[dict]
+   :return: A list of tuples, each containing the indices of the parsed and input model generations and their similarity score.
+   :rtype: list[tuple]
+
+.. py:function:: add_model_generation_id(parsed_model_generations: dict, input_model_generations: dict)
+
+   Match parsed price_list_model_generations with incoming price_list_model_generations from preskok (human entry).
+   If only one model_generation in both parsed and incoming data, then replace parsed with input. Otherwise try to find partial match and replace one by one.
+
+   :param parsed_model_generations: dict holding the parsed model_generations data
+   :type parsed_model_generations: dict
+   :param input_model_generations: dict holding the input model_generations data
+   :type input_model_generations: dict
+   :return: model_generations field overwritten with input values from preskok
+   :rtype: dict
+
+.. py:function:: model_generation_matching(pl_json, brand, model_generations_data)
+
+   Match the model generations in the price list JSON with the provided model generations data.
+
+   :param pl_json: The price list JSON.
+   :type pl_json: dict
+   :param brand: The brand of the models.
+   :type brand: str
+   :param model_generations_data: The data of the model generations.
+   :type model_generations_data: list[dict]
+   :return: The updated price list model generations.
+   :rtype: list[dict]

@@ -1,0 +1,92 @@
+=================
+post_table_parser
+=================
+
+.. py:function:: apply_engine_name_corrections(combinations, brand: Brand, country: Country)
+
+   Apply corrections to the engine names based on the brand and country.
+
+   :param combinations: List of combinations to apply corrections to.
+   :type combinations: list
+   :param brand: The brand of the vehicle.
+   :type brand: Brand
+   :param country: The country of origin.
+   :type country: Country
+
+
+.. py:function:: remove_prefix(version_name, prefix)
+
+   Remove a prefix from a version name.
+
+   :param version_name: The version name to remove the prefix from.
+   :type version_name: str
+   :param prefix: The prefix to remove.
+   :type prefix: str
+   :return: The version name without the prefix.
+   :rtype: str
+
+
+.. py:function:: special_version_name_corrections(combinations, brand: Brand, super_model_name: str)
+
+   Apply special corrections to the version names based on the brand and super model name.
+
+   :param combinations: List of combinations to apply corrections to.
+   :type combinations: list
+   :param brand: The brand of the vehicle.
+   :type brand: Brand
+   :param super_model_name: The super model name of the vehicle.
+   :type super_model_name: str
+
+
+.. py:function:: add_hybrid_data(page_text, combinations)
+
+   Add hybrid data to the combinations based on the page text.
+
+   :param page_text: The text of the page to extract hybrid data from.
+   :type page_text: str
+   :param combinations: List of combinations to add hybrid data to.
+   :type combinations: list
+
+
+.. py:function:: fuel_type_correction(combinations)
+
+   Correct the fuel type in the combinations based on the engine names.
+
+   :param combinations: List of combinations to correct the fuel type in.
+   :type combinations: list
+
+
+.. py:function:: model_corrections(combinations, super_model_name)
+
+   Correct the model names in the combinations based on the super model name.
+
+   :param combinations: List of combinations to correct the model names in.
+   :type combinations: list
+   :param super_model_name: The super model name to use for corrections.
+   :type super_model_name: str
+
+
+.. py:function:: apply_mappings(combinations: list, summary: Summary, page_text: dict, settings)
+
+   Apply mappings to the combinations based on the summary, page text, and settings.
+
+   :param combinations: List of combinations to apply mappings to.
+   :type combinations: list
+   :param summary: The summary of the vehicle.
+   :type summary: Summary
+   :param page_text: The text of the page to use for mappings.
+   :type page_text: dict
+   :param settings: The settings to use for mappings.
+   :type settings: dict
+
+
+.. py:function:: find_hybrid(page_text: dict, engines)
+
+   Find hybrid engines in the page text.
+
+   :param page_text: The text of the page to search for hybrid engines in.
+   :type page_text: dict
+   :param engines: List of engines to search for.
+   :type engines: list
+   :return: A tuple containing a boolean indicating if a hybrid engine was found and a list of indices of hybrid engines.
+   :rtype: tuple

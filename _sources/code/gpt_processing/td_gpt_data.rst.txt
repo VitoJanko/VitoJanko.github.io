@@ -1,0 +1,34 @@
+===========
+td_gpt_data
+===========
+
+.. py:function:: get_unique_transmissions(gpt_querier: GptQuerier) -> list[dict] | None
+
+   This function queries the GPT model for unique transmissions and returns them.
+
+   :param gpt_querier: The GptQuerier object used to query the GPT model.
+   :type gpt_querier: GptQuerier
+   :return: A list of unique transmissions or None if the query returns no result.
+   :rtype: list[dict] | None
+
+
+.. py:function:: get_fuel_type_column(gpt_querier: GptQuerier, table: str) -> list[str] | None
+
+   This function queries the GPT model for a fuel type column from a specified table.
+
+   :param gpt_querier: The GptQuerier object used to query the GPT model.
+   :type gpt_querier: GptQuerier
+   :param table: The name of the table from which to get the fuel type column.
+   :type table: str
+   :return: A list of fuel types or None if the query returns no result.
+   :rtype: list[str] | None
+
+
+.. py:function:: return_unique(values: list) -> list
+
+   This function returns a list of unique values from the input list.
+
+   :param values: The list of values to be processed.
+   :type values: list
+   :return: A list of unique values.
+   :rtype: list

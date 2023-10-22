@@ -1,0 +1,100 @@
+===============
+abstract_parser
+===============
+
+.. py:function:: normalize_labels(x, remove_td=False)
+
+   Replace long form labels with their short form counterparts in the input string. Optionally, remove "TD_" or "td_" from the string.
+
+   :param x: The input string to be normalized.
+   :type x: str
+   :param remove_td: If True, "TD_" and "td_" are removed from the string.
+   :type remove_td: bool, optional
+   :return: The normalized string.
+   :rtype: str
+
+.. py:function:: normalize_names(x)
+
+   Normalize the names in the input string by removing specific substrings.
+
+   :param x: The input string to be normalized.
+   :type x: str or other
+   :return: The normalized string, or the original input if it is not a string.
+   :rtype: same as input
+
+.. py:function:: __init__(self, general_attr: CommonAttrs, table_data: TableData, table_loop_index: int = -1, previous_table: AbstractParser = None)
+
+   Initialize the parser with general attributes, table data, table loop index, and the previous table.
+
+   :param general_attr: The general attributes for the parser.
+   :type general_attr: CommonAttrs
+   :param table_data: The table data for the parser.
+   :type table_data: TableData
+   :param table_loop_index: The index of the table loop.
+   :type table_loop_index: int, optional
+   :param previous_table: The previous table in the parsing process.
+   :type previous_table: AbstractParser, optional
+
+.. py:function:: use_original_values(self)
+
+   Use the original values and preprocessing mapper from the table data.
+   :rtype: None
+
+.. py:function:: make_cell_status(self)
+
+   Create a status for each cell in the table.
+   :rtype: None
+
+.. py:function:: insert_cell_status(self)
+
+   Insert the cell status into the table data statuses.
+   :rtype: None
+
+.. py:function:: label_and_transform_table(self)
+
+   Label and transform the table. This is a placeholder function to be implemented in subclasses.
+   :rtype: None
+
+.. py:function:: extend_tables_and_extract_combinations(self)
+
+   Extend the tables and extract combinations. This is a placeholder function to be implemented in subclasses.
+   :rtype: None
+
+.. py:function:: preprocess_data(self)
+
+   Preprocess the data by getting column semantics, applying column transformations, and updating the category to column indices map.
+   :rtype: None
+
+.. py:function:: sort_and_update(self, category, largest)
+
+   Sort the columns in the specified category and update the category to column indices map.
+
+   :param category: The category of columns to sort.
+   :type category: str
+   :param largest: If True, sort in descending order. Otherwise, sort in ascending order.
+   :type largest: bool
+   :return: The sorted column index, or None if there are no columns in the category.
+   :rtype: int or None
+
+.. py:function:: get_all_valid_prices(self, reference_column)
+
+   Get all valid price columns based on the mean price in the reference column.
+
+   :param reference_column: The reference column for calculating the mean price.
+   :type reference_column: str
+   :return: The indices of the valid price columns.
+   :rtype: list[int]
+
+.. py:function:: get_eur_prices(self, reference_column)
+
+   Get all valid EUR price columns based on the mean price in the reference column.
+
+   :param reference_column: The reference column for calculating the mean price.
+   :type reference_column: str
+   :return: The indices of the valid EUR price columns.
+   :rtype: list[int]
+
+.. py:function:: prioritize_numerical_columns(self)
+
+   Prioritize numerical columns by sorting and updating the "kw/ks" and "price" categories.
+   :rtype: None

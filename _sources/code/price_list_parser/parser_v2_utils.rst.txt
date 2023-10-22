@@ -1,0 +1,86 @@
+===============
+parser_v2_utils
+===============
+
+.. py:function:: generate_parser_input(price_list_id: int = None, filename: str = None, local_pl_details_folder: str = None) -> dict
+
+   Generate parser input either by getting price list details from a local folder or by calling a function to get these details.
+
+   :param price_list_id: The id of the price list.
+   :type price_list_id: int or None
+   :param filename: The name of the file.
+   :type filename: str or None
+   :param local_pl_details_folder: The local folder where price list details are stored.
+   :type local_pl_details_folder: str or None
+   :return: A dictionary containing details about the price list.
+   :rtype: dict
+
+
+.. py:function:: get_s3_url_from_price_list_details(pl_documents: dict) -> tuple[int, str, str]
+
+   Get the S3 URL from the price list details.
+
+   :param pl_documents: The price list documents.
+   :type pl_documents: dict
+   :return: A tuple containing the id, filename, and S3 URL.
+   :rtype: tuple[int, str, str]
+
+
+.. py:function:: summarize_results(price_list_details, filename, n_matched, n_id_matched, n_non_matched, n_total, experiment_name, experiment_date)
+
+   Summarize the results of the experiment.
+
+   :param price_list_details: The details of the price list.
+   :type price_list_details: dict
+   :param filename: The name of the file.
+   :type filename: str
+   :param n_matched: The number of matched items.
+   :type n_matched: int
+   :param n_id_matched: The number of id matched items.
+   :type n_id_matched: int
+   :param n_non_matched: The number of non-matched items.
+   :type n_non_matched: int
+   :param n_total: The total number of items.
+   :type n_total: int
+   :param experiment_name: The name of the experiment.
+   :type experiment_name: str
+   :param experiment_date: The date of the experiment.
+   :type experiment_date: str
+   :return: A dictionary summarizing the results of the experiment.
+   :rtype: dict
+
+
+.. py:function:: restructure_model_generations(data: dict)
+
+   Restructure the model generations in the data.
+
+   :param data: The data containing model generations.
+   :type data: dict
+   :return: The data with restructured model generations.
+   :rtype: dict
+
+
+.. py:function:: get_latest_pl(previous_price_list_id, pl_summary, input_data)
+
+   Get the latest price list details either by getting them from a previous price list id or by querying a service.
+
+   :param previous_price_list_id: The id of the previous price list.
+   :type previous_price_list_id: int or None
+   :param pl_summary: The summary of the price list.
+   :type pl_summary: dict
+   :param input_data: The input data.
+   :type input_data: dict
+   :return: The latest price list details.
+   :rtype: dict or None
+
+
+.. py:function:: get_parsed_eq_pages(eq_pages, page_to_segments)
+
+   Get the parsed equivalent pages.
+
+   :param eq_pages: The equivalent pages.
+   :type eq_pages: list
+   :param page_to_segments: The mapping from pages to segments.
+   :type page_to_segments: dict
+   :return: The parsed equivalent pages.
+   :rtype: list

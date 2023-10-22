@@ -1,0 +1,140 @@
+====
+main
+====
+
+.. py:function:: split_multi_values(text: str, predictor_necessities)
+
+       Splits the text into multiple values based on the predictor necessities.
+
+       :param text: The text to be split.
+       :type text: str
+       :param predictor_necessities: The predictor necessities used for splitting.
+       :return: The split text subcategories.
+       :rtype: dict
+
+
+
+.. py:function:: multi_values_splitter(multicell_values: list[str], predictor_necessities)
+
+       Splits multiple values into subcategories based on the predictor necessities.
+
+       :param multicell_values: The list of values to be split.
+       :type multicell_values: list[str]
+       :param predictor_necessities: The predictor necessities used for splitting.
+       :return: The map of categories to values.
+       :rtype: defaultdict
+
+
+
+.. py:function:: get_categories(text: str, brand: Brand, storage, labeler_base)
+
+       Gets the categories from the text based on the brand, storage, and labeler base.
+
+       :param text: The text to get categories from.
+       :type text: str
+       :param brand: The brand used for categorization.
+       :type brand: Brand
+       :param storage: The storage used for categorization.
+       :param labeler_base: The labeler base used for categorization.
+       :return: The split text subcategories.
+       :rtype: dict
+
+
+
+.. py:function:: title_splitter(title: str, df_labels: pd.DataFrame, df_values: pd.DataFrame, column_index, mapper: dict, predictor_necessities: PredictorNecessities)
+
+       Splits the title into subcategories based on the predictor necessities.
+
+       :param title: The title to be split.
+       :type title: str
+       :param df_labels: The dataframe of labels.
+       :type df_labels: pd.DataFrame
+       :param df_values: The dataframe of values.
+       :type df_values: pd.DataFrame
+       :param column_index: The index of the column to be split.
+       :param mapper: The mapper used for splitting.
+       :type mapper: dict
+       :param predictor_necessities: The predictor necessities used for splitting.
+       :return: The map of categories to values.
+       :rtype: defaultdict
+
+
+
+.. py:function:: extend_tables(category_to_values_map, split_column_index, df_values, df_labels)
+
+       Extends the tables based on the category to values map.
+
+       :param category_to_values_map: The map of categories to values.
+       :param split_column_index: The index of the column to be split.
+       :param df_values: The dataframe of values.
+       :type df_values: pd.DataFrame
+       :param df_labels: The dataframe of labels.
+       :type df_labels: pd.DataFrame
+       :return: The extended dataframes and mapper.
+       :rtype: tuple
+
+
+
+.. py:function:: multi_values_dataframe(values: pd.DataFrame, labels: pd.DataFrame, probs: pd.DataFrame, mapper: dict, predictor_necessities: PredictorNecessities, summary)
+
+       Creates a dataframe from multiple values based on the predictor necessities.
+
+       :param values: The dataframe of values.
+       :type values: pd.DataFrame
+       :param labels: The dataframe of labels.
+       :type labels: pd.DataFrame
+       :param probs: The dataframe of probabilities.
+       :type probs: pd.DataFrame
+       :param mapper: The mapper used for splitting.
+       :type mapper: dict
+       :param predictor_necessities: The predictor necessities used for splitting.
+       :param summary: The summary used for splitting.
+       :return: The split result.
+       :rtype: SplitResult
+
+
+
+.. py:function:: split_title_row(values, labels, column_index, mapper, n_original_cols, predictor_necessities)
+
+       Splits the title row based on the predictor necessities.
+
+       :param values: The dataframe of values.
+       :param labels: The dataframe of labels.
+       :param column_index: The index of the column to be split.
+       :param mapper: The mapper used for splitting.
+       :param n_original_cols: The number of original columns.
+       :param predictor_necessities: The predictor necessities used for splitting.
+
+
+
+.. py:function:: split_column(df_labels, df_values, df_probs, relevant_types, mapper, predictor_necessities) -> SplitResult
+
+       Splits the column based on the predictor necessities.
+
+       :param df_labels: The dataframe of labels.
+       :type df_labels: pd.DataFrame
+       :param df_values: The dataframe of values.
+       :type df_values: pd.DataFrame
+       :param df_probs: The dataframe of probabilities.
+       :type df_probs: pd.DataFrame
+       :param relevant_types: The relevant types used for splitting.
+       :param mapper: The mapper used for splitting.
+       :type mapper: dict
+       :param predictor_necessities: The predictor necessities used for splitting.
+       :return: The split result.
+       :rtype: SplitResult
+
+
+
+.. py:function:: split_checker(split: SplitResult, values: pd.DataFrame, labels: pd.DataFrame, main_mapper: dict)
+
+       Checks the split result and corrects labels if necessary.
+
+       :param split: The split result.
+       :type split: SplitResult
+       :param values: The dataframe of values.
+       :type values: pd.DataFrame
+       :param labels: The dataframe of labels.
+       :type labels: pd.DataFrame
+       :param main_mapper: The main mapper dictionary.
+       :type main_mapper: dict

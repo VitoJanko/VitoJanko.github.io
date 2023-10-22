@@ -1,0 +1,103 @@
+=================
+transform_to_json
+=================
+
+.. py:function:: write_nested(keys, value, dict_)
+
+   Recursively writes a value into a nested dictionary structure based on a list of keys.
+
+   :param keys: List of keys defining the path in the dictionary where the value should be written.
+   :type keys: list
+   :param value: The value to be written.
+   :param dict_: The dictionary into which the value should be written.
+   :type dict_: dict
+   :return: The updated dictionary.
+   :rtype: dict
+
+.. py:function:: get_engine_combination(data: dict, categories_by_depth, model_generation_id)
+
+   Generates a dictionary representing an engine combination.
+
+   :param data: The data to be used to generate the engine combination.
+   :type data: dict
+   :param categories_by_depth: A dictionary mapping categories to their depth in the data structure.
+   :param model_generation_id: The ID of the model generation.
+   :return: The generated engine combination.
+   :rtype: dict
+
+.. py:function:: add_availability(engine_comb_hash_to_parsed_engine_comb, engine_comb_hash_to_raw_engine_comb, versions_field, start_idx, start_availability_id: int = 0)
+
+   Adds availability information to parsed engine combinations.
+
+   :param engine_comb_hash_to_parsed_engine_comb: A dictionary mapping engine combination hashes to parsed engine combinations.
+   :type engine_comb_hash_to_parsed_engine_comb: dict
+   :param engine_comb_hash_to_raw_engine_comb: A dictionary mapping engine combination hashes to raw engine combinations.
+   :type engine_comb_hash_to_raw_engine_comb: dict
+   :param versions_field: A list of version information.
+   :type versions_field: list
+   :param start_idx: The starting index for the availability IDs.
+   :type start_idx: int
+   :param start_availability_id: The starting ID for the availability information.
+   :type start_availability_id: int
+   :return: A tuple containing the updated parsed engine combinations and the next availability ID.
+   :rtype: tuple
+
+.. py:function:: get_versions(combinations: list[dict], start_idx: int, price_list_id: int)
+
+   Generates a list of version information from a list of combinations.
+
+   :param combinations: The combinations to be used to generate the version information.
+   :type combinations: list[dict]
+   :param start_idx: The starting index for the version IDs.
+   :type start_idx: int
+   :param price_list_id: The ID of the price list.
+   :type price_list_id: int
+   :return: The generated version information.
+   :rtype: list[dict]
+
+.. py:function:: get_engine_combinations(model_to_combinations_map, categories_by_depth, versions_field)
+
+   Generates a list of engine combinations from a map of models to combinations.
+
+   :param model_to_combinations_map: A dictionary mapping models to combinations.
+   :type model_to_combinations_map: dict
+   :param categories_by_depth: A dictionary mapping categories to their depth in the data structure.
+   :param versions_field: A list of version information.
+   :type versions_field: list
+   :return: The generated engine combinations.
+   :rtype: list[dict]
+
+.. py:function:: get_model_generation(model_data, id, categories_by_depth)
+
+   Generates a dictionary representing a model generation.
+
+   :param model_data: The data to be used to generate the model generation.
+   :type model_data: dict
+   :param id: The ID of the model generation.
+   :type id: int
+   :param categories_by_depth: A dictionary mapping categories to their depth in the data structure.
+   :return: The generated model generation.
+   :rtype: dict
+
+.. py:function:: get_model_generations(model_to_model_data, categories_by_depth)
+
+   Generates a list of model generations from a map of models to model data.
+
+   :param model_to_model_data: A dictionary mapping models to model data.
+   :type model_to_model_data: dict
+   :param categories_by_depth: A dictionary mapping categories to their depth in the data structure.
+   :return: The generated model generations.
+   :rtype: list[dict]
+
+.. py:function:: transform_to_json(combinations: list[dict], categories: list[str], price_list_id: int)
+
+   Transforms a list of combinations and a list of categories into a JSON-compatible dictionary.
+
+   :param combinations: The combinations to be transformed.
+   :type combinations: list[dict]
+   :param categories: The categories to be included in the transformation.
+   :type categories: list[str]
+   :param price_list_id: The ID of the price list.
+   :type price_list_id: int
+   :return: The transformed data.
+   :rtype: dict

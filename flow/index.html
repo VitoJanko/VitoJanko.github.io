@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting up" href="setting_up.html" />
+    <link rel="prev" title="Price list parser’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setting_up.html">Setting up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classifying_pages.html">Classifying pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structuring_pdf.html">Structuring the PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_dataframes.html">Creating Pandas Dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labeling.html">Labeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_form.html">Transforming to the standard table form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expert_rules1.html">Applying expert rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collect_combinations.html">Collect combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vehicle_editor.html">Add Vehicle Editor IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expert_rules2.html">Applying expert rules, round #2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json_format.html">Transforming to the correct format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validating.html">Validating the results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cleanup.html">Clean-up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Function documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/flow/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The road from price-list PDF to a parsed JSON is a long one, and best taken
+step by step. Prepare yourself some tea. And a sandwich.</p>
+</div>
+<p>This section will outline steps required to parse the PDF, give some overview for
+each one and link to the subsections where each step is described in more detail.</p>
+<p>These subsections will contain an example of data passing through each step.
+In addition, they will link the functions used, and in some cases also
+draw a graph of their connections.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I will temporary use the space near the graphs to list some ideas for refactoring.
+Is this the right place for it? No. Will that stop me? Also no.</p>
+</div>
+<hr class="docutils" />
+<section id="collecting-information">
+<h2>Collecting information<a class="headerlink" href="#collecting-information" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<section id="setting-up">
+<h3><a class="reference internal" href="setting_up.html"><span class="doc">Setting up</span></a><a class="headerlink" href="#setting-up" title="Link to this heading"></a></h3>
+<p>We begin with the mundane yet essential steps: setting up the logger, loading all resources from S3,
+and fetching the PDF from the Vehicle Editor database. Additionally, we obtain supplementary details about the PDF,
+like the brand and super-model of the vehicles, and the country where they’re sold.
+We use these to adjust the parser’s settings.</p>
+</section>
+<section id="structuring-pdf">
+<h3><a class="reference internal" href="structuring_pdf.html"><span class="doc">Structuring PDF</span></a><a class="headerlink" href="#structuring-pdf" title="Link to this heading"></a></h3>
+<p>While we could open the PDF and extract all its text, parsing complex tabular data from from text can be challenging.
+A better approach is to use a library that directly extracts tables from the PDF.
+We experimented with open-source options but ultimately opted for Amazon Textract in conjunction with Adobe Extract.</p>
+</section>
+<section id="classifying-pages">
+<h3><a class="reference internal" href="classifying_pages.html"><span class="doc">Classifying pages</span></a><a class="headerlink" href="#classifying-pages" title="Link to this heading"></a></h3>
+<p>Using third-party services, however, comes with a cost. And to minimize the expenses we process only pages
+where we expect the price-list to appear. This is achieved using a k-Nearest Neighbor classifier, where
+we adopt the Bag-of-words method for feature creation. After pinpointing the potential pages, we order their processing []
+and archive the outcomes for future reference.</p>
+</section>
+<section id="creating-pandas-dataframes">
+<h3><a class="reference internal" href="pandas_dataframes.html"><span class="doc">Creating Pandas Dataframes</span></a><a class="headerlink" href="#creating-pandas-dataframes" title="Link to this heading"></a></h3>
+<p>At this stage, we possess representations of the crucial pages in the Textract format, which contains complex relationships
+between different page components, their coordinates, bounding boxes, and so on. We want to simplify this down to having a
+“simple” tables represented by Pandas dataframes. In this step we also take special care to handle “merged” cells
+that span several rows and/or columns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When parsing additional information (such as equipment), the steps above have to be extended, but this is a story for another time.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="processing-table">
+<h2>Processing table<a class="headerlink" href="#processing-table" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>We have come far! And have tables that <em>probably</em> contain data about the cars being sold. There is, however, a one <em>teeny-tiny</em> problem – all of them
+are different! Table layouts can vary dramatically from one price-list to another, as can column data, data representation,
+and specific keywords denoting engines, transmissions, etc. So we can mentally discard any hope for an
+easy solution and instead employ a combination of AI algorithms and a plethora of hand-written heuristics.</p>
+<section id="labeling">
+<h3><a class="reference internal" href="labeling.html"><span class="doc">Labeling</span></a><a class="headerlink" href="#labeling" title="Link to this heading"></a></h3>
+<p>The first step to understanding table contents is to analyze what data is contained in each cell. Is it fuel type? Horse-power, price?
+We use a Deep-learning approach here, taking the string in the cell – as well as the strings in the surrounding cells – as input
+and spitting up the cell-type as the output.</p>
+</section>
+<section id="transforming-to-the-standard-table-form">
+<h3><a class="reference internal" href="standard_form.html"><span class="doc">Transforming to the standard table form</span></a><a class="headerlink" href="#transforming-to-the-standard-table-form" title="Link to this heading"></a></h3>
+<p>With cell labels in hand we are equipped to tackle the table structure! Are the versions (equipment level) on the top-right side of the table
+and multiple prices in each row? The table is probably in the “wide” format. Are all the headers in the first column? Table is transposed!
+Few rows empty in all but one fuel cell? The table is probably split by fuel type. And so on and on.</p>
+<p>After each such deduction we can transform the table a bit, and eventually end in what we call the “standard form”. In this format each row
+represents one valid combination of car attributes, together with its price and each column represents one attribute (engine, transmission, etc).</p>
+<p>Let’s take a moment and pat ourself on the back.</p>
+</section>
+<section id="splitting">
+<h3><a class="reference internal" href="splitting.html"><span class="doc">Splitting</span></a><a class="headerlink" href="#splitting" title="Link to this heading"></a></h3>
+<p>If you’ve been carefully inspecting the subsections for data examples, you might seen that our “standard table” contains entries such as
+“1.0 T-GDi 120 iBVM Hybrid 48V”. If we truly want to have only one attribute in each column, we need to split this string and create additional
+columns. In this case containing engine, transmission, power, and fuel type.</p>
+<p>We do so, by searching for specific words or combination of words that appear in the Vehicle Editor database describing different attributes.
+We also employ some regex-es to find numeric values in some specific formats (ie. 80 kw).</p>
+</section>
+<section id="applying-expert-rules">
+<h3><a class="reference internal" href="expert_rules1.html"><span class="doc">Applying expert rules</span></a><a class="headerlink" href="#applying-expert-rules" title="Link to this heading"></a></h3>
+<p>Every combination of car brand and the country for which the PDF was written contains its own set of perks. And while we should usually celebrate
+diversity, this can represent additonal challenges for our parser. So throughout the entire parser we have sprinkled some additional rules and
+transformations that only apply to a specific brand-country combination.</p>
+<p>And some parts of the parser are meant to handly <em>only</em> such exceptions. The subsection links these functions as they appear in three different
+parts of the table processing: before labeling, after labeling, and after splitting.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t forget to stretch a bit. More is still coming.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="create-combinations">
+<h2>Create combinations<a class="headerlink" href="#create-combinations" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>Now that we have everything in organized tables, we can extract data from each row and move to the next level of abstraction:
+having a list of key-value pairs  representing all collected attributes. We will call each such dictionary a <em>combination</em>.</p>
+<section id="collect-combinations">
+<h3><a class="reference internal" href="collect_combinations.html"><span class="doc">Collect combinations</span></a><a class="headerlink" href="#collect-combinations" title="Link to this heading"></a></h3>
+<p>Most of the combination creation is straightforward, going through every table processed and collecting them into one list.
+We do have to be careful on what to do, if two tables contain the same combination though! And if we have too many combinations,
+some need to be discarted in order not to overload the Vehicle Editor database in the next step.</p>
+</section>
+<section id="add-vehicle-editor-ids">
+<h3><a class="reference internal" href="vehicle_editor.html"><span class="doc">Add Vehicle Editor IDs</span></a><a class="headerlink" href="#add-vehicle-editor-ids" title="Link to this heading"></a></h3>
+<p>For some attributes we need to also find their ID, so they can be correctly represented in the Vehicle Editor database. Which
+inevitably comes with its own set of challenges.</p>
+<p>Lets consider two examples: “iBVM” and  “T-G0i”. Neither string appears in the database, so they can’t be matched directly.
+The first example, it turns out, is the french word for iMT and the second example is a typo made by the Textract OCR, and
+should be “T-GDi”. So we need to employ a combination of mappers, as well as fuzzy matching to find the real value.</p>
+<p>We also need to handle cases, where some information is missing. There are multiple “T-GDi” engines in the database,
+with different horse-powers, so if the information on engine strength is missing from the price-list, we need to
+guess based on the similar cars being sold in the same place and time.</p>
+</section>
+<section id="applying-expert-rules-round-2">
+<h3><a class="reference internal" href="expert_rules2.html"><span class="doc">Applying expert rules, round #2</span></a><a class="headerlink" href="#applying-expert-rules-round-2" title="Link to this heading"></a></h3>
+<p>In the steps outlined above, one can find many exceptions based on the country-brand or based on the car model.
+Honestly, this should hardly be surprising at this point. Clicking on this subsection reveals the locations of
+the files where most of them are hidden.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="wrap-up">
+<h2>Wrap up<a class="headerlink" href="#wrap-up" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<section id="transforming-to-the-correct-format">
+<h3><a class="reference internal" href="json_format.html"><span class="doc">Transforming to the correct format</span></a><a class="headerlink" href="#transforming-to-the-correct-format" title="Link to this heading"></a></h3>
+<p>At this point we already have all the data we are going to have in this run. All that remains is transforming it
+to the JSON structure expected by our client, and returning it. Its a slightly tedious operation, but a
+straightforward one. No extra rules or exceptions.</p>
+<p>And we are done!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Narrator: It turns out we weren’t quite done yet.</p>
+</div>
+</section>
+<section id="validating-the-results">
+<h3><a class="reference internal" href="validating.html"><span class="doc">Validating the results</span></a><a class="headerlink" href="#validating-the-results" title="Link to this heading"></a></h3>
+<p>The steps from here on are more-or-less only for the ease of further development. The crucial one is to check if
+this price-list already exists in the Vehicle Editor database. If it does, we can check if the results we return
+match the expected results.</p>
+<p>This is the key for assesing performance of a new algorithm version. Run batches of pricelists with known (and correct)
+output and measure how many (%) of combinations we parse right.</p>
+</section>
+<section id="logging">
+<h3><a class="reference internal" href="logging.html"><span class="doc">Logging</span></a><a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<p>Now that we are at the end, we just need to write all the logs down and upload them to S3.
+Logs made during the execution are saved for debugging, labels made by the DL are saved as potential new training examples,
+validation perfomance is saved for progress monitoring. And a few other obbjects are saved for the potential future use.</p>
+</section>
+<section id="clean-up">
+<h3><a class="reference internal" href="cleanup.html"><span class="doc">Clean-up</span></a><a class="headerlink" href="#clean-up" title="Link to this heading"></a></h3>
+<p>Free up all the resources. And done!</p>
+<p>If things go right, at least.</p>
+<p>What if they don’t? If the parser crashed we at least need to make a log indicating what went wrong and on which price-list.
+If no combinations were found, maybe we were looking at the wrong pages; restart the parser with different settings and try again!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Price list parser’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setting_up.html" class="btn btn-neutral float-right" title="Setting up" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

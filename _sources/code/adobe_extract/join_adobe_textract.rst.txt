@@ -1,0 +1,154 @@
+===================
+join_adobe_textract
+===================
+
+.. py:function:: join_adobe_textract(textract, adobe, pdf_parser, is_pricelist=False, verbose=False)
+
+   Joins the text extracted from Adobe and Textract libraries. If Adobe data is not provided, it returns the Textract data. It also deep copies the Textract data to avoid modifying the original data.
+
+   :param textract: The text extracted using the Textract library.
+   :type textract: list
+   :param adobe: The text extracted using the Adobe library.
+   :type adobe: list
+   :param pdf_parser: The PDF parser used for extraction.
+   :type pdf_parser: object
+   :param is_pricelist: Optional flag indicating if the document is a price list.
+   :type is_pricelist: bool
+   :param verbose: Optional flag for verbose output.
+   :type verbose: bool
+   :return: The joined text data.
+   :rtype: list
+
+
+.. py:function:: join_lines(textract, adobe, verbose=False)
+
+   Finds the best match for each line in the Textract list and replaces it with the corresponding line from the Adobe list, if it exists. It avoids the O(n^2) complexity by taking advantage of the fact that lines are sorted by position.
+
+   :param textract: A list of lines extracted using the Textract library.
+   :type textract: list
+   :param adobe: A list of lines extracted using the Adobe Acrobat library.
+   :type adobe: list
+   :param verbose: Optional flag for verbose output.
+   :type verbose: bool
+
+
+.. py:function:: join_tables_lines(textract, adobe, pdf_parser, is_pricelist=False, verbose=False)
+
+   Joins the lines of tables extracted from Adobe and Textract libraries.
+
+   :param textract: The text extracted using the Textract library.
+   :type textract: list
+   :param adobe: The text extracted using the Adobe library.
+   :type adobe: list
+   :param pdf_parser: The PDF parser used for extraction.
+   :type pdf_parser: object
+   :param is_pricelist: Optional flag indicating if the document is a price list.
+   :type is_pricelist: bool
+   :param verbose: Optional flag for verbose output.
+   :type verbose: bool
+
+
+.. py:function:: cell_matches(textract_data: TextractUtils, adobe_data: TextractUtils, page: int)
+
+   Matches the cells of tables extracted from Adobe and Textract libraries based on their positions on the page.
+
+   :param textract_data: The Textract data utility object.
+   :type textract_data: TextractUtils
+   :param adobe_data: The Adobe data utility object.
+   :type adobe_data: TextractUtils
+   :param page: The page number.
+   :type page: int
+   :return: The matched cell pairs.
+   :rtype: list
+
+
+.. py:function:: correct_cells(textract_data: TextractUtils, adobe_data: TextractUtils, cell_pairs, pl, verbose)
+
+   Corrects the cells in the Textract data based on the matched cells in the Adobe data.
+
+   :param textract_data: The Textract data utility object.
+   :type textract_data: TextractUtils
+   :param adobe_data: The Adobe data utility object.
+   :type adobe_data: TextractUtils
+   :param cell_pairs: The matched cell pairs.
+   :type cell_pairs: list
+   :param pl: Flag indicating if the document is a price list.
+   :type pl: bool
+   :param verbose: Optional flag for verbose output.
+   :type verbose: bool
+
+
+.. py:function:: correct_cell(cell_textract, cell_adobe, textract_data, adobe_data, pl, verbose)
+
+   Corrects a cell in the Textract data based on the matched cell in the Adobe data.
+
+   :param cell_textract: The cell from the Textract data.
+   :type cell_textract: dict
+   :param cell_adobe: The matched cell from the Adobe data.
+   :type cell_adobe: dict
+   :param textract_data: The Textract data utility object.
+   :type textract_data: TextractUtils
+   :param adobe_data: The Adobe data utility object.
+   :type adobe_data: TextractUtils
+   :param pl: Flag indicating if the document is a price list.
+   :type pl: bool
+   :param verbose: Optional flag for verbose output.
+   :type verbose: bool
+
+
+.. py:function:: replace_lines(textract_data: TextractUtils, adobe_data: TextractUtils, lines_textract: list, lines_adobe: list, cell_textract: dict, cell_adobe: dict)
+
+   Replaces the lines in the Textract data with the lines from the Adobe data.
+
+   :param textract_data: The Textract data utility object.
+   :type textract_data: TextractUtils
+   :param adobe_data: The Adobe data utility object.
+   :type adobe_data: TextractUtils
+   :param lines_textract: The lines from the Textract data.
+   :type lines_textract: list
+   :param lines_adobe: The lines from the Adobe data.
+   :type lines_adobe: list
+   :param cell_textract: The cell from the Textract data.
+   :type cell_textract: dict
+   :param cell_adobe: The cell from the Adobe data.
+   :type cell_adobe: dict
+
+
+.. py:function:: extend_id(original_id, extra_identifier)
+
+   Extends the original ID with an extra identifier and the current time to ensure uniqueness.
+
+   :param original_id: The original ID.
+   :type original_id: str
+   :param extra_identifier: The extra identifier.
+   :type extra_identifier: int
+   :return: The extended ID.
+   :rtype: str
+
+
+.. py:function:: join_text(data: TextractUtils, block)
+
+   Joins the text of a block.
+
+   :param data: The Textract data utility object.
+   :type data: TextractUtils
+   :param block: The block of text.
+   :type block: dict
+   :return: The lines, line text, and joined line text.
+   :rtype: tuple
+
+
+.. py:function:: match_by_location(textract_data: TextractUtils, adobe_data: TextractUtils, page: int, pdf_parser: PdfParser)
+
+   Matches the cells of tables extracted from Adobe and Textract libraries based on their locations on the page.
+
+   :param textract_data: The Textract data utility object.
+   :type textract_data: TextractUtils
+   :param adobe_data: The Adobe data utility object.
+   :type adobe_data: TextractUtils
+   :param page: The page number.
+   :type page: int
+   :param pdf_parser: The PDF parser used for extraction.
+   :type pdf_parser: PdfParser
+   :return: The matched cell pairs.
+   :rtype: list

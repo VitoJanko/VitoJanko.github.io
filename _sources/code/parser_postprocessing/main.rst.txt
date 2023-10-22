@@ -1,0 +1,108 @@
+====
+main
+====
+
+.. py:function:: correct_models(all_combinations: list[dict], summary: Summary)
+
+   Apply model name map and check and unify minor model name differences for all combinations.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+   :param summary: Summary of the model.
+   :type summary: Summary
+
+
+.. py:function:: correct_models_after_match(all_combinations: list[dict], super_model_name: str)
+
+   Add electric models and normalize model names for all combinations after match.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+   :param super_model_name: Name of the super model.
+   :type super_model_name: str
+
+
+.. py:function:: apply_model_name_map(all_combinations, brand: Brand, super_model: str)
+
+   Apply model name map for all combinations based on the brand and super model.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+   :param brand: Brand of the model.
+   :type brand: Brand
+   :param super_model: Name of the super model.
+   :type super_model: str
+
+
+.. py:function:: add_electric_models(all_combinations, super_model_name)
+
+   Add electric models for all combinations based on the fuel type and model name.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+   :param super_model_name: Name of the super model.
+   :type super_model_name: str
+
+
+.. py:function:: check_and_unify_minor_model_name_differences(all_combinations)
+
+   Check and unify minor model name differences for all combinations.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+
+
+.. py:function:: unify_version_names(all_combinations, pl_summary)
+
+   Unify version names for all combinations based on the brand and super model.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+   :param pl_summary: Summary of the price list.
+   :type pl_summary: Summary
+
+
+.. py:function:: make_new_models_from_versions(all_combinations, brand: Brand, super_model_id)
+
+   Modify the model name and version name in the given combinations based on a predefined mapping.
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+   :param brand: Brand of the model.
+   :type brand: Brand
+   :param super_model_id: ID of the super model.
+   :type super_model_id: str
+
+
+.. py:function:: update_models_for_dacia_stepway(all_combinations)
+
+   Update model names for all combinations if the version name contains "stepway".
+
+   :param all_combinations: List of all combinations.
+   :type all_combinations: list[dict]
+
+
+.. py:function:: post_process_parsed_content(pl_json, brand, model_generations_data)
+
+   Post process parsed content by joining duplicate engine combinations and adding confidence for combination.
+
+   :param pl_json: Parsed content in json format.
+   :type pl_json: dict
+   :param brand: Brand of the model.
+   :type brand: str
+   :param model_generations_data: Data of model generations.
+   :type model_generations_data: dict
+
+
+.. py:function:: custom_scorer(query, choice, **kwargs)
+
+   Custom scorer function for fuzzy matching.
+
+   :param query: Query string.
+   :type query: str
+   :param choice: Choice string.
+   :type choice: str
+   :param kwargs: Additional keyword arguments.
+   :type kwargs: dict
+   :return: Score of the match.
+   :rtype: int

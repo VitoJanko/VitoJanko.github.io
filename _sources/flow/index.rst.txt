@@ -1,0 +1,242 @@
+========
+Overview
+========
+
+.. note::
+	The road from price-list PDF to a parsed JSON is a long one, and best taken
+	step by step. Prepare yourself some tea. And a sandwich. 
+
+This section will outline steps required to parse the PDF, give some overview for 
+each one and link to the subsections where each step is described in more detail. 
+
+These subsections will contain an example of data passing through each step. 
+In addition, they will link the functions used, and in some cases also 
+draw a graph of their connections. 
+
+.. note::
+	I will temporary use the space near the graphs to list some ideas for refactoring. 
+	Is this the right place for it? No. Will that stop me? Also no. 
+
+
+=====================
+	
+Collecting information
+======================
+		
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Collecting information
+   
+   setting_up
+   classifying_pages
+   structuring_pdf
+   pandas_dataframes
+   
+	
+:doc:`Setting up <setting_up>`
+----------------------------------------
+
+
+We begin with the mundane yet essential steps: setting up the logger, loading all resources from S3, 
+and fetching the PDF from the Vehicle Editor database. Additionally, we obtain supplementary details about the PDF,
+like the brand and super-model of the vehicles, and the country where they're sold.
+We use these to adjust the parser's settings.  
+
+
+:doc:`Structuring PDF <structuring_pdf>`
+----------------------------------------
+
+While we could open the PDF and extract all its text, parsing complex tabular data from from text can be challenging.
+A better approach is to use a library that directly extracts tables from the PDF.
+We experimented with open-source options but ultimately opted for Amazon Textract in conjunction with Adobe Extract. 
+
+
+:doc:`Classifying pages <classifying_pages>` 
+--------------------------------------------
+
+Using third-party services, however, comes with a cost. And to minimize the expenses we process only pages
+where we expect the price-list to appear. This is achieved using a k-Nearest Neighbor classifier, where 
+we adopt the Bag-of-words method for feature creation. After pinpointing the potential pages, we order their processing []
+and archive the outcomes for future reference.
+
+
+:doc:`Creating Pandas Dataframes <pandas_dataframes>` 
+------------------------------------------------------
+
+At this stage, we possess representations of the crucial pages in the Textract format, which contains complex relationships
+between different page components, their coordinates, bounding boxes, and so on. We want to simplify this down to having a 
+"simple" tables represented by Pandas dataframes. In this step we also take special care to handle "merged" cells
+that span several rows and/or columns.  
+
+
+.. note::
+	When parsing additional information (such as equipment), the steps above have to be extended, but this is a story for another time.
+
+=====================
+
+Processing table 
+================
+
+.. toctree::
+	:maxdepth: 1
+	:hidden:
+	:caption: Processing table 
+
+	labeling
+	standard_form
+	splitting
+	expert_rules1
+
+
+We have come far! And have tables that *probably* contain data about the cars being sold. There is, however, a one *teeny-tiny* problem -- all of them 
+are different! Table layouts can vary dramatically from one price-list to another, as can column data, data representation, 
+and specific keywords denoting engines, transmissions, etc. So we can mentally discard any hope for an 
+easy solution and instead employ a combination of AI algorithms and a plethora of hand-written heuristics. 
+
+
+:doc:`Labeling <labeling>`
+--------------------------
+The first step to understanding table contents is to analyze what data is contained in each cell. Is it fuel type? Horse-power, price? 
+We use a Deep-learning approach here, taking the string in the cell -- as well as the strings in the surrounding cells -- as input
+and spitting up the cell-type as the output. 
+
+
+:doc:`Transforming to the standard table form  <standard_form>`
+-----------------------------------------------------------------
+With cell labels in hand we are equipped to tackle the table structure! Are the versions (equipment level) on the top-right side of the table
+and multiple prices in each row? The table is probably in the "wide" format. Are all the headers in the first column? Table is transposed!
+Few rows empty in all but one fuel cell? The table is probably split by fuel type. And so on and on. 
+
+After each such deduction we can transform the table a bit, and eventually end in what we call the "standard form". In this format each row 
+represents one valid combination of car attributes, together with its price and each column represents one attribute (engine, transmission, etc).
+ 
+Let's take a moment and pat ourself on the back.  
+
+:doc:`Splitting <splitting>`
+-----------------------------
+If you've been carefully inspecting the subsections for data examples, you might seen that our "standard table" contains entries such as 
+"1.0 T-GDi 120 iBVM Hybrid 48V". If we truly want to have only one attribute in each column, we need to split this string and create additional
+columns. In this case containing engine, transmission, power, and fuel type.
+
+We do so, by searching for specific words or combination of words that appear in the Vehicle Editor database describing different attributes. 
+We also employ some regex-es to find numeric values in some specific formats (ie. 80 kw).  
+
+
+:doc:`Applying expert rules <expert_rules1>`
+----------------------------------------------
+Every combination of car brand and the country for which the PDF was written contains its own set of perks. And while we should usually celebrate 
+diversity, this can represent additonal challenges for our parser. So throughout the entire parser we have sprinkled some additional rules and 
+transformations that only apply to a specific brand-country combination. 
+
+And some parts of the parser are meant to handly *only* such exceptions. The subsection links these functions as they appear in three different 
+parts of the table processing: before labeling, after labeling, and after splitting.     
+
+.. note::
+	Don't forget to stretch a bit. More is still coming. 
+
+=====================
+
+Create combinations
+===================
+
+.. toctree::
+	:maxdepth: 1
+	:hidden:
+	:caption: Create combinations
+
+	collect_combinations
+	vehicle_editor
+	expert_rules2
+	
+
+Now that we have everything in organized tables, we can extract data from each row and move to the next level of abstraction:
+having a list of key-value pairs  representing all collected attributes. We will call each such dictionary a *combination*.   
+
+
+:doc:`Collect combinations  <collect_combinations>`
+----------------------------------------------------
+Most of the combination creation is straightforward, going through every table processed and collecting them into one list. 
+We do have to be careful on what to do, if two tables contain the same combination though! And if we have too many combinations, 
+some need to be discarted in order not to overload the Vehicle Editor database in the next step. 
+
+
+:doc:`Add Vehicle Editor IDs  <vehicle_editor>`
+------------------------------------------------
+For some attributes we need to also find their ID, so they can be correctly represented in the Vehicle Editor database. Which 
+inevitably comes with its own set of challenges. 
+
+Lets consider two examples: "iBVM" and  "T-G0i". Neither string appears in the database, so they can't be matched directly.
+The first example, it turns out, is the french word for iMT and the second example is a typo made by the Textract OCR, and 
+should be "T-GDi". So we need to employ a combination of mappers, as well as fuzzy matching to find the real value. 
+
+We also need to handle cases, where some information is missing. There are multiple "T-GDi" engines in the database, 
+with different horse-powers, so if the information on engine strength is missing from the price-list, we need to 
+guess based on the similar cars being sold in the same place and time. 
+
+:doc:`Applying expert rules, round #2  <expert_rules2>`
+---------------------------------------------------------
+In the steps outlined above, one can find many exceptions based on the country-brand or based on the car model. 
+Honestly, this should hardly be surprising at this point. Clicking on this subsection reveals the locations of 
+the files where most of them are hidden. 
+
+=====================
+
+Wrap up
+=======
+
+.. toctree::
+	:maxdepth: 1
+	:hidden:
+	:caption: Wrap up:
+
+	json_format
+	validating
+	logging
+	cleanup
+
+
+:doc:`Transforming to the correct format   <json_format>`
+----------------------------------------------------------
+
+At this point we already have all the data we are going to have in this run. All that remains is transforming it
+to the JSON structure expected by our client, and returning it. Its a slightly tedious operation, but a 
+straightforward one. No extra rules or exceptions. 
+
+And we are done! 
+
+.. note::
+	Narrator: It turns out we weren't quite done yet. 
+
+
+:doc:`Validating the results <validating>`
+----------------------------------------------
+
+The steps from here on are more-or-less only for the ease of further development. The crucial one is to check if 
+this price-list already exists in the Vehicle Editor database. If it does, we can check if the results we return 
+match the expected results. 
+
+This is the key for assesing performance of a new algorithm version. Run batches of pricelists with known (and correct)
+output and measure how many (%) of combinations we parse right.  
+	
+
+:doc:`Logging <logging>`
+---------------------------
+
+Now that we are at the end, we just need to write all the logs down and upload them to S3.
+Logs made during the execution are saved for debugging, labels made by the DL are saved as potential new training examples, 
+validation perfomance is saved for progress monitoring. And a few other obbjects are saved for the potential future use. 
+
+
+:doc:`Clean-up <cleanup>`
+----------------------------
+
+Free up all the resources. And done! 
+
+If things go right, at least. 
+
+What if they don't? If the parser crashed we at least need to make a log indicating what went wrong and on which price-list. 
+If no combinations were found, maybe we were looking at the wrong pages; restart the parser with different settings and try again! 
+
+
+

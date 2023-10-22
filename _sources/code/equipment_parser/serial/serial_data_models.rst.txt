@@ -1,0 +1,187 @@
+==================
+serial_data_models
+==================
+
+.. py:function:: __init__(self, block, prev_block, column, column_start)
+
+       Initializes the class with the given parameters.
+
+       :param block: The block to be processed.
+       :type block: dict
+       :param prev_block: The previous block.
+       :type prev_block: dict or None
+       :param column: The column number.
+       :type column: int
+       :param column_start: The start of the column.
+       :type column_start: int
+
+
+.. py:function:: is_valid(self)
+
+       Checks if the block is valid.
+       :return: True if the block is valid, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: page(self)
+
+       Returns the page number.
+       :return: The page number.
+       :rtype: int
+
+
+.. py:function:: starts_lower(self)
+
+       Checks if the text in the block starts with a lowercase letter.
+       :return: True if the text starts with a lowercase letter, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: starts_upper(self)
+
+       Checks if the text in the block starts with an uppercase letter.
+       :return: True if the text starts with an uppercase letter, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: is_close(self, coeff: float, margin_mean: dict[int, float]) -> bool
+
+       Checks if the block is close to the margin.
+
+       :param coeff: The coefficient to be used in the calculation.
+       :type coeff: float
+       :param margin_mean: The mean margin.
+       :type margin_mean: dict[int, float]
+       :return: True if the block is close to the margin, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: is_big(self, coeff: float, size_mean: dict[int, float]) -> bool
+
+       Checks if the block is big.
+
+       :param coeff: The coefficient to be used in the calculation.
+       :type coeff: float
+       :param size_mean: The mean size.
+       :type size_mean: dict[int, float]
+       :return: True if the block is big, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: looks_big(self, coeff: float, size_mean: dict[int, float]) -> bool
+
+       Checks if the block looks big.
+
+       :param coeff: The coefficient to be used in the calculation.
+       :type coeff: float
+       :param size_mean: The mean size.
+       :type size_mean: dict[int, float]
+       :return: True if the block looks big, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: is_colored(self)
+
+       Checks if the block is colored.
+       :return: True if the block is colored, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: is_far(self, coeff: float, margin_mean: dict[int, float]) -> bool
+
+       Checks if the block is far from the margin.
+
+       :param coeff: The coefficient to be used in the calculation.
+       :type coeff: float
+       :param margin_mean: The mean margin.
+       :type margin_mean: dict[int, float]
+       :return: True if the block is far from the margin, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: dash_start(self, special_dash=None)
+
+       Checks if the text in the block starts with a dash.
+
+       :param special_dash: The special dash to be checked.
+       :type special_dash: str or None
+       :return: True if the text starts with a dash, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: is_special(self, size_coeff: float, margin_coeff: float, serial_attributes: SerialAttributes) -> bool
+
+       Checks if the block is special.
+
+       :param size_coeff: The size coefficient.
+       :type size_coeff: float
+       :param margin_coeff: The margin coefficient.
+       :type margin_coeff: float
+       :param serial_attributes: The serial attributes.
+       :type serial_attributes: SerialAttributes
+       :return: True if the block is special, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: is_offset(self)
+
+       Checks if the block is offset.
+       :return: True if the block is offset, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: has_version(self)
+
+       Checks if the block has a version.
+       :return: True if the block has a version, False otherwise.
+       :rtype: bool
+
+
+.. py:function:: __repr__(self)
+
+       Returns a string representation of the block.
+       :return: A string representation of the block.
+       :rtype: str
+
+
+.. py:function:: equipment_count(self)
+
+       Counts the number of equipment in the block.
+       :return: The number of equipment in the block.
+       :rtype: int
+
+
+.. py:function:: return_unique(self)
+
+       Returns the unique equipment in the block.
+       :return: The unique equipment in the block.
+       :rtype: list
+
+
+.. py:function:: return_extended(self)
+
+       Returns the extended equipment in the block.
+       :return: The extended equipment in the block.
+       :rtype: list
+
+
+.. py:function:: make_template_availability(self, version_to_id)
+
+       Makes a template availability for the equipment.
+
+       :param version_to_id: The version to id mapping.
+       :type version_to_id: dict
+       :return: The template availability.
+       :rtype: EquipmentAvailability
+
+
+.. py:function:: create_equipment(self, version_to_id, debug=False)
+
+       Creates equipment from the block.
+
+       :param version_to_id: The version to id mapping.
+       :type version_to_id: dict
+       :param debug: If True, debug information will be printed.
+       :type debug: bool
+       :return: False if a loop is detected, True otherwise.
+       :rtype: bool

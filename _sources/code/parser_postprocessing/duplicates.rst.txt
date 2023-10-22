@@ -1,0 +1,21 @@
+==========
+duplicates
+==========
+
+.. py:function:: join_on_price(data: list[list])
+
+   This function joins the data based on the price. It checks for collisions and does not merge in such cases to avoid losing entries.
+
+   :param data: A list of lists containing availability data.
+   :type data: list[list]
+   :return: The joined data and a boolean indicating if there was a collision.
+   :rtype: list, bool
+
+.. py:function:: join_duplicate_engine_combinations(pl_json: dict)
+
+   This function identifies duplicate engine combinations, where a duplicate is defined as having the same ids for: """engine""", """transmission""", """drivetrain""" and """price_list_model_generation_id""". In case of duplicates, it merges all entries into one and updates the """availability""" field accordingly. The updated """availability""" is computed by joining the """availability""" of all duplicates using the """join_on_price""" function.
+
+   :param pl_json: A dictionary containing engine combinations.
+   :type pl_json: dict
+   :return: The updated engine combinations.
+   :rtype: list

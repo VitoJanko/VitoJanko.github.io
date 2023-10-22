@@ -1,0 +1,204 @@
+=======================
+post_labeling_transform
+=======================
+
+.. py:function:: transform_values_labels(values: pd.DataFrame, values_merged: pd.DataFrame, labels: pd.DataFrame, status: pd.DataFrame, settings: Settings, summary: Summary, labeler: CellLabeler)
+
+   Apply transformations to the values and labels based on the settings and summary. The transformations include label transformation, neo patentati exception, repair prices, versions to one cell, repair versions, join rows, fill dacia drivetrain, parse kw for electric cars, join rows on merged cells.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param values_merged: The dataframe of merged values.
+   :type values_merged: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param status: The dataframe of status.
+   :type status: pd.DataFrame
+   :param settings: The settings for transformation.
+   :type settings: Settings
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :param labeler: The labeler for cells.
+   :type labeler: CellLabeler
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: label_transformation(values: pd.DataFrame, labels: pd.DataFrame, brand: Brand)
+
+   Apply label transformation to the values and labels based on the brand.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param brand: The brand of the car.
+   :type brand: Brand
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: parse_kw_for_electric_cars(values: pd.DataFrame, labels: pd.DataFrame)
+
+   Parse the kw for electric cars from the values and labels.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: join_rows_on_merged_cells(values: pd.DataFrame, values_merged: pd.DataFrame, labels: pd.DataFrame, settings: Settings)
+
+   Join rows on merged cells based on the values, merged values, labels and settings.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param values_merged: The dataframe of merged values.
+   :type values_merged: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param settings: The settings for joining.
+   :type settings: Settings
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: versions_to_one_cell(values: pd.DataFrame, labels: pd.DataFrame, summary: Summary)
+
+   Convert versions to one cell based on the values, labels and summary.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: repair_prices(values: pd.DataFrame, labels: pd.DataFrame, raw_numbers: list[str])
+
+   Repair the prices in the values and labels based on the raw numbers.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param raw_numbers: The list of raw numbers.
+   :type raw_numbers: list[str]
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: repair_price(value, raw_numbers)
+
+   Repair the price based on the value and raw numbers.
+
+   :param value: The value of the price.
+   :type value: str
+   :param raw_numbers: The list of raw numbers.
+   :type raw_numbers: list[str]
+   :return: The tuple of found flag and new price.
+   :rtype: tuple
+
+
+.. py:function:: make_numeric(value)
+
+   Convert the value to numeric.
+
+   :param value: The value to be converted.
+   :type value: str
+   :return: The numeric value.
+   :rtype: str
+
+
+.. py:function:: repair_versions(values, labels, models, settings)
+
+   Repair the versions in the values and labels based on the models and settings.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param models: The list of models.
+   :type models: list[str]
+   :param settings: The settings for repairing.
+   :type settings: Settings
+   :return: The keys of changes made.
+   :rtype: list
+
+
+.. py:function:: extract_versions(brand_id, country_id)
+
+   Extract the versions based on the brand id and country id.
+
+   :param brand_id: The id of the brand.
+   :type brand_id: int
+   :param country_id: The id of the country.
+   :type country_id: int
+   :return: The list of possible models.
+   :rtype: list[str]
+
+
+.. py:function:: neo_patentati_exception(values: pd.DataFrame, values_merged: pd.DataFrame, labels: pd.DataFrame, summary: Summary)
+
+   Apply neo patentati exception to the values, merged values, labels and summary.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param values_merged: The dataframe of merged values.
+   :type values_merged: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: join_rows(values: pd.DataFrame, labels: pd.DataFrame, summary: Summary, settings: Settings, labeler: CellLabeler)
+
+   Join rows based on the values, labels, summary, settings and labeler.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :param settings: The settings for joining.
+   :type settings: Settings
+   :param labeler: The labeler for cells.
+   :type labeler: CellLabeler
+   :return: The list of changes made.
+   :rtype: list
+
+
+.. py:function:: extract_keyword_items(lst, keywords)
+
+   Extract the keyword items from the list based on the keywords.
+
+   :param lst: The list of items.
+   :type lst: list[str]
+   :param keywords: The list of keywords.
+   :type keywords: list[str]
+   :return: The tuple of filled list and items.
+   :rtype: tuple
+
+
+.. py:function:: fill_dacia_drivetrain(values, labels, summary)
+
+   Fill the drivetrain for Dacia based on the values, labels and summary.
+
+   :param values: The dataframe of values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe of labels.
+   :type labels: pd.DataFrame
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :return: The list of changes made.
+   :rtype: list

@@ -1,0 +1,37 @@
+===============
+textract_parser
+===============
+
+.. py:function:: __init__(self, pdf_parser: PdfParser, override=False)
+
+   Initialize the class with a PdfParser object and an optional override flag.
+
+   :param pdf_parser: The PdfParser object to be used.
+   :type pdf_parser: PdfParser
+   :param override: Optional flag to override existing data. Default is False.
+   :type override: bool
+
+
+.. py:function:: set_up_extractor(self)
+
+   Set up the Textractor object with necessary parameters.
+
+
+.. py:function:: textract_pages(self, pages)
+
+   Extract text from given pages using Textractor and merge the results.
+
+   :param pages: The pages from which to extract text.
+   :type pages: list
+   :return: The merged text from all pages.
+   :rtype: str
+
+
+.. py:function:: textract_page(self, page)
+
+   Extract text from a single page using Textractor. If the page has already been processed, return the cached result.
+
+   :param page: The page from which to extract text.
+   :type page: int
+   :return: The extracted text from the page.
+   :rtype: str

@@ -1,0 +1,92 @@
+===================
+segment_classifiers
+===================
+
+.. py:function:: __init__(self, resources, model, country_id: int, threshold: float = 0.5)
+
+       Initializes the class with the given resources, model, country_id and threshold.
+
+       :param resources: The resources to be used.
+       :type resources: dict
+       :param model: The model to be used.
+       :type model: object
+       :param country_id: The id of the country.
+       :type country_id: int
+       :param threshold: The percentage of segment that must be equipment. Default is 0.5.
+       :type threshold: float
+
+
+.. py:function:: delimiters_count(self, sentence)
+
+       Counts the number of words, characters, commas, pluses and dashes in the sentence.
+
+       :param sentence: The sentence to be analyzed.
+       :type sentence: str
+       :return: A list containing the counts of words, characters, commas, pluses and dashes.
+       :rtype: list[int]
+
+
+.. py:function:: separate_packages(self, words, vocab)
+
+       Separates the package words in the given list of words.
+
+       :param words: The list of words to be analyzed.
+       :type words: list[str]
+       :param vocab: The vocabulary to be used.
+       :type vocab: list[str]
+       :return: The list of words with package words separated.
+       :rtype: list[str]
+
+
+.. py:function:: sentence_to_vector(self, sentence: str)
+
+       Converts the given sentence to a vector.
+
+       :param sentence: The sentence to be converted.
+       :type sentence: str
+       :return: The vector representation of the sentence.
+       :rtype: numpy.ndarray
+
+
+.. py:function:: sentence_to_mapping(self, sentence: str)
+
+       Maps the given sentence to a pandas Series.
+
+       :param sentence: The sentence to be mapped.
+       :type sentence: str
+       :return: The pandas Series representation of the sentence.
+       :rtype: pandas.Series
+
+
+.. py:function:: predict_lines(self, lines: list[str])
+
+       Predicts the labels for the given lines.
+
+       :param lines: The lines to be predicted.
+       :type lines: list[str]
+       :return: The predicted labels.
+       :rtype: pandas.Series
+
+
+.. py:function:: predict_table(self, df: pd.DataFrame)
+
+       Predicts the labels for the given DataFrame.
+
+       :param df: The DataFrame to be predicted.
+       :type df: pandas.DataFrame
+       :return: The DataFrame with predicted labels.
+       :rtype: pandas.DataFrame
+
+
+.. py:function:: is_equipment(self, lines: list[str], line_num: int, row_num: int) -> (bool, bool)
+
+       Determines if the given lines are equipment based on the threshold.
+
+       :param lines: The lines to be analyzed.
+       :type lines: list[str]
+       :param line_num: The number of lines.
+       :type line_num: int
+       :param row_num: The number of rows.
+       :type row_num: int
+       :return: A tuple of booleans indicating if the lines are equipment.
+       :rtype: (bool, bool)

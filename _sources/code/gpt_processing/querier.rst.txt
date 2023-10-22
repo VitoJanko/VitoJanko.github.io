@@ -1,0 +1,56 @@
+=======
+querier
+=======
+
+.. py:function:: run_query(sys_prompt: str, table_prompt: str, model_name: str) -> str | None
+
+   Run a query using OpenAI GPT model and return the response. If an error occurs, log the error and return None.
+
+   :param sys_prompt: The system prompt.
+   :type sys_prompt: str
+   :param table_prompt: The table prompt.
+   :type table_prompt: str
+   :param model_name: The name of the GPT model to use.
+   :type model_name: str
+   :return: The response from the GPT model or None if an error occurs.
+   :rtype: str | None
+
+.. py:method:: __init__(pdf_parser)
+
+   Initialize the object with a PDF parser. If the PDF parser has pages, join the text of the pages and store it.
+
+   :param pdf_parser: The PDF parser to use.
+   :type pdf_parser: object
+
+.. py:method:: make_prompt(sys_prompt: str, table: str = None, model: str = None)
+
+   Make a prompt for the GPT model. If a table is provided, include it in the prompt. If a model is not provided, use the default model.
+
+   :param sys_prompt: The system prompt.
+   :type sys_prompt: str
+   :param table: The table to include in the prompt, defaults to None.
+   :type table: str, optional
+   :param model: The model to use, defaults to None.
+   :type model: str, optional
+   :return: The answer from the GPT model.
+   :rtype: object
+
+.. py:method:: retrieve_s3_answer(query_hash, override=False)
+
+   Retrieve an answer from S3. If override is True, raise a ClientError.
+
+   :param query_hash: The hash of the query.
+   :type query_hash: str
+   :param override: Whether to override the existing answer, defaults to False.
+   :type override: bool, optional
+   :return: The answer from S3 or None if a ClientError occurs.
+   :rtype: object | None
+
+.. py:method:: save_s3_answer(query_hash, answer)
+
+   Save an answer to S3.
+
+   :param query_hash: The hash of the query.
+   :type query_hash: str
+   :param answer: The answer to save.
+   :type answer: str

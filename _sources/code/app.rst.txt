@@ -1,0 +1,14 @@
+===
+app
+===
+
+.. py:function:: app(event, context)
+
+       Process the event and context data, parse the price list and save the parsed price list to S3.
+
+       :param event: The event data containing mode, eval_mode, filename, price_list_model_generations, country_id, ci_name, parse_technical_data, parse_equipment, and optionally ground_truth_s3_key and document_id.
+       :type event: dict
+       :param context: The context in which the function is called. Not used in this function.
+       :type context: Any
+       :return: The parsed price list in json format.
+       :rtype: dict or None

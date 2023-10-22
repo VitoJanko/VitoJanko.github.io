@@ -1,0 +1,55 @@
+==========
+Splitting
+==========
+
+If you've been carefully inspecting the subsections for data examples, you might seen that our "standard table" contains entries such as 
+"1.0 T-GDi 120 iBVM Hybrid 48V". If we truly want to have only one attribute in each column, we need to split this string and create additional
+columns. In this case containing engine, transmission, power, and fuel type.
+
+We do so, by searching for specific words or combination of words that appear in the Vehicle Editor database describing different attributes. 
+We also employ some regex-es to find numeric values in some specific formats (ie. 80 kw).  
+
+
+Sample input
+============
+
+.. image:: ../images/standard_form.png
+  :width: 500
+
+
+Sample output
+=============
+
+.. image:: ../images/splitted.png
+  :width: 800
+
+
+Old classifier
+==============
+
+Splitting mechanic
+===================
+
+Extracting kw and ks
+=====================
+
+Fuel adjustments
+=================
+
+Code flow
+==========
+
+Splitting values in cells
+
+.. image:: ../images/get_splitter.png
+  :width: 800
+  
+Extracting kw from the engine column 
+ 
+.. image:: ../images/get_kw.png
+  :width: 800
+  
+Adjustments for fuel 
+
+.. image:: ../images/get_fuel.png
+  :width: 800

@@ -1,0 +1,38 @@
+===================
+Classifying pages
+===================
+
+To minimize the expenses we process only pages
+where we expect the price-list to appear. This is achieved using a k-Nearest Neighbor classifier, where 
+we adopt the Bag-of-words method for feature creation. 
+
+Features 
+=========
+
+Model (kNN +RF)
+===============
+
+
+Fallbacks
+===========
+
+
+Code flow
+===========
+
+Its complicated. You may want to enlarge it. 
+
+.. image:: ../images/classify_pages.png
+	:width: 1000
+	
+	
+Code output
+===========
+
+At the end we narrow-down the list of pages to only those that containin price-list information. There might be some other information available 
+on the same page; this kind of data will be weeded out as the pipeline progresses. 
+
+In this example we narrow down to a single page, containing the coveted pricelist as well as some information on the car equipment. 
+
+.. image:: ../images/main_page.png
+	:width: 800

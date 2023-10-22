@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>table_makers &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="write_labels" href="write_labels.html" />
+    <link rel="prev" title="read_excel" href="read_excel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">make_logs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="create_excels.html">create_excels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excel_extractor.html">excel_extractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excel_utility.html">excel_utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="read_excel.html">read_excel</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">table_makers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_labels.html">write_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_logs.html">write_logs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">make_logs</a></li>
+      <li class="breadcrumb-item active">table_makers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/make_logs/table_makers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-makers">
+<h1>table_makers<a class="headerlink" href="#table-makers" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="draw_table">
+<span class="sig-name descname"><span class="pre">draw_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap_around</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draw_table" title="Link to this definition"></a></dt>
+<dd><p>Draw a table in a given sheet with specified values, labels, margins, and other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be included in the table.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels for the values in the table.</p></li>
+<li><p><strong>margin_row</strong> (<em>int</em>) – The margin for the rows.</p></li>
+<li><p><strong>margin_column</strong> (<em>int</em>) – The margin for the columns.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the table will be drawn.</p></li>
+<li><p><strong>background</strong> (<em>str</em><em> or </em><em>None</em>) – The background color for the cells in the table.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – The title of the table.</p></li>
+<li><p><strong>splitters</strong> (<em>list</em><em>[</em><em>int</em><em>] or </em><em>None</em>) – The indices of the columns that should be split.</p></li>
+<li><p><strong>border</strong> (<em>bool</em>) – Whether to add a border to the cells in the table.</p></li>
+<li><p><strong>fill_background</strong> (<em>str</em><em> or </em><em>None</em>) – The background color for the cells in the table.</p></li>
+<li><p><strong>wrap_around</strong> (<em>bool</em>) – Whether to wrap the text in the cells around.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_legend">
+<span class="sig-name descname"><span class="pre">make_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_legend" title="Link to this definition"></a></dt>
+<dd><p>Create a legend in a given sheet with specified margins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the legend will be created.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the legend.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_base_table">
+<span class="sig-name descname"><span class="pre">make_base_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_base_table" title="Link to this definition"></a></dt>
+<dd><p>Create a base table in a given sheet with specified margins and table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the base table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the base table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the base table will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_standard_table">
+<span class="sig-name descname"><span class="pre">make_standard_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_standard_table" title="Link to this definition"></a></dt>
+<dd><p>Create a standard table in a given sheet with specified margins, table, and confidence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the standard table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the standard table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the standard table will be created.</p></li>
+<li><p><strong>confidence</strong> (<em>pandas.DataFrame</em>) – The confidence level for the standard table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_extended_table">
+<span class="sig-name descname"><span class="pre">make_extended_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_extended_table" title="Link to this definition"></a></dt>
+<dd><p>Create an extended table in a given sheet with specified margins and table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the extended table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the extended table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the extended table will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_match_table">
+<span class="sig-name descname"><span class="pre">make_match_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_match_table" title="Link to this definition"></a></dt>
+<dd><p>Create a match table in a given sheet with specified margins, table, table index, and match results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the match table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the match table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the match table will be created.</p></li>
+<li><p><strong>table_index</strong> (<em>int</em>) – The index of the table.</p></li>
+<li><p><strong>match_results</strong> (<em>object</em>) – The results of the match.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_is_copy_table">
+<span class="sig-name descname"><span class="pre">make_is_copy_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_table_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_is_copy_table" title="Link to this definition"></a></dt>
+<dd><p>Create a table in a given sheet that indicates whether each row in the table is a copy of another row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the is copy table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the is copy table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the is copy table will be created.</p></li>
+<li><p><strong>current_table_index</strong> (<em>int</em>) – The index of the current table.</p></li>
+<li><p><strong>match_results</strong> (<em>object</em>) – The results of the match.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_original_table">
+<span class="sig-name descname"><span class="pre">make_original_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_original_table" title="Link to this definition"></a></dt>
+<dd><p>Create an original table in a given sheet with specified margins and table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the original table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the original table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the original table will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_not_matched_tables">
+<span class="sig-name descname"><span class="pre">make_not_matched_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_not_matched_tables" title="Link to this definition"></a></dt>
+<dd><p>Create tables in a given sheet that show the entries that were not matched.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>match_results</strong> (<em>object</em>) – The results of the match.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the not matched tables.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the not matched tables will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="write_missing">
+<span class="sig-name descname"><span class="pre">write_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">len_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_missing" title="Link to this definition"></a></dt>
+<dd><p>Write the missing entries in a given sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>counter</strong> (<em>int</em>) – The counter for the missing entries.</p></li>
+<li><p><strong>len_diff</strong> (<em>int</em>) – The difference in length between the predicted and true entries.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the missing entries will be written.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_standard_td_table">
+<span class="sig-name descname"><span class="pre">make_standard_td_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_standard_td_table" title="Link to this definition"></a></dt>
+<dd><p>Create a standard technical details table in a given sheet with specified margins and table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the standard technical details table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the standard technical details table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the standard technical details table will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_extended_td_table">
+<span class="sig-name descname"><span class="pre">make_extended_td_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pl_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_extended_td_table" title="Link to this definition"></a></dt>
+<dd><p>Create an extended technical details table in a given sheet with specified margins and table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pl_table</strong> (<em>object</em>) – The table to be used to create the extended technical details table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the extended technical details table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the extended technical details table will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="write_eq_statistics">
+<span class="sig-name descname"><span class="pre">write_eq_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eq_results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_eq_statistics" title="Link to this definition"></a></dt>
+<dd><p>Write the equipment statistics in a given sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the equipment statistics will be written.</p></li>
+<li><p><strong>eq_results</strong> (<em>object</em>) – The results of the equipment.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_serial_table">
+<span class="sig-name descname"><span class="pre">make_serial_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_serial_table" title="Link to this definition"></a></dt>
+<dd><p>Create a serial table in a given sheet with specified margins, version, and block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the serial table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the serial table will be created.</p></li>
+<li><p><strong>version</strong> (<em>str</em>) – The version of the serial table.</p></li>
+<li><p><strong>block</strong> (<em>object</em>) – The block of the serial table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_serial_table_wide">
+<span class="sig-name descname"><span class="pre">make_serial_table_wide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eq_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EquipmentResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuzzy_match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_serial_table_wide" title="Link to this definition"></a></dt>
+<dd><p>Create a wide serial table in a given sheet with specified equipment results and fuzzy match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eq_results</strong> (<em>EquipmentResults</em>) – The results of the equipment.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the wide serial table will be created.</p></li>
+<li><p><strong>fuzzy_match</strong> (<em>bool</em>) – Whether to use fuzzy matching.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The wide serial table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_legend_eq_diff">
+<span class="sig-name descname"><span class="pre">make_legend_eq_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_legend_eq_diff" title="Link to this definition"></a></dt>
+<dd><p>Create a legend for equipment differences in a given sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the legend for equipment differences will be created.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_generic_table">
+<span class="sig-name descname"><span class="pre">make_generic_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_generic_table" title="Link to this definition"></a></dt>
+<dd><p>Create a generic table in a given sheet with specified values, margins, title, and labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be included in the table.</p></li>
+<li><p><strong>margins</strong> (<em>object</em>) – The margins for the table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the table will be created.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – The title of the table.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em><em> or </em><em>None</em>) – The labels for the values in the table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="write_td_stats">
+<span class="sig-name descname"><span class="pre">write_td_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">td_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TechnicalParser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_td_stats" title="Link to this definition"></a></dt>
+<dd><p>Write the technical details statistics in a given sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>td_table</strong> (<em>TechnicalParser</em>) – The technical details table.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the technical details statistics will be written.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_all_equipment_dataframe">
+<span class="sig-name descname"><span class="pre">make_all_equipment_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">negative_equipment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_equipment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet_equipment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_equipment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_all_equipment_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Create a dataframe for all equipment in a given sheet with specified negative and positive equipment, labels, packet equipment, and color equipment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>negative_equipment</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The negative equipment.</p></li>
+<li><p><strong>positive_equipment</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The positive equipment.</p></li>
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the dataframe will be created.</p></li>
+<li><p><strong>positive_labels</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – The labels for the positive equipment.</p></li>
+<li><p><strong>negative_labels</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – The labels for the negative equipment.</p></li>
+<li><p><strong>packet_equipment</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – The packet equipment.</p></li>
+<li><p><strong>color_equipment</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – The color equipment.</p></li>
+<li><p><strong>packet_labels</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – The labels for the packet equipment.</p></li>
+<li><p><strong>color_labels</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>None</em>) – The labels for the color equipment.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_eq_legend">
+<span class="sig-name descname"><span class="pre">make_eq_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_eq_legend" title="Link to this definition"></a></dt>
+<dd><p>Create a legend for equipment in a given sheet with specified length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sheet</strong> (<em>openpyxl.worksheet.worksheet.Worksheet</em>) – The sheet where the legend for equipment will be created.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – The length of the legend.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="init__">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the class with specified row and column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – The row.</p></li>
+<li><p><strong>column</strong> (<em>int</em>) – The column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="read_excel.html" class="btn btn-neutral float-left" title="read_excel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="write_labels.html" class="btn btn-neutral float-right" title="write_labels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

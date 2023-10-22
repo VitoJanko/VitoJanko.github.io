@@ -1,0 +1,249 @@
+=============
+layout_mapper
+=============
+
+.. py:function:: make_long_mapper(labels, wide_models=False)
+
+   This function generates a mapper for long labels.
+
+   :param labels: The labels to be mapped.
+   :type labels: pandas.DataFrame
+   :param wide_models: A flag to indicate if the models are wide.
+   :type wide_models: bool
+   :return: The mapper for the labels.
+   :rtype: IndexMapper
+
+.. py:function:: clean_table_mapper(labels, clean_threshold)
+
+   This function generates a mapper for cleaning the table.
+
+   :param labels: The labels to be cleaned.
+   :type labels: pandas.DataFrame
+   :param clean_threshold: The threshold for cleaning.
+   :type clean_threshold: float
+   :return: The mapper for cleaning the table.
+   :rtype: IndexMapper
+
+.. py:function:: make_unsplit_mapper(labels, forced_entry=None, loose_split=False)
+
+   This function generates a mapper for unsplitting labels.
+
+   :param labels: The labels to be unsplit.
+   :type labels: pandas.DataFrame
+   :param forced_entry: The forced entry for unsplitting.
+   :type forced_entry: tuple or None
+   :param loose_split: A flag to indicate if the split is loose.
+   :type loose_split: bool
+   :return: The mapper for unsplitting the labels.
+   :rtype: tuple
+
+.. py:function:: make_top_left_model_mapper(labels, pre_split_len)
+
+   This function generates a mapper for making the top left model.
+
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param pre_split_len: The length before splitting.
+   :type pre_split_len: int
+   :return: The mapper for making the top left model.
+   :rtype: IndexMapper
+
+.. py:function:: remove_split_version_mapper(labels, split_columns, wide_models=False)
+
+   This function generates a mapper for removing the split version.
+
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param split_columns: The columns to be split.
+   :type split_columns: list
+   :param wide_models: A flag to indicate if the models are wide.
+   :type wide_models: bool
+   :return: The mapper for removing the split version.
+   :rtype: IndexMapper
+
+.. py:function:: propagate_version_mapper(values, labels)
+
+   This function generates a mapper for propagating the version.
+
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :return: The mapper for propagating the version.
+   :rtype: IndexMapper
+
+.. py:function:: join_versions_mapper(values, labels, possible_versions, always_join, override_subset)
+
+   This function generates a mapper for joining versions.
+
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param possible_versions: The possible versions to be joined.
+   :type possible_versions: list
+   :param always_join: A flag to indicate if versions should always be joined.
+   :type always_join: bool
+   :param override_subset: A flag to indicate if the subset should be overridden.
+   :type override_subset: bool
+   :return: The mapper for joining versions.
+   :rtype: IndexMapper
+
+.. py:function:: propagate_versions_mapper_v2(values, labels, add_base_version)
+
+   This function generates a mapper for propagating versions.
+
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param add_base_version: A flag to indicate if the base version should be added.
+   :type add_base_version: bool
+   :return: The mapper for propagating versions.
+   :rtype: IndexMapper
+
+.. py:function:: make_transposed_mapper(labels)
+
+   This function generates a mapper for transposing labels.
+
+   :param labels: The labels to be transposed.
+   :type labels: pandas.DataFrame
+   :return: The mapper for transposing the labels.
+   :rtype: IndexMapper
+
+.. py:function:: make_title_mapper(labels, old_title=None)
+
+   This function generates a mapper for making the title.
+
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param old_title: The old title to be used.
+   :type old_title: str or None
+   :return: The mapper for making the title.
+   :rtype: IndexMapper
+
+.. py:function:: add_row_mapper(labels, row_values, row_labels)
+
+   This function generates a mapper for adding a row.
+
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param row_values: The values of the row to be added.
+   :type row_values: list
+   :param row_labels: The labels of the row to be added.
+   :type row_labels: list
+   :return: The mapper for adding a row.
+   :rtype: IndexMapper
+
+.. py:function:: propagate_title(labels, previous_title)
+
+   This function generates a mapper for propagating the title.
+
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param previous_title: The previous title to be propagated.
+   :type previous_title: str
+   :return: The mapper for propagating the title.
+   :rtype: IndexMapper
+
+.. py:function:: remove_duplicates_mapper(labels, values, status, take_lower=False, version_pairs={})
+
+   This function generates a mapper for removing duplicates.
+
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param status: The status of the values.
+   :type status: pandas.DataFrame
+   :param take_lower: A flag to indicate if the lower value should be taken.
+   :type take_lower: bool
+   :param version_pairs: The pairs of versions to be used.
+   :type version_pairs: dict
+   :return: The mapper for removing duplicates.
+   :rtype: IndexMapper
+
+.. py:function:: strip_field(x)
+
+   This function strips a field.
+
+   :param x: The field to be stripped.
+   :type x: str
+   :return: The stripped field.
+   :rtype: str
+
+.. py:function:: insert_split_lines_mapper(values, labels, split_words)
+
+   This function generates a mapper for inserting split lines.
+
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param split_words: The words to be split.
+   :type split_words: dict
+   :return: The mapper for inserting split lines.
+   :rtype: IndexMapper
+
+.. py:function:: remove_extra_version_mapper(values, labels, selector)
+
+   This function generates a mapper for removing extra versions.
+
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param selector: The selector for removing extra versions.
+   :type selector: function
+   :return: The mapper for removing extra versions.
+   :rtype: IndexMapper
+
+.. py:function:: mixed_column_mapper(values, labels, mixed_type)
+
+   This function generates a mapper for mixed columns.
+
+   :param values: The values to be used.
+   :type values: pandas.DataFrame
+   :param labels: The labels to be used.
+   :type labels: pandas.DataFrame
+   :param mixed_type: The type of the mixed column.
+   :type mixed_type: str
+   :return: The mapper for mixed columns.
+   :rtype: IndexMapper
+
+.. py:function:: make_extra_columns(labels, wide)
+
+   Find missing columns and create a mapper for them. If no missing columns are found, create an identity mapper.
+
+   :param labels: The labels of the table.
+   :type labels: pd.DataFrame
+   :param wide: A boolean indicating if the table is wide.
+   :type wide: bool
+   :return: A mapper for the new columns.
+   :rtype: IndexMapper
+
+
+.. py:function:: reconstruct_table_mapper(values: pd.DataFrame, values_merged: pd.DataFrame, labels: pd.DataFrame, classifier: LayoutLabeler, status: pd.DataFrame, settings: Settings, summary: Summary, previous_table=None, technical_table=False) -> tuple[pd.DataFrame, pd.DataFrame, IndexMapper]
+
+   Reconstruct a table based on various parameters and settings. This function handles the entire process of table reconstruction, including creating mappers, predicting table layout, splitting, merging, and more.
+
+   :param values: The values of the table.
+   :type values: pd.DataFrame
+   :param values_merged: The merged values of the table.
+   :type values_merged: pd.DataFrame
+   :param labels: The labels of the table.
+   :type labels: pd.DataFrame
+   :param classifier: The classifier used to predict the layout of the table.
+   :type classifier: LayoutLabeler
+   :param status: The status of the table.
+   :type status: pd.DataFrame
+   :param settings: The settings for the table reconstruction.
+   :type settings: Settings
+   :param summary: The summary of the table.
+   :type summary: Summary
+   :param previous_table: The previous table, if any.
+   :type previous_table: pd.DataFrame or None
+   :param technical_table: A boolean indicating if the table is a technical table.
+   :type technical_table: bool
+   :return: The reconstructed values, labels, and index mapper of the table.
+   :rtype: tuple[pd.DataFrame, pd.DataFrame, IndexMapper]

@@ -1,0 +1,100 @@
+==================
+unite_combinations
+==================
+
+.. py:function:: get_combination_identifier(combination)
+
+   Returns a tuple of values from the combination dictionary for the fields specified in IDENTIFIERS.
+
+   :param combination: A dictionary containing various fields and their values.
+   :type combination: dict
+   :return: A tuple of values from the combination dictionary.
+   :rtype: tuple
+
+
+.. py:function:: is_new_price_better(settings, new_price, old_price)
+
+   Determines if the new price is better than the old price based on the settings.
+
+   :param settings: Settings that determine whether a lower or higher price is better.
+   :type settings: Settings
+   :param new_price: The new price to compare.
+   :type new_price: float
+   :param old_price: The old price to compare.
+   :type old_price: float
+   :return: True if the new price is better, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: update_model_name(combination, model_name)
+
+   Updates the model name in the combination dictionary.
+
+   :param combination: A dictionary containing various fields and their values.
+   :type combination: dict
+   :param model_name: The new model name to update.
+   :type model_name: str
+   :return: The updated combination dictionary.
+   :rtype: dict
+
+
+.. py:function:: solve_duplicates_using_models(identifier_to_combinations, input_model_generations)
+
+   Solves duplicates based on models.
+
+   :param identifier_to_combinations: A dictionary mapping identifiers to combinations.
+   :type identifier_to_combinations: dict
+   :param input_model_generations: A dictionary of input model generations.
+   :type input_model_generations: dict
+   :return: A list of combinations without duplicates.
+   :rtype: list
+
+
+.. py:function:: solve_duplicates_by_price(identifier_to_combinations, settings)
+
+   Solves duplicates based on price.
+
+   :param identifier_to_combinations: A dictionary mapping identifiers to combinations.
+   :type identifier_to_combinations: dict
+   :param settings: Settings that determine whether a lower or higher price is better.
+   :type settings: Settings
+   :return: A list of combinations without duplicates.
+   :rtype: list
+
+
+.. py:function:: unite_combinations(tables: list[TableParser], input_model_generations: dict, settings: Settings) -> list
+
+   Unites combinations from multiple tables.
+
+   :param tables: A list of tables to unite.
+   :type tables: list[TableParser]
+   :param input_model_generations: A dictionary of input model generations.
+   :type input_model_generations: dict
+   :param settings: Settings that determine whether a lower or higher price is better.
+   :type settings: Settings
+   :return: A list of united combinations.
+   :rtype: list
+
+
+.. py:function:: is_bigger(original: TableParser, alternative: TableParser)
+
+   Determines if the sum of prices in the original table is greater than the sum of prices in the alternative table.
+
+   :param original: The original table to compare.
+   :type original: TableParser
+   :param alternative: The alternative table to compare.
+   :type alternative: TableParser
+   :return: True if the sum of prices in the original table is greater, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: are_tables_same(table1: TableParser, table2: TableParser) -> bool
+
+   Determines if two tables are the same based on certain fields.
+
+   :param table1: The first table to compare.
+   :type table1: TableParser
+   :param table2: The second table to compare.
+   :type table2: TableParser
+   :return: True if the tables are the same, False otherwise.
+   :rtype: bool

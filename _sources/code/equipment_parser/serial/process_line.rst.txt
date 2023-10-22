@@ -1,0 +1,57 @@
+============
+process_line
+============
+
+.. py:function:: add_titles(lines: list[EquipmentLine], serial_attributes: SerialAttributes, debug: bool)
+
+       Add titles to the lines based on certain conditions. If a line meets at least two conditions, it is considered a title.
+
+       :param lines: List of equipment lines.
+       :type lines: list[EquipmentLine]
+       :param serial_attributes: Serial attributes of the lines.
+       :type serial_attributes: SerialAttributes
+       :param debug: If True, print debug information.
+       :type debug: bool
+       :return: The list of lines with titles added.
+       :rtype: list[EquipmentLine]
+
+.. py:function:: classify_lines(lines: list[EquipmentLine], classifier: EQModel, serial_attributes: SerialAttributes, debug: bool)
+
+       Classify the lines based on the predictions from the classifier. The lines can be classified as color, misc, package, or equipment.
+
+       :param lines: List of equipment lines.
+       :type lines: list[EquipmentLine]
+       :param classifier: The classifier model.
+       :type classifier: EQModel
+       :param serial_attributes: Serial attributes of the lines.
+       :type serial_attributes: SerialAttributes
+       :param debug: If True, print debug information.
+       :type debug: bool
+
+.. py:function:: analyze_lines(lines: list[EquipmentLine], columns: dict[int, int], debug) -> SerialAttributes
+
+       Analyze the lines and return the serial attributes. The attributes include page margins, sizes, color usage, dash usage, and special dash.
+
+       :param lines: List of equipment lines.
+       :type lines: list[EquipmentLine]
+       :param columns: Dictionary mapping page numbers to column numbers.
+       :type columns: dict[int, int]
+       :param debug: If True, print debug information.
+       :type debug: bool
+       :return: The serial attributes of the lines.
+       :rtype: SerialAttributes
+
+.. py:function:: combine_lines(lines: list[EquipmentLine], use_dashes: bool, serial_attributes: SerialAttributes, debug: bool) -> list[EquipmentLine]
+
+       Combine the lines based on certain conditions. If a line starts with a lower case letter and the previous line starts with an upper case letter, or if the previous line starts with a dash and the current line does not, the lines are combined.
+
+       :param lines: List of equipment lines.
+       :type lines: list[EquipmentLine]
+       :param use_dashes: If True, use dashes for line joining.
+       :type use_dashes: bool
+       :param serial_attributes: Serial attributes of the lines.
+       :type serial_attributes: SerialAttributes
+       :param debug: If True, print debug information.
+       :type debug: bool
+       :return: The list of combined lines.
+       :rtype: list[EquipmentLine]

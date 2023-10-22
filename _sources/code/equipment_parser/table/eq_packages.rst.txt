@@ -1,0 +1,27 @@
+===========
+eq_packages
+===========
+
+.. py:function:: create_package(eq: Equipment, lines: list[str] = None)
+
+   Create a package of equipment based on the title of the equipment. The function splits the title into different elements and creates a package for each element.
+
+   :param eq: The equipment to be packaged.
+   :type eq: Equipment
+   :param lines: Optional list of lines to be used for splitting the title. If not provided, the title is split based on certain characters.
+   :type lines: list[str] or None
+   :return: A list of packaged elements.
+   :rtype: list
+
+.. py:function:: parse_according_to_type(eq: Equipment, eq_model: EQModel, lines: list[str] = None) -> list
+
+   Parse the equipment according to its type predicted by the equipment model. If the type is "package", it creates a package. If the type is "color", it returns a color object. Otherwise, it returns the equipment itself.
+
+   :param eq: The equipment to be parsed.
+   :type eq: Equipment
+   :param eq_model: The model used to predict the type of the equipment.
+   :type eq_model: EQModel
+   :param lines: Optional list of lines to be used for splitting the title. If not provided, the title is split based on certain characters.
+   :type lines: list[str] or None
+   :return: A list of parsed elements.
+   :rtype: list

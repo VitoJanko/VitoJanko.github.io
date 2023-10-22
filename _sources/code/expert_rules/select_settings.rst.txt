@@ -1,0 +1,24 @@
+===============
+select_settings
+===============
+
+.. py:function:: select_settings(settings: Settings, summary: Summary)
+
+   Selects and applies specific settings based on the brand and country. The settings are stored in a dictionary where the keys are tuples of brand and country, and the values are lists of tuples with setting name and value.
+
+   :param settings: The settings object where the selected settings will be applied.
+   :type settings: Settings
+   :param summary: The summary object that contains brand and country information.
+   :type summary: Summary
+
+
+.. py:function:: set_settings(config, settings, summary)
+
+   Applies the settings from the config to the settings object. The settings are selected based on the brand and country from the summary object. If the setting is related to a model, the model is reloaded.
+
+   :param config: The configuration dictionary with settings.
+   :type config: dict
+   :param settings: The settings object where the selected settings will be applied.
+   :type settings: Settings
+   :param summary: The summary object that contains brand and country information.
+   :type summary: Summary

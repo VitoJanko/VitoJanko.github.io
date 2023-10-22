@@ -1,0 +1,58 @@
+========
+matching
+========
+
+.. py:function:: match(ground_truth_json, predictions_json, previous_document, parsed_tables, settings)
+
+   Matches the ground truth and predictions JSONs and returns the results. If the ground truth JSON is empty, it returns an empty MatchAllResults object. It also simplifies the JSON format for both ground truth and predictions. If the previous document is not None and settings.soft_copy is True, it corrects the predictions. It evaluates the combinations for both ground truth and predictions and sets the results. If there are no unmatched predictions and truth, it sets perfect_match to True.
+
+   :param ground_truth_json: The ground truth JSON.
+   :type ground_truth_json: dict
+   :param predictions_json: The predictions JSON.
+   :type predictions_json: dict
+   :param previous_document: The previous document.
+   :type previous_document: dict or None
+   :param parsed_tables: The parsed tables.
+   :type parsed_tables: list[dict]
+   :param settings: The settings.
+   :type settings: dict
+   :return: The match results.
+   :rtype: MatchAllResults
+
+
+.. py:function:: identify_missing_categories(tables)
+
+   Identifies the missing categories in the tables. It checks if "drivetrain" and "transmission" are found in the types of labels in the tables. If not found, it adds them to the missing labels list.
+
+   :param tables: The tables to identify missing categories from.
+   :type tables: list[TableParser]
+   :return: The missing labels.
+   :rtype: list[str]
+
+
+.. py:function:: correct_predictions(previous_document, categories_base, categories_extra, predictions)
+
+   Corrects the predictions based on the previous document. It simplifies the JSON format for the previous predictions. If the absolute difference between the length of previous predictions and predictions is greater than 3, it returns None. It evaluates the combinations for previous predictions and predictions and sets the results. If the best match is found in the unmatched predictions, it corrects the field.
+
+   :param previous_document: The previous document.
+   :type previous_document: dict
+   :param categories_base: The base categories.
+   :type categories_base: list[str]
+   :param categories_extra: The extra categories.
+   :type categories_extra: list[str]
+   :param predictions: The predictions.
+   :type predictions: list[dict]
+
+
+.. py:function:: correct_field(predictions, index, field, prev_match)
+
+   Corrects the field in the predictions based on the previous match. If the field in the predictions at the given index is not equal to the field in the previous match, it updates the field in the predictions with the field from the previous match.
+
+   :param predictions: The predictions.
+   :type predictions: list[dict]
+   :param index: The index of the prediction to correct.
+   :type index: int
+   :param field: The field to correct.
+   :type field: str
+   :param prev_match: The previous match.
+   :type prev_match: dict

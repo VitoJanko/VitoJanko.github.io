@@ -1,0 +1,13 @@
+==============
+after_matching
+==============
+
+.. py:function:: default_transmission_for_electric_engines(combinations, brand: Brand)
+
+   Check if electric engine was matched to correct transmission (id: 85). If needed, apply fix.
+
+   :param combinations: The combinations of engines and transmissions.
+   :type combinations: list[dict]
+   :param brand: The brand of the vehicle.
+   :type brand: Brand
+   :return: None

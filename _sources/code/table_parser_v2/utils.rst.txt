@@ -1,0 +1,137 @@
+=====
+utils
+=====
+
+.. py:function:: get_column_semantics(df)
+
+       Generate a dictionary mapping column categories to their indices in the dataframe.
+
+       :param df: Input dataframe.
+       :type df: pandas.DataFrame
+       :return: A dictionary mapping column categories to their indices.
+       :rtype: dict
+
+.. py:function:: transform_kw_ks_column(x)
+
+       Transform the kw/ks column in the dataframe.
+
+       :param x: Input value from the kw/ks column.
+       :type x: Any
+       :return: A pandas Series with transformed values.
+       :rtype: pandas.Series
+
+.. py:function:: apply_column_transformations(df, category_to_col_indices_map)
+
+       Apply transformations to specific columns in the dataframe.
+
+       :param df: Input dataframe.
+       :type df: pandas.DataFrame
+       :param category_to_col_indices_map: A dictionary mapping column categories to their indices.
+       :type category_to_col_indices_map: dict
+       :return: A tuple containing the transformed dataframe and the updated dictionary.
+       :rtype: tuple
+
+.. py:function:: sort_numerical_columns(df, columns, largest=False)
+
+       Sort numerical columns in the dataframe.
+
+       :param df: Input dataframe.
+       :type df: pandas.DataFrame
+       :param columns: List of column names to sort.
+       :type columns: list[str]
+       :param largest: If True, sort in descending order. Default is False.
+       :type largest: bool
+       :return: The column name with the smallest or largest values.
+       :rtype: str
+
+.. py:function:: row_to_dict(row, idx, category_to_col_indices_map, table_id)
+
+       Convert a row in the dataframe to a dictionary.
+
+       :param row: Input row.
+       :type row: pandas.Series
+       :param idx: Index of the row.
+       :type idx: int
+       :param category_to_col_indices_map: A dictionary mapping column categories to their indices.
+       :type category_to_col_indices_map: dict
+       :param table_id: ID of the table.
+       :type table_id: int
+       :return: A dictionary representation of the row.
+       :rtype: dict
+
+.. py:function:: enhance_combination(combination, model_generations_data, versions_data, fuel_data, pl_summary)
+
+       Enhance the combination dictionary with additional data.
+
+       :param combination: Input combination dictionary.
+       :type combination: dict
+       :param model_generations_data: Data related to model generations.
+       :type model_generations_data: dict
+       :param versions_data: Data related to versions.
+       :type versions_data: dict
+       :param fuel_data: Data related to fuel.
+       :type fuel_data: dict
+       :param pl_summary: Summary data.
+       :type pl_summary: dict
+       :return: The enhanced combination dictionary.
+       :rtype: dict
+
+.. py:function:: read_rows(df, category_to_col_indices_map, table_id, pl_summary, model_generations_data={}, versions_data={}, fuel_data={}, input_model_names: list[str] = [])
+
+       Read rows from the dataframe and convert them to combinations.
+
+       :param df: Input dataframe.
+       :type df: pandas.DataFrame
+       :param category_to_col_indices_map: A dictionary mapping column categories to their indices.
+       :type category_to_col_indices_map: dict
+       :param table_id: ID of the table.
+       :type table_id: int
+       :param pl_summary: Summary data.
+       :type pl_summary: dict
+       :param model_generations_data: Data related to model generations. Default is an empty dictionary.
+       :type model_generations_data: dict, optional
+       :param versions_data: Data related to versions. Default is an empty dictionary.
+       :type versions_data: dict, optional
+       :param fuel_data: Data related to fuel. Default is an empty dictionary.
+       :type fuel_data: dict, optional
+       :param input_model_names: List of model names. Default is an empty list.
+       :type input_model_names: list[str], optional
+       :return: A list of combinations.
+       :rtype: list
+
+.. py:function:: select_model_data(combination: dict, table_surrounding_data: dict, input_model_names: list[str])
+
+       Select the model data from the combination or the surrounding data.
+
+       :param combination: Input combination dictionary.
+       :type combination: dict
+       :param table_surrounding_data: Data surrounding the table.
+       :type table_surrounding_data: dict
+       :param input_model_names: List of model names.
+       :type input_model_names: list[str]
+       :return: None
+
+.. py:function:: extend_fuel_data(category_to_col_indices_map, df_values, df_labels)
+
+       Extend the fuel data in the dataframe.
+
+       :param category_to_col_indices_map: A dictionary mapping column categories to their indices.
+       :type category_to_col_indices_map: dict
+       :param df_values: Dataframe containing the values.
+       :type df_values: pandas.DataFrame
+       :param df_labels: Dataframe containing the labels.
+       :type df_labels: pandas.DataFrame
+       :return: A tuple containing the updated dataframe and dictionary.
+       :rtype: tuple
+
+.. py:function:: extend_model_data(category_to_col_indices_map, df_values, super_model_name)
+
+       Extend the model data in the dataframe.
+
+       :param category_to_col_indices_map: A dictionary mapping column categories to their indices.
+       :type category_to_col_indices_map: dict
+       :param df_values: Dataframe containing the values.
+       :type df_values: pandas.DataFrame
+       :param super_model_name: Name of the super model.
+       :type super_model_name: str
+       :return: None

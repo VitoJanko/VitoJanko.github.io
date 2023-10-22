@@ -1,0 +1,70 @@
+============
+merge_tables
+============
+
+.. py:function:: stack_tables_all(text: list[list], merged: list[list], original: list[list])
+
+       Stacks multiple tables together based on the metrics of filled columns.
+
+       :param text: List of tables represented as lists of lists.
+       :type text: list[list]
+       :param merged: List of merged tables represented as lists of lists.
+       :type merged: list[list]
+       :param original: List of original tables represented as lists of lists.
+       :type original: list[list]
+       :return: Stacked versions of the input tables.
+       :rtype: tuple[list[list]]
+
+
+
+.. py:function:: table_metrics(tables: list[list])
+
+       Calculates metrics for the given tables, including the number of filled columns and a map of filled columns.
+
+       :param tables: List of tables represented as lists of lists.
+       :type tables: list[list]
+       :return: A dictionary with the number of filled columns for each table and a map of filled columns.
+       :rtype: tuple[defaultdict[list], dict]
+
+
+
+.. py:function:: stack_tables(tables, filled_lengths, filled_map_dict)
+
+       Stacks tables together based on the metrics of filled columns.
+
+       :param tables: List of tables represented as lists of lists.
+       :type tables: list[list]
+       :param filled_lengths: Dictionary with the number of filled columns for each table.
+       :type filled_lengths: dict
+       :param filled_map_dict: Dictionary with a map of filled columns for each table.
+       :type filled_map_dict: dict
+       :return: Stacked version of the input tables.
+       :rtype: list[list]
+
+
+
+.. py:function:: get_filled_columns(table)
+
+       Determines which columns in a table are filled.
+
+       :param table: A table represented as a list of lists.
+       :type table: list[list]
+       :return: A list indicating which columns are filled and the total number of filled columns.
+       :rtype: tuple[list[bool], int]
+
+
+
+.. py:function:: stack_filled(tables, filled_list, filled_map_dict, col_number)
+
+       Stacks tables together based on the metrics of filled columns, considering only tables with a specific number of filled columns.
+
+       :param tables: List of tables represented as lists of lists.
+       :type tables: list[list]
+       :param filled_list: List of indices of tables with a specific number of filled columns.
+       :type filled_list: list[int]
+       :param filled_map_dict: Dictionary with a map of filled columns for each table.
+       :type filled_map_dict: dict
+       :param col_number: The specific number of filled columns to consider.
+       :type col_number: int
+       :return: Stacked version of the input tables.
+       :rtype: list[list]

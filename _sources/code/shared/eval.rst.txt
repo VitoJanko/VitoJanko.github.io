@@ -1,0 +1,128 @@
+====
+eval
+====
+
+.. py:function:: perfect_match(value_1: str, value_2: str)
+
+       Checks if two strings are exactly the same.
+
+       :param value_1: The first string to compare.
+       :type value_1: str
+       :param value_2: The second string to compare.
+       :type value_2: str
+       :return: True if the strings are the same, False otherwise.
+       :rtype: bool
+
+.. py:function:: partial_match(value_1: str, value_2: str, min_ratio=0.8, return_score=False)
+
+       Checks if the first string is in the second string or if the overall match ratio is greater than 0.9.
+
+       :param value_1: The first string to compare.
+       :type value_1: str
+       :param value_2: The second string to compare.
+       :type value_2: str
+       :param min_ratio: The minimum ratio for a match. Default is 0.8.
+       :type min_ratio: float
+       :param return_score: If True, the function will return the match ratio. Default is False.
+       :type return_score: bool
+       :return: True if there is a match, False otherwise. If return_score is True, it also returns the match ratio.
+       :rtype: bool or tuple
+
+.. py:function:: price_match(value_1: str, value_2: str)
+
+       Checks if two prices are the same.
+
+       :param value_1: The first price to compare.
+       :type value_1: str
+       :param value_2: The second price to compare.
+       :type value_2: str
+       :return: True if the prices are the same, False otherwise.
+       :rtype: bool
+
+.. py:function:: match_combination(true_comb, pred_comb, eval_mode, categories=[], missing_categories=None, pred_index=0, true_index=0) -> bool
+
+       Matches two combinations based on certain criteria.
+
+       :param true_comb: The true combination.
+       :type true_comb: dict
+       :param pred_comb: The predicted combination.
+       :type pred_comb: dict
+       :param eval_mode: The evaluation mode.
+       :type eval_mode: str
+       :param categories: The categories to consider for the match. Default is an empty list.
+       :type categories: list
+       :param missing_categories: The categories that are missing. Default is None.
+       :type missing_categories: list or None
+       :param pred_index: The index of the predicted combination. Default is 0.
+       :type pred_index: int
+       :param true_index: The index of the true combination. Default is 0.
+       :type true_index: int
+       :return: True if the combinations match, False otherwise.
+       :rtype: bool
+
+.. py:function:: match_combinations(true_json, pred_json, categories, eval_mode, missing_categories=None)
+
+       Matches combinations from two json objects.
+
+       :param true_json: The json object with the true combinations.
+       :type true_json: dict
+       :param pred_json: The json object with the predicted combinations.
+       :type pred_json: dict
+       :param categories: The categories to consider for the match.
+       :type categories: list
+       :param eval_mode: The evaluation mode.
+       :type eval_mode: str
+       :param missing_categories: The categories that are missing. Default is None.
+       :type missing_categories: list or None
+       :return: The number of matches, the total number of combinations, the number of non-matches, the non-matching categories, the matched indices, the predicted dictionary, and the true json.
+       :rtype: tuple
+
+.. py:function:: evaluate_combinations(true_json, pred_json, categories, eval_mode, missing_categories=None)
+
+       Evaluates the matches between combinations from two json objects.
+
+       :param true_json: The json object with the true combinations.
+       :type true_json: dict
+       :param pred_json: The json object with the predicted combinations.
+       :type pred_json: dict
+       :param categories: The categories to consider for the match.
+       :type categories: list
+       :param eval_mode: The evaluation mode.
+       :type eval_mode: str
+       :param missing_categories: The categories that are missing. Default is None.
+       :type missing_categories: list or None
+       :return: The results of the match_combinations function or None if an exception occurs.
+       :rtype: tuple or None
+
+.. py:function:: print_match_side_by_side(true_json, pred_json)
+
+       Prints the matches between combinations from two json objects side by side.
+
+       :param true_json: The json object with the true combinations.
+       :type true_json: dict
+       :param pred_json: The json object with the predicted combinations.
+       :type pred_json: dict
+       :return: A string representation of the matches.
+       :rtype: str
+
+.. py:function:: get_best_match(pred_json, true_json)
+
+       Gets the best match between combinations from two json objects.
+
+       :param pred_json: The json object with the predicted combinations.
+       :type pred_json: dict
+       :param true_json: The json object with the true combinations.
+       :type true_json: dict
+
+.. py:function:: simplify_preskok_json_format(data, categories, add_origin=False)
+
+       Simplifies the Preskok json format.
+
+       :param data: The data in Preskok json format.
+       :type data: dict
+       :param categories: The categories to consider.
+       :type categories: list
+       :param add_origin: If True, the origin will be added to the data. Default is False.
+       :type add_origin: bool
+       :return: The simplified data.
+       :rtype: list

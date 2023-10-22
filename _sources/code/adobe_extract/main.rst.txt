@@ -1,0 +1,28 @@
+====
+main
+====
+
+.. py:function:: __init__(self, s3_bucket: str, pdf_file, pdf_hash: str, pdf_folder: str, extract_folder: str)
+
+   Initialize the class with the given parameters.
+
+   :param s3_bucket: The name of the S3 bucket.
+   :type s3_bucket: str
+   :param pdf_file: The PDF file to be processed.
+   :param pdf_hash: The hash of the PDF file.
+   :type pdf_hash: str
+   :param pdf_folder: The folder where the PDF file is located.
+   :type pdf_folder: str
+   :param extract_folder: The folder where the extracted data will be stored.
+   :type extract_folder: str
+   :return: None
+
+
+.. py:function:: extract(self, pages: list[int])
+
+   Extracts the relevant pages from the PDF file.
+
+   :param pages: A list of page numbers to be extracted.
+   :type pages: list[int]
+   :return: A BytesIO object containing the extracted data or None if an exception occurs.
+   :rtype: BytesIO or None

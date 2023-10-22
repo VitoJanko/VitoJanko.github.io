@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>merge_tables &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="price_page_finder" href="price_page_finder.html" />
+    <link rel="prev" title="main" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">page_selection</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">pl_finder</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">merge_tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="price_page_finder.html">price_page_finder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="price_table_finder.html">price_table_finder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="table_preparator.html">table_preparator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../td_finder/index.html">td_finder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">page_selection</a></li>
+          <li class="breadcrumb-item"><a href="index.html">pl_finder</a></li>
+      <li class="breadcrumb-item active">merge_tables</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/code/page_selection/pl_finder/merge_tables.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="merge-tables">
+<h1>merge_tables<a class="headerlink" href="#merge-tables" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="stack_tables_all">
+<span class="sig-name descname"><span class="pre">stack_tables_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stack_tables_all" title="Link to this definition"></a></dt>
+<dd><p>Stacks multiple tables together based on the metrics of filled columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – List of tables represented as lists of lists.</p></li>
+<li><p><strong>merged</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – List of merged tables represented as lists of lists.</p></li>
+<li><p><strong>original</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – List of original tables represented as lists of lists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Stacked versions of the input tables.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list[list]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="table_metrics">
+<span class="sig-name descname"><span class="pre">table_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#table_metrics" title="Link to this definition"></a></dt>
+<dd><p>Calculates metrics for the given tables, including the number of filled columns and a map of filled columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tables</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – List of tables represented as lists of lists.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the number of filled columns for each table and a map of filled columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[defaultdict[list], dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="stack_tables">
+<span class="sig-name descname"><span class="pre">stack_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filled_lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filled_map_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stack_tables" title="Link to this definition"></a></dt>
+<dd><p>Stacks tables together based on the metrics of filled columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tables</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – List of tables represented as lists of lists.</p></li>
+<li><p><strong>filled_lengths</strong> (<em>dict</em>) – Dictionary with the number of filled columns for each table.</p></li>
+<li><p><strong>filled_map_dict</strong> (<em>dict</em>) – Dictionary with a map of filled columns for each table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Stacked version of the input tables.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_filled_columns">
+<span class="sig-name descname"><span class="pre">get_filled_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_filled_columns" title="Link to this definition"></a></dt>
+<dd><p>Determines which columns in a table are filled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – A table represented as a list of lists.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list indicating which columns are filled and the total number of filled columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list[bool], int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="stack_filled">
+<span class="sig-name descname"><span class="pre">stack_filled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filled_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filled_map_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stack_filled" title="Link to this definition"></a></dt>
+<dd><p>Stacks tables together based on the metrics of filled columns, considering only tables with a specific number of filled columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tables</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – List of tables represented as lists of lists.</p></li>
+<li><p><strong>filled_list</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – List of indices of tables with a specific number of filled columns.</p></li>
+<li><p><strong>filled_map_dict</strong> (<em>dict</em>) – Dictionary with a map of filled columns for each table.</p></li>
+<li><p><strong>col_number</strong> (<em>int</em>) – The specific number of filled columns to consider.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Stacked version of the input tables.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="main" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="price_page_finder.html" class="btn btn-neutral float-right" title="price_page_finder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+===========
+data_models
+===========
+
+.. py:function:: entry_properties(self)
+
+   Determine the properties of the entry based on its type.
+   :return: A tuple containing boolean values indicating whether the entry is equipment, color, package, or in package.
+   :rtype: tuple[bool, bool, bool, bool]
+
+
+.. py:function:: is_serial(self)
+
+   Check if the entry is a serial equipment.
+   :return: The serial number if the entry is equipment, False otherwise.
+   :rtype: str or bool
+
+
+.. py:function:: __repr__(self)
+
+   Return a string representation of the entry.
+   :return: The string representation of the entry.
+   :rtype: str
+
+
+.. py:function:: create_package(self, package_title: str)
+
+   Create a new package with the given title.
+
+   :param package_title: The title of the package.
+   :type package_title: str
+   :return: A new Equipment object representing the package.
+   :rtype: Equipment
+
+
+.. py:function:: create_package_item(self, item_title: str, package_title: str)
+
+   Create a new item in a package with the given titles.
+
+   :param item_title: The title of the item.
+   :type item_title: str
+   :param package_title: The title of the package.
+   :type package_title: str
+   :return: A new Equipment object representing the item in the package.
+   :rtype: Equipment
+
+
+.. py:function:: __init__(self, eq: Equipment)
+
+   Initialize a new instance of the class.
+
+   :param eq: An Equipment object.
+   :type eq: Equipment

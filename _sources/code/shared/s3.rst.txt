@@ -1,0 +1,272 @@
+==
+s3
+==
+
+.. py:function:: make_S3URL(bucket: str, key: str) -> S3URL
+
+   Generate S3URL object from the given bucket and key names.
+
+   :param bucket: The name of the bucket.
+   :type bucket: str
+   :param key: The key name.
+   :type key: str
+   :return: The S3URL object.
+   :rtype: S3URL
+
+.. py:function:: put(self, body: Union[AnyStr, Any], key: S3Key, serializer=lambda x: x, serializer_kwargs: dict = {})
+
+   Put an object in the bucket.
+
+   :param body: The content to put in the bucket.
+   :type body: Union[AnyStr, Any]
+   :param key: The key of the object.
+   :type key: S3Key
+   :param serializer: The function to serialize the body. Default is identity function.
+   :type serializer: function
+   :param serializer_kwargs: The keyword arguments for the serializer function.
+   :type serializer_kwargs: dict
+   :return: The response from put_object.
+   :rtype: dict
+
+.. py:function:: put_file_like(self, f, key: S3Key)
+
+   Upload a file-like object to the bucket.
+
+   :param f: The file-like object to upload.
+   :type f: file-like object
+   :param key: The key of the object.
+   :type key: S3Key
+   :return: The response from upload_fileobj.
+   :rtype: dict
+
+.. py:function:: get_file_like(self, key: S3Key) -> BufferedReader
+
+   Get the S3 file into BufferedReader.
+
+   :param key: The key of the object.
+   :type key: S3Key
+   :return: The BufferedReader object.
+   :rtype: BufferedReader
+
+.. py:function:: get(self, key: S3Key, loader=lambda x: x) -> str
+
+   Get the contents of the S3 stored "key".
+
+   :param key: The key of the object.
+   :type key: S3Key
+   :param loader: The function to load the content. Default is identity function.
+   :type loader: function
+   :return: The content of the object.
+   :rtype: str
+
+.. py:function:: delete(self, key: S3Key)
+
+   Delete the object with the given key.
+
+   :param key: The key of the object.
+   :type key: S3Key
+   :return: The response from delete_object.
+   :rtype: dict
+
+.. py:function:: get_dict_streamer(self, key: S3Key) -> csv.DictReader
+
+   Get DictReader instance for streaming the S3 stored file.
+
+   :param key: The key of the object.
+   :type key: S3Key
+   :return: The DictReader object.
+   :rtype: csv.DictReader
+
+.. py:function:: get_dict_reader(self, key: S3Key, loader=lambda x: x) -> csv.DictReader
+
+   Get DictReader instance for reading S3 stored file.
+
+   :param key: The key of the object.
+   :type key: S3Key
+   :param loader: The function to load the content. Default is identity function.
+   :type loader: function
+   :return: The DictReader object.
+   :rtype: csv.DictReader
+
+.. py:function:: store_csv(self, content, key: S3Key, compress: bool = False)
+
+   Store given content into a csv while optionally gzipping it.
+
+   :param content: The content to store.
+   :type content: str
+   :param key: The key of the object.
+   :type key: S3Key
+   :param compress: Whether to compress the content or not. Default is False.
+   :type compress: bool
+
+.. py:function:: copy_to(self, key: S3Key, target_bucket: str, target_key: S3Key) -> None
+
+   Copy the object from one location to another.
+
+   :param key: The key of the object to copy.
+   :type key: S3Key
+   :param target_bucket: The target bucket.
+   :type target_bucket: str
+   :param target_key: The target key.
+   :type target_key: S3Key
+   :raises S3Error: There was an error copying the object.
+
+.. py:function:: move_to(self, key: S3Key, target_bucket: str, target_key: S3Key) -> None
+
+   Move the object from one location to another.
+
+   :param key: The key of the object to move.
+   :type key: S3Key
+   :param target_bucket: The target bucket.
+   :type target_bucket: str
+   :param target_key: The target key.
+   :type target_key: S3Key
+   :raises S3Error: There was an error moving the object.
+
+.. py:function:: ls(self, prefix: str, pattern: Optional[str] = None, batch_size_min: Optional[int] = None, starting_token: Optional[str] = None) -> Generator[S3Key, None, None]
+
+   List the keys in the bucket with the given prefix that also supports filtering of keys by regex pattern.
+
+   :param prefix: The prefix to list on.
+   :type prefix: str
+   :param pattern: The regex pattern to only include desired keys. Default is None.
+   :type pattern: Optional[str]
+   :param batch_size_min: The minimum batch size. Default is None.
+   :type batch_size_min: Optional[int]
+   :param starting_token: The starting token. Default is None.
+   :type starting_token: Optional[str]
+   :return: The generator of the keys.
+   :rtype: Generator[S3Key, None, None]
+
+.. py:function:: delete_prefix(self, prefix: S3Key) -> None
+
+   Delete all objects with the given prefix.
+
+   :param prefix: The prefix of the objects to delete.
+   :type prefix: S3Key
+
+.. py:function:: get_last_modified(self, key: S3Key)
+
+   Get the last modified time of the object with the given key.
+
+   :param key: The key of the object.
+   :type key: S3Key
+   :return: The last modified time of the object.
+   :rtype: datetime.datetime
+
+.. py:function:: parse_bucket(s3url: str) -> str
+
+   Parse the name of the bucket from S3 URL string.
+
+   :param s3url: The S3 URL.
+   :type s3url: str
+   :return: The name of the bucket.
+   :rtype: str
+
+.. py:function:: parse_key(s3url: str) -> S3Key
+
+   Parse the key from S3 URL string.
+
+   :param s3url: The S3 URL.
+   :type s3url: str
+   :return: The key.
+   :rtype: S3Key
+
+.. py:function:: parse_url(s3url: str) -> Tuple[str, S3Key]
+
+   Parse S3 URL into bucket name and key.
+
+   :param s3url: The S3 URL.
+   :type s3url: str
+   :return: The bucket name and key.
+   :rtype: Tuple[str, S3Key]
+
+.. py:function:: parse_filename(s3url: str) -> str
+
+   Parse the filename from S3 URL string.
+
+   :param s3url: The S3 URL.
+   :type s3url: str
+   :return: The filename.
+   :rtype: str
+
+.. py:function:: get_file_like(self) -> BufferedReader
+
+   Get BufferedReader object to stream S3 content.
+   :return: The BufferedReader object.
+   :rtype: BufferedReader
+
+.. py:function:: get(self, loader=lambda x: x) -> str
+
+   Get content of S3 stored file.
+
+   :param loader: The function to load the content. Default is identity function.
+   :type loader: function
+   :return: The content of the file.
+   :rtype: str
+
+.. py:function:: get_dict_reader(self, loader: Callable = lambda x: x) -> csv.DictReader
+
+   Get dict reader to iterate over data.
+
+   :param loader: The function to load the content. Default is identity function.
+   :type loader: Callable
+   :return: The DictReader object.
+   :rtype: csv.DictReader
+
+.. py:function:: get_dict_streamer(self) -> csv.DictReader
+
+   Get streaming dict reader to iterate over larger-than-memory S3 stored files.
+   :return: The DictReader object.
+   :rtype: csv.DictReader
+
+.. py:function:: delete(self)
+
+   Delete the S3 object.
+   :return: The response from delete_object.
+   :rtype: dict
+
+.. py:function:: copy_to(self, target_bucket: str, target_key: S3Key) -> None
+
+   Copy the S3 object to another target bucket and target key.
+
+   :param target_bucket: The target bucket.
+   :type target_bucket: str
+   :param target_key: The target key.
+   :type target_key: S3Key
+   :return: The response from copy_object.
+   :rtype: dict
+
+.. py:function:: move_to(self, target_bucket: str, target_key: S3Key) -> None
+
+   Move the S3 object to another target bucket and target key.
+
+   :param target_bucket: The target bucket.
+   :type target_bucket: str
+   :param target_key: The target key.
+   :type target_key: S3Key
+   :return: The response from move_object.
+   :rtype: dict
+
+.. py:function:: generate_presigned_url(self, client_method="get_object", expires_in=3600) -> str
+
+   Generates temporary url to the S3 object.
+
+   :param client_method: The client method. Default is "get_object".
+   :type client_method: str
+   :param expires_in: The expiration time in seconds. Default is 3600.
+   :type expires_in: int
+   :return: The presigned URL.
+   :rtype: str
+
+.. py:function:: ls(self) -> Generator[S3Key, None, None]
+
+   Lists objects, given the prefix of self.key.
+   :return: The generator of the keys.
+   :rtype: Generator[S3Key, None, None]
+
+.. py:function:: head(self) -> Optional[Dict]
+
+   Returns the object meta information.
+   :return: The meta information of the object.
+   :rtype: Optional[Dict]

@@ -1,0 +1,125 @@
+===============
+excel_extractor
+===============
+
+.. py:function:: make_legend(folder, filename)
+
+   This function creates a legend for a given Excel file.
+
+   :param folder: The folder where the Excel file is located.
+   :type folder: str
+   :param filename: The name of the Excel file without the extension.
+   :type filename: str
+   :return: None
+   :rtype: None
+
+.. py:function:: xls_for_annotation(directory_path, save_name, values, labels, layouts, filenames, pages, table_indices)
+
+   This function creates an Excel file for annotation.
+
+   :param directory_path: The path of the directory where the Excel file will be saved.
+   :type directory_path: str
+   :param save_name: The name of the Excel file to be saved.
+   :type save_name: str
+   :param values: The values to be annotated.
+   :type values: list
+   :param labels: The labels for the values.
+   :type labels: list
+   :param layouts: The layouts of the tables.
+   :type layouts: list
+   :param filenames: The names of the files.
+   :type filenames: list
+   :param pages: The pages where the tables are located.
+   :type pages: list
+   :param table_indices: The indices of the tables.
+   :type table_indices: list
+   :return: None
+   :rtype: None
+
+.. py:function:: extract_labels(file_index, input_folder="excels", output_name="cell_labels", output_layout_name="layout", generate_extra=False, generate_generic=None, input_name="annotated")
+
+   This function extracts labels from an Excel file.
+
+   :param file_index: The index of the file.
+   :type file_index: int
+   :param input_folder: The folder where the input file is located. Default is "excels".
+   :type input_folder: str
+   :param output_name: The name of the output file. Default is "cell_labels".
+   :type output_name: str
+   :param output_layout_name: The name of the output layout file. Default is "layout".
+   :type output_layout_name: str
+   :param generate_extra: Whether to generate extra labels. Default is False.
+   :type generate_extra: bool
+   :param generate_generic: Whether to generate generic labels. Default is None.
+   :type generate_generic: None or list
+   :param input_name: The name of the input file. Default is "annotated".
+   :type input_name: str
+   :return: The extracted labels.
+   :rtype: DataFrame
+
+.. py:function:: shuffle_table(values, labels)
+
+   This function shuffles the values in a table.
+
+   :param values: The values in the table.
+   :type values: DataFrame
+   :param labels: The labels for the values.
+   :type labels: DataFrame
+   :return: The shuffled table.
+   :rtype: DataFrame
+
+.. py:function:: find_table_boundaries(sheet, margin_row, margin_column)
+
+   This function finds the boundaries of a table in an Excel sheet.
+
+   :param sheet: The Excel sheet.
+   :type sheet: Worksheet
+   :param margin_row: The row margin.
+   :type margin_row: int
+   :param margin_column: The column margin.
+   :type margin_column: int
+   :return: The width and height of the table.
+   :rtype: tuple
+
+.. py:function:: parse_table(sheet, margin_row, margin_column, table_width, table_height)
+
+   This function parses a table in an Excel sheet.
+
+   :param sheet: The Excel sheet.
+   :type sheet: Worksheet
+   :param margin_row: The row margin.
+   :type margin_row: int
+   :param margin_column: The column margin.
+   :type margin_column: int
+   :param table_width: The width of the table.
+   :type table_width: int
+   :param table_height: The height of the table.
+   :type table_height: int
+   :return: The values and labels in the table.
+   :rtype: tuple
+
+.. py:function:: create_cell_annotations(values, labels, params)
+
+   This function creates cell annotations.
+
+   :param values: The values in the cells.
+   :type values: list
+   :param labels: The labels for the values.
+   :type labels: list
+   :param params: The parameters for the annotations.
+   :type params: list
+   :return: The cell annotations.
+   :rtype: list
+
+.. py:function:: create_layout_annotations(values, labels, params)
+
+   This function creates layout annotations.
+
+   :param values: The values in the layout.
+   :type values: list
+   :param labels: The labels for the values.
+   :type labels: list
+   :param params: The parameters for the annotations.
+   :type params: list
+   :return: The layout annotations.
+   :rtype: list

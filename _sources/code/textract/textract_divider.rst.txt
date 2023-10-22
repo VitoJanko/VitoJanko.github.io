@@ -1,0 +1,24 @@
+================
+textract_divider
+================
+
+.. py:function:: isolate_page(original, page_wanted)
+
+   This function takes a document and a page number, and returns a new document that only contains the specified page.
+
+   :param original: The original document.
+   :type original: dict
+   :param page_wanted: The page number to isolate.
+   :type page_wanted: int
+   :return: A new document that only contains the specified page.
+   :rtype: dict
+
+
+.. py:function:: merge_pages(documents)
+
+   This function takes a list of documents and merges them into a single document. The page numbers are updated accordingly.
+
+   :param documents: A list of tuples, where each tuple contains a document and its page number.
+   :type documents: list[tuple]
+   :return: A new document that is the result of merging all the input documents.
+   :rtype: dict

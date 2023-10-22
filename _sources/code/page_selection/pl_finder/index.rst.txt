@@ -1,0 +1,11 @@
+=========
+pl_finder
+=========
+
+.. toctree::
+   main
+   merge_tables
+   price_page_finder
+   price_table_finder
+   table_preparator
+   utils

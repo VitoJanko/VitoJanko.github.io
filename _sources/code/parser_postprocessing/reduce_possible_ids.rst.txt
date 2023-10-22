@@ -1,0 +1,40 @@
+===================
+reduce_possible_ids
+===================
+
+.. py:function:: get_data_from_table(table, regex_expression, type_cast)
+
+   Extracts data from a table using a regular expression and casts it to a specific type.
+
+   :param table: The table from which to extract data.
+   :type table: Table
+   :param regex_expression: The regular expression used to find matches in the table.
+   :type regex_expression: str
+   :param type_cast: The function used to cast the matched data to a specific type.
+   :type type_cast: function
+   :return: The list of data extracted from the table.
+   :rtype: list
+
+
+.. py:function:: get_tehnical_data(textract_results, pages)
+
+   Extracts technical data from a document using regular expressions.
+
+   :param textract_results: The results of the textract operation on the document.
+   :type textract_results: Document
+   :param pages: The pages of the document to extract data from.
+   :type pages: list[int]
+   :return: Two lists of data, one for kilowatt data and one for cubic centimeter data.
+   :rtype: list[list[int]], list[list[int]]
+
+
+.. py:function:: tehnical_data_content_for_id_reduction(td_pages, textract_results)
+
+   Reduces the technical data content for identification purposes.
+
+   :param td_pages: The pages of the document containing technical data.
+   :type td_pages: list[int]
+   :param textract_results: The results of the textract operation on the document.
+   :type textract_results: Document
+   :return: A dictionary containing the reduced technical data.
+   :rtype: dict

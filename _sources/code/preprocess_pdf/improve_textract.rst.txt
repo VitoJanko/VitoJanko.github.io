@@ -1,0 +1,32 @@
+================
+improve_textract
+================
+
+.. py:function:: convert_to_textract_format(bboxes_labels, img_width, img_height, pg_num)
+
+   Convert bounding boxes and labels to Amazon Textract format.
+
+   :param bboxes_labels: List of tuples, where each tuple contains a bounding box and a label.
+   :type bboxes_labels: list[tuple]
+   :param img_width: Width of the image.
+   :type img_width: int
+   :param img_height: Height of the image.
+   :type img_height: int
+   :param pg_num: Page number.
+   :type pg_num: int
+   :return: List of dictionaries in Amazon Textract format.
+   :rtype: list[dict]
+
+
+.. py:function:: get_model_bboxes(img: Image, pg_num: int, yolo_model)
+
+   Get bounding boxes from the YOLO model.
+
+   :param img: Input image.
+   :type img: Image
+   :param pg_num: Page number.
+   :type pg_num: int
+   :param yolo_model: YOLO model used for object detection.
+   :type yolo_model: YOLO
+   :return: List of dictionaries in Amazon Textract format.
+   :rtype: list[dict]

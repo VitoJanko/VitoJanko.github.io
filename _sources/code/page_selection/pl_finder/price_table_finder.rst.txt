@@ -1,0 +1,33 @@
+==================
+price_table_finder
+==================
+
+.. py:function:: insert_status(table, status_dict)
+
+   Insert status information into a table based on the status dictionary.
+
+   :param table: The table where the status information will be inserted.
+   :type table: pandas.DataFrame
+   :param status_dict: A dictionary containing status information. The keys are "splitted_rows", "altered_cell", "multi_line_cell", and "cell_value_changed". Each key corresponds to a list of tuples, where each tuple represents a cell in the table.
+   :type status_dict: dict
+   :return: None
+
+
+.. py:function:: prepare_tables(page: trp.Page, line_to_labels, content_type: ContentType, correct_textract: bool = True, remove_price_noise: int = 2, post_process=True)
+
+   Prepare tables for excel annotation.
+
+   :param page: The page containing the tables.
+   :type page: trp.Page
+   :param line_to_labels: Labels for the lines in the table.
+   :type line_to_labels: dict
+   :param content_type: The type of content in the table.
+   :type content_type: ContentType
+   :param correct_textract: If false the shape of table is not changed.
+   :type correct_textract: bool, default is True
+   :param remove_price_noise: The threshold for removing price noise.
+   :type remove_price_noise: int, default is 2
+   :param post_process: If true, post processing is applied to the table.
+   :type post_process: bool, default is True
+   :return: A list of nested lists (each list is a row) with cell text, a list of nested lists with cell categories, and a list of status dictionaries for each table.
+   :rtype: list[list[list]], list[list[list]], list[dict]

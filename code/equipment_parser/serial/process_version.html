@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>process_version &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="serial_data_models" href="serial_data_models.html" />
+    <link rel="prev" title="process_line" href="process_line.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">equipment_parser</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../data_models.html">data_models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shared.html">shared</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">serial</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="process_color.html">process_color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="process_layout.html">process_layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="process_line.html">process_line</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">process_version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="serial_data_models.html">serial_data_models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../table/index.html">table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/index.html">testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">equipment_parser</a></li>
+          <li class="breadcrumb-item"><a href="index.html">serial</a></li>
+      <li class="breadcrumb-item active">process_version</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/code/equipment_parser/serial/process_version.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="process-version">
+<h1>process_version<a class="headerlink" href="#process-version" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="strip_non_letters">
+<span class="sig-name descname"><span class="pre">strip_non_letters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strip_non_letters" title="Link to this definition"></a></dt>
+<dd><p>Remove all non-letter characters from the input string and convert it to uppercase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_string</strong> (<em>str</em>) – The string to be processed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The processed string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="find_versions">
+<span class="sig-name descname"><span class="pre">find_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price_list_versions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_versions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_handicap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_return</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brand_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find_versions" title="Link to this definition"></a></dt>
+<dd><p>Find the best matching versions in the given line of text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line_text</strong> (<em>str</em>) – The line of text to search for versions.</p></li>
+<li><p><strong>price_list_versions</strong> (<em>list</em>) – The list of versions to match against.</p></li>
+<li><p><strong>additional_versions</strong> (<em>list</em>) – Additional versions to match against.</p></li>
+<li><p><strong>match_threshold</strong> (<em>int</em>) – The minimum match score to consider a version a match.</p></li>
+<li><p><strong>match_handicap</strong> (<em>int</em>) – The handicap to apply to the match score.</p></li>
+<li><p><strong>max_return</strong> (<em>int</em>) – The maximum number of versions to return.</p></li>
+<li><p><strong>brand_id</strong> (<em>int</em>) – The brand id to consider during matching.</p></li>
+<li><p><strong>length_penalty</strong> (<em>float</em>) – The penalty to apply based on the length of the version.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of best matching versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="replace_hyphen">
+<span class="sig-name descname"><span class="pre">replace_hyphen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replace_hyphen" title="Link to this definition"></a></dt>
+<dd><p>Replace hyphens in the version and version line with spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version</strong> (<em>str</em>) – The version string.</p></li>
+<li><p><strong>version_line</strong> (<em>str</em>) – The version line string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The processed version and version line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="move_match">
+<span class="sig-name descname"><span class="pre">move_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_span</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#move_match" title="Link to this definition"></a></dt>
+<dd><p>Move the match span if the version does not contain a “+” character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>str</em>) – The line of text to search for versions.</p></li>
+<li><p><strong>version</strong> (<em>str</em>) – The version string.</p></li>
+<li><p><strong>original_span</strong> (<em>tuple</em>) – The original span of the match.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated span of the match.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="insert_versions">
+<span class="sig-name descname"><span class="pre">insert_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_version_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serial_attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_found</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insert_versions" title="Link to this definition"></a></dt>
+<dd><p>Insert versions into the given line of text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>EquipmentLine</em>) – The line of text to insert versions into.</p></li>
+<li><p><strong>prev_line</strong> (<em>EquipmentLine</em>) – The previous line of text.</p></li>
+<li><p><strong>version_lines</strong> (<em>list</em>) – The list of lines with versions.</p></li>
+<li><p><strong>version_list</strong> (<em>list</em>) – The list of versions to insert.</p></li>
+<li><p><strong>additional_version_list</strong> (<em>list</em>) – Additional versions to insert.</p></li>
+<li><p><strong>serial_attributes</strong> (<em>SerialAttributes</em>) – The serial attributes to consider during insertion.</p></li>
+<li><p><strong>version_found</strong> (<em>bool</em>) – Whether a version has been found in the line.</p></li>
+<li><p><strong>previous_version</strong> (<em>str</em>) – The previous version found.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings to consider during insertion.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether a version was found in the line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="assemble_version_lines">
+<span class="sig-name descname"><span class="pre">assemble_version_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EquipmentLine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assemble_version_lines" title="Link to this definition"></a></dt>
+<dd><p>Assemble version lines based on the given line and list of version lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>EquipmentLine</em>) – The line of text to assemble version lines from.</p></li>
+<li><p><strong>version_lines</strong> (<em>list</em>) – The list of version lines to assemble from.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The assembled version line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EquipmentLine</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="find_version_indices">
+<span class="sig-name descname"><span class="pre">find_version_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find_version_indices" title="Link to this definition"></a></dt>
+<dd><p>Find the indices of lines that contain versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lines</strong> (<em>list</em>) – The list of lines to search for versions.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of indices of lines that contain versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_recursive_versions">
+<span class="sig-name descname"><span class="pre">remove_recursive_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_recursive_versions" title="Link to this definition"></a></dt>
+<dd><p>Remove recursive versions from the given lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to remove recursive versions from.</p></li>
+<li><p><strong>version_indices</strong> (<em>list</em>) – The indices of lines that contain versions.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_too_big_versions">
+<span class="sig-name descname"><span class="pre">remove_too_big_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_too_big_versions" title="Link to this definition"></a></dt>
+<dd><p>Remove versions from lines that are too big.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to remove versions from.</p></li>
+<li><p><strong>version_indices</strong> (<em>list</em>) – The indices of lines that contain versions.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_lone_model">
+<span class="sig-name descname"><span class="pre">remove_lone_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_lone_model" title="Link to this definition"></a></dt>
+<dd><p>Remove the lone model from the given lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to remove the lone model from.</p></li>
+<li><p><strong>version_indices</strong> (<em>list</em>) – The indices of lines that contain versions.</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – The model to remove.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_displaced_model">
+<span class="sig-name descname"><span class="pre">remove_displaced_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_displaced_model" title="Link to this definition"></a></dt>
+<dd><p>Remove the displaced model from the given lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to remove the displaced model from.</p></li>
+<li><p><strong>version_indices</strong> (<em>list</em>) – The indices of lines that contain versions.</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – The model to remove.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_small_bottom_margin_versions">
+<span class="sig-name descname"><span class="pre">remove_small_bottom_margin_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_small_bottom_margin_versions" title="Link to this definition"></a></dt>
+<dd><p>Remove versions from lines that have a small bottom margin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to remove versions from.</p></li>
+<li><p><strong>version_indices</strong> (<em>list</em>) – The indices of lines that contain versions.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_different_versions">
+<span class="sig-name descname"><span class="pre">remove_different_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_different_versions" title="Link to this definition"></a></dt>
+<dd><p>Remove versions from lines that are different from the majority.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to remove versions from.</p></li>
+<li><p><strong>version_indices</strong> (<em>list</em>) – The indices of lines that contain versions.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="is_upgrade">
+<span class="sig-name descname"><span class="pre">is_upgrade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">previous_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_upgrade" title="Link to this definition"></a></dt>
+<dd><p>Check if the given versions are an upgrade of the previous version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>previous_version</strong> (<em>str</em>) – The previous version.</p></li>
+<li><p><strong>versions</strong> (<em>list</em>) – The versions to check.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the versions are an upgrade of the previous version.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="add_versions">
+<span class="sig-name descname"><span class="pre">add_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EquipmentLine</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pareto_versions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serial_attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SerialAttributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#add_versions" title="Link to this definition"></a></dt>
+<dd><p>Add versions to the given lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em>) – The list of lines to add versions to.</p></li>
+<li><p><strong>versions</strong> (<em>list</em>) – The versions to add.</p></li>
+<li><p><strong>pareto_versions</strong> (<em>list</em>) – The pareto versions to add.</p></li>
+<li><p><strong>serial_attributes</strong> (<em>SerialAttributes</em>) – The serial attributes to consider during addition.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings to consider during addition.</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – The model to consider during addition.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Whether to print debug information.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The lines with added versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="is_version_part_of_word">
+<span class="sig-name descname"><span class="pre">is_version_part_of_word</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">found_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_version_part_of_word" title="Link to this definition"></a></dt>
+<dd><p>Check if the found version is part of a word in the version line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version_line</strong> (<em>str</em>) – The version line to check.</p></li>
+<li><p><strong>found_version</strong> (<em>str</em>) – The found version to check.</p></li>
+<li><p><strong>start</strong> (<em>int</em>) – The start index of the found version in the version line.</p></li>
+<li><p><strong>end</strong> (<em>int</em>) – The end index of the found version in the version line.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the found version is part of a word in the version line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="get_word_at_index">
+<span class="sig-name descname"><span class="pre">get_word_at_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_searched</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_word_at_index" title="Link to this definition"></a></dt>
+<dd><p>Get the word at the given index in the line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>str</em>) – The line to get the word from.</p></li>
+<li><p><strong>index_searched</strong> (<em>int</em>) – The index to get the word at.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The word at the given index.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="replace">
+<span class="sig-name descname"><span class="pre">_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replace" title="Link to this definition"></a></dt>
+<dd><p>Replace hyphens in words with two or more characters in the text with spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – The text to replace hyphens in.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The text with replaced hyphens.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="process_line.html" class="btn btn-neutral float-left" title="process_line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="serial_data_models.html" class="btn btn-neutral float-right" title="serial_data_models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

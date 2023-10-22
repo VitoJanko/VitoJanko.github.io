@@ -1,0 +1,72 @@
+============================
+model_generation_matching_v2
+============================
+
+.. py:function:: get_model_name(model_generation: dict) -> str
+
+   Extracts the model name from the given model generation dictionary.
+
+   :param model_generation: The model generation dictionary.
+   :type model_generation: dict
+   :return: The model name.
+   :rtype: str
+
+
+.. py:function:: get_model_generation_id(model_generation: dict) -> str
+
+   Extracts the model generation id from the given model generation dictionary.
+
+   :param model_generation: The model generation dictionary.
+   :type model_generation: dict
+   :return: The model generation id.
+   :rtype: str
+
+
+.. py:function:: calculate_scores(parsed_model_names: list[str], input_model_generations) -> list[ModelCombinationScore]
+
+   Calculates the scores for each combination of parsed model names and input model generations.
+
+   :param parsed_model_names: The list of parsed model names.
+   :type parsed_model_names: list[str]
+   :param input_model_generations: The input model generations.
+   :type input_model_generations: list[dict]
+   :return: The list of model combination scores.
+   :rtype: list[ModelCombinationScore]
+
+
+.. py:function:: add_model_generation_id(parsed_model_names: list[str], input_model_generations: list[dict])
+
+   Adds the model generation id to the parsed model names.
+
+   :param parsed_model_names: The list of parsed model names.
+   :type parsed_model_names: list[str]
+   :param input_model_generations: The input model generations.
+   :type input_model_generations: list[dict]
+   :return: The dictionary of parsed model names to input model generations and the list of remaining parsed model names.
+   :rtype: dict, list[str]
+
+
+.. py:function:: update_combo_with_model_generation_id(combo, parsed_model_name_to_input_model_generation)
+
+   Updates the combo with the model generation id.
+
+   :param combo: The combo to be updated.
+   :type combo: dict
+   :param parsed_model_name_to_input_model_generation: The dictionary of parsed model names to input model generations.
+   :type parsed_model_name_to_input_model_generation: dict
+   :return: The updated combo.
+   :rtype: dict or None
+
+
+.. py:function:: model_generation_matching_v2(combinations: list[dict], brand, input_model_generations)
+
+   Matches the model generations with the combinations.
+
+   :param combinations: The list of combinations.
+   :type combinations: list[dict]
+   :param brand: The brand of the models.
+   :type brand: str
+   :param input_model_generations: The input model generations.
+   :type input_model_generations: list[dict]
+   :return: The list of combinations with model match.
+   :rtype: list[dict]

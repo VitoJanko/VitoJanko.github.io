@@ -1,0 +1,205 @@
+====
+main
+====
+
+.. py:function:: check_if_table_already_parsed(table_data, extracts)
+
+   Check if the table has already been parsed.
+
+   :param table_data: The data of the table.
+   :type table_data: TableData
+   :param extracts: The extracted data.
+   :type extracts: PDFExtracts
+   :return: True if the table has already been parsed, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: extract_equipment(extracts, tables, tables_adobe, general_attr, price_list_json, ground_truth)
+
+   Extract equipment data from the given tables.
+
+   :param extracts: The extracted data.
+   :type extracts: PDFExtracts
+   :param tables: The tables to extract data from.
+   :type tables: Tables
+   :param tables_adobe: The Adobe tables to extract data from.
+   :type tables_adobe: Tables
+   :param general_attr: The general attributes.
+   :type general_attr: CommonAttrs
+   :param price_list_json: The price list in JSON format.
+   :type price_list_json: dict
+   :param ground_truth: The ground truth data.
+   :type ground_truth: dict
+   :return: The extracted equipment results.
+   :rtype: EquipmentResults
+
+
+.. py:function:: create_versions_map(price_list_json, brand_specific_versions, summary=None)
+
+   Create a map of versions to their IDs.
+
+   :param price_list_json: The price list in JSON format.
+   :type price_list_json: dict
+   :param brand_specific_versions: The brand-specific versions.
+   :type brand_specific_versions: list
+   :param summary: The summary of the data, defaults to None.
+   :type summary: Summary, optional
+   :return: The map of versions to their IDs.
+   :rtype: dict
+
+
+.. py:function:: create_extra_brand_versions(summary, versions)
+
+   Create extra brand versions based on the summary and versions.
+
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :param versions: The versions.
+   :type versions: list
+   :return: The extra brand versions.
+   :rtype: list
+
+
+.. py:function:: create_extra_versions(summary, versions_to_id_map)
+
+   Create extra versions based on the summary and the map of versions to their IDs.
+
+   :param summary: The summary of the data.
+   :type summary: Summary
+   :param versions_to_id_map: The map of versions to their IDs.
+   :type versions_to_id_map: dict
+   :return: The extra versions.
+   :rtype: list
+
+
+.. py:function:: parse_equipment_tables(tables, extracts, versions_to_id_map, additional_versions_to_id_map, common_attrs)
+
+   Parse equipment tables and return the parsed data.
+
+   :param tables: The tables to parse.
+   :type tables: list[TableData]
+   :param extracts: The extracted data.
+   :type extracts: PDFExtracts
+   :param versions_to_id_map: The map of versions to their IDs.
+   :type versions_to_id_map: dict[str, int]
+   :param additional_versions_to_id_map: The map of additional versions to their IDs.
+   :type additional_versions_to_id_map: dict[str, int]
+   :param common_attrs: The common attributes.
+   :type common_attrs: CommonAttrs
+   :return: The parsed equipment data.
+   :rtype: tuple[list, list[dict[str, int]], dict, list[int]]
+
+
+.. py:function:: parse_optional(versions_to_id_map, additional_versions_to_id_map, extracts, tables, tables_adobe, common_attrs)
+
+   Parse optional equipment data from the given tables.
+
+   :param versions_to_id_map: The map of versions to their IDs.
+   :type versions_to_id_map: dict[str, int]
+   :param additional_versions_to_id_map: The map of additional versions to their IDs.
+   :type additional_versions_to_id_map: dict[str, int]
+   :param extracts: The extracted data.
+   :type extracts: PDFExtracts
+   :param tables: The tables to extract data from.
+   :type tables: Tables
+   :param tables_adobe: The Adobe tables to extract data from.
+   :type tables_adobe: Tables
+   :param common_attrs: The common attributes.
+   :type common_attrs: CommonAttrs
+   :return: The parsed optional equipment data.
+   :rtype: tuple[list, list[dict[str, int]], list[int]]
+
+
+.. py:function:: parse_serial(versions_to_id_map, additional_versions_to_id_map, extracts, common_attrs, using_adobe_output=False)
+
+   Parse serial equipment data from the given extracts.
+
+   :param versions_to_id_map: The map of versions to their IDs.
+   :type versions_to_id_map: dict
+   :param additional_versions_to_id_map: The map of additional versions to their IDs.
+   :type additional_versions_to_id_map: dict
+   :param extracts: The extracted data.
+   :type extracts: PDFExtracts
+   :param common_attrs: The common attributes.
+   :type common_attrs: CommonAttrs
+   :param using_adobe_output: Whether to use Adobe output, defaults to False.
+   :type using_adobe_output: bool, optional
+   :return: The parsed serial equipment data.
+   :rtype: tuple[dict, list, list]
+
+
+.. py:function:: combine(se_list, oe_list, oe_tables, remaining_pages, eq_pages, versions_to_id_map, additional_versions_to_id_map, negative_examples, price_list_json, ground_truth)
+
+   Combine the given lists and maps into a single EquipmentResults object.
+
+   :param se_list: The list of serial equipment.
+   :type se_list: list[CommonEntry]
+   :param oe_list: The list of optional equipment.
+   :type oe_list: list[CommonEntry]
+   :param oe_tables: The optional equipment tables.
+   :type oe_tables: list
+   :param remaining_pages: The remaining pages.
+   :type remaining_pages: list
+   :param eq_pages: The equipment pages.
+   :type eq_pages: list
+   :param versions_to_id_map: The map of versions to their IDs.
+   :type versions_to_id_map: dict
+   :param additional_versions_to_id_map: The map of additional versions to their IDs.
+   :type additional_versions_to_id_map: dict
+   :param negative_examples: The negative examples.
+   :type negative_examples: list
+   :param price_list_json: The price list in JSON format.
+   :type price_list_json: dict
+   :param ground_truth: The ground truth data.
+   :type ground_truth: dict
+   :return: The combined equipment results.
+   :rtype: EquipmentResults
+
+
+.. py:function:: add_ids(equipments, colors)
+
+   Add IDs to the given equipments and colors.
+
+   :param equipments: The equipments to add IDs to.
+   :type equipments: list[Equipment]
+   :param colors: The colors to add IDs to.
+   :type colors: list[Color]
+
+
+.. py:function:: merge_versions(equipments: list, combined_versions_to_id_map: dict, versions_to_id_map: dict)
+
+   Merges and delete versions in a list of equipment.
+
+   Conditions:
+   - Merge/delete will only occur if the number of versions in the equipment is
+   greater than the number of versions in the main price list.
+   - Versions selected for merge/delete are only those with fewer instances of
+   equipment than the base version on the price list.
+
+   Heuristics for merging and deleting versions after the above condition is met:
+   - A merge will occur if the version name is contained in another version"""s name.
+   Example: """(MY22)""" will merge into """Initiale paris (MY22)""".
+   - A version will be deleted under two conditions:
+       1. The version name is not contained in any other version.
+       2. The version has less than half the number of equipment instances of
+       the base version.
+
+
+   :param equipments: A list of Equipment instances.
+   :type equipments: list
+   :param combined_versions_to_id_map: A dictionary of version name to version ID for all versions.
+   :type combined_versions_to_id_map: dict
+   :param versions_to_id_map: A dictionary of version name to version ID for main versions.
+   :type versions_to_id_map: dict
+   :return: A modified list of Equipment instances.
+   :rtype: list
+
+.. py:function:: add_availability(item: Equipment, availabilities: list[EquipmentAvailability])
+
+   Adds availability to an item based on a priority system. If two availabilities are present, the one with higher priority is chosen.
+
+
+   :param item: An instance of Equipment.
+   :type item: Equipment
+   :param availabilities: A list of EquipmentAvailability instances.
+   :type availabilities: list[EquipmentAvailability]

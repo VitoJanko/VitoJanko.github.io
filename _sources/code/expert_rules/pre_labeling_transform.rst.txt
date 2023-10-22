@@ -1,0 +1,31 @@
+======================
+pre_labeling_transform
+======================
+
+.. py:function:: transform_values(values: pd.DataFrame, status: pd.DataFrame, settings: Settings, summary: Summary)
+
+   Transforms the values in a DataFrame based on expert rules. If a value is changed, the corresponding status is updated.
+
+   :param values: DataFrame of values to be transformed.
+   :type values: pd.DataFrame
+   :param status: DataFrame of status corresponding to the values.
+   :type status: pd.DataFrame
+   :param settings: Settings for the transformation.
+   :type settings: Settings
+   :param summary: Summary of the data.
+   :type summary: Summary
+   :return: None
+
+
+.. py:function:: value_transformation(value: str, summary: Summary, settings: Settings) -> Tuple[str, bool]
+
+   Transforms a single value based on expert rules. The transformation includes removing certain prefixes, replacing certain words, and removing brand and model names.
+
+   :param value: The value to be transformed.
+   :type value: str
+   :param summary: Summary of the data.
+   :type summary: Summary
+   :param settings: Settings for the transformation.
+   :type settings: Settings
+   :return: The transformed value and a boolean indicating whether the value was changed.
+   :rtype: Tuple[str, bool]

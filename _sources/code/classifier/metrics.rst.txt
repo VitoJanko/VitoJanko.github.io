@@ -1,0 +1,51 @@
+=======
+metrics
+=======
+
+.. py:function:: matching_words_ratio(word_list_1, word_list_2) -> float
+
+   Calculate the ratio of matching words between two lists of words.
+
+   :param word_list_1: The first list of words.
+   :type word_list_1: list[str]
+   :param word_list_2: The second list of words.
+   :type word_list_2: list[str]
+   :return: The ratio of matching words.
+   :rtype: float
+
+.. py:function:: exact_match(word, mapping_dict) -> str
+
+   Check if a word is in a dictionary.
+
+   :param word: The word to check.
+   :type word: str
+   :param mapping_dict: The dictionary to check in.
+   :type mapping_dict: dict
+   :return: True if the word is in the dictionary, False otherwise.
+   :rtype: bool
+
+.. py:function:: calculate_scores(word, value_list, n_top_values)
+
+   Calculate scores based on the Levenshtein distance and matching words ratio.
+
+   :param word: The word to calculate scores for.
+   :type word: str
+   :param value_list: The list of values to compare the word with.
+   :type value_list: list[str]
+   :param n_top_values: The number of top values to consider.
+   :type n_top_values: int
+   :return: A dictionary with the scores for Levenshtein distance ("ld"), matching words ratio ("mw"), and exact match ("em").
+   :rtype: dict
+
+.. py:function:: prediction_function(ld, mw, em)
+
+   Calculate a prediction score based on the Levenshtein distance, matching words ratio, and exact match scores.
+
+   :param ld: The Levenshtein distance score.
+   :type ld: float
+   :param mw: The matching words ratio score.
+   :type mw: float
+   :param em: The exact match score.
+   :type em: float
+   :return: The prediction score.
+   :rtype: float

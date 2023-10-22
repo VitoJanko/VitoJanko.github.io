@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>table_parser_v2 &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="abstract_parser" href="abstract_parser.html" />
+    <link rel="prev" title="string_utils" href="../shared/string_utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout_transforming/index.html">layout_transforming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">table_parser_v2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="abstract_parser.html">abstract_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="column_extraction.html">column_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html">helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parse_tables.html">parse_tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_summary.html">pl_summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_textract_blocks.html">search_textract_blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table_surrounding.html">table_surrounding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="td_parser.html">td_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transmission.html">transmission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+      <li class="breadcrumb-item active">table_parser_v2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/table_parser_v2/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-parser-v2">
+<h1>table_parser_v2<a class="headerlink" href="#table-parser-v2" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract_parser.html">abstract_parser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#normalize_labels"><code class="docutils literal notranslate"><span class="pre">normalize_labels()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#normalize_names"><code class="docutils literal notranslate"><span class="pre">normalize_names()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#use_original_values"><code class="docutils literal notranslate"><span class="pre">use_original_values()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#make_cell_status"><code class="docutils literal notranslate"><span class="pre">make_cell_status()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#insert_cell_status"><code class="docutils literal notranslate"><span class="pre">insert_cell_status()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#label_and_transform_table"><code class="docutils literal notranslate"><span class="pre">label_and_transform_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#extend_tables_and_extract_combinations"><code class="docutils literal notranslate"><span class="pre">extend_tables_and_extract_combinations()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#preprocess_data"><code class="docutils literal notranslate"><span class="pre">preprocess_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#sort_and_update"><code class="docutils literal notranslate"><span class="pre">sort_and_update()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#get_all_valid_prices"><code class="docutils literal notranslate"><span class="pre">get_all_valid_prices()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#get_eur_prices"><code class="docutils literal notranslate"><span class="pre">get_eur_prices()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract_parser.html#prioritize_numerical_columns"><code class="docutils literal notranslate"><span class="pre">prioritize_numerical_columns()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="column_extraction.html">column_extraction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="column_extraction.html#extract_kw_or_ks"><code class="docutils literal notranslate"><span class="pre">extract_kw_or_ks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_extraction.html#extract_fuel"><code class="docutils literal notranslate"><span class="pre">extract_fuel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_extraction.html#extract_kw"><code class="docutils literal notranslate"><span class="pre">_extract_kw()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_extraction.html#extract_ks"><code class="docutils literal notranslate"><span class="pre">_extract_ks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_extraction.html#extract_voltage"><code class="docutils literal notranslate"><span class="pre">_extract_voltage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="helpers.html">helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#check_for_mandatory_categories"><code class="docutils literal notranslate"><span class="pre">check_for_mandatory_categories()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#find_table_above_current_one"><code class="docutils literal notranslate"><span class="pre">find_table_above_current_one()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#use_above_table_header"><code class="docutils literal notranslate"><span class="pre">use_above_table_header()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#is_table_above_and_same_width"><code class="docutils literal notranslate"><span class="pre">is_table_above_and_same_width()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html#init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#label_and_transform_table"><code class="docutils literal notranslate"><span class="pre">label_and_transform_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#extend_tables_and_extract_combinations"><code class="docutils literal notranslate"><span class="pre">extend_tables_and_extract_combinations()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#extract_data"><code class="docutils literal notranslate"><span class="pre">extract_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#add_surcharge"><code class="docutils literal notranslate"><span class="pre">add_surcharge()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#add_value_indices"><code class="docutils literal notranslate"><span class="pre">add_value_indices()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#infer_version_from_table_header"><code class="docutils literal notranslate"><span class="pre">infer_version_from_table_header()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#make_column_index"><code class="docutils literal notranslate"><span class="pre">make_column_index()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#extract_td_fuel"><code class="docutils literal notranslate"><span class="pre">extract_td_fuel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#extract_td_transmission"><code class="docutils literal notranslate"><span class="pre">extract_td_transmission()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parse_tables.html">parse_tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parse_tables.html#parse_td_tables"><code class="docutils literal notranslate"><span class="pre">parse_td_tables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="parse_tables.html#parse_pl_tables"><code class="docutils literal notranslate"><span class="pre">parse_pl_tables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="parse_tables.html#add_surcharge"><code class="docutils literal notranslate"><span class="pre">add_surcharge()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pl_summary.html">pl_summary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pl_summary.html#process_model_brand"><code class="docutils literal notranslate"><span class="pre">process_model_brand()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pl_summary.html#get_year"><code class="docutils literal notranslate"><span class="pre">get_year()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search_textract_blocks.html">search_textract_blocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#count_nans"><code class="docutils literal notranslate"><span class="pre">count_nans()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#get_bbox_center_point"><code class="docutils literal notranslate"><span class="pre">get_bbox_center_point()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#euclidean_distance"><code class="docutils literal notranslate"><span class="pre">euclidean_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#vertical_distance"><code class="docutils literal notranslate"><span class="pre">vertical_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#is_bbox_within_range"><code class="docutils literal notranslate"><span class="pre">is_bbox_within_range()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#find_block_by_range"><code class="docutils literal notranslate"><span class="pre">find_block_by_range()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#find_closest_block_by_euclid"><code class="docutils literal notranslate"><span class="pre">find_closest_block_by_euclid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#get_closest_textract_block"><code class="docutils literal notranslate"><span class="pre">get_closest_textract_block()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_textract_blocks.html#find_block_by_text"><code class="docutils literal notranslate"><span class="pre">find_block_by_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="table_surrounding.html">table_surrounding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#get_data_from_table_surrounding"><code class="docutils literal notranslate"><span class="pre">get_data_from_table_surrounding()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#get_versions_data"><code class="docutils literal notranslate"><span class="pre">get_versions_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#get_fuel_data"><code class="docutils literal notranslate"><span class="pre">get_fuel_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#get_top_limit"><code class="docutils literal notranslate"><span class="pre">get_top_limit()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#update_model_generations_data"><code class="docutils literal notranslate"><span class="pre">update_model_generations_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#get_model_generations_data"><code class="docutils literal notranslate"><span class="pre">get_model_generations_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="table_surrounding.html#get_additional_data"><code class="docutils literal notranslate"><span class="pre">get_additional_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="td_parser.html">td_parser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#label_and_transform_table"><code class="docutils literal notranslate"><span class="pre">label_and_transform_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#extend_tables_and_extract_combinations"><code class="docutils literal notranslate"><span class="pre">extend_tables_and_extract_combinations()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#add_columns"><code class="docutils literal notranslate"><span class="pre">add_columns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#is_valid"><code class="docutils literal notranslate"><span class="pre">is_valid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#contains_transmission"><code class="docutils literal notranslate"><span class="pre">contains_transmission()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_parser.html#contains_gears"><code class="docutils literal notranslate"><span class="pre">contains_gears()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transmission.html">transmission</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transmission.html#get_transmission_type"><code class="docutils literal notranslate"><span class="pre">get_transmission_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transmission.html#get_gears"><code class="docutils literal notranslate"><span class="pre">get_gears()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transmission.html#apply_transmission_processing"><code class="docutils literal notranslate"><span class="pre">apply_transmission_processing()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transmission.html#merge_transmission_columns"><code class="docutils literal notranslate"><span class="pre">merge_transmission_columns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transmission.html#extend_transmissions_data"><code class="docutils literal notranslate"><span class="pre">extend_transmissions_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#get_column_semantics"><code class="docutils literal notranslate"><span class="pre">get_column_semantics()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#transform_kw_ks_column"><code class="docutils literal notranslate"><span class="pre">transform_kw_ks_column()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#apply_column_transformations"><code class="docutils literal notranslate"><span class="pre">apply_column_transformations()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#sort_numerical_columns"><code class="docutils literal notranslate"><span class="pre">sort_numerical_columns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#row_to_dict"><code class="docutils literal notranslate"><span class="pre">row_to_dict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#enhance_combination"><code class="docutils literal notranslate"><span class="pre">enhance_combination()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#read_rows"><code class="docutils literal notranslate"><span class="pre">read_rows()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#select_model_data"><code class="docutils literal notranslate"><span class="pre">select_model_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#extend_fuel_data"><code class="docutils literal notranslate"><span class="pre">extend_fuel_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#extend_model_data"><code class="docutils literal notranslate"><span class="pre">extend_model_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../shared/string_utils.html" class="btn btn-neutral float-left" title="string_utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="abstract_parser.html" class="btn btn-neutral float-right" title="abstract_parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

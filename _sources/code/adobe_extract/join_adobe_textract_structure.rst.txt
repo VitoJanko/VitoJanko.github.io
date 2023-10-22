@@ -1,0 +1,147 @@
+=============================
+join_adobe_textract_structure
+=============================
+
+.. py:function:: max_bbox(bbox_1, bbox_2)
+
+   Takes two dictionaries with data and returns the dictionary with the max width and
+   height of the two, min left bbox and min top bbox.
+
+   :param bbox_1: first dictionary
+   :type bbox_1: dict
+   :param bbox_2: second dictionary
+   :type bbox_2: dict
+   :return: dictionary with max width and height, min left and min top
+   :rtype: dict
+
+.. py:function:: get_child_relationships(block: dict)
+
+   If "Relationships" in block, returns the "Ids" for "Type" == "CHILD".
+
+   :param block: dictionary to check for relationships
+   :type block: dict
+   :return: "Ids" for "Type" == "CHILD" or None
+   :rtype: list or None
+
+.. py:function:: merge_relationship(block_1: dict, block_2: dict)
+
+   Updates the """block_1""" dictionary to include any child relationships that exist in """block_2""".
+
+   :param block_1: Updated block
+   :type block_1: dict
+   :param block_2: Merged block
+   :type block_2: dict
+   :return: None
+
+.. py:function:: remove_merged_block_references(cell_id: str, table: Table, id_to_block: dict)
+
+   Removes """cell_id""" from the table relationship and from any merged cells related to the table.
+
+   :param cell_id: The block ID of the cell to be removed.
+   :type cell_id: str
+   :param table: The table object whose relationship and merged cells need to be updated.
+   :type table: Table
+   :param id_to_block: A dictionary that maps block IDs to their corresponding block objects.
+   :type id_to_block: dict
+   :return: None
+
+.. py:function:: update_block_map(id_to_block, block_1, block_2)
+
+   Overrides block_1 and deletes block_2 in id_to_block.
+
+   :param id_to_block: dictionary to update
+   :type id_to_block: dict
+   :param block_1: block to override
+   :type block_1: dict
+   :param block_2: block to delete
+   :type block_2: dict
+   :return: None
+
+.. py:function:: merge_geometry(block_1, block_2)
+
+   Merges the "Geometry" of block_1 and block_2.
+
+   :param block_1: first block to merge
+   :type block_1: dict
+   :param block_2: second block to merge
+   :type block_2: dict
+   :return: None
+
+.. py:function:: merge_cells(cell_1, cell_2, table, id_to_block)
+
+   Merges two cells in a table.
+
+   :param cell_1: first cell to merge
+   :type cell_1: Cell
+   :param cell_2: second cell to merge
+   :type cell_2: Cell
+   :param table: table containing the cells
+   :type table: Table
+   :param id_to_block: dictionary mapping block IDs to their corresponding block objects
+   :type id_to_block: dict
+   :return: None
+
+.. py:function:: merge_two_rows(merged_row_idx, table, id_to_block: dict)
+
+   Merges two rows in a table.
+
+   :param merged_row_idx: index of the row to merge
+   :type merged_row_idx: int
+   :param table: table containing the rows
+   :type table: Table
+   :param id_to_block: dictionary mapping block IDs to their corresponding block objects
+   :type id_to_block: dict
+   :return: None
+
+.. py:function:: get_merge_groups(table: Table, adobe_rows_top_limits: list)
+
+   Given a Table object and a list of the top boundaries of rows identified by Adobe, this function searches for rows in the table that should be merged together based on their proximity to the boundaries in the Adobe list.
+
+   :param table: The table object to search for mergeable rows.
+   :type table: Table
+   :param adobe_rows_top_limits: A list of the top boundary positions of rows identified by Adobe.
+   :type adobe_rows_top_limits: list
+   :return: A list of lists, where each inner list contains the IDs of the rows that should be merged together.
+   :rtype: list[list[int]]
+
+.. py:function:: merge_rows(table, id_to_block: dict, adobe_rows_top_limits: list)
+
+   Merges rows in a table based on the top limits of rows identified by Adobe.
+
+   :param table: table containing the rows
+   :type table: Table
+   :param id_to_block: dictionary mapping block IDs to their corresponding block objects
+   :type id_to_block: dict
+   :param adobe_rows_top_limits: A list of the top boundary positions of rows identified by Adobe.
+   :type adobe_rows_top_limits: list
+   :return: updated id_to_block dictionary
+   :rtype: dict
+
+.. py:function:: correct_zeros(lst: list)
+
+   Replaces each 0 element in input list with the average value of first non zero value before and after the current element.
+
+   :param lst: list to correct
+   :type lst: list
+   :return: corrected list
+   :rtype: list
+
+.. py:function:: is_increasing(numbers)
+
+   Checks if the elements in the input list are in increasing order.
+
+   :param numbers: list to check
+   :type numbers: list
+   :return: True if the list is in increasing order, False otherwise
+   :rtype: bool
+
+.. py:function:: merge_rows_based_on_adobe(adobe_tables: list[TableData], eq_textract: dict)
+
+   Merges rows in tables based on row spans provided by Adobe extract.
+
+   :param adobe_tables: list of TableData objects
+   :type adobe_tables: list[TableData]
+   :param eq_textract: dictionary to update
+   :type eq_textract: dict
+   :return: updated eq_textract dictionary
+   :rtype: dict

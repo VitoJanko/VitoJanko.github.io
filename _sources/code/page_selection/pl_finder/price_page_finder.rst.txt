@@ -1,0 +1,16 @@
+=================
+price_page_finder
+=================
+
+.. py:function:: find_pages(page_text: dict, language: str, settings: Settings)
+
+   Returns a list of all pages that could contain price_list, enumerated from 1. Also returns a list of all numbers found in the pages.
+
+   :param page_text: A dictionary where keys are page numbers and values are the text in the page.
+   :type page_text: dict
+   :param language: The language of the text in the pages.
+   :type language: str
+   :param settings: An object of Settings class which contains default pages.
+   :type settings: Settings
+   :return: A tuple containing a list of pages that could contain price_list and a list of all numbers found in the pages.
+   :rtype: tuple[list[int], list[int]]

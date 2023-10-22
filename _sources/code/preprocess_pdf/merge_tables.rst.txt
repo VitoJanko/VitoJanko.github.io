@@ -1,0 +1,86 @@
+============
+merge_tables
+============
+
+.. py:function:: are_parallel(left_table, right_table)
+
+   Check if two tables are parallel based on their bounding box geometry.
+
+   :param left_table: The left table to compare.
+   :type left_table: dict
+   :param right_table: The right table to compare.
+   :type right_table: dict
+   :return: True if tables are parallel, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: get_tables_to_merge(table_blocks)
+
+   Get pairs of tables that are parallel and have a row difference less than 2.
+
+   :param table_blocks: List of table blocks to check for merging.
+   :type table_blocks: list
+   :return: List of table pairs that can be merged.
+   :rtype: list
+
+
+.. py:function:: update_right_table_cells(cell_ids, blocks_map, n_cols_left, row_diff)
+
+   Update the column and row indices of the cells in the right table.
+
+   :param cell_ids: List of cell ids to update.
+   :type cell_ids: list
+   :param blocks_map: Map of blocks.
+   :type blocks_map: dict
+   :param n_cols_left: Number of columns in the left table.
+   :type n_cols_left: int
+   :param row_diff: Difference in number of rows between the two tables.
+   :type row_diff: int
+
+
+.. py:function:: join_table_blocks(left_table, right_table)
+
+   Join two table blocks into one.
+
+   :param left_table: The left table to join.
+   :type left_table: dict
+   :param right_table: The right table to join.
+   :type right_table: dict
+   :return: The joined table block.
+   :rtype: dict
+
+
+.. py:function:: add_cells(n_cols, blocks_map)
+
+   Add cells to a table.
+
+   :param n_cols: Number of columns in the table.
+   :type n_cols: int
+   :param blocks_map: Map of blocks.
+   :type blocks_map: dict
+   :return: List of keys of the added cells.
+   :rtype: list
+
+
+.. py:function:: merge_table_pair(tables: tuple, n_cols: tuple, row_diff: int, blocks_map)
+
+   Merge a pair of tables.
+
+   :param tables: Tuple of two tables to merge.
+   :type tables: tuple
+   :param n_cols: Tuple of number of columns in the two tables.
+   :type n_cols: tuple
+   :param row_diff: Difference in number of rows between the two tables.
+   :type row_diff: int
+   :param blocks_map: Map of blocks.
+   :type blocks_map: dict
+
+
+.. py:function:: merge_tables(textract_json: dict)
+
+   Merge all mergeable tables in a textract json.
+
+   :param textract_json: The textract json containing the tables.
+   :type textract_json: dict
+   :return: The textract json with merged tables.
+   :rtype: dict

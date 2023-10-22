@@ -1,0 +1,94 @@
+====
+main
+====
+
+.. py:function:: __init__(self, general_attr: CommonAttrs, table_data: TableData, table_loop_index: int = -1, previous_table: pd.DataFrame = None, technical_tables: list[TechnicalParser] = None, surcharge: dict = None, input_data: dict = None, gpt_querier: GptQuerier = None)
+
+       Initialize the class with the given parameters.
+
+       :param general_attr: General attributes for the table.
+       :type general_attr: CommonAttrs
+       :param table_data: Data of the table.
+       :type table_data: TableData
+       :param table_loop_index: Index of the table in the loop, defaults to -1.
+       :type table_loop_index: int, optional
+       :param previous_table: Previous table data, defaults to None.
+       :type previous_table: pd.DataFrame, optional
+       :param technical_tables: List of technical parsers, defaults to None.
+       :type technical_tables: list[TechnicalParser], optional
+       :param surcharge: Surcharge data, defaults to None.
+       :type surcharge: dict, optional
+       :param input_data: Input data, defaults to None.
+       :type input_data: dict, optional
+       :param gpt_querier: Gpt querier, defaults to None.
+       :type gpt_querier: GptQuerier, optional
+       :return: None
+       :rtype: None
+
+.. py:function:: label_and_transform_table(self)
+
+       Label and transform the table.
+       :return: None
+       :rtype: None
+
+.. py:function:: extend_tables_and_extract_combinations(self) -> None
+
+       Extend the tables and extract the combinations.
+       :return: None
+       :rtype: None
+
+.. py:function:: extract_data(self)
+
+       Extract data from the table.
+       :return: None
+       :rtype: None
+
+.. py:function:: add_surcharge(self, values, labels, predictor_necessities)
+
+       Add surcharge to the values and labels.
+       :param values: Values of the table.
+       :type values: pd.DataFrame
+       :param labels: Labels of the table.
+       :type labels: pd.DataFrame
+       :param predictor_necessities: Predictor necessities.
+       :type predictor_necessities: dict
+       :return: None
+       :rtype: None
+
+.. py:function:: add_value_indices(self, combinations, extended_mapping)
+
+       Add value indices to the combinations.
+       :param combinations: Combinations of the table.
+       :type combinations: list
+       :param extended_mapping: Extended mapping of the table.
+       :type extended_mapping: dict
+       :return: None
+       :rtype: None
+
+.. py:function:: infer_version_from_table_header(self)
+
+       Infer version from the table header.
+       :return: None
+       :rtype: None
+
+.. py:function:: make_column_index(self)
+
+       Make column index for the table.
+       :return: None
+       :rtype: None
+
+.. py:function:: extract_td_fuel(self, current_col_to_original)
+
+       Extract fuel data from the table.
+       :param current_col_to_original: Current column to original mapping.
+       :type current_col_to_original: dict
+       :return: None
+       :rtype: None
+
+.. py:function:: extract_td_transmission(self, current_col_to_original)
+
+       Extract transmission data from the table.
+       :param current_col_to_original: Current column to original mapping.
+       :type current_col_to_original: dict
+       :return: None
+       :rtype: None

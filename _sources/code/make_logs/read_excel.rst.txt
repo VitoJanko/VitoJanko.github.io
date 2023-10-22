@@ -1,0 +1,46 @@
+==========
+read_excel
+==========
+
+.. py:function:: read_errors(filename)
+
+   Reads the error counts from the given Excel file.
+
+   :param filename: The name of the Excel file.
+   :type filename: str
+   :return: An array of error counts.
+   :rtype: numpy.ndarray
+
+
+.. py:function:: read_td_stats(filename)
+
+   Reads the TD statistics from the given Excel file.
+
+   :param filename: The name of the Excel file.
+   :type filename: str
+   :return: A tuple containing information about the TD statistics.
+   :rtype: tuple
+
+
+.. py:function:: read_cell(sheet, x, y)
+
+   Reads the value of a cell in the given Excel sheet at the specified coordinates.
+
+   :param sheet: The Excel sheet.
+   :type sheet: openpyxl.worksheet.worksheet.Worksheet
+   :param x: The x-coordinate of the cell.
+   :type x: int
+   :param y: The y-coordinate of the cell.
+   :type y: int
+   :return: The numeric value of the cell.
+   :rtype: int
+
+
+.. py:function:: make_numeric(x)
+
+   Converts the given value to a numeric value.
+
+   :param x: The value to convert.
+   :type x: str
+   :return: The numeric value.
+   :rtype: int

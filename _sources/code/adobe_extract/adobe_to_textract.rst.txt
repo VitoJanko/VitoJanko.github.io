@@ -1,0 +1,25 @@
+=================
+adobe_to_textract
+=================
+
+.. py:function:: make_line_reference(text_to_line: dict, line_block: dict)
+
+   This function appends the line block to the list of line blocks corresponding to the text in the text_to_line dictionary. If the text is not already a key in the dictionary, it is added.
+
+   :param text_to_line: A dictionary where the keys are texts and the values are lists of line blocks.
+   :type text_to_line: dict
+   :param line_block: A dictionary representing a line block.
+   :type line_block: dict
+   :return: None
+
+
+.. py:function:: adobe_to_textract(adobe_output: tuple, original_pages: list[int])
+
+   This function converts Adobe output to Textract format. It processes the Adobe output and creates a Textract dictionary with the corresponding metadata, blocks, and page relations.
+
+   :param adobe_output: A tuple containing Adobe JSON and CSVs.
+   :type adobe_output: tuple
+   :param original_pages: A list of original page numbers.
+   :type original_pages: list[int]
+   :return: A dictionary in Textract format.
+   :rtype: dict

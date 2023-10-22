@@ -1,0 +1,12 @@
+=====
+utils
+=====
+
+.. py:function:: calculate_file_hash(file_like: Union[str, BinaryIO]) -> str
+
+   Calculates the SHA256 hash of a file-like object.
+
+   :param file_like: A file-like object, either a string containing the file path or a binary file-like object.
+   :type file_like: Union[str, BinaryIO]
+   :return: A hexadecimal string representation of the SHA256 hash of the file contents.
+   :rtype: str

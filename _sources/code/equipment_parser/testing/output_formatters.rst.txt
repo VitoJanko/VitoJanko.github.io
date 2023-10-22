@@ -1,0 +1,58 @@
+=================
+output_formatters
+=================
+
+.. py:function:: format_find_versions(funct_input, results: list)
+
+   Returns the input function and a list of versions for each result.
+
+   :param funct_input: The input function.
+   :type funct_input: function
+   :param results: A list of results.
+   :type results: list
+   :return: The input function and a list of versions.
+   :rtype: tuple
+
+.. py:function:: format_add_versions(funct_input, results: list)
+
+   Modifies the storage of the first element of the input function to None and returns the input function and a list of tuples. Each tuple contains the text, versions and a boolean value indicating if the sum of special tags is zero for each line in results that has a version.
+
+   :param funct_input: The input function.
+   :type funct_input: function
+   :param results: A list of results.
+   :type results: list
+   :return: The input function and a list of tuples.
+   :rtype: tuple
+
+.. py:function:: format_join_version_type_two(funct_input, results: list)
+
+   Returns the input function and a tuple containing the ordered versions and a boolean value indicating if it is type two from the results.
+
+   :param funct_input: The input function.
+   :type funct_input: function
+   :param results: A list of results.
+   :type results: list
+   :return: The input function and a tuple.
+   :rtype: tuple
+
+.. py:function:: format_join_version_type_one(funct_input, results: list)
+
+   Returns the input function and the ordered versions from the results.
+
+   :param funct_input: The input function.
+   :type funct_input: function
+   :param results: A list of results.
+   :type results: list
+   :return: The input function and the ordered versions.
+   :rtype: tuple
+
+.. py:function:: format_add_titles(funct_input, results: list)
+
+   Returns the input function and a list of text for each line in results that has a title.
+
+   :param funct_input: The input function.
+   :type funct_input: function
+   :param results: A list of results.
+   :type results: list
+   :return: The input function and a list of text.
+   :rtype: tuple

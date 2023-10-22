@@ -1,0 +1,54 @@
+====
+main
+====
+
+.. py:function:: __init__(self, textract_results: dict, version_to_id_map: dict[str, int], additional_versions_to_id_map: dict[str, int], segment_maker: TextractDivider, pages: list, pdf_parser: PdfParser, using_adobe_output: bool, settings: Settings, model: str, debug: bool)
+
+       Initializes the class with the given parameters.
+
+       :param textract_results: The results from AWS Textract.
+       :type textract_results: dict
+       :param version_to_id_map: A mapping from version to id.
+       :type version_to_id_map: dict[str, int]
+       :param additional_versions_to_id_map: Additional mapping from version to id.
+       :type additional_versions_to_id_map: dict[str, int]
+       :param segment_maker: The TextractDivider object.
+       :type segment_maker: TextractDivider
+       :param pages: The list of pages.
+       :type pages: list
+       :param pdf_parser: The PdfParser object.
+       :type pdf_parser: PdfParser
+       :param using_adobe_output: A flag indicating whether Adobe output is being used.
+       :type using_adobe_output: bool
+       :param settings: The Settings object.
+       :type settings: Settings
+       :param model: The model name.
+       :type model: str
+       :param debug: A flag indicating whether debug mode is on.
+       :type debug: bool
+
+.. py:function:: extract_se(self)
+
+       Extracts the equipment from the pages.
+       :return: A tuple containing all blocks, equipments, and all not equipment.
+       :rtype: tuple
+
+.. py:function:: update_blocks(self, blocks, all_blocks)
+
+       Updates the blocks with the given blocks.
+
+       :param blocks: The blocks to be updated.
+       :type blocks: dict
+       :param all_blocks: The existing blocks.
+       :type all_blocks: dict
+
+.. py:function:: blocks_from_lines(self, lines: list[EquipmentLine], page_to_cols: dict[int, int]) -> (list[VersionBlock], list[str], list[EquipmentLine])
+
+       Creates blocks from the given lines.
+
+       :param lines: The lines to be converted into blocks.
+       :type lines: list[EquipmentLine]
+       :param page_to_cols: A mapping from page to columns.
+       :type page_to_cols: dict[int, int]
+       :return: A tuple containing blocks, versions, and not equipment.
+       :rtype: tuple

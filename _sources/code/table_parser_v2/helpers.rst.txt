@@ -1,0 +1,49 @@
+=======
+helpers
+=======
+
+.. py:function:: check_for_mandatory_categories(category_to_columns, mandatory_categories: list)
+
+   Checks if all mandatory categories are present in the given category_to_columns dictionary. If a mandatory category is missing, an exception is raised.
+
+   :param category_to_columns: Dictionary with categories as keys.
+   :type category_to_columns: dict
+   :param mandatory_categories: List of mandatory categories.
+   :type mandatory_categories: list
+   :raises Exception: If a mandatory category is missing in category_to_columns.
+
+
+.. py:function:: find_table_above_current_one(table_metadata, tables: List[TableData])
+
+   Finds a table that is located above the current one and has the same width. If no such table is found, returns None.
+
+   :param table_metadata: Metadata of the current table.
+   :type table_metadata: dict
+   :param tables: List of all tables.
+   :type tables: List[TableData]
+   :return: The table located above the current one and has the same width, or None if no such table is found.
+   :rtype: TableData or None
+
+
+.. py:function:: use_above_table_header(table_data, all_tables) -> Union[pd.DataFrame, None]
+
+   If a table is found above the current one and has the same number of columns, the header of the above table is used for the current table. If no such table is found, returns (False, None).
+
+   :param table_data: Data of the current table.
+   :type table_data: TableData
+   :param all_tables: List of all tables.
+   :type all_tables: list
+   :return: A tuple where the first element is a boolean indicating if the operation was successful, and the second element is the updated table or None.
+   :rtype: tuple
+
+
+.. py:function:: is_table_above_and_same_width(table_1, table_2)
+
+   Checks if table_2 is located above table_1 and has the same width. Returns a tuple where the first element is a boolean indicating if table_2 is above and has the same width as table_1, and the second element is the top coordinate of table_2 or None.
+
+   :param table_1: The first table.
+   :type table_1: dict
+   :param table_2: The second table.
+   :type table_2: dict
+   :return: A tuple where the first element is a boolean indicating if table_2 is above and has the same width as table_1, and the second element is the top coordinate of table_2 or None.
+   :rtype: tuple

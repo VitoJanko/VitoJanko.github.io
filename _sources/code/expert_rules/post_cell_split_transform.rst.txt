@@ -1,0 +1,28 @@
+=========================
+post_cell_split_transform
+=========================
+
+.. py:function:: post_cell_split_transform(values: pd.DataFrame, labels: pd.DataFrame, settings: Settings, summary: Summary)
+
+   Depending on the brand and country specified in the summary, restructures the versions in the values and labels dataframes.
+
+   :param values: The dataframe containing the values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe containing the labels.
+   :type labels: pd.DataFrame
+   :param settings: The settings for the transformation.
+   :type settings: Settings
+   :param summary: The summary containing the brand and country.
+   :type summary: Summary
+
+
+.. py:function:: restructure_versions(values: pd.DataFrame, labels: pd.DataFrame, column="version")
+
+   Restructures the versions in the values and labels dataframes based on the specified column.
+
+   :param values: The dataframe containing the values.
+   :type values: pd.DataFrame
+   :param labels: The dataframe containing the labels.
+   :type labels: pd.DataFrame
+   :param column: The column based on which the versions are restructured. Default is "version".
+   :type column: str

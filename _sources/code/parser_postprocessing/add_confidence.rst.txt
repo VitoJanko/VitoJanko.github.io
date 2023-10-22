@@ -1,0 +1,36 @@
+==============
+add_confidence
+==============
+
+.. py:function:: is_special_version_name(version_name)
+
+   Check if a version name is special.
+
+   :param version_name: The name of the version to check.
+   :type version_name: str
+   :return: True if the version name is special, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: add_confidence_for_versions(pl_json, brand_id, country_id)
+
+   Add confidence values for versions based on the versions that already appear in the preskok VE database.
+
+   :param pl_json: The json data of the versions.
+   :type pl_json: dict
+   :param brand_id: The id of the brand.
+   :type brand_id: int
+   :param country_id: The id of the country.
+   :type country_id: int
+   :return: The json data of the versions with added confidence values.
+   :rtype: dict
+
+
+.. py:function:: add_confidence_for_combination(pl_json)
+
+   The confidence of the engine + transmission + drivetrain + versions + price combination is defined as the average of individual confidences.
+
+   :param pl_json: The json data of the engine combinations.
+   :type pl_json: dict
+   :return: None
+   :rtype: None

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Splitting &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Applying expert rules" href="expert_rules1.html" />
+    <link rel="prev" title="Transforming to the standard table form" href="standard_form.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setting_up.html">Setting up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classifying_pages.html">Classifying pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structuring_pdf.html">Structuring the PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_dataframes.html">Creating Pandas Dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labeling.html">Labeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_form.html">Transforming to the standard table form</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expert_rules1.html">Applying expert rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collect_combinations.html">Collect combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vehicle_editor.html">Add Vehicle Editor IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expert_rules2.html">Applying expert rules, round #2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json_format.html">Transforming to the correct format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validating.html">Validating the results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cleanup.html">Clean-up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Function documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
+      <li class="breadcrumb-item active">Splitting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/flow/splitting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="splitting">
+<h1>Splitting<a class="headerlink" href="#splitting" title="Link to this heading"></a></h1>
+<p>If you’ve been carefully inspecting the subsections for data examples, you might seen that our “standard table” contains entries such as
+“1.0 T-GDi 120 iBVM Hybrid 48V”. If we truly want to have only one attribute in each column, we need to split this string and create additional
+columns. In this case containing engine, transmission, power, and fuel type.</p>
+<p>We do so, by searching for specific words or combination of words that appear in the Vehicle Editor database describing different attributes.
+We also employ some regex-es to find numeric values in some specific formats (ie. 80 kw).</p>
+<section id="sample-input">
+<h2>Sample input<a class="headerlink" href="#sample-input" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/standard_form.png"><img alt="../_images/standard_form.png" src="../_images/standard_form.png" style="width: 500px;" /></a>
+</section>
+<section id="sample-output">
+<h2>Sample output<a class="headerlink" href="#sample-output" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/splitted.png"><img alt="../_images/splitted.png" src="../_images/splitted.png" style="width: 800px;" /></a>
+</section>
+<section id="old-classifier">
+<h2>Old classifier<a class="headerlink" href="#old-classifier" title="Link to this heading"></a></h2>
+</section>
+<section id="splitting-mechanic">
+<h2>Splitting mechanic<a class="headerlink" href="#splitting-mechanic" title="Link to this heading"></a></h2>
+</section>
+<section id="extracting-kw-and-ks">
+<h2>Extracting kw and ks<a class="headerlink" href="#extracting-kw-and-ks" title="Link to this heading"></a></h2>
+</section>
+<section id="fuel-adjustments">
+<h2>Fuel adjustments<a class="headerlink" href="#fuel-adjustments" title="Link to this heading"></a></h2>
+</section>
+<section id="code-flow">
+<h2>Code flow<a class="headerlink" href="#code-flow" title="Link to this heading"></a></h2>
+<p>Splitting values in cells</p>
+<a class="reference internal image-reference" href="../_images/get_splitter.png"><img alt="../_images/get_splitter.png" src="../_images/get_splitter.png" style="width: 800px;" /></a>
+<p>Extracting kw from the engine column</p>
+<a class="reference internal image-reference" href="../_images/get_kw.png"><img alt="../_images/get_kw.png" src="../_images/get_kw.png" style="width: 800px;" /></a>
+<p>Adjustments for fuel</p>
+<a class="reference internal image-reference" href="../_images/get_fuel.png"><img alt="../_images/get_fuel.png" src="../_images/get_fuel.png" style="width: 800px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="standard_form.html" class="btn btn-neutral float-left" title="Transforming to the standard table form" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expert_rules1.html" class="btn btn-neutral float-right" title="Applying expert rules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

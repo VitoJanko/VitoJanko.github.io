@@ -1,0 +1,8 @@
+==========
+classifier
+==========
+
+.. toctree::
+   main
+   mapping_dict
+   metrics

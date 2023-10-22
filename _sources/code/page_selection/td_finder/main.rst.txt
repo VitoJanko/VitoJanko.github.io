@@ -1,0 +1,33 @@
+====
+main
+====
+
+.. py:class:: ClassName(country_id, settings)
+
+   Initializes the class with the given country_id and settings. It also sets up the language descriptor, bag of words model, k-nearest neighbors model, random forest model, most probable main page, and predictions.
+
+   :param country_id: The ID of the country.
+   :type country_id: int
+   :param settings: The settings for the class.
+   :type settings: dict
+
+
+.. py:method:: ClassName.predict(file_like, split_page=False)
+
+   Predicts the class of the given file_like object using the k-nearest neighbors and random forest models. If split_page is True, it splits the page into two and predicts the class for each half.
+
+   :param file_like: The file-like object to predict.
+   :type file_like: file-like object
+   :param split_page: Whether to split the page into two for prediction. Default is False.
+   :type split_page: bool
+   :return: None
+
+
+.. py:method:: ClassName.get_pages(category)
+
+   Returns the indices of the pages that belong to the given category.
+
+   :param category: The category to filter the pages.
+   :type category: str
+   :return: The indices of the pages that belong to the category.
+   :rtype: list[int]

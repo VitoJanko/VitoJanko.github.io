@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>layout_mapper &mdash; Price list parser 0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a0e24af7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="layout_parser" href="layout_parser.html" />
+    <link rel="prev" title="index_mapper" href="index_mapper.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Price list parser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../flow/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Function documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_test.html">local_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adobe_extract/index.html">adobe_extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classifier/index.html">classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../confidence/index.html">confidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_classification/index.html">dl_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equipment_parser/index.html">equipment_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expert_rules/index.html">expert_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpt_processing/index.html">gpt_processing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">layout_transforming</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index_mapper.html">index_mapper</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">layout_mapper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layout_parser.html">layout_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge_mappers.html">merge_mappers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="technical_mappers.html">technical_mappers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../make_logs/index.html">make_logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_values_split/index.html">multi_values_split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../page_selection/index.html">page_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parser_postprocessing/index.html">parser_postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocess_pdf/index.html">preprocess_pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../price_list_parser/index.html">price_list_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shared/index.html">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../table_parser_v2/index.html">table_parser_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../textract/index.html">textract</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Price list parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Function documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">layout_transforming</a></li>
+      <li class="breadcrumb-item active">layout_mapper</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/code/layout_transforming/layout_mapper.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="layout-mapper">
+<h1>layout_mapper<a class="headerlink" href="#layout-mapper" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="make_long_mapper">
+<span class="sig-name descname"><span class="pre">make_long_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wide_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_long_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for long labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be mapped.</p></li>
+<li><p><strong>wide_models</strong> (<em>bool</em>) – A flag to indicate if the models are wide.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for the labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="clean_table_mapper">
+<span class="sig-name descname"><span class="pre">clean_table_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean_threshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#clean_table_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for cleaning the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be cleaned.</p></li>
+<li><p><strong>clean_threshold</strong> (<em>float</em>) – The threshold for cleaning.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for cleaning the table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_unsplit_mapper">
+<span class="sig-name descname"><span class="pre">make_unsplit_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forced_entry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loose_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_unsplit_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for unsplitting labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be unsplit.</p></li>
+<li><p><strong>forced_entry</strong> (<em>tuple</em><em> or </em><em>None</em>) – The forced entry for unsplitting.</p></li>
+<li><p><strong>loose_split</strong> (<em>bool</em>) – A flag to indicate if the split is loose.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for unsplitting the labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_top_left_model_mapper">
+<span class="sig-name descname"><span class="pre">make_top_left_model_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_split_len</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_top_left_model_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for making the top left model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>pre_split_len</strong> (<em>int</em>) – The length before splitting.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for making the top left model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_split_version_mapper">
+<span class="sig-name descname"><span class="pre">remove_split_version_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wide_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_split_version_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for removing the split version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>split_columns</strong> (<em>list</em>) – The columns to be split.</p></li>
+<li><p><strong>wide_models</strong> (<em>bool</em>) – A flag to indicate if the models are wide.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for removing the split version.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="propagate_version_mapper">
+<span class="sig-name descname"><span class="pre">propagate_version_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#propagate_version_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for propagating the version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for propagating the version.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="join_versions_mapper">
+<span class="sig-name descname"><span class="pre">join_versions_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">possible_versions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_join</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_subset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join_versions_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for joining versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>possible_versions</strong> (<em>list</em>) – The possible versions to be joined.</p></li>
+<li><p><strong>always_join</strong> (<em>bool</em>) – A flag to indicate if versions should always be joined.</p></li>
+<li><p><strong>override_subset</strong> (<em>bool</em>) – A flag to indicate if the subset should be overridden.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for joining versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="propagate_versions_mapper_v2">
+<span class="sig-name descname"><span class="pre">propagate_versions_mapper_v2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_base_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#propagate_versions_mapper_v2" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for propagating versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>add_base_version</strong> (<em>bool</em>) – A flag to indicate if the base version should be added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for propagating versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_transposed_mapper">
+<span class="sig-name descname"><span class="pre">make_transposed_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_transposed_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for transposing labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be transposed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for transposing the labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_title_mapper">
+<span class="sig-name descname"><span class="pre">make_title_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_title_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for making the title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>old_title</strong> (<em>str</em><em> or </em><em>None</em>) – The old title to be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for making the title.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="add_row_mapper">
+<span class="sig-name descname"><span class="pre">add_row_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#add_row_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for adding a row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>row_values</strong> (<em>list</em>) – The values of the row to be added.</p></li>
+<li><p><strong>row_labels</strong> (<em>list</em>) – The labels of the row to be added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for adding a row.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="propagate_title">
+<span class="sig-name descname"><span class="pre">propagate_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#propagate_title" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for propagating the title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>previous_title</strong> (<em>str</em>) – The previous title to be propagated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for propagating the title.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_duplicates_mapper">
+<span class="sig-name descname"><span class="pre">remove_duplicates_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">take_lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_pairs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_duplicates_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for removing duplicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>status</strong> (<em>pandas.DataFrame</em>) – The status of the values.</p></li>
+<li><p><strong>take_lower</strong> (<em>bool</em>) – A flag to indicate if the lower value should be taken.</p></li>
+<li><p><strong>version_pairs</strong> (<em>dict</em>) – The pairs of versions to be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for removing duplicates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strip_field">
+<span class="sig-name descname"><span class="pre">strip_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strip_field" title="Link to this definition"></a></dt>
+<dd><p>This function strips a field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>str</em>) – The field to be stripped.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The stripped field.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="insert_split_lines_mapper">
+<span class="sig-name descname"><span class="pre">insert_split_lines_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_words</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insert_split_lines_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for inserting split lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>split_words</strong> (<em>dict</em>) – The words to be split.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for inserting split lines.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove_extra_version_mapper">
+<span class="sig-name descname"><span class="pre">remove_extra_version_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove_extra_version_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for removing extra versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>selector</strong> (<em>function</em>) – The selector for removing extra versions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for removing extra versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mixed_column_mapper">
+<span class="sig-name descname"><span class="pre">mixed_column_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixed_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mixed_column_mapper" title="Link to this definition"></a></dt>
+<dd><p>This function generates a mapper for mixed columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pandas.DataFrame</em>) – The values to be used.</p></li>
+<li><p><strong>labels</strong> (<em>pandas.DataFrame</em>) – The labels to be used.</p></li>
+<li><p><strong>mixed_type</strong> (<em>str</em>) – The type of the mixed column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mapper for mixed columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="make_extra_columns">
+<span class="sig-name descname"><span class="pre">make_extra_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wide</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#make_extra_columns" title="Link to this definition"></a></dt>
+<dd><p>Find missing columns and create a mapper for them. If no missing columns are found, create an identity mapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The labels of the table.</p></li>
+<li><p><strong>wide</strong> (<em>bool</em>) – A boolean indicating if the table is wide.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A mapper for the new columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IndexMapper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reconstruct_table_mapper">
+<span class="sig-name descname"><span class="pre">reconstruct_table_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_merged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LayoutLabeler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Summary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">technical_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pd.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pd.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">IndexMapper</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#reconstruct_table_mapper" title="Link to this definition"></a></dt>
+<dd><p>Reconstruct a table based on various parameters and settings. This function handles the entire process of table reconstruction, including creating mappers, predicting table layout, splitting, merging, and more.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>pd.DataFrame</em>) – The values of the table.</p></li>
+<li><p><strong>values_merged</strong> (<em>pd.DataFrame</em>) – The merged values of the table.</p></li>
+<li><p><strong>labels</strong> (<em>pd.DataFrame</em>) – The labels of the table.</p></li>
+<li><p><strong>classifier</strong> (<em>LayoutLabeler</em>) – The classifier used to predict the layout of the table.</p></li>
+<li><p><strong>status</strong> (<em>pd.DataFrame</em>) – The status of the table.</p></li>
+<li><p><strong>settings</strong> (<em>Settings</em>) – The settings for the table reconstruction.</p></li>
+<li><p><strong>summary</strong> (<em>Summary</em>) – The summary of the table.</p></li>
+<li><p><strong>previous_table</strong> (<em>pd.DataFrame</em><em> or </em><em>None</em>) – The previous table, if any.</p></li>
+<li><p><strong>technical_table</strong> (<em>bool</em>) – A boolean indicating if the table is a technical table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The reconstructed values, labels, and index mapper of the table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[pd.DataFrame, pd.DataFrame, IndexMapper]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index_mapper.html" class="btn btn-neutral float-left" title="index_mapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="layout_parser.html" class="btn btn-neutral float-right" title="layout_parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Pareto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

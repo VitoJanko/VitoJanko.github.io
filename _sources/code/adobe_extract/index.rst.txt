@@ -1,0 +1,14 @@
+=============
+adobe_extract
+=============
+
+.. toctree::
+   adobe_to_textract
+   adobe_to_textract_utility
+   create_blocks
+   join_adobe_textract
+   join_adobe_textract_structure
+   join_adobe_textract_utility
+   main
+   table_tracking
+   transform_tables

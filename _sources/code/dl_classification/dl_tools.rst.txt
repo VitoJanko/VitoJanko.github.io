@@ -1,0 +1,268 @@
+========
+dl_tools
+========
+
+.. py:function:: biggest_number(parser, table, conversion=1)
+
+   Find the largest number in a table parsed from a webpage.
+
+   :param parser: The parser object.
+   :type parser: object
+   :param table: The table to search in.
+   :type table: object
+   :param conversion: The conversion factor to apply to the numbers found. Default is 1.
+   :type conversion: float
+   :return: The largest number found.
+   :rtype: float
+
+
+.. py:function:: create_quintuple_values(values)
+
+   Create quintuples from a DataFrame.
+
+   :param values: The DataFrame to process.
+   :type values: pandas.DataFrame
+   :return: The list of quintuples.
+   :rtype: list
+
+
+.. py:function:: create_decuple_values(values: pd.DataFrame)
+
+   Create decuples from a DataFrame.
+
+   :param values: The DataFrame to process.
+   :type values: pandas.DataFrame
+   :return: The list of decuples.
+   :rtype: list
+
+
+.. py:function:: prepare_text(text, length, transform_type="default")
+
+   Prepare a text for further processing.
+
+   :param text: The text to prepare.
+   :type text: str
+   :param length: The length to which the text should be truncated or padded.
+   :type length: int
+   :param transform_type: The type of transformation to apply. Default is "default".
+   :type transform_type: str
+   :return: The transformed text.
+   :rtype: str or list
+
+
+.. py:function:: extended_text_to_matrix(text, length)
+
+   Convert a text into a matrix representation.
+
+   :param text: The text to convert.
+   :type text: str
+   :param length: The length to which the text should be truncated or padded.
+   :type length: int
+   :return: The matrix representation of the text.
+   :rtype: numpy.ndarray
+
+
+.. py:function:: text_to_matrix(text, length, i=None, j=None)
+
+   Convert a text into a matrix representation.
+
+   :param text: The text to convert.
+   :type text: str
+   :param length: The length to which the text should be truncated or padded.
+   :type length: int
+   :param i: Optional row index. Default is None.
+   :type i: int or None
+   :param j: Optional column index. Default is None.
+   :type j: int or None
+   :return: The matrix representation of the text.
+   :rtype: numpy.ndarray
+
+
+.. py:function:: text_to_index(text, length)
+
+   Convert a text into a sequence of indices.
+
+   :param text: The text to convert.
+   :type text: str
+   :param length: The length to which the text should be truncated or padded.
+   :type length: int
+   :return: The sequence of indices.
+   :rtype: list
+
+
+.. py:function:: text_to_index10(text, length)
+
+   Convert a text into a sequence of indices.
+
+   :param text: The text to convert.
+   :type text: str
+   :param length: The length to which the text should be truncated or padded.
+   :type length: int
+   :return: The sequence of indices.
+   :rtype: list
+
+
+.. py:function:: word_to_index(text, length, i=None, j=None)
+
+   Convert a word into a sequence of indices.
+
+   :param text: The word to convert.
+   :type text: str
+   :param length: The length to which the word should be truncated or padded.
+   :type length: int
+   :param i: Optional row index. Default is None.
+   :type i: int or None
+   :param j: Optional column index. Default is None.
+   :type j: int or None
+   :return: The sequence of indices.
+   :rtype: list
+
+
+.. py:function:: add_numbers(text)
+
+   Add numbers to a text.
+
+   :param text: The text to process.
+   :type text: str
+   :return: The processed text.
+   :rtype: numpy.ndarray
+
+
+.. py:function:: extract_numbers(text)
+
+   Extract numbers from a text.
+
+   :param text: The text to process.
+   :type text: str
+   :return: The numbers, indices, and matches found.
+   :rtype: list
+
+
+.. py:function:: hot_encode(char)
+
+   Hot encode a character.
+
+   :param char: The character to encode.
+   :type char: str
+   :return: The hot encoding of the character.
+   :rtype: numpy.ndarray
+
+
+.. py:function:: char_index(char)
+
+   Get the index of a character.
+
+   :param char: The character to index.
+   :type char: str
+   :return: The index of the character.
+   :rtype: int
+
+
+.. py:function:: char_index_simple(char)
+
+   Get the simple index of a character.
+
+   :param char: The character to index.
+   :type char: str
+   :return: The simple index of the character.
+   :rtype: int
+
+
+.. py:function:: get_prediction(string, model, length, labels)
+
+   Get the prediction for a string.
+
+   :param string: The string to predict.
+   :type string: str
+   :param model: The model to use for prediction.
+   :type model: object
+   :param length: The length to which the string should be truncated or padded.
+   :type length: int
+   :param labels: The labels to use for prediction.
+   :type labels: list
+   :return: The prediction.
+   :rtype: str
+
+
+.. py:function:: get_prediction_with_proba(string, model, length, labels)
+
+   Get the prediction and probability for a string.
+
+   :param string: The string to predict.
+   :type string: str or list
+   :param model: The model to use for prediction.
+   :type model: object
+   :param length: The length to which the string should be truncated or padded.
+   :type length: int
+   :param labels: The labels to use for prediction.
+   :type labels: list
+   :return: The prediction and probability.
+   :rtype: tuple
+
+
+.. py:function:: get_prediction_df(df, model, length, labels, transformation_type="default", ignore_code=True, ignore_model=False, return_proba=False)
+
+   Get the prediction for a DataFrame.
+
+   :param df: The DataFrame to predict.
+   :type df: pandas.DataFrame
+   :param model: The model to use for prediction.
+   :type model: object
+   :param length: The length to which the strings should be truncated or padded.
+   :type length: int
+   :param labels: The labels to use for prediction.
+   :type labels: list
+   :param transformation_type: The type of transformation to apply. Default is "default".
+   :type transformation_type: str
+   :param ignore_code: Whether to ignore the "code" label. Default is True.
+   :type ignore_code: bool
+   :param ignore_model: Whether to ignore the "model" label. Default is False.
+   :type ignore_model: bool
+   :param return_proba: Whether to return the probabilities. Default is False.
+   :type return_proba: bool
+   :return: The predictions.
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: get_prediction_list(lst: list[str], model, length: int, labels: list, transformation_type="default") -> list
+
+   Get the prediction for a list of strings.
+
+   :param lst: The list of strings to predict.
+   :type lst: list[str]
+   :param model: The model to use for prediction.
+   :type model: object
+   :param length: The length to which the strings should be truncated or padded.
+   :type length: int
+   :param labels: The labels to use for prediction.
+   :type labels: list
+   :param transformation_type: The type of transformation to apply. Default is "default".
+   :type transformation_type: str
+   :return: The predictions.
+   :rtype: list
+
+
+.. py:function:: index_to_label(index, labels, ignore_codes=True, ignore_model=False)
+
+   Convert an index to a label.
+
+   :param index: The index to convert.
+   :type index: int
+   :param labels: The labels to use for conversion.
+   :type labels: list
+   :param ignore_codes: Whether to ignore the "code" label. Default is True.
+   :type ignore_codes: bool
+   :param ignore_model: Whether to ignore the "model" label. Default is False.
+   :type ignore_model: bool
+   :return: The label.
+   :rtype: str
+
+
+.. py:function:: prepare_df_layout(df)
+
+   Prepare the layout of a DataFrame.
+
+   :param df: The DataFrame to prepare.
+   :type df: pandas.DataFrame
+   :return: The prepared DataFrame.
+   :rtype: numpy.ndarray
